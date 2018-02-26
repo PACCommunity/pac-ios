@@ -559,7 +559,7 @@
 // MARK: - testPaymentRequest
 
 //TODO: test valid request with unknown arguments
-//TODO: test invalid dash address
+//TODO: test invalid $PAC address
 //TODO: test invalid request with unknown required arguments
 
 - (void)testPaymentRequest

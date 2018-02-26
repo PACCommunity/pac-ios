@@ -425,7 +425,7 @@ static NSString *sanitizeString(NSString *s)
         }
         else {
             UIAlertController * alert = [UIAlertController
-                                         alertControllerWithTitle:NSLocalizedString(@"not a valid dash or bitcoin address", nil)
+                                         alertControllerWithTitle:NSLocalizedString(@"not a valid $PAC or bitcoin address", nil)
                                          message:request.paymentAddress
                                          preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction* okButton = [UIAlertAction
@@ -937,7 +937,7 @@ static NSString *sanitizeString(NSString *s)
         
         if (amount > 0 && amount < self.amount) {
             UIAlertController * alert = [UIAlertController
-                                         alertControllerWithTitle:NSLocalizedString(@"insufficient funds for dash network fee", nil)
+                                         alertControllerWithTitle:NSLocalizedString(@"insufficient funds for $PAC network fee", nil)
                                          message:[NSString stringWithFormat:NSLocalizedString(@"reduce payment amount by\n%@ (%@)?", nil),
                                                   [manager stringForDashAmount:self.amount - amount],
                                                   [manager localCurrencyStringForDashAmount:self.amount - amount]]
@@ -965,7 +965,7 @@ static NSString *sanitizeString(NSString *s)
         }
         else {
             UIAlertController * alert = [UIAlertController
-                                         alertControllerWithTitle:NSLocalizedString(@"insufficient funds for dash network fee", nil)
+                                         alertControllerWithTitle:NSLocalizedString(@"insufficient funds for $PAC network fee", nil)
                                          message:nil
                                          preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction* okButton = [UIAlertAction
@@ -1464,7 +1464,7 @@ static NSString *sanitizeString(NSString *s)
     }
     UIAlertController * alert = [UIAlertController
                                  alertControllerWithTitle:@""
-                                 message:NSLocalizedString(@"clipboard doesn't contain a valid dash or bitcoin address", nil)
+                                 message:NSLocalizedString(@"clipboard doesn't contain a valid $PAC or bitcoin address", nil)
                                  preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* okButton = [UIAlertAction
                                actionWithTitle:NSLocalizedString(@"ok", nil)

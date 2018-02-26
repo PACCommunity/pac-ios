@@ -314,7 +314,7 @@ static NSTimeInterval const kResumeSearchTimeInterval = 1.0;
                                  if (([request.scheme isEqual:@"dash"] && request.paymentAddress.length > 1) ||
                                      [request.paymentAddress hasPrefix:@"X"] || [request.paymentAddress hasPrefix:@"7"]) {
                                      errorMessage = [NSString stringWithFormat:@"%@:\n%@",
-                                                     NSLocalizedString(@"not a valid dash address", nil),
+                                                     NSLocalizedString(@"not a valid $PAC address", nil),
                                                      request.paymentAddress];
                                  } else if (([request.scheme isEqual:@"bitcoin"] && request.paymentAddress.length > 1) ||
                                             [request.paymentAddress hasPrefix:@"1"] || [request.paymentAddress hasPrefix:@"3"]) {
