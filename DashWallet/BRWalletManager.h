@@ -28,10 +28,10 @@
 #import "BRWallet.h"
 #import "BRMnemonic.h"
 
-#define DASH         @"DASH"     // capital D with stroke (utf-8)
+#define PAC         @"$PAC"     // capital D with stroke (utf-8)
 #define BTC          @"\xC9\x83"     // capital B with stroke (utf-8)
 #define BITS         @"\xC6\x80"     // lowercase b with stroke (utf-8)
-#define DITS         @"mDASH"     // lowercase d with stroke (utf-8)
+#define DITS         @"m$PAC"     // lowercase d with stroke (utf-8)
 #define NARROW_NBSP  @"\xE2\x80\xAF" // narrow no-break space (utf-8)
 #define LDQUOTE      @"\xE2\x80\x9C" // left double quote (utf-8)
 #define RDQUOTE      @"\xE2\x80\x9D" // right double quote (utf-8)
@@ -70,15 +70,15 @@ typedef void (^ResetCancelHandlerBlock)(void);
 @property (nonatomic, readonly, getter=isTouchIdEnabled) BOOL touchIdEnabled; // true if touch id is enabled
 @property (nonatomic, readonly, getter=isPasscodeEnabled) BOOL passcodeEnabled; // true if device passcode is enabled
 @property (nonatomic, assign) BOOL didAuthenticate; // true if the user authenticated after this was last set to false
-@property (nonatomic, readonly) NSNumberFormatter * _Nullable dashFormat; // dash currency formatter
-@property (nonatomic, readonly) NSNumberFormatter * _Nullable dashSignificantFormat; // dash currency formatter that shows significant digits
+@property (nonatomic, readonly) NSNumberFormatter * _Nullable pacFormat; // $PAC currency formatter
+@property (nonatomic, readonly) NSNumberFormatter * _Nullable pacSignificantFormat; // $PAC currency formatter that shows significant digits
 @property (nonatomic, readonly) NSNumberFormatter * _Nullable bitcoinFormat; // bitcoin currency formatter
 @property (nonatomic, readonly) NSNumberFormatter * _Nullable unknownFormat; // unknown currency formatter
 @property (nonatomic, readonly) NSNumberFormatter * _Nullable localFormat; // local currency formatter
 @property (nonatomic, copy) NSString * _Nullable localCurrencyCode; // local currency ISO code
-@property (nonatomic, readonly) NSNumber * _Nullable bitcoinDashPrice; // exchange rate in bitcoin per dash
+@property (nonatomic, readonly) NSNumber * _Nullable bitcoinPacPrice; // exchange rate in bitcoin per pac
 @property (nonatomic, readonly) NSNumber * _Nullable localCurrencyBitcoinPrice; // exchange rate in local currency units per bitcoin
-@property (nonatomic, readonly) NSNumber * _Nullable localCurrencyDashPrice;
+@property (nonatomic, readonly) NSNumber * _Nullable localCurrencyPacPrice;
 @property (nonatomic, readonly) NSArray * _Nullable currencyCodes; // list of supported local currency codes
 @property (nonatomic, readonly) NSArray * _Nullable currencyNames; // names for local currency codes
 @property (nonatomic, readonly) BOOL isTestnet;
@@ -91,34 +91,34 @@ typedef void (^ResetCancelHandlerBlock)(void);
 - (void)authenticateWithPrompt:(NSString * _Nullable)authprompt andTouchId:(BOOL)touchId alertIfLockout:(BOOL)alertIfLockout completion:(_Nullable PinCompletionBlock)completion; // prompt user to authenticate
 - (void)setPinWithCompletion:(void (^ _Nullable)(BOOL success))completion; // prompts the user to set or change wallet pin and returns true if the pin was successfully set
 
-// queries api.dashwallet.com and calls the completion block with unspent outputs for the given address
+// queries api.pacwallet.com and calls the completion block with unspent outputs for the given address
 - (void)utxosForAddresses:(NSArray * _Nonnull)address
 completion:(void (^ _Nonnull)(NSArray * _Nonnull utxos, NSArray * _Nonnull amounts, NSArray * _Nonnull scripts,
                               NSError * _Null_unspecified error))completion;
 
-// given a private key, queries api.dashwallet.com for unspent outputs and calls the completion block with a signed
+// given a private key, queries api.pacwallet.com for unspent outputs and calls the completion block with a signed
 // transaction that will sweep the balance into wallet (doesn't publish the tx)
 - (void)sweepPrivateKey:(NSString * _Nonnull)privKey withFee:(BOOL)fee
 completion:(void (^ _Nonnull)(BRTransaction * _Nonnull tx, uint64_t fee, NSError * _Null_unspecified error))completion;
 
 - (int64_t)amountForUnknownCurrencyString:(NSString * _Nullable)string;
-- (int64_t)amountForDashString:(NSString * _Nullable)string;
+- (int64_t)amountForPacString:(NSString * _Nullable)string;
 - (int64_t)amountForBitcoinString:(NSString * _Nullable)string;
-- (NSAttributedString * _Nonnull)attributedStringForDashAmount:(int64_t)amount;
-- (NSAttributedString * _Nonnull)attributedStringForDashAmount:(int64_t)amount withTintColor:(UIColor* _Nonnull)color;
-- (NSAttributedString * _Nonnull)attributedStringForDashAmount:(int64_t)amount withTintColor:(UIColor* _Nonnull)color useSignificantDigits:(BOOL)useSignificantDigits;
-- (NSAttributedString * _Nonnull)attributedStringForDashAmount:(int64_t)amount withTintColor:(UIColor* _Nonnull)color dashSymbolSize:(CGSize)dashSymbolSize;
+- (NSAttributedString * _Nonnull)attributedStringForPacAmount:(int64_t)amount;
+- (NSAttributedString * _Nonnull)attributedStringForPacAmount:(int64_t)amount withTintColor:(UIColor* _Nonnull)color;
+- (NSAttributedString * _Nonnull)attributedStringForPacAmount:(int64_t)amount withTintColor:(UIColor* _Nonnull)color useSignificantDigits:(BOOL)useSignificantDigits;
+- (NSAttributedString * _Nonnull)attributedStringForPacAmount:(int64_t)amount withTintColor:(UIColor* _Nonnull)color pacSymbolSize:(CGSize)pacSymbolSize;
 - (NSNumber * _Nonnull)numberForAmount:(int64_t)amount;
 - (NSString * _Nonnull)stringForBitcoinAmount:(int64_t)amount;
-- (NSString * _Nonnull)stringForDashAmount:(int64_t)amount;
+- (NSString * _Nonnull)stringForPacAmount:(int64_t)amount;
 - (int64_t)amountForBitcoinCurrencyString:(NSString * _Nonnull)string;
 - (int64_t)amountForLocalCurrencyString:(NSString * _Nonnull)string;
 - (NSString * _Nonnull)bitcoinCurrencyStringForAmount:(int64_t)amount;
-- (NSString * _Nonnull)localCurrencyStringForDashAmount:(int64_t)amount;
+- (NSString * _Nonnull)localCurrencyStringForPacAmount:(int64_t)amount;
 - (NSString * _Nonnull)localCurrencyStringForBitcoinAmount:(int64_t)amount;
-- (NSNumber * _Nullable)localCurrencyNumberForDashAmount:(int64_t)amount;
+- (NSNumber * _Nullable)localCurrencyNumberForPacAmount:(int64_t)amount;
 
--(NSNumber* _Nonnull)localCurrencyDashPrice;
+-(NSNumber* _Nonnull)localCurrencyPacPrice;
 
 -(void)seedPhraseAfterAuthentication:(void (^ _Nullable)(NSString * _Nullable seedPhrase))completion;
 -(void)setSeedPhrase:(NSString* _Nullable)seedPhrase;

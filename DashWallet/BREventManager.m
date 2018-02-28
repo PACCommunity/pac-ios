@@ -335,7 +335,7 @@
 - (void)_sendToServer
 {
     return;
-    //to do, make event server for dash
+    //to do, make event server for pac
 //    [self.myQueue addOperationWithBlock:^{
 //        // send any persisted data to the server
 //        NSError *error = nil;

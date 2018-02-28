@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "75D5F3BD191EC270004AB296"
-               BuildableName = "dashwallet.app"
-               BlueprintName = "dashwallet"
+               BuildableName = "pacwallet.app"
+               BlueprintName = "pacwallet"
                ReferencedContainer = "container:DashWallet.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -54,8 +54,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "75D5F3BD191EC270004AB296"
-            BuildableName = "dashwallet.app"
-            BlueprintName = "dashwallet"
+            BuildableName = "pacwallet.app"
+            BlueprintName = "pacwallet"
             ReferencedContainer = "container:DashWallet.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -78,8 +78,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "75D5F3BD191EC270004AB296"
-            BuildableName = "dashwallet.app"
-            BlueprintName = "dashwallet"
+            BuildableName = "pacwallet.app"
+            BlueprintName = "pacwallet"
             ReferencedContainer = "container:DashWallet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -97,8 +97,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "75D5F3BD191EC270004AB296"
-            BuildableName = "dashwallet.app"
-            BlueprintName = "dashwallet"
+            BuildableName = "pacwallet.app"
+            BlueprintName = "pacwallet"
             ReferencedContainer = "container:DashWallet.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

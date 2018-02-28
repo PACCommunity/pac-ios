@@ -36,7 +36,7 @@
 #import "UIImage+Utils.h"
 #import "BREventConfirmView.h"
 #import "BREventManager.h"
-#import "NSString+Dash.h"
+#import "NSString+Pac.h"
 #import <WebKit/WebKit.h>
 
 #define TRANSACTION_CELL_HEIGHT 75
@@ -114,8 +114,8 @@ static NSString *dateFormat(NSString *template)
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5*NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         self.transactions = @[tx, tx, tx, tx, tx, tx];
         [self.tableView reloadData];
-        self.navigationItem.title = [NSString stringWithFormat:@"%@ (%@)", [manager stringForDashAmount:42980000],
-                                     [manager localCurrencyStringForDashAmount:42980000]];
+        self.navigationItem.title = [NSString stringWithFormat:@"%@ (%@)", [manager stringForPacAmount:42980000],
+                                     [manager localCurrencyStringForPacAmount:42980000]];
     });
 
     return;
@@ -213,22 +213,22 @@ static NSString *dateFormat(NSString *template)
     UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 1, 100)];
     titleLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
     [titleLabel setBackgroundColor:[UIColor clearColor]];
-    NSMutableAttributedString * attributedDashString = [[manager attributedStringForDashAmount:manager.wallet.balance withTintColor:[UIColor whiteColor]] mutableCopy];
+    NSMutableAttributedString * attributedPacString = [[manager attributedStringForPacAmount:manager.wallet.balance withTintColor:[UIColor whiteColor]] mutableCopy];
     NSString * titleString = [NSString stringWithFormat:@" (%@)",
-                              [manager localCurrencyStringForDashAmount:manager.wallet.balance]];
-    [attributedDashString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
-    titleLabel.attributedText = attributedDashString;
+                              [manager localCurrencyStringForPacAmount:manager.wallet.balance]];
+    [attributedPacString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
+    titleLabel.attributedText = attributedPacString;
     return titleLabel;
 }
 
 -(void)updateTitleView {
     if (self.navigationItem.titleView && [self.navigationItem.titleView isKindOfClass:[UILabel class]]) {
         BRWalletManager *manager = [BRWalletManager sharedInstance];
-        NSMutableAttributedString * attributedDashString = [[manager attributedStringForDashAmount:manager.wallet.balance withTintColor:[UIColor whiteColor]] mutableCopy];
+        NSMutableAttributedString * attributedPacString = [[manager attributedStringForPacAmount:manager.wallet.balance withTintColor:[UIColor whiteColor]] mutableCopy];
         NSString * titleString = [NSString stringWithFormat:@" (%@)",
-                                  [manager localCurrencyStringForDashAmount:manager.wallet.balance]];
-        [attributedDashString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
-        ((UILabel*)self.navigationItem.titleView).attributedText = attributedDashString;
+                                  [manager localCurrencyStringForPacAmount:manager.wallet.balance]];
+        [attributedPacString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
+        ((UILabel*)self.navigationItem.titleView).attributedText = attributedPacString;
         [((UILabel*)self.navigationItem.titleView) sizeToFit];
     } else {
         self.navigationItem.titleView = [self titleLabel];
@@ -443,9 +443,9 @@ static NSString *dateFormat(NSString *template)
 //    // display the popup
 //    __weak BREventConfirmView *view =
 //        [[NSBundle mainBundle] loadNibNamed:@"BREventConfirmView" owner:nil options:nil][0];
-//    view.titleLabel.text = NSLocalizedString(@"Buy dash in dashwallet!", nil);
+//    view.titleLabel.text = NSLocalizedString(@"Buy $PAC in pacwallet!", nil);
 //    view.descriptionLabel.text =
-//        NSLocalizedString(@"You can now buy dash in\ndashwallet with cash or\nbank transfer.", nil);
+//        NSLocalizedString(@"You can now buy $PAC in\npacwallet with cash or\nbank transfer.", nil);
 //    [view.okBtn setTitle:NSLocalizedString(@"Try It!", nil) forState:UIControlStateNormal];
 //
 //    view.image = blurredBgImg;
@@ -542,8 +542,8 @@ static NSString *dateFormat(NSString *template)
                 unconfirmedLabel.hidden = NO;
                 unconfirmedLabel.backgroundColor = [UIColor lightGrayColor];
                 detailTextLabel.text = [self dateForTx:tx];
-                balanceLabel.attributedText = (manager.didAuthenticate) ? [manager attributedStringForDashAmount:balance withTintColor:balanceLabel.textColor dashSymbolSize:CGSizeMake(9, 9)] : nil;
-                localBalanceLabel.text = (manager.didAuthenticate) ? [NSString stringWithFormat:@"(%@)", [manager localCurrencyStringForDashAmount:balance]] : nil;
+                balanceLabel.attributedText = (manager.didAuthenticate) ? [manager attributedStringForPacAmount:balance withTintColor:balanceLabel.textColor pacSymbolSize:CGSizeMake(9, 9)] : nil;
+                localBalanceLabel.text = (manager.didAuthenticate) ? [NSString stringWithFormat:@"(%@)", [manager localCurrencyStringForPacAmount:balance]] : nil;
                 shapeshiftImageView.hidden = !tx.associatedShapeshift;
 
                 if (confirms == 0 && ! [manager.wallet transactionIsValid:tx]) {
@@ -573,23 +573,23 @@ static NSString *dateFormat(NSString *template)
                 }
                 
                 if (sent > 0 && received == sent) {
-                    textLabel.attributedText = [manager attributedStringForDashAmount:sent];
+                    textLabel.attributedText = [manager attributedStringForPacAmount:sent];
                     localCurrencyLabel.text = [NSString stringWithFormat:@"(%@)",
-                                               [manager localCurrencyStringForDashAmount:sent]];
+                                               [manager localCurrencyStringForPacAmount:sent]];
                     sentLabel.text = NSLocalizedString(@"moved", nil);
                     sentLabel.textColor = [UIColor blackColor];
                 }
                 else if (sent > 0) {
-                    textLabel.attributedText = [manager attributedStringForDashAmount:received - sent];
+                    textLabel.attributedText = [manager attributedStringForPacAmount:received - sent];
                     localCurrencyLabel.text = [NSString stringWithFormat:@"(%@)",
-                                               [manager localCurrencyStringForDashAmount:received - sent]];
+                                               [manager localCurrencyStringForPacAmount:received - sent]];
                     sentLabel.text = NSLocalizedString(@"sent", nil);
                     sentLabel.textColor = [UIColor colorWithRed:1.0 green:0.33 blue:0.33 alpha:1.0];
                 }
                 else {
-                    textLabel.attributedText = [manager attributedStringForDashAmount:received];
+                    textLabel.attributedText = [manager attributedStringForPacAmount:received];
                     localCurrencyLabel.text = [NSString stringWithFormat:@"(%@)",
-                                               [manager localCurrencyStringForDashAmount:received]];
+                                               [manager localCurrencyStringForPacAmount:received]];
                     sentLabel.text = NSLocalizedString(@"received", nil);
                     sentLabel.textColor = [UIColor colorWithRed:255.0 green:255.75 blue:255.0 alpha:1.0];
                 }
@@ -616,7 +616,7 @@ static NSString *dateFormat(NSString *template)
             long adjustedRow = !buyEnabled ? indexPath.row + 1 : indexPath.row;
             switch (adjustedRow) {
                 case 0:
-                    cell.textLabel.text = NSLocalizedString(@"Buy Dash", nil);
+                    cell.textLabel.text = NSLocalizedString(@"Buy $PAC", nil);
                     cell.imageView.image = [UIImage imageNamed:@"dash-buy-blue-small"];
                     break;
                     
@@ -718,10 +718,10 @@ static NSString *dateFormat(NSString *template)
 
         case 1:
         {
-            bool buyEnabled = FALSE;//[[BRAPIClient sharedClient] featureEnabled:BRFeatureFlagsBuyDash];
+            bool buyEnabled = FALSE;//[[BRAPIClient sharedClient] featureEnabled:BRFeatureFlagsBuyPac];
             long adjustedRow = !buyEnabled ? indexPath.row + 1 : indexPath.row;
             switch (adjustedRow) {
-                case 0: // buy dash
+                case 0: // buy $PAC
                     [BREventManager saveEvent:@"tx_history:buy_btc"];
                     [tableView deselectRowAtIndexPath:indexPath animated:YES];
                     //[self showBuy];

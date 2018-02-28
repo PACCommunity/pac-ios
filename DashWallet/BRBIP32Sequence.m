@@ -27,7 +27,7 @@
 #import "BRKey.h"
 #import "NSString+Bitcoin.h"
 #import "NSData+Bitcoin.h"
-#import "NSString+Dash.h"
+#import "NSString+Pac.h"
 #import "NSMutableData+Bitcoin.h"
 
 #define useDarkCoinSeed 0
@@ -35,13 +35,13 @@
 #if useDarkCoinSeed
 
 #define BIP32_SEED_KEY "Darkcoin seed"
-#define BIP32_XPRV     "\x02\xFE\x52\xCC" //// Dash BIP32 prvkeys start with 'drkp'
-#define BIP32_XPUB     "\x02\xFE\x52\xF8" //// Dash BIP32 pubkeys start with 'drkv'
+#define BIP32_XPRV     "\x02\xFE\x52\xCC" //// $PAC BIP32 prvkeys start with 'drkp'
+#define BIP32_XPUB     "\x02\xFE\x52\xF8" //// $PAC BIP32 pubkeys start with 'drkv'
 
 #else
 
 #define BIP32_SEED_KEY "Bitcoin seed"
-#if DASH_TESTNET
+#if PAC_TESTNET
 #define BIP32_XPRV     "\x04\x35\x83\x94"
 #define BIP32_XPUB     "\x04\x35\x87\xCF"
 #else
@@ -189,7 +189,7 @@ static BOOL deserialize(NSString * string, uint8_t * depth, uint32_t * fingerpri
     
     if (purpose == 44) {
         CKDpriv(&secret, &chain, 44 | BIP32_HARD); // purpose 44H
-        CKDpriv(&secret, &chain, 5 | BIP32_HARD); // dash 5H
+        CKDpriv(&secret, &chain, 5 | BIP32_HARD); // $PAC 5H
     }
     CKDpriv(&secret, &chain, 0 | BIP32_HARD); // account 0H
     
@@ -214,7 +214,7 @@ static BOOL deserialize(NSString * string, uint8_t * depth, uint32_t * fingerpri
     
     if (purpose == 44) {
         CKDpriv(&secret, &chain, 44 | BIP32_HARD); // purpose 44H
-        CKDpriv(&secret, &chain, 5 | BIP32_HARD); // dash 5H
+        CKDpriv(&secret, &chain, 5 | BIP32_HARD); // $PAC 5H
     }
     [mpk appendBytes:[BRKey keyWithSecret:secret compressed:YES].hash160.u32 length:4];
     CKDpriv(&secret, &chain, account | BIP32_HARD); // account 0H
@@ -255,15 +255,15 @@ static BOOL deserialize(NSString * string, uint8_t * depth, uint32_t * fingerpri
     HMAC(&I, SHA512, sizeof(UInt512), BIP32_SEED_KEY, strlen(BIP32_SEED_KEY), seed.bytes, seed.length);
     
     UInt256 secret = *(UInt256 *)&I, chain = *(UInt256 *)&I.u8[sizeof(UInt256)];
-    uint8_t version = DASH_PRIVKEY;
+    uint8_t version = PAC_PRIVKEY;
     
-#if DASH_TESTNET
-    version = DASH_PRIVKEY_TEST;
+#if PAC_TESTNET
+    version = PAC_PRIVKEY_TEST;
 #endif
 
     if (purpose == 44) {
         CKDpriv(&secret, &chain, 44 | BIP32_HARD); // purpose 44H
-        CKDpriv(&secret, &chain, 5 | BIP32_HARD); // dash 5H
+        CKDpriv(&secret, &chain, 5 | BIP32_HARD); // $PAC 5H
     }
     CKDpriv(&secret, &chain, 0 | BIP32_HARD); // account 0H
     CKDpriv(&secret, &chain, internal ? 1 : 0); // internal or external chain
@@ -294,10 +294,10 @@ static BOOL deserialize(NSString * string, uint8_t * depth, uint32_t * fingerpri
     HMAC(&I, SHA512, sizeof(UInt512), BIP32_SEED_KEY, strlen(BIP32_SEED_KEY), seed.bytes, seed.length);
     
     UInt256 secret = *(UInt256 *)&I, chain = *(UInt256 *)&I.u8[sizeof(UInt256)];
-    uint8_t version = DASH_PRIVKEY;
+    uint8_t version = PAC_PRIVKEY;
     
-#if DASH_TESTNET
-    version = DASH_PRIVKEY_TEST;
+#if PAC_TESTNET
+    version = PAC_PRIVKEY_TEST;
 #endif
     
     // path m/1H/0 (same as copay uses for bitauth)
@@ -327,10 +327,10 @@ static BOOL deserialize(NSString * string, uint8_t * depth, uint32_t * fingerpri
     HMAC(&I, SHA512, sizeof(UInt512), BIP32_SEED_KEY, strlen(BIP32_SEED_KEY), seed.bytes, seed.length);
     
     UInt256 secret = *(UInt256 *)&I, chain = *(UInt256 *)&I.u8[sizeof(UInt256)];
-    uint8_t version = DASH_PRIVKEY;
+    uint8_t version = PAC_PRIVKEY;
     
-#if DASH_TESTNET
-    version = DASH_PRIVKEY_TEST;
+#if PAC_TESTNET
+    version = PAC_PRIVKEY_TEST;
 #endif
 
     CKDpriv(&secret, &chain, 13 | BIP32_HARD); // m/13H

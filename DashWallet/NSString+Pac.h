@@ -1,9 +1,8 @@
 //
-//  NSString+Dash.h
-//  DashWallet
+//  NSString+Pac.h
+//  PacWallet
 //
-//  Created by Sam Westrich on 5/13/13.
-//  Copyright (c) 2017 Dash Foundation
+//  Created by Chase Gray on 2/28/2018
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -26,12 +25,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#define DASH_PUBKEY_ADDRESS      76
-#define DASH_SCRIPT_ADDRESS      16
-#define DASH_PUBKEY_ADDRESS_TEST 140
-#define DASH_SCRIPT_ADDRESS_TEST 19
-#define DASH_PRIVKEY             204
-#define DASH_PRIVKEY_TEST        239
+#define PAC_PUBKEY_ADDRESS      76
+#define PAC_SCRIPT_ADDRESS      16
+#define PAC_PUBKEY_ADDRESS_TEST 140
+#define PAC_SCRIPT_ADDRESS_TEST 19
+#define PAC_PRIVKEY             204
+#define PAC_PRIVKEY_TEST        239
 
 #define BIP38_NOEC_PREFIX      0x0142
 #define BIP38_EC_PREFIX        0x0143
@@ -40,20 +39,20 @@
 #define BIP38_LOTSEQUENCE_FLAG 0x04
 #define BIP38_INVALID_FLAG     (0x10 | 0x08 | 0x02 | 0x01)
 
-@interface NSString (Dash)
+@interface NSString (Pac)
 
 
 + (NSString *)addressWithScriptPubKey:(NSData *)script;
 + (NSString *)addressWithScriptSig:(NSData *)script;
 
-- (NSAttributedString*)attributedStringForDashSymbol;
-- (NSAttributedString*)attributedStringForDashSymbolWithTintColor:(UIColor*)color;
-- (NSAttributedString*)attributedStringForDashSymbolWithTintColor:(UIColor*)color dashSymbolSize:(CGSize)dashSymbolSize;
-+ (NSAttributedString*)dashSymbolAttributedStringWithTintColor:(UIColor*)color forDashSymbolSize:(CGSize)dashSymbolSize;
+- (NSAttributedString*)attributedStringForPacSymbol;
+- (NSAttributedString*)attributedStringForPacSymbolWithTintColor:(UIColor*)color;
+- (NSAttributedString*)attributedStringForPacSymbolWithTintColor:(UIColor*)color pacSymbolSize:(CGSize)pacSymbolSize;
++ (NSAttributedString*)pacSymbolAttributedStringWithTintColor:(UIColor*)color forPacSymbolSize:(CGSize)pacSymbolSize;
 
-- (BOOL)isValidDashAddress;
-- (BOOL)isValidDashPrivateKey;
-- (BOOL)isValidDashBIP38Key; // BIP38 encrypted keys: https://github.com/bitcoin/bips/blob/master/bip-0038.mediawiki
+- (BOOL)isValidPacAddress;
+- (BOOL)isValidPacPrivateKey;
+- (BOOL)isValidPacBIP38Key; // BIP38 encrypted keys: https://github.com/bitcoin/bips/blob/master/bip-0038.mediawiki
 
 -(NSInteger)indexOfCharacter:(unichar)character;
 

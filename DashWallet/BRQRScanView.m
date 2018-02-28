@@ -1,6 +1,6 @@
 //
 //  BRQRScanView.m
-//  dashwallet
+//  pacwallet
 //
 //  Created by Andrew Podkovyrin on 21/12/2017.
 //  Copyright © 2017 Aaron Voisine. All rights reserved.

@@ -75,8 +75,8 @@
                 if (self.selectorType == 0) {
                     self.selectorController.title =
                         [NSString stringWithFormat:@"%@ = %@",
-                         [manager localCurrencyStringForDashAmount:DUFFS/manager.localCurrencyDashPrice.doubleValue],
-                         [manager stringForDashAmount:DUFFS/manager.localCurrencyDashPrice.doubleValue]];
+                         [manager localCurrencyStringForPacAmount:DUFFS/manager.localCurrencyPacPrice.doubleValue],
+                         [manager stringForPacAmount:DUFFS/manager.localCurrencyPacPrice.doubleValue]];
                 }
             }];
     }
@@ -144,8 +144,8 @@
 
    return [NSString stringWithFormat:NSLocalizedString(@"rate: %@ = %@\nupdated: %@\nblock #%d of %d\n"
                                                        "connected peers: %d\ndl peer: %@", NULL),
-           [manager localCurrencyStringForDashAmount:DUFFS/manager.localCurrencyDashPrice.doubleValue],
-           [manager stringForDashAmount:DUFFS/manager.localCurrencyDashPrice.doubleValue],
+           [manager localCurrencyStringForPacAmount:DUFFS/manager.localCurrencyPacPrice.doubleValue],
+           [manager stringForPacAmount:DUFFS/manager.localCurrencyPacPrice.doubleValue],
            [fmt stringFromDate:[NSDate dateWithTimeIntervalSinceReferenceDate:manager.secureTime]].lowercaseString,
            [BRPeerManager sharedInstance].lastBlockHeight,
            [BRPeerManager sharedInstance].estimatedBlockHeight,
@@ -225,7 +225,7 @@
                                          NSString *fixedPeer = ipField.text;
                                          NSArray *pair = [fixedPeer componentsSeparatedByString:@":"];
                                          NSString *host = pair.firstObject;
-                                         NSString *service = (pair.count > 1) ? pair[1] : @(DASH_STANDARD_PORT).stringValue;
+                                         NSString *service = (pair.count > 1) ? pair[1] : @(PAC_STANDARD_PORT).stringValue;
                                          struct addrinfo hints = { 0, AF_UNSPEC, SOCK_STREAM, 0, 0, 0, NULL, NULL }, *servinfo, *p;
                                          UInt128 addr = { .u32 = { 0, 0, CFSwapInt32HostToBig(0xffff), 0 } };
                                          
@@ -300,12 +300,12 @@
             self.selectorType = 1;
             self.selectorOptions =
             @[NSLocalizedString(@"always require passcode", nil),
-              [NSString stringWithFormat:@"%@      (%@)", [manager stringForDashAmount:DUFFS/10],
-               [manager localCurrencyStringForDashAmount:DUFFS/10]],
-              [NSString stringWithFormat:@"%@   (%@)", [manager stringForDashAmount:DUFFS],
-               [manager localCurrencyStringForDashAmount:DUFFS]],
-              [NSString stringWithFormat:@"%@ (%@)", [manager stringForDashAmount:DUFFS*10],
-               [manager localCurrencyStringForDashAmount:DUFFS*10]]];
+              [NSString stringWithFormat:@"%@      (%@)", [manager stringForPacAmount:DUFFS/10],
+               [manager localCurrencyStringForPacAmount:DUFFS/10]],
+              [NSString stringWithFormat:@"%@   (%@)", [manager stringForPacAmount:DUFFS],
+               [manager localCurrencyStringForPacAmount:DUFFS]],
+              [NSString stringWithFormat:@"%@ (%@)", [manager stringForPacAmount:DUFFS*10],
+               [manager localCurrencyStringForPacAmount:DUFFS*10]]];
             if (manager.spendingLimit > DUFFS*10) manager.spendingLimit = DUFFS*10;
             self.selectedOption = self.selectorOptions[(log10(manager.spendingLimit) < 6) ? 0 :
                                                        (NSUInteger)log10(manager.spendingLimit) - 6];
@@ -323,17 +323,17 @@
 {
     [BREventManager saveEvent:@"settings:nav_bar_swipe"];
     BRWalletManager *manager = [BRWalletManager sharedInstance];
-    NSUInteger digits = (((manager.dashFormat.maximumFractionDigits - 2)/3 + 1) % 3)*3 + 2;
+    NSUInteger digits = (((manager.pacFormat.maximumFractionDigits - 2)/3 + 1) % 3)*3 + 2;
     
-    manager.dashFormat.currencySymbol = [NSString stringWithFormat:@"%@%@" NARROW_NBSP, (digits == 5) ? @"m" : @"",
-                                     (digits == 2) ? DITS : DASH];
-    manager.dashFormat.maximumFractionDigits = digits;
-    manager.dashFormat.maximum = @(MAX_MONEY/(int64_t)pow(10.0, manager.dashFormat.maximumFractionDigits));
+    manager.pacFormat.currencySymbol = [NSString stringWithFormat:@"%@%@" NARROW_NBSP, (digits == 5) ? @"m" : @"",
+                                     (digits == 2) ? DITS : PAC];
+    manager.pacFormat.maximumFractionDigits = digits;
+    manager.pacFormat.maximum = @(MAX_MONEY/(int64_t)pow(10.0, manager.pacFormat.maximumFractionDigits));
     [[NSUserDefaults standardUserDefaults] setInteger:digits forKey:SETTINGS_MAX_DIGITS_KEY];
     manager.localCurrencyCode = manager.localCurrencyCode; // force balance notification
     self.selectorController.title = [NSString stringWithFormat:@"%@ = %@",
-                                     [manager localCurrencyStringForDashAmount:DUFFS/manager.localCurrencyDashPrice.doubleValue],
-                                     [manager stringForDashAmount:DUFFS/manager.localCurrencyDashPrice.doubleValue]];
+                                     [manager localCurrencyStringForPacAmount:DUFFS/manager.localCurrencyPacPrice.doubleValue],
+                                     [manager stringForPacAmount:DUFFS/manager.localCurrencyPacPrice.doubleValue]];
     [self.tableView reloadData];
 }
 
@@ -406,7 +406,7 @@
                     if (self.touchId) {
                         cell = [tableView dequeueReusableCellWithIdentifier:selectorIdent];
                         cell.textLabel.text = NSLocalizedString(@"touch id limit", nil);
-                        cell.detailTextLabel.text = [manager stringForDashAmount:manager.spendingLimit];
+                        cell.detailTextLabel.text = [manager stringForPacAmount:manager.spendingLimit];
                     } else {
                         goto _switch_cell;
                     }
@@ -528,7 +528,7 @@ _switch_cell:
     NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithAttributedString:l.attributedText];
     UIButton *b = nil;
     
-#if DASH_TESTNET
+#if PAC_TESTNET
     [s replaceCharactersInRange:[s.string rangeOfString:@"%net%" options:NSCaseInsensitiveSearch] withString:@"%net% (testnet)"];
 #endif
     [s replaceCharactersInRange:[s.string rangeOfString:@"%ver%" options:NSCaseInsensitiveSearch]
@@ -602,7 +602,7 @@ _switch_cell:
     [BREventManager saveEvent:@"settings:show_currency_selector"];
     NSUInteger currencyCodeIndex = 0;
     BRWalletManager *manager = [BRWalletManager sharedInstance];
-    double localPrice = manager.localCurrencyDashPrice.doubleValue;
+    double localPrice = manager.localCurrencyPacPrice.doubleValue;
     NSMutableArray *options;
     self.selectorType = 0;
     options = [NSMutableArray array];
@@ -617,8 +617,8 @@ _switch_cell:
     self.noOptionsText = NSLocalizedString(@"no exchange rate data", nil);
     self.selectorController.title =
         [NSString stringWithFormat:@"%@ = %@",
-         [manager localCurrencyStringForDashAmount:(localPrice > DBL_EPSILON) ? DUFFS/localPrice : 0],
-         [manager stringForDashAmount:(localPrice > DBL_EPSILON) ? DUFFS/localPrice : 0]];
+         [manager localCurrencyStringForPacAmount:(localPrice > DBL_EPSILON) ? DUFFS/localPrice : 0],
+         [manager stringForPacAmount:(localPrice > DBL_EPSILON) ? DUFFS/localPrice : 0]];
     [self.navigationController pushViewController:self.selectorController animated:YES];
     [self.selectorController.tableView reloadData];
     

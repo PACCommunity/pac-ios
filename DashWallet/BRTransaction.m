@@ -25,8 +25,8 @@
 
 #import "BRTransaction.h"
 #import "BRKey.h"
-#import "NSString+Dash.h"
-#import "NSData+Dash.h"
+#import "NSString+Pac.h"
+#import "NSData+Pac.h"
 #import "NSString+Bitcoin.h"
 #import "NSMutableData+Bitcoin.h"
 #import "NSData+Bitcoin.h"

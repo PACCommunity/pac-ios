@@ -28,7 +28,7 @@
 #import "BRMerkleBlock.h"
 #import "NSMutableData+Bitcoin.h"
 #import "NSData+Bitcoin.h"
-#import "NSData+Dash.h"
+#import "NSData+Pac.h"
 #import "Reachability.h"
 #import <arpa/inet.h>
 
@@ -95,7 +95,7 @@ typedef enum : uint32_t {
     if (! (self = [super init])) return nil;
 
     _address = address;
-    _port = (port == 0) ? DASH_STANDARD_PORT : port;
+    _port = (port == 0) ? PAC_STANDARD_PORT : port;
     return self;
 }
 
@@ -114,7 +114,7 @@ typedef enum : uint32_t {
 
     if (inet_pton(AF_INET, host.UTF8String, &addr) != 1) return nil;
     _address = (UInt128){ .u32 = { 0, 0, CFSwapInt32HostToBig(0xffff), addr.s_addr } };
-    if (_port == 0) _port = DASH_STANDARD_PORT;
+    if (_port == 0) _port = PAC_STANDARD_PORT;
     return self;
 }
 
@@ -214,7 +214,7 @@ services:(uint64_t)services
         
         // after the reachablity check, the radios should be warmed up and we can set a short socket connect timeout
         [self performSelector:@selector(disconnectWithError:)
-         withObject:[NSError errorWithDomain:@"DashWallet" code:BITCOIN_TIMEOUT_CODE
+         withObject:[NSError errorWithDomain:@"PacWallet" code:BITCOIN_TIMEOUT_CODE
                      userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"connect timeout", nil)}]
          afterDelay:CONNECT_TIMEOUT];
         
@@ -272,7 +272,7 @@ services:(uint64_t)services
     va_list args;
 
     va_start(args, message);
-    [self disconnectWithError:[NSError errorWithDomain:@"DashWallet" code:500
+    [self disconnectWithError:[NSError errorWithDomain:@"PacWallet" code:500
      userInfo:@{NSLocalizedDescriptionKey:[[NSString alloc] initWithFormat:message arguments:args]}]];
     va_end(args);
 }
@@ -332,7 +332,7 @@ services:(uint64_t)services
     [msg appendUInt64:self.services]; // services of remote peer
     [msg appendBytes:&_address length:sizeof(_address)]; // IPv6 address of remote peer
     [msg appendBytes:&port length:sizeof(port)]; // port of remote peer
-    [msg appendNetAddress:LOCAL_HOST port:DASH_STANDARD_PORT services:ENABLED_SERVICES]; // net address of local peer
+    [msg appendNetAddress:LOCAL_HOST port:PAC_STANDARD_PORT services:ENABLED_SERVICES]; // net address of local peer
     self.localNonce = ((uint64_t)arc4random() << 32) | (uint64_t)arc4random(); // random nonce
     [msg appendUInt64:self.localNonce];
     [msg appendString:USER_AGENT]; // user agent
@@ -1131,7 +1131,7 @@ services:(uint64_t)services
                 self.pingStartTime = [NSDate timeIntervalSinceReferenceDate]; // don't count connect time in ping time
                 [NSObject cancelPreviousPerformRequestsWithTarget:self]; // cancel pending socket connect timeout
                 [self performSelector:@selector(disconnectWithError:)
-                 withObject:[NSError errorWithDomain:@"DashWallet" code:BITCOIN_TIMEOUT_CODE
+                 withObject:[NSError errorWithDomain:@"PacWallet" code:BITCOIN_TIMEOUT_CODE
                              userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"connect timeout", nil)}]
                              afterDelay:CONNECT_TIMEOUT];
             }
@@ -1172,7 +1172,7 @@ services:(uint64_t)services
                         
                         // consume one byte at a time, up to the magic number that starts a new message header
                         while (self.msgHeader.length >= sizeof(uint32_t) &&
-                               [self.msgHeader UInt32AtOffset:0] != DASH_MAGIC_NUMBER) {
+                               [self.msgHeader UInt32AtOffset:0] != PAC_MAGIC_NUMBER) {
 #if DEBUG
                             printf("%c", *(const char *)self.msgHeader.bytes);
 #endif

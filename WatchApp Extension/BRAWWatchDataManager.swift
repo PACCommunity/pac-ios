@@ -184,7 +184,7 @@ class BRAWWatchDataManager: NSObject, WCSessionDelegate {
     
     func balanceAttributedString() -> NSAttributedString? {
        if let originalBalanceString = BRAWWatchDataManager.sharedInstance.balance {
-            var balanceString = originalBalanceString.replacingOccurrences(of: "DASH", with: "")
+            var balanceString = originalBalanceString.replacingOccurrences(of: "$PAC", with: "")
             balanceString = balanceString.trimmingCharacters(in: CharacterSet.whitespaces)
             return attributedStringForBalance(balanceString)
         }

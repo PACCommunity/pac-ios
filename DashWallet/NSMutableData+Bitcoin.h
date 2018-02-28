@@ -25,10 +25,10 @@
 
 #import <Foundation/Foundation.h>
 
-#if DASH_TESTNET
-#define DASH_MAGIC_NUMBER 0xffcae2ce
+#if PAC_TESTNET
+#define PAC_MAGIC_NUMBER 0xffcae2ce
 #else
-#define DASH_MAGIC_NUMBER 0xbd6b0cbf
+#define PAC_MAGIC_NUMBER 0xbd6b0cbf
 #endif
 
 CF_IMPLICIT_BRIDGING_ENABLED

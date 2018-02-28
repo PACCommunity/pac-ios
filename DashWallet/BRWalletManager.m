@@ -38,7 +38,7 @@
 #import "NSMutableData+Bitcoin.h"
 #import "NSManagedObject+Sugar.h"
 #import "NSAttributedString+Attachments.h"
-#import "NSString+Dash.h"
+#import "NSString+Pac.h"
 #import "Reachability.h"
 #import <LocalAuthentication/LocalAuthentication.h>
 
@@ -49,7 +49,7 @@
 #define UNSPENT_FAILOVER_URL @"https://insight.dash.siampm.com/api/addrs/utxo"
 #define FEE_PER_KB_URL       0 //not supported @"https://api.breadwallet.com/fee-per-kb"
 #define BITCOIN_TICKER_URL  @"https://bitpay.com/rates"
-#define POLONIEX_TICKER_URL  @"https://poloniex.com/public?command=returnOrderBook&currencyPair=BTC_DASH&depth=1"
+#define POLONIEX_TICKER_URL  @"https://poloniex.com/public?command=returnOrderBook&currencyPair=BTC_$PAC&depth=1"
 #define DASHCENTRAL_TICKER_URL  @"https://www.dashcentral.org/api/v1/public"
 #define TICKER_REFRESH_TIME 60.0
 
@@ -62,8 +62,8 @@
 #define CURRENCY_CODES_KEY      @"CURRENCY_CODES"
 #define CURRENCY_NAMES_KEY      @"CURRENCY_NAMES"
 #define CURRENCY_PRICES_KEY     @"CURRENCY_PRICES"
-#define POLONIEX_DASH_BTC_PRICE_KEY  @"POLONIEX_DASH_BTC_PRICE"
-#define POLONIEX_DASH_BTC_UPDATE_TIME_KEY  @"POLONIEX_DASH_BTC_UPDATE_TIME"
+#define POLONIEX_PAC_BTC_PRICE_KEY  @"POLONIEX_$PAC_BTC_PRICE"
+#define POLONIEX_PAC_BTC_UPDATE_TIME_KEY  @"POLONIEX_$PAC_BTC_UPDATE_TIME"
 #define DASHCENTRAL_DASH_BTC_PRICE_KEY @"DASHCENTRAL_DASH_BTC_PRICE"
 #define DASHCENTRAL_DASH_BTC_UPDATE_TIME_KEY @"DASHCENTRAL_DASH_BTC_UPDATE_TIME"
 #define SPEND_LIMIT_AMOUNT_KEY  @"SPEND_LIMIT_AMOUNT"
@@ -81,7 +81,7 @@
 #define PIN_FAIL_COUNT_KEY  @"pinfailcount"
 #define PIN_FAIL_HEIGHT_KEY @"pinfailheight"
 #define AUTH_PRIVKEY_KEY    @"authprivkey"
-#define USER_ACCOUNT_KEY    @"https://api.dashwallet.com"
+#define USER_ACCOUNT_KEY    @"https://api.pacwallet.com"
 
 static BOOL setKeychainData(NSData *data, NSString *key, BOOL authenticated)
 {
@@ -219,9 +219,9 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
 @property (nonatomic, strong) id protectedObserver, keyboardObserver;
 @property (nonatomic, copy) PinVerificationBlock pinVerificationBlock;
 
-@property (nonatomic, strong) NSNumber * _Nullable bitcoinDashPrice; // exchange rate in bitcoin per dash
+@property (nonatomic, strong) NSNumber * _Nullable bitcoinPacPrice; // exchange rate in bitcoin per $PAC
 @property (nonatomic, strong) NSNumber * _Nullable localCurrencyBitcoinPrice; // exchange rate in local currency units per bitcoin
-@property (nonatomic, strong) NSNumber * _Nullable localCurrencyDashPrice;
+@property (nonatomic, strong) NSNumber * _Nullable localCurrencyPacPrice;
 
 @end
 
@@ -248,34 +248,34 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
     self.mnemonic = [BRBIP39Mnemonic new];
     self.reachability = [Reachability reachabilityForInternetConnection];
     self.failedPins = [NSMutableSet set];
-    _dashFormat = [NSNumberFormatter new];
-    self.dashFormat.lenient = YES;
-    self.dashFormat.numberStyle = NSNumberFormatterCurrencyStyle;
-    self.dashFormat.generatesDecimalNumbers = YES;
-    self.dashFormat.negativeFormat = [self.dashFormat.positiveFormat
-                                      stringByReplacingCharactersInRange:[self.dashFormat.positiveFormat rangeOfString:@"#"]
+    _pacFormat = [NSNumberFormatter new];
+    self.pacFormat.lenient = YES;
+    self.pacFormat.numberStyle = NSNumberFormatterCurrencyStyle;
+    self.pacFormat.generatesDecimalNumbers = YES;
+    self.pacFormat.negativeFormat = [self.pacFormat.positiveFormat
+                                      stringByReplacingCharactersInRange:[self.pacFormat.positiveFormat rangeOfString:@"#"]
                                       withString:@"-#"];
-    self.dashFormat.currencyCode = @"DASH";
-    self.dashFormat.currencySymbol = DASH NARROW_NBSP;
-    self.dashFormat.maximumFractionDigits = 8;
-    self.dashFormat.minimumFractionDigits = 0; // iOS 8 bug, minimumFractionDigits now has to be set after currencySymbol
-    self.dashFormat.maximum = @(MAX_MONEY/(int64_t)pow(10.0, self.dashFormat.maximumFractionDigits));
+    self.pacFormat.currencyCode = @"$PAC";
+    self.pacFormat.currencySymbol = PAC NARROW_NBSP;
+    self.pacFormat.maximumFractionDigits = 8;
+    self.pacFormat.minimumFractionDigits = 0; // iOS 8 bug, minimumFractionDigits now has to be set after currencySymbol
+    self.pacFormat.maximum = @(MAX_MONEY/(int64_t)pow(10.0, self.pacFormat.maximumFractionDigits));
     
-    _dashSignificantFormat = [NSNumberFormatter new];
-    self.dashSignificantFormat.lenient = YES;
-    self.dashSignificantFormat.numberStyle = NSNumberFormatterCurrencyStyle;
-    self.dashSignificantFormat.generatesDecimalNumbers = YES;
-    self.dashSignificantFormat.negativeFormat = [self.dashFormat.positiveFormat
-                                                 stringByReplacingCharactersInRange:[self.dashFormat.positiveFormat rangeOfString:@"#"]
+    _pacSignificantFormat = [NSNumberFormatter new];
+    self.pacSignificantFormat.lenient = YES;
+    self.pacSignificantFormat.numberStyle = NSNumberFormatterCurrencyStyle;
+    self.pacSignificantFormat.generatesDecimalNumbers = YES;
+    self.pacSignificantFormat.negativeFormat = [self.pacFormat.positiveFormat
+                                                 stringByReplacingCharactersInRange:[self.pacFormat.positiveFormat rangeOfString:@"#"]
                                                  withString:@"-#"];
-    self.dashSignificantFormat.currencyCode = @"DASH";
-    self.dashSignificantFormat.currencySymbol = DASH NARROW_NBSP;
-    self.dashSignificantFormat.usesSignificantDigits = TRUE;
-    self.dashSignificantFormat.minimumSignificantDigits = 1;
-    self.dashSignificantFormat.maximumSignificantDigits = 6;
-    self.dashSignificantFormat.maximumFractionDigits = 8;
-    self.dashSignificantFormat.minimumFractionDigits = 0; // iOS 8 bug, minimumFractionDigits now has to be set after currencySymbol
-    self.dashSignificantFormat.maximum = @(MAX_MONEY/(int64_t)pow(10.0, self.dashFormat.maximumFractionDigits));
+    self.pacSignificantFormat.currencyCode = @"$PAC";
+    self.pacSignificantFormat.currencySymbol = PAC NARROW_NBSP;
+    self.pacSignificantFormat.usesSignificantDigits = TRUE;
+    self.pacSignificantFormat.minimumSignificantDigits = 1;
+    self.pacSignificantFormat.maximumSignificantDigits = 6;
+    self.pacSignificantFormat.maximumFractionDigits = 8;
+    self.pacSignificantFormat.minimumFractionDigits = 0; // iOS 8 bug, minimumFractionDigits now has to be set after currencySymbol
+    self.pacSignificantFormat.maximum = @(MAX_MONEY/(int64_t)pow(10.0, self.pacFormat.maximumFractionDigits));
     
     _bitcoinFormat = [NSNumberFormatter new];
     self.bitcoinFormat.lenient = YES;
@@ -304,7 +304,7 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
     self.localFormat.lenient = YES;
     self.localFormat.numberStyle = NSNumberFormatterCurrencyStyle;
     self.localFormat.generatesDecimalNumbers = YES;
-    self.localFormat.negativeFormat = self.dashFormat.negativeFormat;
+    self.localFormat.negativeFormat = self.pacFormat.negativeFormat;
     
     self.protectedObserver =
     [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationProtectedDataDidBecomeAvailable object:nil
@@ -340,8 +340,8 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
     [defs stringForKey:LOCAL_CURRENCY_CODE_KEY] : [[NSLocale currentLocale] objectForKey:NSLocaleCurrencyCode];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self updateBitcoinExchangeRate];
-        [self updateDashExchangeRate];
-        [self updateDashCentralExchangeRateFallback];
+        [self updatePacExchangeRate];
+        [self updatePACCentralExchangeRateFallback];
     });
 }
 
@@ -728,7 +728,7 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
 }
 
 - (BOOL)isTestnet {
-#if DASH_TESTNET
+#if PAC_TESTNET
     return true;
 #else
     return false;
@@ -1239,54 +1239,54 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
 #endif
 }
 
--(NSNumber*)bitcoinDashPrice {
-    if (_bitcoinDashPrice.doubleValue == 0) {
+-(NSNumber*)bitcoinPacPrice {
+    if (_bitcoinPacPrice.doubleValue == 0) {
         NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
         
-        double poloniexPrice = [[defs objectForKey:POLONIEX_DASH_BTC_PRICE_KEY] doubleValue];
-        double dashcentralPrice = [[defs objectForKey:DASHCENTRAL_DASH_BTC_PRICE_KEY] doubleValue];
+        double poloniexPrice = [[defs objectForKey:POLONIEX_PAC_BTC_PRICE_KEY] doubleValue];
+        double paccentralPrice = [[defs objectForKey:DASHCENTRAL_DASH_BTC_PRICE_KEY] doubleValue];
         if (poloniexPrice > 0) {
-            if (dashcentralPrice > 0) {
-                _bitcoinDashPrice = @((poloniexPrice + dashcentralPrice)/2.0);
+            if (paccentralPrice > 0) {
+                _bitcoinPacPrice = @((poloniexPrice + paccentralPrice)/2.0);
             } else {
-                _bitcoinDashPrice = @(poloniexPrice);
+                _bitcoinPacPrice = @(poloniexPrice);
             }
-        } else if (dashcentralPrice > 0) {
-            _bitcoinDashPrice = @(dashcentralPrice);
+        } else if (paccentralPrice > 0) {
+            _bitcoinPacPrice = @(paccentralPrice);
         }
     }
-    return _bitcoinDashPrice;
+    return _bitcoinPacPrice;
 }
 
-- (void)refreshBitcoinDashPrice{
+- (void)refreshBitcoinPacPrice{
     NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
-    double poloniexPrice = [[defs objectForKey:POLONIEX_DASH_BTC_PRICE_KEY] doubleValue];
-    double dashcentralPrice = [[defs objectForKey:DASHCENTRAL_DASH_BTC_PRICE_KEY] doubleValue];
+    double poloniexPrice = [[defs objectForKey:POLONIEX_PAC_BTC_PRICE_KEY] doubleValue];
+    double paccentralPrice = [[defs objectForKey:DASHCENTRAL_DASH_BTC_PRICE_KEY] doubleValue];
     NSNumber * newPrice = 0;
     if (poloniexPrice > 0) {
-        if (dashcentralPrice > 0) {
-            newPrice = @((poloniexPrice + dashcentralPrice)/2.0);
+        if (paccentralPrice > 0) {
+            newPrice = @((poloniexPrice + paccentralPrice)/2.0);
         } else {
             newPrice = @(poloniexPrice);
         }
-    } else if (dashcentralPrice > 0) {
-        newPrice = @(dashcentralPrice);
+    } else if (paccentralPrice > 0) {
+        newPrice = @(paccentralPrice);
     }
     
     if (! _wallet ) return;
-    //if ([newPrice doubleValue] == [_bitcoinDashPrice doubleValue]) return;
-    _bitcoinDashPrice = newPrice;
+    //if ([newPrice doubleValue] == [_bitcoinPacPrice doubleValue]) return;
+    _bitcoinPacPrice = newPrice;
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:BRWalletBalanceChangedNotification object:nil];
     });
 }
 
 
-// until there is a public api for dash prices among multiple currencies it's better that we pull Bitcoin prices per currency and convert it to dash
-- (void)updateDashExchangeRate
+// until there is a public api for $PAC prices among multiple currencies it's better that we pull Bitcoin prices per currency and convert it to $PAC
+- (void)updatePacExchangeRate
 {
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateDashExchangeRate) object:nil];
-    [self performSelector:@selector(updateDashExchangeRate) withObject:nil afterDelay:TICKER_REFRESH_TIME];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updatePacExchangeRate) object:nil];
+    [self performSelector:@selector(updatePacExchangeRate) withObject:nil afterDelay:TICKER_REFRESH_TIME];
     if (self.reachability.currentReachabilityStatus == NotReachable) return;
     
     
@@ -1324,26 +1324,26 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
                                                  NSNumber *lastTradePriceNumberBids = [numberFormatter numberFromString:lastTradePriceStringBids];
                                                  NSNumber * lastTradePriceNumber = @((lastTradePriceNumberAsks.floatValue + lastTradePriceNumberBids.floatValue) / 2);
                                                  NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
-                                                 [defs setObject:lastTradePriceNumber forKey:POLONIEX_DASH_BTC_PRICE_KEY];
-                                                 [defs setObject:[NSDate date] forKey:POLONIEX_DASH_BTC_UPDATE_TIME_KEY];
+                                                 [defs setObject:lastTradePriceNumber forKey:POLONIEX_PAC_BTC_PRICE_KEY];
+                                                 [defs setObject:[NSDate date] forKey:POLONIEX_PAC_BTC_UPDATE_TIME_KEY];
                                                  [defs synchronize];
-                                                 [self refreshBitcoinDashPrice];
+                                                 [self refreshBitcoinPacPrice];
                                              }
                                          }
 #if EXCHANGE_RATES_LOGGING
-                                         NSLog(@"poloniex exchange rate updated to %@/%@", [self localCurrencyStringForDashAmount:DUFFS],
-                                               [self stringForDashAmount:DUFFS]);
+                                         NSLog(@"poloniex exchange rate updated to %@/%@", [self localCurrencyStringForPacAmount:DUFFS],
+                                               [self stringForPacAmount:DUFFS]);
 #endif
                                      }
       ] resume];
     
 }
 
-// until there is a public api for dash prices among multiple currencies it's better that we pull Bitcoin prices per currency and convert it to dash
-- (void)updateDashCentralExchangeRateFallback
+// until there is a public api for $PAC prices among multiple currencies it's better that we pull Bitcoin prices per currency and convert it to $PAC
+- (void)updatePACCentralExchangeRateFallback
 {
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateDashCentralExchangeRateFallback) object:nil];
-    [self performSelector:@selector(updateDashCentralExchangeRateFallback) withObject:nil afterDelay:TICKER_REFRESH_TIME];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updatePACCentralExchangeRateFallback) object:nil];
+    [self performSelector:@selector(updatePACCentralExchangeRateFallback) withObject:nil afterDelay:TICKER_REFRESH_TIME];
     if (self.reachability.currentReachabilityStatus == NotReachable) return;
     
     
@@ -1370,17 +1370,17 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
                                          NSError *error = nil;
                                          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
                                          if (!error) {
-                                             NSNumber * dash_usd = @([[[json objectForKey:@"exchange_rates"] objectForKey:@"btc_dash"] doubleValue]);
-                                             if (dash_usd && [dash_usd doubleValue] > 0) {
+                                             NSNumber * pac_usd = @([[[json objectForKey:@"exchange_rates"] objectForKey:@"btc_pac"] doubleValue]);
+                                             if (pac_usd && [pac_usd doubleValue] > 0) {
                                                  NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
                                                  
-                                                 [defs setObject:dash_usd forKey:DASHCENTRAL_DASH_BTC_PRICE_KEY];
+                                                 [defs setObject:pac_usd forKey:DASHCENTRAL_DASH_BTC_PRICE_KEY];
                                                  [defs setObject:[NSDate date] forKey:DASHCENTRAL_DASH_BTC_UPDATE_TIME_KEY];
                                                  [defs synchronize];
-                                                 [self refreshBitcoinDashPrice];
+                                                 [self refreshBitcoinPacPrice];
 #if EXCHANGE_RATES_LOGGING
-                                                 NSLog(@"dash central exchange rate updated to %@/%@", [self localCurrencyStringForDashAmount:DUFFS],
-                                                       [self stringForDashAmount:DUFFS]);
+                                                 NSLog(@"$PAC central exchange rate updated to %@/%@", [self localCurrencyStringForPacAmount:DUFFS],
+                                                       [self stringForPacAmount:DUFFS]);
 #endif
                                              }
                                          }
@@ -1447,8 +1447,8 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
         [defs setObject:self.currencyPrices forKey:CURRENCY_PRICES_KEY];
         [defs synchronize];
 #if EXCHANGE_RATES_LOGGING
-        NSLog(@"bitcoin exchange rate updated to %@/%@", [self localCurrencyStringForDashAmount:DUFFS],
-              [self stringForDashAmount:DUFFS]);
+        NSLog(@"bitcoin exchange rate updated to %@/%@", [self localCurrencyStringForPacAmount:DUFFS],
+              [self stringForPacAmount:DUFFS]);
 #endif
     }
       
@@ -1508,7 +1508,7 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
                                          if (error || ! [json isKindOfClass:[NSArray class]]) {
                                              NSLog(@"Error decoding response %@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
                                              completion(nil, nil, nil,
-                                                        [NSError errorWithDomain:@"DashWallet" code:417 userInfo:@{NSLocalizedDescriptionKey:
+                                                        [NSError errorWithDomain:@"PacWallet" code:417 userInfo:@{NSLocalizedDescriptionKey:
                                                                                                                        [NSString stringWithFormat:NSLocalizedString(@"unexpected response from %@", nil),
                                                                                                                         req.URL.host]}]);
                                              return;
@@ -1534,7 +1534,7 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
                                                  ! [utxo[@"scriptPubKey"] hexToData] ||
                                                  (! [utxo[@"duffs"] isKindOfClass:[NSNumber class]] && ! [utxo[@"satoshis"] isKindOfClass:[NSNumber class]] && !amount)) {
                                                  completion(nil, nil, nil,
-                                                            [NSError errorWithDomain:@"DashWallet" code:417 userInfo:@{NSLocalizedDescriptionKey:
+                                                            [NSError errorWithDomain:@"PacWallet" code:417 userInfo:@{NSLocalizedDescriptionKey:
                                                                                                                            [NSString stringWithFormat:NSLocalizedString(@"unexpected response from %@", nil),
                                                                                                                             req.URL.host]}]);
                                                  return;
@@ -1557,14 +1557,14 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
                                      }] resume];
 }
 
-// given a private key, queries dash insight for unspent outputs and calls the completion block with a signed transaction
+// given a private key, queries $PAC insight for unspent outputs and calls the completion block with a signed transaction
 // that will sweep the balance into the wallet (doesn't publish the tx)
 - (void)sweepPrivateKey:(NSString *)privKey withFee:(BOOL)fee
              completion:(void (^)(BRTransaction *tx, uint64_t fee, NSError *error))completion
 {
     if (! completion) return;
     
-    if ([privKey isValidDashBIP38Key]) {
+    if ([privKey isValidPacBIP38Key]) {
         UIAlertController * alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"password protected key", nil) message:nil preferredStyle:UIAlertControllerStyleAlert];
         [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
             textField.secureTextEntry = true;
@@ -1637,13 +1637,13 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
     BRKey *key = [BRKey keyWithPrivateKey:privKey];
     
     if (! key.address) {
-        completion(nil, 0, [NSError errorWithDomain:@"DashWallet" code:187 userInfo:@{NSLocalizedDescriptionKey:
+        completion(nil, 0, [NSError errorWithDomain:@"PacWallet" code:187 userInfo:@{NSLocalizedDescriptionKey:
                                                                                           NSLocalizedString(@"not a valid private key", nil)}]);
         return;
     }
     
     if ([self.wallet containsAddress:key.address]) {
-        completion(nil, 0, [NSError errorWithDomain:@"DashWallet" code:187 userInfo:@{NSLocalizedDescriptionKey:
+        completion(nil, 0, [NSError errorWithDomain:@"PacWallet" code:187 userInfo:@{NSLocalizedDescriptionKey:
                                                                                           NSLocalizedString(@"this private key is already in your wallet", nil)}]);
         return;
     }
@@ -1669,7 +1669,7 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
                      }
                      
                      if (balance == 0) {
-                         completion(nil, 0, [NSError errorWithDomain:@"DashWallet" code:417 userInfo:@{NSLocalizedDescriptionKey:
+                         completion(nil, 0, [NSError errorWithDomain:@"PacWallet" code:417 userInfo:@{NSLocalizedDescriptionKey:
                                                                                                            NSLocalizedString(@"this private key is empty", nil)}]);
                          return;
                      }
@@ -1678,7 +1678,7 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
                      if (fee) feeAmount = [self.wallet feeForTxSize:tx.size + 34 + (key.publicKey.length - 33)*tx.inputHashes.count isInstant:false inputCount:0]; //input count doesn't matter for non instant transactions
                      
                      if (feeAmount + self.wallet.minOutputAmount > balance) {
-                         completion(nil, 0, [NSError errorWithDomain:@"DashWallet" code:417 userInfo:@{NSLocalizedDescriptionKey:
+                         completion(nil, 0, [NSError errorWithDomain:@"PacWallet" code:417 userInfo:@{NSLocalizedDescriptionKey:
                                                                                                            NSLocalizedString(@"transaction fees would cost more than the funds available on this "
                                                                                                                              "private key (due to tiny \"dust\" deposits)",nil)}]);
                          return;
@@ -1687,7 +1687,7 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
                      [tx addOutputAddress:self.wallet.receiveAddress amount:balance - feeAmount];
                      
                      if (! [tx signWithPrivateKeys:@[privKey]]) {
-                         completion(nil, 0, [NSError errorWithDomain:@"DashWallet" code:401 userInfo:@{NSLocalizedDescriptionKey:
+                         completion(nil, 0, [NSError errorWithDomain:@"PacWallet" code:401 userInfo:@{NSLocalizedDescriptionKey:
                                                                                                            NSLocalizedString(@"error signing transaction", nil)}]);
                          return;
                      }
@@ -1707,15 +1707,15 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
              decimalNumberByMultiplyingByPowerOf10:self.unknownFormat.maximumFractionDigits] longLongValue];
 }
 
-- (int64_t)amountForDashString:(NSString *)string
+- (int64_t)amountForPacString:(NSString *)string
 {
     if (! string.length) return 0;
-    NSInteger dashCharPos = [string indexOfCharacter:NSAttachmentCharacter];
-    if (dashCharPos != NSNotFound) {
-        string = [string stringByReplacingCharactersInRange:NSMakeRange(dashCharPos, 1) withString:DASH];
+    NSInteger pacCharPos = [string indexOfCharacter:NSAttachmentCharacter];
+    if (pacCharPos != NSNotFound) {
+        string = [string stringByReplacingCharactersInRange:NSMakeRange(pacCharPos, 1) withString:PAC];
     }
-    return [[[NSDecimalNumber decimalNumberWithDecimal:[[self.dashFormat numberFromString:string] decimalValue]]
-             decimalNumberByMultiplyingByPowerOf10:self.dashFormat.maximumFractionDigits] longLongValue];
+    return [[[NSDecimalNumber decimalNumberWithDecimal:[[self.pacFormat numberFromString:string] decimalValue]]
+             decimalNumberByMultiplyingByPowerOf10:self.pacFormat.maximumFractionDigits] longLongValue];
 }
 
 - (int64_t)amountForBitcoinString:(NSString *)string
@@ -1725,36 +1725,36 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
              decimalNumberByMultiplyingByPowerOf10:self.bitcoinFormat.maximumFractionDigits] longLongValue];
 }
 
-- (NSAttributedString *)attributedStringForDashAmount:(int64_t)amount
+- (NSAttributedString *)attributedStringForPacAmount:(int64_t)amount
 {
-    NSString * string = [self.dashFormat stringFromNumber:[(id)[NSDecimalNumber numberWithLongLong:amount]
-                                                           decimalNumberByMultiplyingByPowerOf10:-self.dashFormat.maximumFractionDigits]];
-    return [string attributedStringForDashSymbol];
+    NSString * string = [self.pacFormat stringFromNumber:[(id)[NSDecimalNumber numberWithLongLong:amount]
+                                                           decimalNumberByMultiplyingByPowerOf10:-self.pacFormat.maximumFractionDigits]];
+    return [string attributedStringForPacSymbol];
 }
 
-- (NSAttributedString *)attributedStringForDashAmount:(int64_t)amount withTintColor:(UIColor*)color {
-    NSString * string = [self.dashFormat stringFromNumber:[(id)[NSDecimalNumber numberWithLongLong:amount]
-                                                           decimalNumberByMultiplyingByPowerOf10:-self.dashFormat.maximumFractionDigits]];
-    return [string attributedStringForDashSymbolWithTintColor:color];
+- (NSAttributedString *)attributedStringForPacAmount:(int64_t)amount withTintColor:(UIColor*)color {
+    NSString * string = [self.pacFormat stringFromNumber:[(id)[NSDecimalNumber numberWithLongLong:amount]
+                                                           decimalNumberByMultiplyingByPowerOf10:-self.pacFormat.maximumFractionDigits]];
+    return [string attributedStringForPacSymbolWithTintColor:color];
 }
 
-- (NSAttributedString *)attributedStringForDashAmount:(int64_t)amount withTintColor:(UIColor*)color useSignificantDigits:(BOOL)useSignificantDigits {
-    NSString * string = [(useSignificantDigits?self.dashSignificantFormat:self.dashFormat) stringFromNumber:[(id)[NSDecimalNumber numberWithLongLong:amount]
-                                                                                                             decimalNumberByMultiplyingByPowerOf10:-self.dashFormat.maximumFractionDigits]];
-    return [string attributedStringForDashSymbolWithTintColor:color];
+- (NSAttributedString *)attributedStringForPacAmount:(int64_t)amount withTintColor:(UIColor*)color useSignificantDigits:(BOOL)useSignificantDigits {
+    NSString * string = [(useSignificantDigits?self.pacSignificantFormat:self.pacFormat) stringFromNumber:[(id)[NSDecimalNumber numberWithLongLong:amount]
+                                                                                                             decimalNumberByMultiplyingByPowerOf10:-self.pacFormat.maximumFractionDigits]];
+    return [string attributedStringForPacSymbolWithTintColor:color];
 }
 
-- (NSAttributedString *)attributedStringForDashAmount:(int64_t)amount withTintColor:(UIColor*)color dashSymbolSize:(CGSize)dashSymbolSize
+- (NSAttributedString *)attributedStringForPacAmount:(int64_t)amount withTintColor:(UIColor*)color pacSymbolSize:(CGSize)pacSymbolSize
 {
-    NSString * string = [self.dashFormat stringFromNumber:[(id)[NSDecimalNumber numberWithLongLong:amount]
-                                                           decimalNumberByMultiplyingByPowerOf10:-self.dashFormat.maximumFractionDigits]];
-    return [string attributedStringForDashSymbolWithTintColor:color dashSymbolSize:dashSymbolSize];
+    NSString * string = [self.pacFormat stringFromNumber:[(id)[NSDecimalNumber numberWithLongLong:amount]
+                                                           decimalNumberByMultiplyingByPowerOf10:-self.pacFormat.maximumFractionDigits]];
+    return [string attributedStringForPacSymbolWithTintColor:color pacSymbolSize:pacSymbolSize];
 }
 
 - (NSNumber *)numberForAmount:(int64_t)amount
 {
     return (id)[(id)[NSDecimalNumber numberWithLongLong:amount]
-                decimalNumberByMultiplyingByPowerOf10:-self.dashFormat.maximumFractionDigits];
+                decimalNumberByMultiplyingByPowerOf10:-self.pacFormat.maximumFractionDigits];
 }
 
 - (NSString *)stringForBitcoinAmount:(int64_t)amount
@@ -1763,17 +1763,17 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
                                                  decimalNumberByMultiplyingByPowerOf10:-self.bitcoinFormat.maximumFractionDigits]];
 }
 
-- (NSString *)stringForDashAmount:(int64_t)amount
+- (NSString *)stringForPacAmount:(int64_t)amount
 {
-    return [self.dashFormat stringFromNumber:[(id)[NSDecimalNumber numberWithLongLong:amount]
-                                              decimalNumberByMultiplyingByPowerOf10:-self.dashFormat.maximumFractionDigits]];
+    return [self.pacFormat stringFromNumber:[(id)[NSDecimalNumber numberWithLongLong:amount]
+                                              decimalNumberByMultiplyingByPowerOf10:-self.pacFormat.maximumFractionDigits]];
 }
 
--(NSNumber* _Nonnull)localCurrencyDashPrice {
-    if (!_bitcoinDashPrice || !_localCurrencyBitcoinPrice) {
-        return _localCurrencyDashPrice;
+-(NSNumber* _Nonnull)localCurrencyPacPrice {
+    if (!_bitcoinPacPrice || !_localCurrencyBitcoinPrice) {
+        return _localCurrencyPacPrice;
     } else {
-        return @(_bitcoinDashPrice.doubleValue * _localCurrencyBitcoinPrice.doubleValue);
+        return @(_bitcoinPacPrice.doubleValue * _localCurrencyBitcoinPrice.doubleValue);
     }
 }
 
@@ -1784,7 +1784,7 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
     if ([string hasPrefix:@"<"]) string = [string substringFromIndex:1];
     
     NSNumber *n = [self.localFormat numberFromString:string];
-    int64_t price = [[NSDecimalNumber decimalNumberWithDecimal:self.localCurrencyDashPrice.decimalValue]
+    int64_t price = [[NSDecimalNumber decimalNumberWithDecimal:self.localCurrencyPacPrice.decimalValue]
                      decimalNumberByMultiplyingByPowerOf10:self.localFormat.maximumFractionDigits].longLongValue,
     local = [[NSDecimalNumber decimalNumberWithDecimal:n.decimalValue]
              decimalNumberByMultiplyingByPowerOf10:self.localFormat.maximumFractionDigits].longLongValue,
@@ -1806,10 +1806,10 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
 
 - (int64_t)amountForBitcoinCurrencyString:(NSString *)string
 {
-    if (self.bitcoinDashPrice.doubleValue <= DBL_EPSILON) return 0;
+    if (self.bitcoinPacPrice.doubleValue <= DBL_EPSILON) return 0;
     if ([string hasPrefix:@"<"]) string = [string substringFromIndex:1];
     
-    double price = self.bitcoinDashPrice.doubleValue*pow(10.0, self.bitcoinFormat.maximumFractionDigits),
+    double price = self.bitcoinPacPrice.doubleValue*pow(10.0, self.bitcoinFormat.maximumFractionDigits),
     amt = [[self.bitcoinFormat numberFromString:string] doubleValue]*
     pow(10.0, self.bitcoinFormat.maximumFractionDigits);
     int64_t local = amt + DBL_EPSILON*amt, overflowbits = 0;
@@ -1833,7 +1833,7 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
     if (amount == 0) return [self.bitcoinFormat stringFromNumber:@(0)];
     
     
-    NSDecimalNumber *n = [[[NSDecimalNumber decimalNumberWithDecimal:self.bitcoinDashPrice.decimalValue]
+    NSDecimalNumber *n = [[[NSDecimalNumber decimalNumberWithDecimal:self.bitcoinPacPrice.decimalValue]
                            decimalNumberByMultiplyingBy:(id)[NSDecimalNumber numberWithLongLong:llabs(amount)]]
                           decimalNumberByDividingBy:(id)[NSDecimalNumber numberWithLongLong:DUFFS]],
     *min = [[NSDecimalNumber one]
@@ -1845,9 +1845,9 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
     return [self.bitcoinFormat stringFromNumber:n];
 }
 
-- (NSString *)localCurrencyStringForDashAmount:(int64_t)amount
+- (NSString *)localCurrencyStringForPacAmount:(int64_t)amount
 {
-    NSNumber *n = [self localCurrencyNumberForDashAmount:amount];
+    NSNumber *n = [self localCurrencyNumberForPacAmount:amount];
     if (!n) {
         return NSLocalizedString(@"Updating Price",@"Updating Price");
     }
@@ -1871,16 +1871,16 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
     return [self.localFormat stringFromNumber:n];
 }
 
-- (NSNumber * _Nullable)localCurrencyNumberForDashAmount:(int64_t)amount {
+- (NSNumber * _Nullable)localCurrencyNumberForPacAmount:(int64_t)amount {
     if (amount == 0) {
         return @0;
     }
     
-    if (!self.localCurrencyBitcoinPrice || !self.bitcoinDashPrice) {
+    if (!self.localCurrencyBitcoinPrice || !self.bitcoinPacPrice) {
         return nil;
     }
     
-    NSNumber *local = [NSNumber numberWithDouble:self.localCurrencyBitcoinPrice.doubleValue*self.bitcoinDashPrice.doubleValue];
+    NSNumber *local = [NSNumber numberWithDouble:self.localCurrencyBitcoinPrice.doubleValue*self.bitcoinPacPrice.doubleValue];
     
     NSDecimalNumber *n = [[[NSDecimalNumber decimalNumberWithDecimal:local.decimalValue]
                            decimalNumberByMultiplyingBy:(id)[NSDecimalNumber numberWithLongLong:llabs(amount)]]

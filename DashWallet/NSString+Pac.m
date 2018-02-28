@@ -1,9 +1,8 @@
 //
-//  NSString+Dash.m
-//  DashWallet
+//  NSString+Pac.m
+//  PacWallet
 //
-//  Created by Aaron Voisine on 5/13/13.
-//  Copyright (c) 2017 Dash Foundation
+//  Created by Chase Gray on 2/28/2018.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -23,15 +22,15 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "NSString+Dash.h"
-#import "NSData+Dash.h"
+#import "NSString+Pac.h"
+#import "NSData+Pac.h"
 #import "NSData+Bitcoin.h"
 #import "NSString+Bitcoin.h"
 #import "NSMutableData+Bitcoin.h"
 #import "UIImage+Utils.h"
 #import "BRWalletManager.h"
 
-@implementation NSString (Dash)
+@implementation NSString (Pac)
 
 // NOTE: It's important here to be permissive with scriptSig (spends) and strict with scriptPubKey (receives). If we
 // miss a receive transaction, only that transaction's funds are missed, however if we accept a receive transaction that
@@ -44,10 +43,10 @@
     NSArray *elem = [script scriptElements];
     NSUInteger l = elem.count;
     NSMutableData *d = [NSMutableData data];
-    uint8_t v = DASH_PUBKEY_ADDRESS;
+    uint8_t v = PAC_PUBKEY_ADDRESS;
     
-#if DASH_TESTNET
-    v = DASH_PUBKEY_ADDRESS_TEST;
+#if PAC_TESTNET
+    v = PAC_PUBKEY_ADDRESS_TEST;
 #endif
     
     if (l == 5 && [elem[0] intValue] == OP_DUP && [elem[1] intValue] == OP_HASH160 && [elem[2] intValue] == 20 &&
@@ -58,9 +57,9 @@
     }
     else if (l == 3 && [elem[0] intValue] == OP_HASH160 && [elem[1] intValue] == 20 && [elem[2] intValue] == OP_EQUAL) {
         // pay-to-script-hash scriptPubKey
-        v = DASH_SCRIPT_ADDRESS;
-#if DASH_TESTNET
-        v = DASH_SCRIPT_ADDRESS_TEST;
+        v = PAC_SCRIPT_ADDRESS;
+#if PAC_TESTNET
+        v = PAC_SCRIPT_ADDRESS_TEST;
 #endif
         [d appendBytes:&v length:1];
         [d appendData:elem[1]];
@@ -83,10 +82,10 @@
     NSArray *elem = [script scriptElements];
     NSUInteger l = elem.count;
     NSMutableData *d = [NSMutableData data];
-    uint8_t v = DASH_PUBKEY_ADDRESS;
+    uint8_t v = PAC_PUBKEY_ADDRESS;
     
-#if DASH_TESTNET
-    v = DASH_PUBKEY_ADDRESS_TEST;
+#if PAC_TESTNET
+    v = PAC_PUBKEY_ADDRESS_TEST;
 #endif
     
     if (l >= 2 && [elem[l - 2] intValue] <= OP_PUSHDATA4 && [elem[l - 2] intValue] > 0 &&
@@ -96,9 +95,9 @@
     }
     else if (l >= 2 && [elem[l - 2] intValue] <= OP_PUSHDATA4 && [elem[l - 2] intValue] > 0 &&
              [elem[l - 1] intValue] <= OP_PUSHDATA4 && [elem[l - 1] intValue] > 0) { // pay-to-script-hash scriptSig
-        v = DASH_SCRIPT_ADDRESS;
-#if DASH_TESTNET
-        v = DASH_SCRIPT_ADDRESS_TEST;
+        v = PAC_SCRIPT_ADDRESS;
+#if PAC_TESTNET
+        v = PAC_SCRIPT_ADDRESS_TEST;
 #endif
         [d appendBytes:&v length:1];
         [d appendBytes:[elem[l - 1] hash160].u8 length:sizeof(UInt160)];
@@ -112,7 +111,7 @@
     return [self base58checkWithData:d];
 }
 
-- (BOOL)isValidDashAddress
+- (BOOL)isValidPacAddress
 {
     if (self.length > 35) return NO;
     
@@ -122,29 +121,29 @@
     
     uint8_t version = *(const uint8_t *)d.bytes;
     
-#if DASH_TESTNET
-    return (version == DASH_PUBKEY_ADDRESS_TEST || version == DASH_SCRIPT_ADDRESS_TEST) ? YES : NO;
+#if PAC_TESTNET
+    return (version == PAC_PUBKEY_ADDRESS_TEST || version == PAC_SCRIPT_ADDRESS_TEST) ? YES : NO;
 #endif
     
-    return (version == DASH_PUBKEY_ADDRESS || version == DASH_SCRIPT_ADDRESS) ? YES : NO;
+    return (version == PAC_PUBKEY_ADDRESS || version == PAC_SCRIPT_ADDRESS) ? YES : NO;
 }
 
-- (BOOL)isValidDashPrivateKey
+- (BOOL)isValidPacPrivateKey
 {
     NSData *d = self.base58checkToData;
     
     if (d.length == 33 || d.length == 34) { // wallet import format: https://en.bitcoin.it/wiki/Wallet_import_format
-#if DASH_TESNET
-        return (*(const uint8_t *)d.bytes == DASH_PRIVKEY_TEST) ? YES : NO;
+#if PAC_TESNET
+        return (*(const uint8_t *)d.bytes == PAC_PRIVKEY_TEST) ? YES : NO;
 #else
-        return (*(const uint8_t *)d.bytes == DASH_PRIVKEY) ? YES : NO;
+        return (*(const uint8_t *)d.bytes == PAC_PRIVKEY) ? YES : NO;
 #endif
     }
     else return (self.hexToData.length == 32) ? YES : NO; // hex encoded key
 }
 
 // BIP38 encrypted keys: https://github.com/bitcoin/bips/blob/master/bip-0038.mediawiki
-- (BOOL)isValidDashBIP38Key
+- (BOOL)isValidPacBIP38Key
 {
     NSData *d = self.base58checkToData;
     
@@ -163,37 +162,37 @@
     else return NO; // invalid prefix
 }
 
-- (NSAttributedString*)attributedStringForDashSymbol {
-    return [self attributedStringForDashSymbolWithTintColor:[UIColor blackColor]];
+- (NSAttributedString*)attributedStringForPacSymbol {
+    return [self attributedStringForPacSymbolWithTintColor:[UIColor blackColor]];
 }
 
-- (NSAttributedString*)attributedStringForDashSymbolWithTintColor:(UIColor*)color {
-    return [self attributedStringForDashSymbolWithTintColor:color dashSymbolSize:CGSizeMake(12, 12)];
+- (NSAttributedString*)attributedStringForPacSymbolWithTintColor:(UIColor*)color {
+    return [self attributedStringForPacSymbolWithTintColor:color pacSymbolSize:CGSizeMake(12, 12)];
 }
 
-+(NSAttributedString*)dashSymbolAttributedStringWithTintColor:(UIColor*)color forDashSymbolSize:(CGSize)dashSymbolSize {
-    NSTextAttachment *dashSymbol = [[NSTextAttachment alloc] init];
++(NSAttributedString*)pacSymbolAttributedStringWithTintColor:(UIColor*)color forPacSymbolSize:(CGSize)pacSymbolSize {
+    NSTextAttachment *pacSymbol = [[NSTextAttachment alloc] init];
     
-    dashSymbol.bounds = CGRectMake(0, 0, dashSymbolSize.width, dashSymbolSize.height);
-    dashSymbol.image = [[UIImage imageNamed:@"Dash-Light"] imageWithTintColor:color];
-    return [NSAttributedString attributedStringWithAttachment:dashSymbol];
+    pacSymbol.bounds = CGRectMake(0, 0, pacSymbolSize.width, pacSymbolSize.height);
+    pacSymbol.image = [[UIImage imageNamed:@"Dash-Light"] imageWithTintColor:color];
+    return [NSAttributedString attributedStringWithAttachment:pacSymbol];
 }
 
 
-- (NSAttributedString*)attributedStringForDashSymbolWithTintColor:(UIColor*)color dashSymbolSize:(CGSize)dashSymbolSize {
+- (NSAttributedString*)attributedStringForPacSymbolWithTintColor:(UIColor*)color pacSymbolSize:(CGSize)pacSymbolSize {
     
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]
                                                    initWithString:[self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     
-    NSRange range = [attributedString.string rangeOfString:DASH];
+    NSRange range = [attributedString.string rangeOfString:PAC];
     if (range.location == NSNotFound) {
         [attributedString insertAttributedString:[[NSAttributedString alloc] initWithString:@" "] atIndex:0];
-        [attributedString insertAttributedString:[NSString dashSymbolAttributedStringWithTintColor:color forDashSymbolSize:dashSymbolSize] atIndex:0];
+        [attributedString insertAttributedString:[NSString pacSymbolAttributedStringWithTintColor:color forPacSymbolSize:pacSymbolSize] atIndex:0];
         
         [attributedString addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, attributedString.length)];
     } else {
         [attributedString replaceCharactersInRange:range
-                              withAttributedString:[NSString dashSymbolAttributedStringWithTintColor:color forDashSymbolSize:dashSymbolSize]];
+                              withAttributedString:[NSString pacSymbolAttributedStringWithTintColor:color forPacSymbolSize:pacSymbolSize]];
         [attributedString addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, attributedString.length)];
     }
     return attributedString;

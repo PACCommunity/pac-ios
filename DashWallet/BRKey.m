@@ -24,8 +24,8 @@
 //  THE SOFTWARE.
 
 #import "BRKey.h"
-#import "NSString+Dash.h"
-#import "NSData+Dash.h"
+#import "NSString+Pac.h"
+#import "NSData+Pac.h"
 #import "NSString+Bitcoin.h"
 #import "NSData+Bitcoin.h"
 #import "NSMutableData+Bitcoin.h"
@@ -154,7 +154,7 @@ int BRSecp256k1PointMul(BRECPoint *p, const UInt256 *i)
     
     // mini private key format
     if ((privateKey.length == 30 || privateKey.length == 22) && [privateKey characterAtIndex:0] == 'L') {
-        if (! [privateKey isValidDashPrivateKey]) return nil;
+        if (! [privateKey isValidPacPrivateKey]) return nil;
         
         _seckey = [CFBridgingRelease(CFStringCreateExternalRepresentation(SecureAllocator(), (CFStringRef)privateKey,
                                                                           kCFStringEncodingUTF8, 0)) SHA256];
@@ -163,10 +163,10 @@ int BRSecp256k1PointMul(BRECPoint *p, const UInt256 *i)
     }
     
     NSData *d = privateKey.base58checkToData;
-    uint8_t version = DASH_PRIVKEY;
+    uint8_t version = PAC_PRIVKEY;
     
-#if DASH_TESTNET
-    version = DASH_PRIVKEY_TEST;
+#if PAC_TESTNET
+    version = PAC_PRIVKEY_TEST;
 #endif
     
     if (! d || d.length == 28) d = privateKey.base58ToData;
@@ -223,10 +223,10 @@ int BRSecp256k1PointMul(BRECPoint *p, const UInt256 *i)
     if (uint256_is_zero(_seckey)) return nil;
 
     NSMutableData *d = [NSMutableData secureDataWithCapacity:sizeof(UInt256) + 2];
-    uint8_t version = DASH_PRIVKEY;
+    uint8_t version = PAC_PRIVKEY;
 
-#if DASH_TESTNET
-    version = DASH_PRIVKEY_TEST;
+#if PAC_TESTNET
+    version = PAC_PRIVKEY_TEST;
 #endif
 
     [d appendBytes:&version length:1];
@@ -265,11 +265,11 @@ int BRSecp256k1PointMul(BRECPoint *p, const UInt256 *i)
 - (NSString *)address
 {
     NSMutableData *d = [NSMutableData secureDataWithCapacity:160/8 + 1];
-    uint8_t version = DASH_PUBKEY_ADDRESS;
+    uint8_t version = PAC_PUBKEY_ADDRESS;
     UInt160 hash160 = self.hash160;
 
-#if DASH_TESTNET
-    version = DASH_PUBKEY_ADDRESS_TEST;
+#if PAC_TESTNET
+    version = PAC_PUBKEY_ADDRESS_TEST;
 #endif
     
     [d appendBytes:&version length:1];

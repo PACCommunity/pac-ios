@@ -1,9 +1,8 @@
 //
 //  DWGenerateViewController.m
-//  dashwallet
+//  pacwallet
 //
-//  Created by Quantum Explorer on 10/11/17.
-//  Copyright © 2017 Dash Foundation. All rights reserved.
+//  Created by Chase Gray on 2/28/2018
 //
 
 #import "DWGenerateViewController.h"
@@ -38,19 +37,21 @@
     NSTextAttachment *noEye = [NSTextAttachment new], *noKey = [NSTextAttachment new];
     NSMutableAttributedString *s = [[NSMutableAttributedString alloc]
                                     initWithAttributedString:self.warningLabel.attributedText];
-    
+
     noEye.image = [UIImage imageNamed:@"no-eye"];
     [s replaceCharactersInRange:[s.string rangeOfString:@"%no-eye%"]
            withAttributedString:[NSAttributedString attributedStringWithAttachment:noEye]];
+
     noKey.image = [UIImage imageNamed:@"no-key"];
     [s replaceCharactersInRange:[s.string rangeOfString:@"%no-key%"]
            withAttributedString:[NSAttributedString attributedStringWithAttachment:noKey]];
-    
+
     [s replaceCharactersInRange:[s.string rangeOfString:@"WARNING"] withString:NSLocalizedString(@"WARNING", nil)];
     [s replaceCharactersInRange:[s.string rangeOfString:@"\nDO NOT let anyone see your recovery\n"
-                                 "phrase or they can spend your dash.\n"]
+                                 "phrase or they can spend your $PAC.\n"]
                      withString:NSLocalizedString(@"\nDO NOT let anyone see your recovery\n"
-                                                  "phrase or they can spend your dash.\n", nil)];
+                                                  "phrase or they can spend your $PAC.\n", nil)];
+    NSLog(@"before NEVER");
     [s replaceCharactersInRange:[s.string rangeOfString:@"\nNEVER type your recovery phrase into\n"
                                  "password managers or elsewhere.\nOther devices may be infected.\n"]
                      withString:NSLocalizedString(@"\nNEVER type your recovery phrase into\npassword managers or elsewhere.\n"

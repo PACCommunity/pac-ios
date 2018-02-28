@@ -36,8 +36,8 @@
 #import "BRTransaction.h"
 #import "NSString+Bitcoin.h"
 #import "NSMutableData+Bitcoin.h"
-#import "NSString+Dash.h"
-#import "NSData+Dash.h"
+#import "NSString+Pac.h"
+#import "NSData+Pac.h"
 #import "NSData+Bitcoin.h"
 #import "BREventManager.h"
 #import "FBShimmeringView.h"
@@ -47,10 +47,10 @@
 #import "BRQRScanViewController.h"
 #import "BRQRScanViewModel.h"
 
-#define SCAN_TIP      NSLocalizedString(@"Scan someone else's QR code to get their dash or bitcoin address. "\
+#define SCAN_TIP      NSLocalizedString(@"Scan someone else's QR code to get their $PAC or bitcoin address. "\
 "You can send a payment to anyone with an address.", nil)
-#define CLIPBOARD_TIP NSLocalizedString(@"Dash addresses can also be copied to the clipboard. "\
-"A dash address always starts with 'X' or '7'.", nil)
+#define CLIPBOARD_TIP NSLocalizedString(@"$PAC addresses can also be copied to the clipboard. "\
+"A $PAC address always starts with 'P'.", nil)
 
 #define LOCK @"\xF0\x9F\x94\x92" // unicode lock symbol U+1F512 (utf-8)
 #define REDX @"\xE2\x9D\x8C"     // unicode cross mark U+274C, red x emoji (utf-8)
@@ -226,7 +226,7 @@ static NSString *sanitizeString(NSString *s)
                                 @"path": (url.path ? url.path : @"(null)")}];
     
     BRWalletManager *manager = [BRWalletManager sharedInstance];
-    if ([url.scheme isEqual:@"dashwallet"]) {
+    if ([url.scheme isEqual:@"pacwallet"]) {
         if ([url.host isEqual:@"scanqr"] || [url.path isEqual:@"/scanqr"]) { // scan qr
             [self scanQR:self.scanButton];
         } else if ([url.host hasPrefix:@"request"] || [url.path isEqual:@"/request"]) {
@@ -241,12 +241,12 @@ static NSString *sanitizeString(NSString *s)
             
             if (dictionary[@"request"] && dictionary[@"sender"] && (!dictionary[@"account"] || [dictionary[@"account"] isEqualToString:@"0"])) {
                 if ([dictionary[@"request"] isEqualToString:@"masterPublicKey"]) {
-                    [manager authenticateWithPrompt:[NSString stringWithFormat:NSLocalizedString(@"Application %@ would like to receive your Master Public Key.  This can be used to keep track of your wallet, this can not be used to move your Dash.",nil),dictionary[@"sender"]] andTouchId:NO alertIfLockout:YES completion:^(BOOL authenticatedOrSuccess,BOOL cancelled) {
+                    [manager authenticateWithPrompt:[NSString stringWithFormat:NSLocalizedString(@"Application %@ would like to receive your Master Public Key.  This can be used to keep track of your wallet, this can not be used to move your $PAC.",nil),dictionary[@"sender"]] andTouchId:NO alertIfLockout:YES completion:^(BOOL authenticatedOrSuccess,BOOL cancelled) {
                         if (authenticatedOrSuccess) {
                             BRBIP32Sequence *seq = [BRBIP32Sequence new];
                             NSString * masterPublicKeySerialized = [seq serializedMasterPublicKey:manager.extendedBIP44PublicKey depth:BIP44_PURPOSE_ACCOUNT_DEPTH];
                             NSString * masterPublicKeyNoPurposeSerialized = [seq serializedMasterPublicKey:manager.extendedBIP32PublicKey depth:BIP32_PURPOSE_ACCOUNT_DEPTH];
-                            NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@://callback=%@&masterPublicKeyBIP32=%@&masterPublicKeyBIP44=%@&account=%@&source=dashwallet",dictionary[@"sender"],dictionary[@"request"],masterPublicKeyNoPurposeSerialized,masterPublicKeySerialized,@"0"]];
+                            NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@://callback=%@&masterPublicKeyBIP32=%@&masterPublicKeyBIP44=%@&account=%@&source=pacwallet",dictionary[@"sender"],dictionary[@"request"],masterPublicKeyNoPurposeSerialized,masterPublicKeySerialized,@"0"]];
                             [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
                                 
                             }];
@@ -255,7 +255,7 @@ static NSString *sanitizeString(NSString *s)
                 } else if ([dictionary[@"request"] isEqualToString:@"address"]) {
                     [manager authenticateWithPrompt:[NSString stringWithFormat:NSLocalizedString(@"Application %@ is requesting an address so it can pay you.  Would you like to authorize this?",nil),dictionary[@"sender"]] andTouchId:NO alertIfLockout:YES completion:^(BOOL authenticatedOrSuccess,BOOL cancelled) {
                         if (authenticatedOrSuccess) {
-                            NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@://callback=%@&address=%@&source=dashwallet",dictionary[@"sender"],dictionary[@"request"],manager.wallet.receiveAddress]];
+                            NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@://callback=%@&address=%@&source=pacwallet",dictionary[@"sender"],dictionary[@"request"],manager.wallet.receiveAddress]];
                             [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
                                 
                             }];
@@ -275,7 +275,7 @@ static NSString *sanitizeString(NSString *s)
             }
             if (dictionary[@"pay"] && dictionary[@"sender"]) {
                 if (dictionary[@"label"]) [dictionary removeObjectForKey:@"label"];
-                NSURLComponents *components = [NSURLComponents componentsWithString:[NSString stringWithFormat:@"dash:%@",dictionary[@"pay"]]];
+                NSURLComponents *components = [NSURLComponents componentsWithString:[NSString stringWithFormat:@"$PAC:%@",dictionary[@"pay"]]];
                 NSMutableArray *queryItems = [NSMutableArray array];
                 NSURLQueryItem *label = [NSURLQueryItem queryItemWithName:@"label" value:[NSString stringWithFormat:NSLocalizedString(@"Application %@ is requesting a payment to",nil),[dictionary[@"sender"] capitalizedString]]];
                 [queryItems addObject:label];
@@ -289,7 +289,7 @@ static NSString *sanitizeString(NSString *s)
             }
         }
     }
-    else if ([url.scheme isEqual:@"dash"]) {
+    else if ([url.scheme isEqual:@"$PAC"]) {
         [self confirmRequest:[BRPaymentRequest requestWithURL:url]];
     }
     else {
@@ -328,7 +328,7 @@ static NSString *sanitizeString(NSString *s)
                 
                 if (error) {
                     UIAlertController * alert = [UIAlertController
-                                                 alertControllerWithTitle:NSLocalizedString(@"couldn't transmit payment to dash network", nil)
+                                                 alertControllerWithTitle:NSLocalizedString(@"couldn't transmit payment to $PAC network", nil)
                                                  message:error.localizedDescription
                                                  preferredStyle:UIAlertControllerStyleAlert];
                     UIAlertAction* okButton = [UIAlertAction
@@ -396,7 +396,7 @@ static NSString *sanitizeString(NSString *s)
     if (! isSecure || prompt.length == 0) prompt = [prompt stringByAppendingString:address];
     if (memo.length > 0) prompt = [prompt stringByAppendingFormat:@"\n\n%@", sanitizeString(memo)];
     prompt = [prompt stringByAppendingFormat:NSLocalizedString(@"\n\n     amount %@ (%@)", nil),
-              [manager stringForDashAmount:amount - fee], [manager localCurrencyStringForDashAmount:amount - fee]];
+              [manager stringForPacAmount:amount - fee], [manager localCurrencyStringForPacAmount:amount - fee]];
     
     if (localCurrency && localCurrencyAmount && ![localCurrency isEqualToString:manager.localCurrencyCode]) {
         NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
@@ -409,9 +409,9 @@ static NSString *sanitizeString(NSString *s)
     
     if (fee > 0) {
         prompt = [prompt stringByAppendingFormat:NSLocalizedString(@"\nnetwork fee +%@ (%@)", nil),
-                  [manager stringForDashAmount:fee], [manager localCurrencyStringForDashAmount:fee]];
+                  [manager stringForPacAmount:fee], [manager localCurrencyStringForPacAmount:fee]];
         prompt = [prompt stringByAppendingFormat:NSLocalizedString(@"\n         total %@ (%@)", nil),
-                  [manager stringForDashAmount:amount], [manager localCurrencyStringForDashAmount:amount]];
+                  [manager stringForPacAmount:amount], [manager localCurrencyStringForPacAmount:amount]];
     }
     
     return prompt;
@@ -420,7 +420,7 @@ static NSString *sanitizeString(NSString *s)
 - (void)confirmRequest:(BRPaymentRequest *)request
 {
     if (! request.isValid) {
-        if ([request.paymentAddress isValidDashPrivateKey] || [request.paymentAddress isValidDashBIP38Key]) {
+        if ([request.paymentAddress isValidPacPrivateKey] || [request.paymentAddress isValidPacBIP38Key]) {
             [self confirmSweep:request.paymentAddress];
         }
         else {
@@ -445,7 +445,7 @@ static NSString *sanitizeString(NSString *s)
             dispatch_async(dispatch_get_main_queue(), ^{
                 [(id)self.parentViewController.parentViewController stopActivityWithSuccess:(! error)];
                 
-                if (error && ! ([request.paymentAddress isValidBitcoinAddress] || [request.paymentAddress isValidDashAddress])) {
+                if (error && ! ([request.paymentAddress isValidBitcoinAddress] || [request.paymentAddress isValidPacAddress])) {
                     UIAlertController * alert = [UIAlertController
                                                  alertControllerWithTitle:NSLocalizedString(@"couldn't make payment", nil)
                                                  message:error.localizedDescription
@@ -467,7 +467,7 @@ static NSString *sanitizeString(NSString *s)
 }
 
 - (void)confirmProtocolRequest:(BRPaymentProtocolRequest *)protoReq {
-    [self confirmProtocolRequest:protoReq currency:@"dash" associatedShapeshift:nil localCurrency:nil localCurrencyAmount:nil];
+    [self confirmProtocolRequest:protoReq currency:@"$PAC" associatedShapeshift:nil localCurrency:nil localCurrencyAmount:nil];
 }
 
 - (void)confirmProtocolRequest:(BRPaymentProtocolRequest *)protoReq currency:(NSString*)currency associatedShapeshift:(DSShapeshiftEntity*)shapeshift localCurrency:(NSString *)localCurrency localCurrencyAmount:(NSString *)localCurrencyAmount
@@ -510,7 +510,7 @@ static NSString *sanitizeString(NSString *s)
     }
     else amount = self.amount;
     
-    if ([currency isEqualToString:@"dash"]) {
+    if ([currency isEqualToString:@"$PAC"]) {
         NSString *address = [NSString addressWithScriptPubKey:protoReq.details.outputScripts.firstObject];
         if ([manager.wallet containsAddress:address]) {
             UIAlertController * alert = [UIAlertController
@@ -535,7 +535,7 @@ static NSString *sanitizeString(NSString *s)
             self.associatedShapeshift = shapeshift;
             UIAlertController * alert = [UIAlertController
                                          alertControllerWithTitle:NSLocalizedString(@"WARNING", nil)
-                                         message:NSLocalizedString(@"\nADDRESS ALREADY USED\ndash addresses are intended for single use only\n\n"
+                                         message:NSLocalizedString(@"\nADDRESS ALREADY USED\n$PAC addresses are intended for single use only\n\n"
                                                                    "re-use reduces privacy for both you and the recipient and can result in loss if "
                                                                    "the recipient doesn't directly control the address", nil)
                                          preferredStyle:UIAlertControllerStyleAlert];
@@ -732,8 +732,8 @@ static NSString *sanitizeString(NSString *s)
         else if (amount < TX_MIN_OUTPUT_AMOUNT) {
             UIAlertController * alert = [UIAlertController
                                          alertControllerWithTitle:NSLocalizedString(@"couldn't make payment", nil)
-                                         message:[NSString stringWithFormat:NSLocalizedString(@"dash payments can't be less than %@", nil),
-                                                  [manager stringForDashAmount:TX_MIN_OUTPUT_AMOUNT]]
+                                         message:[NSString stringWithFormat:NSLocalizedString(@"$PAC payments can't be less than %@", nil),
+                                                  [manager stringForPacAmount:TX_MIN_OUTPUT_AMOUNT]]
                                          preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction* okButton = [UIAlertAction
                                        actionWithTitle:NSLocalizedString(@"ok", nil)
@@ -751,8 +751,8 @@ static NSString *sanitizeString(NSString *s)
         else if (outputTooSmall) {
             UIAlertController * alert = [UIAlertController
                                          alertControllerWithTitle:NSLocalizedString(@"couldn't make payment", nil)
-                                         message:[NSString stringWithFormat:NSLocalizedString(@"dash transaction outputs can't be less than %@",
-                                                                                              nil), [manager stringForDashAmount:TX_MIN_OUTPUT_AMOUNT]]
+                                         message:[NSString stringWithFormat:NSLocalizedString(@"$PAC transaction outputs can't be less than %@",
+                                                                                              nil), [manager stringForPacAmount:TX_MIN_OUTPUT_AMOUNT]]
                                          preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction* okButton = [UIAlertAction
                                        actionWithTitle:NSLocalizedString(@"ok", nil)
@@ -769,7 +769,7 @@ static NSString *sanitizeString(NSString *s)
         }
         
         self.request = protoReq;
-        self.scheme = @"dash";
+        self.scheme = @"$PAC";
         
         if (self.amount == 0) {
             
@@ -903,8 +903,8 @@ static NSString *sanitizeString(NSString *s)
         else if (outputTooSmall) {
             UIAlertController * alert = [UIAlertController
                                          alertControllerWithTitle:NSLocalizedString(@"couldn't make payment", nil)
-                                         message:[NSString stringWithFormat:NSLocalizedString(@"dash transaction outputs can't be less than %@",
-                                                                                              nil), [manager stringForDashAmount:TX_MIN_OUTPUT_AMOUNT]]
+                                         message:[NSString stringWithFormat:NSLocalizedString(@"$PAC transaction outputs can't be less than %@",
+                                                                                              nil), [manager stringForPacAmount:TX_MIN_OUTPUT_AMOUNT]]
                                          preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction* okButton = [UIAlertAction
                                        actionWithTitle:NSLocalizedString(@"ok", nil)
@@ -922,13 +922,13 @@ static NSString *sanitizeString(NSString *s)
         self.request = protoReq;
         self.shapeshiftRequest = protoReq;
         self.scheme = currency;
-        [self amountViewController:nil shapeshiftBitcoinAmount:amount approximateDashAmount:1.03*amount/manager.bitcoinDashPrice.doubleValue];
+        [self amountViewController:nil shapeshiftBitcoinAmount:amount approximatePacAmount:1.03*amount/manager.bitcoinPacPrice.doubleValue];
     }
 }
 
 -(void)insufficientFundsForTransaction:(BRTransaction *)tx forAmount:(uint64_t)amount localCurrency:(NSString *)localCurrency localCurrencyAmount:(NSString *)localCurrencyAmount {
     BRWalletManager *manager = [BRWalletManager sharedInstance];
-    uint64_t fuzz = [manager amountForLocalCurrencyString:[manager localCurrencyStringForDashAmount:1]]*2;
+    uint64_t fuzz = [manager amountForLocalCurrencyString:[manager localCurrencyStringForPacAmount:1]]*2;
     
     // if user selected an amount equal to or below wallet balance, but the fee will bring the total above the
     // balance, offer to reduce the amount to available funds minus fee
@@ -939,8 +939,8 @@ static NSString *sanitizeString(NSString *s)
             UIAlertController * alert = [UIAlertController
                                          alertControllerWithTitle:NSLocalizedString(@"insufficient funds for $PAC network fee", nil)
                                          message:[NSString stringWithFormat:NSLocalizedString(@"reduce payment amount by\n%@ (%@)?", nil),
-                                                  [manager stringForDashAmount:self.amount - amount],
-                                                  [manager localCurrencyStringForDashAmount:self.amount - amount]]
+                                                  [manager stringForPacAmount:self.amount - amount],
+                                                  [manager localCurrencyStringForPacAmount:self.amount - amount]]
                                          preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction* cancelButton = [UIAlertAction
                                            actionWithTitle:NSLocalizedString(@"cancel", nil)
@@ -950,8 +950,8 @@ static NSString *sanitizeString(NSString *s)
                                            }];
             UIAlertAction* reduceButton = [UIAlertAction
                                            actionWithTitle:[NSString stringWithFormat:@"%@ (%@)",
-                                                            [manager stringForDashAmount:amount - self.amount],
-                                                            [manager localCurrencyStringForDashAmount:amount - self.amount]]
+                                                            [manager stringForPacAmount:amount - self.amount],
+                                                            [manager localCurrencyStringForPacAmount:amount - self.amount]]
                                            style:UIAlertActionStyleDefault
                                            handler:^(UIAlertAction * action) {
                                                [self confirmProtocolRequest:self.request currency:self.scheme associatedShapeshift:self.associatedShapeshift localCurrency:localCurrency localCurrencyAmount:localCurrencyAmount];
@@ -1020,7 +1020,7 @@ static NSString *sanitizeString(NSString *s)
             if (!signedTransaction) {
                 UIAlertController * alert = [UIAlertController
                                              alertControllerWithTitle:NSLocalizedString(@"couldn't make payment", nil)
-                                             message:NSLocalizedString(@"error signing dash transaction", nil)
+                                             message:NSLocalizedString(@"error signing $PAC transaction", nil)
                                              preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction* okButton = [UIAlertAction
                                            actionWithTitle:NSLocalizedString(@"ok", nil)
@@ -1114,7 +1114,7 @@ static NSString *sanitizeString(NSString *s)
                     
                     NSLog(@"posting payment to: %@", self.request.details.paymentURL);
                     
-                    [BRPaymentRequest postPayment:payment scheme:@"dash" to:self.request.details.paymentURL timeout:20.0
+                    [BRPaymentRequest postPayment:payment scheme:@"$PAC" to:self.request.details.paymentURL timeout:20.0
                                        completion:^(BRPaymentProtocolACK *ack, NSError *error) {
                                            dispatch_async(dispatch_get_main_queue(), ^{
                                                [(id)self.parentViewController.parentViewController stopActivityWithSuccess:(! error)];
@@ -1174,7 +1174,7 @@ static NSString *sanitizeString(NSString *s)
 {
     BRWalletManager *manager = [BRWalletManager sharedInstance];
     
-    if (! [privKey isValidDashPrivateKey] && ! [privKey isValidDashBIP38Key]) return;
+    if (! [privKey isValidPacPrivateKey] && ! [privKey isValidPacBIP38Key]) return;
     
     BRBubbleView *statusView = [BRBubbleView viewWithText:NSLocalizedString(@"checking private key balance...", nil)
                                                    center:CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2)];
@@ -1210,10 +1210,10 @@ static NSString *sanitizeString(NSString *s)
                 self.sweepTx = tx;
                 
                 NSString *alertFmt = NSLocalizedString(@"Send %@ (%@) from this private key into your wallet? "
-                                                       "The dash network will receive a fee of %@ (%@).", nil);
-                NSString *alertMsg = [NSString stringWithFormat:alertFmt, [manager stringForDashAmount:amount],
-                                      [manager localCurrencyStringForDashAmount:amount], [manager stringForDashAmount:fee],
-                                      [manager localCurrencyStringForDashAmount:fee]];
+                                                       "The $PAC network will receive a fee of %@ (%@).", nil);
+                NSString *alertMsg = [NSString stringWithFormat:alertFmt, [manager stringForPacAmount:amount],
+                                      [manager localCurrencyStringForPacAmount:amount], [manager stringForPacAmount:fee],
+                                      [manager localCurrencyStringForPacAmount:fee]];
                 
                 UIAlertController * alert = [UIAlertController
                                              alertControllerWithTitle:@""
@@ -1226,8 +1226,8 @@ static NSString *sanitizeString(NSString *s)
                                                    [self cancelOrChangeAmount];
                                                }];
                 UIAlertAction* amountButton = [UIAlertAction
-                                               actionWithTitle:[NSString stringWithFormat:@"%@ (%@)", [manager stringForDashAmount:amount],
-                                                                [manager localCurrencyStringForDashAmount:amount]]
+                                               actionWithTitle:[NSString stringWithFormat:@"%@ (%@)", [manager stringForPacAmount:amount],
+                                                                [manager localCurrencyStringForPacAmount:amount]]
                                                style:UIAlertActionStyleDefault
                                                handler:^(UIAlertAction * action) {
                                                    [(id)self.parentViewController.parentViewController startActivityWithTimeout:30];
@@ -1306,8 +1306,8 @@ static NSString *sanitizeString(NSString *s)
                                 for (NSNumber *amt in amounts) balance += amt.unsignedLongLongValue;
                                 
                                 NSString *alertMsg = [NSString stringWithFormat:NSLocalizedString(@"%@\n\nbalance: %@ (%@)", nil),
-                                                      address, [manager stringForDashAmount:balance],
-                                                      [manager localCurrencyStringForDashAmount:balance]];
+                                                      address, [manager stringForPacAmount:balance],
+                                                      [manager localCurrencyStringForPacAmount:balance]];
                                 
                                 UIAlertController * alert = [UIAlertController
                                                              alertControllerWithTitle:@""
@@ -1441,8 +1441,8 @@ static NSString *sanitizeString(NSString *s)
         // if the clipboard contains a known txHash, we know it's not a hex encoded private key
         if (data.length == sizeof(UInt256) && [manager.wallet transactionForHash:*(UInt256 *)data.bytes]) continue;
         
-        if ([req.paymentAddress isValidBitcoinAddress] || [req.paymentAddress isValidDashAddress] || [str isValidBitcoinPrivateKey] || [str isValidDashPrivateKey] || [str isValidBitcoinBIP38Key] || [str isValidDashBIP38Key] ||
-            (req.r.length > 0 && ([req.scheme isEqual:@"bitcoin:"] || [req.scheme isEqual:@"dash:"]))) {
+        if ([req.paymentAddress isValidBitcoinAddress] || [req.paymentAddress isValidPacAddress] || [str isValidBitcoinPrivateKey] || [str isValidPacPrivateKey] || [str isValidBitcoinBIP38Key] || [str isValidPacBIP38Key] ||
+            (req.r.length > 0 && ([req.scheme isEqual:@"bitcoin:"] || [req.scheme isEqual:@"pac:"]))) {
             [self performSelector:@selector(confirmRequest:) withObject:req afterDelay:0.1];// delayed to show highlight
             return;
         }
@@ -1452,7 +1452,7 @@ static NSString *sanitizeString(NSString *s)
                     if (error) { // don't try any more BIP73 urls
                         [self payFirstFromArray:[array objectsAtIndexes:[array
                                                                          indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-                                                                             return (idx >= i && ([obj hasPrefix:@"dash:"] || ! [NSURL URLWithString:obj]));
+                                                                             return (idx >= i && ([obj hasPrefix:@"pac:"] || ! [NSURL URLWithString:obj]));
                                                                          }]]];
                     }
                     else [self confirmProtocolRequest:req];
@@ -1481,22 +1481,22 @@ static NSString *sanitizeString(NSString *s)
     UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 1, 100)];
     titleLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
     [titleLabel setBackgroundColor:[UIColor clearColor]];
-    NSMutableAttributedString * attributedDashString = [[manager attributedStringForDashAmount:manager.wallet.balance withTintColor:[UIColor whiteColor]] mutableCopy];
+    NSMutableAttributedString * attributedPacString = [[manager attributedStringForPacAmount:manager.wallet.balance withTintColor:[UIColor whiteColor]] mutableCopy];
     NSString * titleString = [NSString stringWithFormat:@" (%@)",
-                              [manager localCurrencyStringForDashAmount:manager.wallet.balance]];
-    [attributedDashString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
-    titleLabel.attributedText = attributedDashString;
+                              [manager localCurrencyStringForPacAmount:manager.wallet.balance]];
+    [attributedPacString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
+    titleLabel.attributedText = attributedPacString;
     return titleLabel;
 }
 
 -(void)updateTitleView {
     if (self.navigationItem.titleView && [self.navigationItem.titleView isKindOfClass:[UILabel class]]) {
         BRWalletManager *manager = [BRWalletManager sharedInstance];
-        NSMutableAttributedString * attributedDashString = [[manager attributedStringForDashAmount:manager.wallet.balance withTintColor:[UIColor whiteColor]] mutableCopy];
+        NSMutableAttributedString * attributedPacString = [[manager attributedStringForPacAmount:manager.wallet.balance withTintColor:[UIColor whiteColor]] mutableCopy];
         NSString * titleString = [NSString stringWithFormat:@" (%@)",
-                                  [manager localCurrencyStringForDashAmount:manager.wallet.balance]];
-        [attributedDashString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
-        ((UILabel*)self.navigationItem.titleView).attributedText = attributedDashString;
+                                  [manager localCurrencyStringForPacAmount:manager.wallet.balance]];
+        [attributedPacString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
+        ((UILabel*)self.navigationItem.titleView).attributedText = attributedPacString;
         [((UILabel*)self.navigationItem.titleView) sizeToFit];
     } else {
         self.navigationItem.titleView = [self titleLabel];
@@ -1683,7 +1683,7 @@ static NSString *sanitizeString(NSString *s)
                 UIAlertController * alert = [UIAlertController
                                              alertControllerWithTitle:NSLocalizedString(@"shapeshift failed", nil)
                                              message:[NSString stringWithFormat:NSLocalizedString(@"The amount you wanted to shapeshift is too low, "
-                                                                                                  @"please input a value over %@", nil),[manager stringForDashAmount:[DSShapeshiftManager sharedInstance].min / .97]]
+                                                                                                  @"please input a value over %@", nil),[manager stringForPacAmount:[DSShapeshiftManager sharedInstance].min / .97]]
                                              preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction* okButton = [UIAlertAction
                                            actionWithTitle:NSLocalizedString(@"ok", nil)
@@ -1698,7 +1698,7 @@ static NSString *sanitizeString(NSString *s)
                 UIAlertController * alert = [UIAlertController
                                              alertControllerWithTitle:NSLocalizedString(@"shapeshift failed", nil)
                                              message:[NSString stringWithFormat:NSLocalizedString(@"The amount you wanted to shapeshift is too high, "
-                                                                                                  @"please input a value under %@", nil),[manager stringForDashAmount:[DSShapeshiftManager sharedInstance].limit / 1.03]]
+                                                                                                  @"please input a value under %@", nil),[manager stringForPacAmount:[DSShapeshiftManager sharedInstance].limit / 1.03]]
                                              preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction* okButton = [UIAlertAction
                                            actionWithTitle:NSLocalizedString(@"ok", nil)
@@ -1715,12 +1715,12 @@ static NSString *sanitizeString(NSString *s)
     
 }
 
-- (void)amountViewController:(BRAmountViewController *)amountViewController shapeshiftBitcoinAmount:(uint64_t)amount approximateDashAmount:(uint64_t)dashAmount
+- (void)amountViewController:(BRAmountViewController *)amountViewController shapeshiftBitcoinAmount:(uint64_t)amount approximatePacAmount:(uint64_t)pacAmount
 {
     MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.navigationController.topViewController.view animated:YES];
     hud.label.text       = NSLocalizedString(@"Starting Shapeshift!", nil);
     
-    [self verifyShapeshiftAmountIsInBounds:dashAmount completionBlock:^{
+    [self verifyShapeshiftAmountIsInBounds:pacAmount completionBlock:^{
         //we know the exact amount of bitcoins we want to send
         BRWalletManager *m = [BRWalletManager sharedInstance];
         NSString * address = [NSString bitcoinAddressWithScriptPubKey:self.shapeshiftRequest.details.outputScripts.firstObject];
@@ -1755,8 +1755,8 @@ static NSString *sanitizeString(NSString *s)
                 
                 DSShapeshiftEntity * shapeshift = [DSShapeshiftEntity registerShapeshiftWithInputAddress:depositAddress andWithdrawalAddress:withdrawalAddress withStatus:eShapeshiftAddressStatus_Unused fixedAmountOut:depositAmountNumber amountIn:depositAmountNumber];
                 
-                BRPaymentRequest * request = [BRPaymentRequest requestWithString:[NSString stringWithFormat:@"dash:%@?amount=%llu&label=%@&message=Shapeshift to %@",depositAddress,depositAmount,sanitizeString(self.shapeshiftRequest.commonName),withdrawalAddress]];
-                [self confirmProtocolRequest:request.protocolRequest currency:@"dash" associatedShapeshift:shapeshift localCurrency:nil localCurrencyAmount:nil];
+                BRPaymentRequest * request = [BRPaymentRequest requestWithString:[NSString stringWithFormat:@"pac:%@?amount=%llu&label=%@&message=Shapeshift to %@",depositAddress,depositAmount,sanitizeString(self.shapeshiftRequest.commonName),withdrawalAddress]];
+                [self confirmProtocolRequest:request.protocolRequest currency:@"$PAC" associatedShapeshift:shapeshift localCurrency:nil localCurrencyAmount:nil];
             }
         }];
     } failureBlock:^{
@@ -1764,12 +1764,12 @@ static NSString *sanitizeString(NSString *s)
     }];
 }
 
-- (void)amountViewController:(BRAmountViewController *)amountViewController shapeshiftDashAmount:(uint64_t)amount
+- (void)amountViewController:(BRAmountViewController *)amountViewController shapeshiftPacAmount:(uint64_t)amount
 {
     MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.navigationController.topViewController.view animated:YES];
     hud.label.text       = NSLocalizedString(@"Starting Shapeshift!", nil);
     [self verifyShapeshiftAmountIsInBounds:amount completionBlock:^{
-        //we don't know the exact amount of bitcoins we want to send, we are just sending dash
+        //we don't know the exact amount of bitcoins we want to send, we are just sending $PAC
         BRWalletManager *m = [BRWalletManager sharedInstance];
         NSString * address = [NSString bitcoinAddressWithScriptPubKey:self.shapeshiftRequest.details.outputScripts.firstObject];
         NSString * returnAddress = m.wallet.receiveAddress;
@@ -1779,13 +1779,13 @@ static NSString *sanitizeString(NSString *s)
         
         if (shapeshift) {
             [hud hideAnimated:TRUE];
-            BRPaymentRequest * request = [BRPaymentRequest requestWithString:[NSString stringWithFormat:@"dash:%@?amount=%llu&label=%@&message=Shapeshift to %@",depositAddress,self.amount,sanitizeString(self.request.commonName),address]];
-            [self confirmProtocolRequest:request.protocolRequest currency:@"dash" associatedShapeshift:shapeshift localCurrency:nil localCurrencyAmount:nil];
+            BRPaymentRequest * request = [BRPaymentRequest requestWithString:[NSString stringWithFormat:@"pac:%@?amount=%llu&label=%@&message=Shapeshift to %@",depositAddress,self.amount,sanitizeString(self.request.commonName),address]];
+            [self confirmProtocolRequest:request.protocolRequest currency:@"$PAC" associatedShapeshift:shapeshift localCurrency:nil localCurrencyAmount:nil];
         } else {
             [[DSShapeshiftManager sharedInstance] POST_ShiftWithAddress:address returnAddress:returnAddress completionBlock:^(NSDictionary *shiftInfo, NSError *error) {
                 [hud hideAnimated:TRUE];
                 if (error) {
-                    NSLog(@"shapeshiftDashAmount Error %@",error);
+                    NSLog(@"shapeshiftPacAmount Error %@",error);
                     UIAlertController * alert = [UIAlertController
                                                  alertControllerWithTitle:NSLocalizedString(@"shapeshift failed", nil)
                                                  message:error.localizedDescription
@@ -1803,8 +1803,8 @@ static NSString *sanitizeString(NSString *s)
                 NSString * withdrawalAddress = shiftInfo[@"withdrawal"];
                 if (withdrawalAddress && depositAddress) {
                     DSShapeshiftEntity * shapeshift = [DSShapeshiftEntity registerShapeshiftWithInputAddress:depositAddress andWithdrawalAddress:withdrawalAddress withStatus:eShapeshiftAddressStatus_Unused];
-                    BRPaymentRequest * request = [BRPaymentRequest requestWithString:[NSString stringWithFormat:@"dash:%@?amount=%llu&label=%@&message=Shapeshift to %@",depositAddress,self.amount,sanitizeString(self.shapeshiftRequest.commonName),withdrawalAddress]];
-                    [self confirmProtocolRequest:request.protocolRequest currency:@"dash" associatedShapeshift:shapeshift localCurrency:nil localCurrencyAmount:nil];
+                    BRPaymentRequest * request = [BRPaymentRequest requestWithString:[NSString stringWithFormat:@"pac:%@?amount=%llu&label=%@&message=Shapeshift to %@",depositAddress,self.amount,sanitizeString(self.shapeshiftRequest.commonName),withdrawalAddress]];
+                    [self confirmProtocolRequest:request.protocolRequest currency:@"$PAC" associatedShapeshift:shapeshift localCurrency:nil localCurrencyAmount:nil];
                 }
             }];
         }

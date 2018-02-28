@@ -26,7 +26,7 @@
 #import "BRPaymentRequest.h"
 #import "BRPaymentProtocol.h"
 #import "NSString+Bitcoin.h"
-#import "NSString+Dash.h"
+#import "NSString+Pac.h"
 #import "NSMutableData+Bitcoin.h"
 
 // BIP21 bitcoin URI object https://github.com/bitcoin/bips/blob/master/bip-0021.mediawiki
@@ -87,9 +87,9 @@
         if ([s isValidBitcoinAddress] || [s isValidBitcoinPrivateKey]) {
             url = [NSURL URLWithString:[NSString stringWithFormat:@"bitcoin://%@", s]];
             self.scheme = @"bitcoin";
-        } else if ([s isValidDashAddress] || [s isValidDashPrivateKey] || [s isValidDashBIP38Key]) {
-            url = [NSURL URLWithString:[NSString stringWithFormat:@"dash://%@", s]];
-            self.scheme = @"dash";
+        } else if ([s isValidPacAddress] || [s isValidPacPrivateKey] || [s isValidPacBIP38Key]) {
+            url = [NSURL URLWithString:[NSString stringWithFormat:@"pac://%@", s]];
+            self.scheme = @"$PAC";
         }
     }
     else if (! url.host && url.resourceSpecifier) {
@@ -98,10 +98,10 @@
     } else if (url.scheme) {
         self.scheme = url.scheme;
     } else {
-        self.scheme = @"dash";
+        self.scheme = @"$PAC";
     }
     
-    if ([url.scheme isEqualToString:@"dash"] || [url.scheme isEqualToString:@"bitcoin"]) {
+    if ([url.scheme isEqualToString:@"$PAC"] || [url.scheme isEqualToString:@"bitcoin"]) {
         self.paymentAddress = url.host;
     
         //TODO: correctly handle unknown but required url arguments (by reporting the request invalid)
@@ -162,7 +162,7 @@
 
 - (NSString *)string
 {
-    if (! ([self.scheme isEqual:@"bitcoin"] || [self.scheme isEqual:@"dash"])) return self.r;
+    if (! ([self.scheme isEqual:@"bitcoin"] || [self.scheme isEqual:@"$PAC"])) return self.r;
 
     NSMutableString *s = [NSMutableString stringWithFormat:@"%@:",self.scheme];
     NSMutableArray *q = [NSMutableArray array];
@@ -233,8 +233,8 @@
 
 - (BOOL)isValid
 {
-    if ([self.scheme isEqualToString:@"dash"]) {
-        BOOL valid = ([self.paymentAddress isValidDashAddress] || (self.r && [NSURL URLWithString:self.r])) ? YES : NO;
+    if ([self.scheme isEqualToString:@"$PAC"]) {
+        BOOL valid = ([self.paymentAddress isValidPacAddress] || (self.r && [NSURL URLWithString:self.r])) ? YES : NO;
         if (!valid) {
             NSLog(@"Not a valid $PAC request");
         }
@@ -255,12 +255,12 @@
 - (BRPaymentProtocolRequest *)protocolRequest
 {
     static NSString *network = @"main";
-#if DASH_TESTNET
+#if PAC_TESTNET
     network = @"test";
 #endif
     NSData *name = [self.label dataUsingEncoding:NSUTF8StringEncoding];
     NSMutableData *script = [NSMutableData data];
-    if ([self.paymentAddress isValidDashAddress]) {
+    if ([self.paymentAddress isValidPacAddress]) {
         [script appendScriptPubKeyForAddress:self.paymentAddress];
     } else if ([self.paymentAddress isValidBitcoinAddress]) {
         [script appendBitcoinScriptPubKeyForAddress:self.paymentAddress];
@@ -291,7 +291,7 @@ completion:(void (^)(BRPaymentProtocolRequest *req, NSError *error))completion
 //  [req addValue:@"text/uri-list" forHTTPHeaderField:@"Accept"]; // breaks some BIP72 implementations, notably bitpay's
 
     if (! req) {
-        completion(nil, [NSError errorWithDomain:@"DashWallet" code:417
+        completion(nil, [NSError errorWithDomain:@"PacWallet" code:417
                          userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"bad payment request URL", nil)}]);
         return;
     }
@@ -306,7 +306,7 @@ completion:(void (^)(BRPaymentProtocolRequest *req, NSError *error))completion
         BRPaymentProtocolRequest *request = nil;
         NSString *network = @"main";
         
-#if DASH_TESTNET
+#if PAC_TESTNET
         network = @"test";
 #endif
         
@@ -325,12 +325,12 @@ completion:(void (^)(BRPaymentProtocolRequest *req, NSError *error))completion
         if (! request) {
             NSLog(@"unexpected response from %@:\n%@", req.URL.host,
                   [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-            completion(nil, [NSError errorWithDomain:@"DashWallet" code:417 userInfo:@{NSLocalizedDescriptionKey:
+            completion(nil, [NSError errorWithDomain:@"PacWallet" code:417 userInfo:@{NSLocalizedDescriptionKey:
                              [NSString stringWithFormat:NSLocalizedString(@"unexpected response from %@", nil),
                               req.URL.host]}]);
         }
         else if (! [request.details.network isEqual:network]) {
-            completion(nil, [NSError errorWithDomain:@"DashWallet" code:417 userInfo:@{NSLocalizedDescriptionKey:
+            completion(nil, [NSError errorWithDomain:@"PacWallet" code:417 userInfo:@{NSLocalizedDescriptionKey:
                              [NSString stringWithFormat:NSLocalizedString(@"requested network \"%@\" instead of \"%@\"",
                                                                           nil), request.details.network, network]}]);
         }
@@ -347,7 +347,7 @@ completion:(void (^)(BRPaymentProtocolACK *ack, NSError *error))completion
     
     if (! req) {
         if (completion) {
-            completion(nil, [NSError errorWithDomain:@"DashWallet" code:417
+            completion(nil, [NSError errorWithDomain:@"PacWallet" code:417
                              userInfo:@{NSLocalizedDescriptionKey:NSLocalizedString(@"bad payment URL", nil)}]);
         }
         
@@ -376,7 +376,7 @@ completion:(void (^)(BRPaymentProtocolACK *ack, NSError *error))completion
             NSLog(@"unexpected response from %@:\n%@", req.URL.host,
                   [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
             if (completion) {
-                completion(nil, [NSError errorWithDomain:@"DashWallet" code:417 userInfo:@{NSLocalizedDescriptionKey:
+                completion(nil, [NSError errorWithDomain:@"PacWallet" code:417 userInfo:@{NSLocalizedDescriptionKey:
                                  [NSString stringWithFormat:NSLocalizedString(@"unexpected response from %@", nil),
                                   req.URL.host]}]);
             }

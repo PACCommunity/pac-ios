@@ -1,6 +1,6 @@
 //
 //  DSShapeshiftManager.h
-//  DashWallet
+//  PacWallet
 //
 //  Created by Quantum Explorer on 7/14/15.
 //  Copyright (c) 2015 Aaron Voisine. All rights reserved.

@@ -12,30 +12,30 @@
 			<key>CFBundleTypeIconFiles</key>
 			<array/>
 			<key>CFBundleTypeName</key>
-			<string>Dash Payment Request</string>
+			<string>$PAC Payment Request</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>dash.paymentrequest</string>
+				<string>pac.paymentrequest</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeIconFiles</key>
 			<array/>
 			<key>CFBundleTypeName</key>
-			<string>Dash Payment</string>
+			<string>$PAC Payment</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>dash.payment</string>
+				<string>pac.payment</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeIconFiles</key>
 			<array/>
 			<key>CFBundleTypeName</key>
-			<string>Dash Payment ACK</string>
+			<string>$PAC Payment ACK</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>dash.paymentack</string>
+				<string>pac.paymentack</string>
 			</array>
 		</dict>
 	</array>
@@ -59,10 +59,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>dash</string>
+			<string>pac</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>dash</string>
+				<string>pac</string>
 			</array>
 		</dict>
 		<dict>
@@ -72,17 +72,17 @@
 			<string>org.paccoin.wallet</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>dashwallet</string>
+				<string>pacwallet</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>dashid</string>
+			<string>pacid</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>dashid</string>
+				<string>pacid</string>
 			</array>
 		</dict>
 	</array>
@@ -92,7 +92,7 @@
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>dashcontrol</string>
+		<string>paccontrol</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -140,13 +140,13 @@
 				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>Dash Payment Request</string>
+			<string>$PAC Payment Request</string>
 			<key>UTTypeIdentifier</key>
-			<string>dash.paymentrequest</string>
+			<string>pac.paymentrequest</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.mime-type</key>
-				<string>application/dash-paymentrequest</string>
+				<string>application/pac-paymentrequest</string>
 			</dict>
 		</dict>
 		<dict>
@@ -155,13 +155,13 @@
 				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>Dash Payment</string>
+			<string>$PAC Payment</string>
 			<key>UTTypeIdentifier</key>
-			<string>dash.payment</string>
+			<string>pac.payment</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.mime-type</key>
-				<string>application/dash-payment</string>
+				<string>application/pac-payment</string>
 			</dict>
 		</dict>
 		<dict>
@@ -170,13 +170,13 @@
 				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>Dash Payment ACK</string>
+			<string>$PAC Payment ACK</string>
 			<key>UTTypeIdentifier</key>
-			<string>dash.paymentack</string>
+			<string>pac.paymentack</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.mime-type</key>
-				<string>application/dash-paymentack</string>
+				<string>application/pac-paymentack</string>
 			</dict>
 		</dict>
 	</array>

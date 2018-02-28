@@ -1,9 +1,8 @@
 //
-//  NSData+Dash.m
+//  NSData+Pac.m
 //  BreadWallet
 //
 //  Created by Sam Westrich on 1/31/17.
-//  Copyright © 2017 Aaron Voisine. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +22,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "NSData+Dash.h"
+#import "NSData+Pac.h"
 #import "Blake.c"
 #import "Bmw.c"
 #import "CubeHash.c"
@@ -36,7 +35,7 @@
 #import "Simd.c"
 #import "Skein.c"
 
-@implementation NSData (Dash)
+@implementation NSData (Pac)
 
 -(UInt512)blake512{
     UInt512 blakeData;

@@ -1,15 +1,14 @@
 //
-//  NSData+Dash.h
+//  NSData+Pac.h
 //  BreadWallet
 //
 //  Created by Sam Westrich on 1/31/17.
-//  Copyright © 2017 Dash Foundation. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "IntTypes.h"
 
-@interface NSData (Dash)
+@interface NSData (Pac)
 
 -(UInt256)x11;
 -(UInt512)blake512;

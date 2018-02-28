@@ -26,17 +26,17 @@
 #import <Foundation/Foundation.h>
 
 
-#if DASH_TESTNET
-#define DASH_STANDARD_PORT          19999
+#if PAC_TESTNET
+#define PAC_STANDARD_PORT          19999
 #else
-#define DASH_STANDARD_PORT          9999
+#define PAC_STANDARD_PORT          9999
 #endif
 
 #define BITCOIN_TIMEOUT_CODE  1001
 
 #define SERVICES_NODE_NETWORK 0x01 // services value indicating a node carries full blocks, not just headers
 #define SERVICES_NODE_BLOOM   0x04 // BIP111: https://github.com/bitcoin/bips/blob/master/bip-0111.mediawiki
-#define USER_AGENT            [NSString stringWithFormat:@"/dashwallet:%@/",\
+#define USER_AGENT            [NSString stringWithFormat:@"/pacwallet:%@/",\
                                NSBundle.mainBundle.infoDictionary[@"CFBundleShortVersionString"]]
 
 #define WEEK_TIME_INTERVAL 604800 //7*24*60*60

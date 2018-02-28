@@ -31,8 +31,8 @@
 #import "NSString+Bitcoin.h"
 #import "NSData+Bitcoin.h"
 #import "BREventManager.h"
-#import "NSString+Dash.h"
-#import "NSData+Dash.h"
+#import "NSString+Pac.h"
+#import "NSData+Pac.h"
 
 #define TRANSACTION_CELL_HEIGHT 75
 
@@ -137,7 +137,7 @@
         else if ([manager.wallet containsAddress:address]) {
             if (self.sent == 0 || self.received == self.sent) {
                 [text addObject:address];
-#if DASH_TESTNET
+#if PAC_TESTNET
                 NSUInteger purpose = [manager.wallet addressPurpose:address];
                 if (purpose == 44) {
                     [detail addObject:@"wallet address (BIP44)"];
@@ -295,14 +295,14 @@
                     localCurrencyLabel = (id)[cell viewWithTag:5];
 
                     if (self.sent > 0 && self.sent == self.received) {
-                        textLabel.attributedText = [manager attributedStringForDashAmount:self.sent];
+                        textLabel.attributedText = [manager attributedStringForPacAmount:self.sent];
                         localCurrencyLabel.text = [NSString stringWithFormat:@"(%@)",
-                                                   [manager localCurrencyStringForDashAmount:self.sent]];
+                                                   [manager localCurrencyStringForPacAmount:self.sent]];
                     }
                     else {
-                        textLabel.attributedText = [manager attributedStringForDashAmount:self.received - self.sent];
+                        textLabel.attributedText = [manager attributedStringForPacAmount:self.received - self.sent];
                         localCurrencyLabel.text = [NSString stringWithFormat:@"(%@)",
-                                                   [manager localCurrencyStringForDashAmount:self.received - self.sent]];
+                                                   [manager localCurrencyStringForPacAmount:self.received - self.sent]];
                     }
                     
                     break;
@@ -352,9 +352,9 @@
                                                    [manager localCurrencyStringForBitcoinAmount:[self.outputAmount[indexPath.row]
                                                                                            longLongValue]]];
                     } else {
-                        amountLabel.attributedText = [manager attributedStringForDashAmount:[self.outputAmount[indexPath.row] longLongValue] withTintColor:amountLabel.textColor dashSymbolSize:CGSizeMake(9, 9)];
+                        amountLabel.attributedText = [manager attributedStringForPacAmount:[self.outputAmount[indexPath.row] longLongValue] withTintColor:amountLabel.textColor pacSymbolSize:CGSizeMake(9, 9)];
                         localCurrencyLabel.text = [NSString stringWithFormat:@"(%@)",
-                                                   [manager localCurrencyStringForDashAmount:[self.outputAmount[indexPath.row]
+                                                   [manager localCurrencyStringForPacAmount:[self.outputAmount[indexPath.row]
                                                                                         longLongValue]]];
                     }
                     localCurrencyLabel.textColor = amountLabel.textColor;
@@ -373,7 +373,7 @@
                 amountLabel.text = nil;
                 localCurrencyLabel.text = nil;
                 
-#if DASH_TESTNET
+#if PAC_TESTNET
                 if ([manager.wallet containsAddress:self.inputAddresses[indexPath.row]]) {
                     NSUInteger purpose = [manager.wallet addressPurpose:self.inputAddresses[indexPath.row]];
                     if (purpose == 44) {

@@ -1,9 +1,8 @@
 //
 //  NSAttributedString+Attachments.h
-//  DashWallet
+//  PacWallet
 //
-//  Created by Quantum Explorer on 8/13/15.
-//  Copyright (c) 2015 Aaron Voisine. All rights reserved.
+//  Created by Chase Gray on 2/28/2018
 //
 
 #import <Foundation/Foundation.h>

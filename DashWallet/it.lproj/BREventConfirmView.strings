@@ -1,6 +1,6 @@
 
-/* Class = "UILabel"; text = "Help us improve dashwallet!"; ObjectID = "Mgm-wb-UlM"; */
-"Mgm-wb-UlM.text" = "Aiutaci a migliorare il portafoglio dash!";
+/* Class = "UILabel"; text = "Help us improve pacwallet!"; ObjectID = "Mgm-wb-UlM"; */
+"Mgm-wb-UlM.text" = "Aiutaci a migliorare il portafoglio pac!";
 
 /* Class = "UIButton"; normalTitle = "No Thanks"; ObjectID = "Tw0-s4-w0k"; */
 "Tw0-s4-w0k.normalTitle" = "No Grazie";

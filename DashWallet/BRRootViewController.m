@@ -40,7 +40,7 @@
 #import "BREventManager.h"
 #import "BREventConfirmView.h"
 #import "Reachability.h"
-#import "NSString+Dash.h"
+#import "NSString+Pac.h"
 #import <WebKit/WebKit.h>
 #import <LocalAuthentication/LocalAuthentication.h>
 #import <sys/stat.h>
@@ -50,7 +50,7 @@
 
 #define BALANCE_TIP NSLocalizedString(@"This is your $PAC balance. $PAC is a currency. "\
 "The exchange rate changes with the market.", nil)
-#define MDASH_TIP    NSLocalizedString(@"%@ is for 'mDASH'. %@ = 1 DASH.", nil)
+#define MPAC_TIP    NSLocalizedString(@"%@ is for 'm$PAC'. %@ = 1 $PAC.", nil)
 
 #define BACKUP_DIALOG_TIME_KEY @"BACKUP_DIALOG_TIME"
 #define BALANCE_KEY            @"BALANCE"
@@ -219,7 +219,7 @@
                                                                                             alertControllerWithTitle:NSLocalizedString(@"WARNING", nil)
                                                                                             message:NSLocalizedString(@"DEVICE SECURITY COMPROMISED\n"
                                                                                                                       "Any 'jailbreak' app can access any other app's keychain data "
-                                                                                                                      "(and steal your dash). "
+                                                                                                                      "(and steal your $PAC). "
                                                                                                                       "Wipe this wallet immediately and restore on a secure device.", nil)
                                                                                             preferredStyle:UIAlertControllerStyleAlert];
                                                                UIAlertAction* ignoreButton = [UIAlertAction
@@ -247,7 +247,7 @@
                                                                                             alertControllerWithTitle:NSLocalizedString(@"WARNING", nil)
                                                                                             message:NSLocalizedString(@"DEVICE SECURITY COMPROMISED\n"
                                                                                                                       "Any 'jailbreak' app can access any other app's keychain data "
-                                                                                                                      "(and steal your dash).", nil)
+                                                                                                                      "(and steal your $PAC).", nil)
                                                                                             preferredStyle:UIAlertControllerStyleAlert];
                                                                UIAlertAction* ignoreButton = [UIAlertAction
                                                                                               actionWithTitle:NSLocalizedString(@"ignore", nil)
@@ -375,7 +375,7 @@
     
     self.navigationController.delegate = self;
     
-#if DASH_TESTNET
+#if PAC_TESTNET
     UILabel *label = [UILabel new];
     
     label.font = [UIFont systemFontOfSize:13.0 weight:UIFontWeightLight];
@@ -426,7 +426,7 @@
                                      alertControllerWithTitle:NSLocalizedString(@"WARNING", nil)
                                      message:NSLocalizedString(@"DEVICE SECURITY COMPROMISED\n"
                                                                "Any 'jailbreak' app can access any other app's keychain data "
-                                                               "(and steal your dash). "
+                                                               "(and steal your $PAC). "
                                                                "Wipe this wallet immediately and restore on a secure device.", nil)
                                      preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction* ignoreButton = [UIAlertAction
@@ -454,7 +454,7 @@
                                      alertControllerWithTitle:NSLocalizedString(@"WARNING", nil)
                                      message:NSLocalizedString(@"DEVICE SECURITY COMPROMISED\n"
                                                                "Any 'jailbreak' app can access any other app's keychain data "
-                                                               "(and steal your dash).", nil)
+                                                               "(and steal your $PAC).", nil)
                                      preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction* ignoreButton = [UIAlertAction
                                        actionWithTitle:NSLocalizedString(@"ignore", nil)
@@ -517,14 +517,14 @@
     self.protectedObserver = nil;
     
     if ([defs integerForKey:SETTINGS_MAX_DIGITS_KEY] == 5) {
-        manager.dashFormat.currencySymbol = @"m" BTC NARROW_NBSP;
-        manager.dashFormat.maximumFractionDigits = 5;
-        manager.dashFormat.maximum = @((MAX_MONEY/DUFFS)*1000);
+        manager.pacFormat.currencySymbol = @"m" BTC NARROW_NBSP;
+        manager.pacFormat.maximumFractionDigits = 5;
+        manager.pacFormat.maximum = @((MAX_MONEY/DUFFS)*1000);
     }
     else if ([defs integerForKey:SETTINGS_MAX_DIGITS_KEY] == 8) {
-        manager.dashFormat.currencySymbol = BTC NARROW_NBSP;
-        manager.dashFormat.maximumFractionDigits = 8;
-        manager.dashFormat.maximum = @(MAX_MONEY/DUFFS);
+        manager.pacFormat.currencySymbol = BTC NARROW_NBSP;
+        manager.pacFormat.maximumFractionDigits = 8;
+        manager.pacFormat.maximum = @(MAX_MONEY/DUFFS);
     }
     
     if (manager.noWallet && manager.noOldWallet) {
@@ -565,7 +565,7 @@
                 if (cancelled) {
                     alert = [UIAlertController
                              alertControllerWithTitle:NSLocalizedString(@"failed wallet update", nil)
-                             message:NSLocalizedString(@"you must enter your pin in order to enter dashwallet", nil)
+                             message:NSLocalizedString(@"you must enter your pin in order to enter pacwallet", nil)
                              preferredStyle:UIAlertControllerStyleAlert];
                     UIAlertAction* exitButton = [UIAlertAction
                                                  actionWithTitle:NSLocalizedString(@"exit", nil)
@@ -774,8 +774,8 @@
     
     if (balance > _balance && [UIApplication sharedApplication].applicationState != UIApplicationStateBackground) {
         [self.view addSubview:[[[BRBubbleView viewWithText:[NSString
-                                                            stringWithFormat:NSLocalizedString(@"received %@ (%@)", nil), [manager stringForDashAmount:balance - _balance],
-                                                            [manager localCurrencyStringForDashAmount:balance - _balance]]
+                                                            stringWithFormat:NSLocalizedString(@"received %@ (%@)", nil), [manager stringForPacAmount:balance - _balance],
+                                                            [manager localCurrencyStringForPacAmount:balance - _balance]]
                                                     center:CGPointMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2)] popIn]
                                popOutAfterDelay:3.0]];
         [self ping];
@@ -797,22 +797,22 @@
     titleLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [titleLabel setBackgroundColor:[UIColor clearColor]];
-    NSMutableAttributedString * attributedDashString = [[manager attributedStringForDashAmount:manager.wallet.balance withTintColor:[UIColor whiteColor] useSignificantDigits:TRUE] mutableCopy];
+    NSMutableAttributedString * attributedPacString = [[manager attributedStringForPacAmount:manager.wallet.balance withTintColor:[UIColor whiteColor] useSignificantDigits:TRUE] mutableCopy];
     NSString * titleString = [NSString stringWithFormat:@" (%@)",
-                              [manager localCurrencyStringForDashAmount:manager.wallet.balance]];
-    [attributedDashString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
-    titleLabel.attributedText = attributedDashString;
+                              [manager localCurrencyStringForPacAmount:manager.wallet.balance]];
+    [attributedPacString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
+    titleLabel.attributedText = attributedPacString;
     return titleLabel;
 }
 
 -(void)updateTitleView {
     if (self.navigationItem.titleView && [self.navigationItem.titleView isKindOfClass:[UILabel class]]) {
         BRWalletManager *manager = [BRWalletManager sharedInstance];
-        NSMutableAttributedString * attributedDashString = [[manager attributedStringForDashAmount:manager.wallet.balance withTintColor:[UIColor whiteColor] useSignificantDigits:TRUE] mutableCopy];
+        NSMutableAttributedString * attributedPacString = [[manager attributedStringForPacAmount:manager.wallet.balance withTintColor:[UIColor whiteColor] useSignificantDigits:TRUE] mutableCopy];
         NSString * titleString = [NSString stringWithFormat:@" (%@)",
-                                  [manager localCurrencyStringForDashAmount:manager.wallet.balance]];
-        [attributedDashString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
-        ((UILabel*)self.navigationItem.titleView).attributedText = attributedDashString;
+                                  [manager localCurrencyStringForPacAmount:manager.wallet.balance]];
+        [attributedPacString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
+        ((UILabel*)self.navigationItem.titleView).attributedText = attributedPacString;
         [((UILabel*)self.navigationItem.titleView) sizeToFit];
     } else {
         self.navigationItem.titleView = [self titleLabel];
@@ -993,7 +993,7 @@
     
     [defs setDouble:now forKey:BACKUP_DIALOG_TIME_KEY];
     UIAlertController * alert = [UIAlertController
-                                 alertControllerWithTitle:(first) ? NSLocalizedString(@"you received dash!", nil) : NSLocalizedString(@"IMPORTANT", nil)
+                                 alertControllerWithTitle:(first) ? NSLocalizedString(@"you received $PAC!", nil) : NSLocalizedString(@"IMPORTANT", nil)
                                  message:[NSString stringWithFormat:NSLocalizedString(@"\n%@\n\nif you ever lose your phone, you will need it to "
                                                                                       "recover your wallet", nil),
                                           (first) ? NSLocalizedString(@"next, write down your recovery phrase", nil) :
@@ -1043,11 +1043,11 @@
     if ([tipView.text hasPrefix:BALANCE_TIP]) {
         BRWalletManager *m = [BRWalletManager sharedInstance];
         UINavigationBar *b = self.navigationController.navigationBar;
-        NSString *text = [NSString stringWithFormat:MDASH_TIP, m.dashFormat.currencySymbol, [m stringForDashAmount:DUFFS]];
+        NSString *text = [NSString stringWithFormat:MPAC_TIP, m.pacFormat.currencySymbol, [m stringForPacAmount:DUFFS]];
         CGRect r = [self.navigationItem.title boundingRectWithSize:b.bounds.size options:0
                                                         attributes:b.titleTextAttributes context:nil];
         
-        self.tipView = [BRBubbleView viewWithAttributedText:[text attributedStringForDashSymbolWithTintColor:[UIColor whiteColor] dashSymbolSize:CGSizeMake(13, 11)]
+        self.tipView = [BRBubbleView viewWithAttributedText:[text attributedStringForPacSymbolWithTintColor:[UIColor whiteColor] pacSymbolSize:CGSizeMake(13, 11)]
                                                    tipPoint:CGPointMake(b.center.x + 5.0 - r.size.width/2.0,
                                                                         b.frame.origin.y + b.frame.size.height - 10)
                                                tipDirection:BRBubbleTipDirectionUp];
@@ -1088,8 +1088,8 @@
     else {
         UINavigationBar *b = self.navigationController.navigationBar;
         NSString *tip;
-        if (manager.bitcoinDashPrice) {
-            tip = (self.shouldShowTips) ? [NSString stringWithFormat:@"%@ \n 1%@ = %.4f%@ (%@)",BALANCE_TIP_START,DASH,manager.bitcoinDashPrice.doubleValue,BTC,[manager localCurrencyStringForDashAmount:DUFFS]] :
+        if (manager.bitcoinPacPrice) {
+            tip = (self.shouldShowTips) ? [NSString stringWithFormat:@"%@ \n 1%@ = %.4f%@ (%@)",BALANCE_TIP_START,PAC,manager.bitcoinPacPrice.doubleValue,BTC,[manager localCurrencyStringForPacAmount:DUFFS]] :
             [NSString stringWithFormat:NSLocalizedString(@"block #%d of %d", nil),
              [[BRPeerManager sharedInstance] lastBlockHeight],
              [[BRPeerManager sharedInstance] estimatedBlockHeight]];
@@ -1102,10 +1102,10 @@
         NSMutableAttributedString *attributedTip = [[NSMutableAttributedString alloc]
                                                     initWithString:[tip stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
         
-        NSRange range = [attributedTip.string rangeOfString:DASH options:NSBackwardsSearch];
+        NSRange range = [attributedTip.string rangeOfString:PAC options:NSBackwardsSearch];
         if (range.length != 0)
             [attributedTip replaceCharactersInRange:range
-                               withAttributedString:[NSString dashSymbolAttributedStringWithTintColor:[UIColor whiteColor] forDashSymbolSize:CGSizeMake(13, 11)]];
+                               withAttributedString:[NSString pacSymbolAttributedStringWithTintColor:[UIColor whiteColor] forPacSymbolSize:CGSizeMake(13, 11)]];
         self.tipView = [BRBubbleView viewWithAttributedText:attributedTip
                                                    tipPoint:CGPointMake(b.center.x, b.frame.origin.y + b.frame.size.height - 10)
                                                tipDirection:BRBubbleTipDirectionUp];
@@ -1173,9 +1173,9 @@
     // display the popup
     __weak BREventConfirmView *view =
     [[NSBundle mainBundle] loadNibNamed:@"BREventConfirmView" owner:nil options:nil][0];
-    view.titleLabel.text = NSLocalizedString(@"Buy dash in dashwallet!", nil);
+    view.titleLabel.text = NSLocalizedString(@"Buy $PAC in pacwallet!", nil);
     view.descriptionLabel.text =
-    NSLocalizedString(@"You can now buy dash in\ndashwallet with cash or\nbank transfer.", nil);
+    NSLocalizedString(@"You can now buy $PAC in\npacwallet with cash or\nbank transfer.", nil);
     [view.okBtn setTitle:NSLocalizedString(@"Try It!", nil) forState:UIControlStateNormal];
     
     view.image = blurredBgImg;

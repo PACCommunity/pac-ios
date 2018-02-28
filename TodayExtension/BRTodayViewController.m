@@ -29,8 +29,8 @@
 #import "UIImage+Utils.h"
 #import <NotificationCenter/NotificationCenter.h>
 
-#define SCAN_URL @"dashwallet://x-callback-url/scanqr"
-#define OPEN_URL @"dashwallet://"
+#define SCAN_URL @"pacwallet://x-callback-url/scanqr"
+#define OPEN_URL @"pacwallet://"
 
 @interface BRTodayViewController () <NCWidgetProviding>
 
