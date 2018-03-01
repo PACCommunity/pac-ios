@@ -27,9 +27,9 @@
 
 
 #if PAC_TESTNET
-#define PAC_STANDARD_PORT          19999
+#define PAC_STANDARD_PORT          17112
 #else
-#define PAC_STANDARD_PORT          9999
+#define PAC_STANDARD_PORT          7112
 #endif
 
 #define BITCOIN_TIMEOUT_CODE  1001

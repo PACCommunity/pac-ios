@@ -25,8 +25,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#define PAC_PUBKEY_ADDRESS      76
-#define PAC_SCRIPT_ADDRESS      16
+#define PAC_PUBKEY_ADDRESS      55
+#define PAC_SCRIPT_ADDRESS      10
 #define PAC_PUBKEY_ADDRESS_TEST 140
 #define PAC_SCRIPT_ADDRESS_TEST 19
 #define PAC_PRIVKEY             204

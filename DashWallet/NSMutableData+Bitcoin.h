@@ -26,9 +26,9 @@
 #import <Foundation/Foundation.h>
 
 #if PAC_TESTNET
-#define PAC_MAGIC_NUMBER 0xffcae2ce
+#define PAC_MAGIC_NUMBER 0x9b2ffae3
 #else
-#define PAC_MAGIC_NUMBER 0xbd6b0cbf
+#define PAC_MAGIC_NUMBER 0x2c61e5c8
 #endif
 
 CF_IMPLICIT_BRIDGING_ENABLED
