@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13771" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13770" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13756"/>
     </dependencies>
     <scenes>
@@ -161,14 +161,14 @@
                                 <group width="1" height="16" alignment="left" id="ji2-0e-p5R" userLabel="Padding to hide page indicator"/>
                                 <group width="1" height="40" alignment="left" radius="0.0" spacing="0.0" id="RPA-uN-IAO" userLabel="Background group">
                                     <items>
-                                        <group width="1" height="0.69999999999999996" alignment="center" verticalAlignment="center" radius="0.0" id="c7y-lI-ffn">
+                                        <group width="1" height="0.69999999999999996" alignment="center" verticalAlignment="center" radius="6" id="c7y-lI-ffn">
                                             <items>
                                                 <label alignment="center" verticalAlignment="center" text="Transactions" id="r80-H8-ngA">
-                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                     <fontDescription key="font" type="system" pointSize="14"/>
                                                 </label>
                                             </items>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.14730164007092197" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.94901960780000005" green="0.92156862750000001" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </group>
                                     </items>
                                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
@@ -185,7 +185,7 @@
                                                     <group width="1" height="20" alignment="left" spacing="0.0" id="MaL-Zz-53G" userLabel="Top Container">
                                                         <items>
                                                             <imageView width="14" height="14" alignment="left" verticalAlignment="center" image="SentMoneyIcon" contentMode="scaleAspectFill" id="aCP-8g-nh2" userLabel="Status icon"/>
-                                                            <label alignment="right" verticalAlignment="center" text="ƀ14,659" minimumScaleFactor="0.5" id="PXD-22-aMP" userLabel="Amount label">
+                                                            <label alignment="right" verticalAlignment="center" text="14,659" minimumScaleFactor="0.5" id="PXD-22-aMP" userLabel="Amount label">
                                                                 <fontDescription key="font" type="system" pointSize="14"/>
                                                                 <attributedString key="userComments">
                                                                     <fragment content="#bc-ignore!">
@@ -295,7 +295,7 @@
                     <items>
                         <group width="1" height="0.20000000000000001" alignment="left" id="7tF-UO-81W">
                             <items>
-                                <label width="1" widthAdjustment="-30" height="1" alignment="left" text="Đ0.00" textAlignment="right" baselineAdjustment="alignCenters" minimumScaleFactor="0.5" id="dp3-9o-r55">
+                                <label width="1" widthAdjustment="-30" height="1" alignment="left" text="0.00" textAlignment="right" baselineAdjustment="alignCenters" minimumScaleFactor="0.5" id="dp3-9o-r55">
                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="font" type="system" weight="semibold" pointSize="20"/>
                                     <attributedString key="userComments">
