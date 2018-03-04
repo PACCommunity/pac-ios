@@ -61,7 +61,7 @@
     UIPageControl.appearance.pageIndicatorTintColor = [UIColor lightGrayColor];
     UIPageControl.appearance.currentPageIndicatorTintColor = [UIColor blueColor];
     
-    UIImage * tabBarImage = [[UIImage imageNamed:@"tab-bar-dash"]
+    UIImage * tabBarImage = [[UIImage imageNamed:@"tab-bar-dash2"]
      resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0) resizingMode:UIImageResizingModeStretch];
     [[UINavigationBar appearance] setBackgroundImage:tabBarImage forBarMetrics:UIBarMetricsDefault];
 

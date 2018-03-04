@@ -508,6 +508,8 @@ static NSString *dateFormat(NSString *template)
                 cell.textLabel.text = (indexPath.row > 0) ? NSLocalizedString(@"more...", nil) :
                                       NSLocalizedString(@"transaction history", nil);
                 cell.imageView.image = nil;
+//                cell.textLabel.textColor = [UIColor whiteColor];//colorWithRed:0.0f/255.0f green:122.0f/255.0f blue:255.0f/255.0f alpha:1.0f];
+//                cell.tintColor = UIColor.whiteColor;
             }
             else if (self.transactions.count > 0) {
                 cell = [tableView dequeueReusableCellWithIdentifier:transactionIdent];
@@ -591,7 +593,7 @@ static NSString *dateFormat(NSString *template)
                     localCurrencyLabel.text = [NSString stringWithFormat:@"(%@)",
                                                [manager localCurrencyStringForPacAmount:received]];
                     sentLabel.text = NSLocalizedString(@"received", nil);
-                    sentLabel.textColor = [UIColor colorWithRed:255.0 green:255.75 blue:255.0 alpha:1.0];
+//                    sentLabel.textColor = [UIColor colorWithRed:255.0 green:255.75 blue:255.0 alpha:1.0];
                 }
 
                 if (! unconfirmedLabel.hidden) {
@@ -623,6 +625,7 @@ static NSString *dateFormat(NSString *template)
                 case 1:
                     cell.textLabel.text = NSLocalizedString(@"import private key", nil);
                     cell.imageView.image = [UIImage imageNamed:@"cameraguide-blue-small"];
+//                    cell.textLabel.textColor = [UIColor whiteColor];
                     break;
 
                 case 2:

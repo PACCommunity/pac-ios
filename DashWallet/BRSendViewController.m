@@ -85,6 +85,7 @@ static NSString *sanitizeString(NSString *s)
 @property (nonatomic, strong) IBOutlet UILabel * shapeshiftLabel;
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint * NFCWidthConstraint;
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint * leftOfNFCButtonWhitespaceConstraint;
+@property (strong, nonatomic) IBOutlet UIView *topBlackArea;
 
 @end
 
@@ -102,6 +103,10 @@ static NSString *sanitizeString(NSString *s)
     self.clipboardButton.layer.borderWidth = 1.0;
     self.scanButton.layer.cornerRadius = 0.15 * self.scanButton.bounds.size.height;
     self.scanButton.layer.borderWidth = 1.0;
+    self.topBlackArea.layer.cornerRadius = 0.05 * self.topBlackArea.bounds.size.width;
+//    self.instantSwitch.layer.borderWidth = 1.2;
+//    self.instantSwitch.layer.cornerRadius = 0.28 * self.instantSwitch.bounds.size.width;
+    
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     self.scanButton.titleLabel.adjustsLetterSpacingToFitWidth = YES;

@@ -80,7 +80,7 @@
     titleLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
     [titleLabel setBackgroundColor:[UIColor clearColor]];
     [titleLabel setText:(self.navigationController.viewControllers.firstObject != self)?NSLocalizedString(@"recovery phrase",@"recovery phrase"):NSLocalizedString(@"confirm",@"confirm")];
-    [titleLabel setTextColor:[UIColor blackColor]];
+    [titleLabel setTextColor:[UIColor whiteColor]];
     self.navigationItem.titleView = titleLabel;
 }
 
