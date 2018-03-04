@@ -28,6 +28,8 @@
     // Do any additional setup after loading the view.
     
     self.generateButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.generateButton.layer.cornerRadius = 0.15 * self.generateButton.bounds.size.height;
+    self.generateButton.layer.borderWidth = 1.0;
     
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
@@ -57,7 +59,7 @@
                      withString:NSLocalizedString(@"\nNEVER type your recovery phrase into\npassword managers or elsewhere.\n"
                                                   "Other devices may be infected.\n", nil)];
     self.warningLabel.attributedText = s;
-    //self.generateButton.superview.backgroundColor = [UIColor clearColor];
+    self.navigationController.navigationBar.tintColor = UIColor.whiteColor;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,7 +83,7 @@
                                    handler:^(UIAlertAction * action) {
                                    }];
         [alert addAction:okButton];
-        [self presentViewController:alert animated:YES completion:nil];
+        [self presentViewController:alert animated:NO completion:nil];
         return;
     }
     

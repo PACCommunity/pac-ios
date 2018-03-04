@@ -122,7 +122,7 @@
     _selectorController.transitioningDelegate = self.navigationController.viewControllers.firstObject;
     _selectorController.tableView.dataSource = self;
     _selectorController.tableView.delegate = self;
-    _selectorController.tableView.backgroundColor = [UIColor clearColor];
+    _selectorController.tableView.backgroundColor = [UIColor whiteColor];
     return _selectorController;
 }
 
@@ -343,7 +343,7 @@
         
         if ([self.selectedOption isEqual:self.selectorOptions[indexPath.row]]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            cell.tintColor = UIColor.whiteColor;
+            cell.tintColor = UIColor.blackColor;
         }
         else cell.accessoryType = UITableViewCellAccessoryNone;
         

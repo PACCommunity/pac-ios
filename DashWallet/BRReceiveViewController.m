@@ -55,6 +55,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *label;
 @property (nonatomic, strong) IBOutlet UIButton *addressButton;
 @property (nonatomic, strong) IBOutlet UIImageView *qrView;
+@property (strong, nonatomic) IBOutlet UIView *TopBlackArea;
 
 @end
 
@@ -63,7 +64,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.TopBlackArea.layer.cornerRadius = 0.05 * self.TopBlackArea.bounds.size.width;
     BRWalletManager *manager = [BRWalletManager sharedInstance];
     BRPaymentRequest *req;
 

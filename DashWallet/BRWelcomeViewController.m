@@ -179,7 +179,7 @@
     
     UIViewController *c = [self.storyboard instantiateViewControllerWithIdentifier:@"GenerateViewController"];
     
-    [self.navigationController pushViewController:c animated:YES];
+    [self.navigationController pushViewController:c animated:NO];
 }
 
 - (IBAction)recover:(id)sender
@@ -188,7 +188,7 @@
 
     UIViewController *c = [self.storyboard instantiateViewControllerWithIdentifier:@"RecoverViewController"];
 
-    [self.navigationController pushViewController:c animated:YES];
+    [self.navigationController pushViewController:c animated:NO];
 }
 
 // MARK: UIViewControllerAnimatedTransitioning
