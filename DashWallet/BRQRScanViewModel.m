@@ -311,7 +311,7 @@ static NSTimeInterval const kResumeSearchTimeInterval = 1.0;
                              }
                              else {
                                  NSString *errorMessage = nil;
-                                 if (([request.scheme isEqual:@"$PAC"] && request.paymentAddress.length > 1) ||
+                                 if (([request.scheme isEqual:@"pac"] && request.paymentAddress.length > 1) ||
                                      [request.paymentAddress hasPrefix:@"X"] || [request.paymentAddress hasPrefix:@"7"]) {
                                      errorMessage = [NSString stringWithFormat:@"%@:\n%@",
                                                      NSLocalizedString(@"not a valid $PAC address", nil),
