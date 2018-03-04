@@ -64,8 +64,8 @@
 #define CURRENCY_NAMES_KEY      @"CURRENCY_NAMES"
 #define CURRENCY_PRICES_KEY     @"CURRENCY_PRICES"
 #define POLONIEX_PAC_BTC_PRICE_KEY  @"POLONIEX_$PAC_BTC_PRICE"
-#define BREAKCRYPTO_PAC_USD_PRICE_KEY @"BREAKCRYPTO_$PAC_USD_PRICE"
-#define BREAKCRYPTO_PAC_USD_UPDATE_TIME_KEY @"BREAKCRYPTO_PAC_USD_UPDATE_TIME_KEY"
+#define BREAKCRYPTO_PAC_BTC_PRICE_KEY @"BREAKCRYPTO_$PAC_BTC_PRICE"
+#define BREAKCRYPTO_PAC_BTC_UPDATE_TIME_KEY @"BREAKCRYPTO_PAC_BTC_UPDATE_TIME_KEY"
 #define POLONIEX_PAC_BTC_UPDATE_TIME_KEY  @"POLONIEX_$PAC_BTC_UPDATE_TIME"
 #define DASHCENTRAL_DASH_BTC_PRICE_KEY @"DASHCENTRAL_DASH_BTC_PRICE"
 #define DASHCENTRAL_DASH_BTC_UPDATE_TIME_KEY @"DASHCENTRAL_DASH_BTC_UPDATE_TIME"
@@ -1246,16 +1246,9 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
     if (_bitcoinPacPrice.doubleValue == 0) {
         NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
         
-        double poloniexPrice = [[defs objectForKey:POLONIEX_PAC_BTC_PRICE_KEY] doubleValue];
-        double paccentralPrice = [[defs objectForKey:DASHCENTRAL_DASH_BTC_PRICE_KEY] doubleValue];
-        if (poloniexPrice > 0) {
-            if (paccentralPrice > 0) {
-                _bitcoinPacPrice = @((poloniexPrice + paccentralPrice)/2.0);
-            } else {
-                _bitcoinPacPrice = @(poloniexPrice);
-            }
-        } else if (paccentralPrice > 0) {
-            _bitcoinPacPrice = @(paccentralPrice);
+        double breakCryptoPrice = [[defs objectForKey:BREAKCRYPTO_PAC_BTC_PRICE_KEY] doubleValue];
+        if (breakCryptoPrice > 0) {
+            _bitcoinPacPrice = @(breakCryptoPrice);
         }
     }
     return _bitcoinPacPrice;
@@ -1263,17 +1256,10 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
 
 - (void)refreshBitcoinPacPrice{
     NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
-    double poloniexPrice = [[defs objectForKey:POLONIEX_PAC_BTC_PRICE_KEY] doubleValue];
-    double paccentralPrice = [[defs objectForKey:DASHCENTRAL_DASH_BTC_PRICE_KEY] doubleValue];
+    double breakCryptoPrice = [[defs objectForKey:BREAKCRYPTO_PAC_BTC_PRICE_KEY] doubleValue];
     NSNumber * newPrice = 0;
-    if (poloniexPrice > 0) {
-        if (paccentralPrice > 0) {
-            newPrice = @((poloniexPrice + paccentralPrice)/2.0);
-        } else {
-            newPrice = @(poloniexPrice);
-        }
-    } else if (paccentralPrice > 0) {
-        newPrice = @(paccentralPrice);
+    if (breakCryptoPrice > 0) {
+        newPrice = @(breakCryptoPrice);
     }
     
     if (! _wallet ) return;
@@ -1317,40 +1303,18 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
                                          NSLocale *usa = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
                                          numberFormatter.locale = usa;
                                          numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-                                         NSString* priceString = [json objectForKey:@"Price"];
+                                         
+                                         NSString* priceString = [json objectForKey:@"btc"];
                                          if (priceString) {
-                                             NSNumber *lastTradePriceNumber = [numberFormatter numberFromString:priceString];
-                                             
+                                             NSNumber *lastTradePriceNumber = @([priceString floatValue]);
                                              NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
-                                             [defs setObject:lastTradePriceNumber forKey:BREAKCRYPTO_PAC_USD_PRICE_KEY];
-                                             [defs setObject:[NSDate date] forKey:BREAKCRYPTO_PAC_USD_UPDATE_TIME_KEY];
+                                             [defs setObject:lastTradePriceNumber forKey:BREAKCRYPTO_PAC_BTC_PRICE_KEY];
+                                             [defs setObject:[NSDate date] forKey:BREAKCRYPTO_PAC_BTC_UPDATE_TIME_KEY];
                                              [defs synchronize];
                                              [self refreshBitcoinPacPrice];
                                          }
-
-//
-//                                         NSArray * asks = [json objectForKey:@"asks"];
-//                                         NSArray * bids = [json objectForKey:@"bids"];
-//                                         if ([asks count] && [bids count] && [[asks objectAtIndex:0] count] && [[bids objectAtIndex:0] count]) {
-//                                             NSString * lastTradePriceStringAsks = [[asks objectAtIndex:0] objectAtIndex:0];
-//                                             NSString * lastTradePriceStringBids = [[bids objectAtIndex:0] objectAtIndex:0];
-//                                             if (lastTradePriceStringAsks && lastTradePriceStringBids) {
-//                                                 NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-//                                                 NSLocale *usa = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-//                                                 numberFormatter.locale = usa;
-//                                                 numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-//                                                 NSNumber *lastTradePriceNumberAsks = [numberFormatter numberFromString:lastTradePriceStringAsks];
-//                                                 NSNumber *lastTradePriceNumberBids = [numberFormatter numberFromString:lastTradePriceStringBids];
-//                                                 NSNumber * lastTradePriceNumber = @((lastTradePriceNumberAsks.floatValue + lastTradePriceNumberBids.floatValue) / 2);
-//                                                 NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
-//                                                 [defs setObject:lastTradePriceNumber forKey:POLONIEX_PAC_BTC_PRICE_KEY];
-//                                                 [defs setObject:[NSDate date] forKey:POLONIEX_PAC_BTC_UPDATE_TIME_KEY];
-//                                                 [defs synchronize];
-//                                                 [self refreshBitcoinPacPrice];
-//                                             }
-//                                         }
 #if EXCHANGE_RATES_LOGGING
-                                         NSLog(@"poloniex exchange rate updated to %@/%@", [self localCurrencyStringForPacAmount:DUFFS],
+                                         NSLog(@"breakcrypto exchange rate updated to %@/%@", [self localCurrencyStringForPacAmount:DUFFS],
                                                [self stringForPacAmount:DUFFS]);
 #endif
                                      }
