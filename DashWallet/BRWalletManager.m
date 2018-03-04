@@ -49,6 +49,7 @@
 #define UNSPENT_FAILOVER_URL @"https://insight.dash.siampm.com/api/addrs/utxo"
 #define FEE_PER_KB_URL       0 //not supported @"https://api.breadwallet.com/fee-per-kb"
 #define BITCOIN_TICKER_URL  @"https://bitpay.com/rates"
+#define PAC_PRICE_URL        @"https://api.masternodes.work/pac/price"
 #define POLONIEX_TICKER_URL  @"https://poloniex.com/public?command=returnOrderBook&currencyPair=BTC_$PAC&depth=1"
 #define DASHCENTRAL_TICKER_URL  @"https://www.dashcentral.org/api/v1/public"
 #define TICKER_REFRESH_TIME 60.0
@@ -63,6 +64,8 @@
 #define CURRENCY_NAMES_KEY      @"CURRENCY_NAMES"
 #define CURRENCY_PRICES_KEY     @"CURRENCY_PRICES"
 #define POLONIEX_PAC_BTC_PRICE_KEY  @"POLONIEX_$PAC_BTC_PRICE"
+#define BREAKCRYPTO_PAC_USD_PRICE_KEY @"BREAKCRYPTO_$PAC_USD_PRICE"
+#define BREAKCRYPTO_PAC_USD_UPDATE_TIME_KEY @"BREAKCRYPTO_PAC_USD_UPDATE_TIME_KEY"
 #define POLONIEX_PAC_BTC_UPDATE_TIME_KEY  @"POLONIEX_$PAC_BTC_UPDATE_TIME"
 #define DASHCENTRAL_DASH_BTC_PRICE_KEY @"DASHCENTRAL_DASH_BTC_PRICE"
 #define DASHCENTRAL_DASH_BTC_UPDATE_TIME_KEY @"DASHCENTRAL_DASH_BTC_UPDATE_TIME"
@@ -341,7 +344,7 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
     dispatch_async(dispatch_get_main_queue(), ^{
         [self updateBitcoinExchangeRate];
         [self updatePacExchangeRate];
-        [self updatePACCentralExchangeRateFallback];
+        [self updateDashCentralExchangeRateFallback];
     });
 }
 
@@ -1290,7 +1293,7 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
     if (self.reachability.currentReachabilityStatus == NotReachable) return;
     
     
-    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:POLONIEX_TICKER_URL]
+    NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL URLWithString:PAC_PRICE_URL]
                                          cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
     
     [[[NSURLSession sharedSession] dataTaskWithRequest:req
@@ -1310,26 +1313,42 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
                                          }
                                          NSError *error = nil;
                                          NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                                         NSArray * asks = [json objectForKey:@"asks"];
-                                         NSArray * bids = [json objectForKey:@"bids"];
-                                         if ([asks count] && [bids count] && [[asks objectAtIndex:0] count] && [[bids objectAtIndex:0] count]) {
-                                             NSString * lastTradePriceStringAsks = [[asks objectAtIndex:0] objectAtIndex:0];
-                                             NSString * lastTradePriceStringBids = [[bids objectAtIndex:0] objectAtIndex:0];
-                                             if (lastTradePriceStringAsks && lastTradePriceStringBids) {
-                                                 NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-                                                 NSLocale *usa = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-                                                 numberFormatter.locale = usa;
-                                                 numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-                                                 NSNumber *lastTradePriceNumberAsks = [numberFormatter numberFromString:lastTradePriceStringAsks];
-                                                 NSNumber *lastTradePriceNumberBids = [numberFormatter numberFromString:lastTradePriceStringBids];
-                                                 NSNumber * lastTradePriceNumber = @((lastTradePriceNumberAsks.floatValue + lastTradePriceNumberBids.floatValue) / 2);
-                                                 NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
-                                                 [defs setObject:lastTradePriceNumber forKey:POLONIEX_PAC_BTC_PRICE_KEY];
-                                                 [defs setObject:[NSDate date] forKey:POLONIEX_PAC_BTC_UPDATE_TIME_KEY];
-                                                 [defs synchronize];
-                                                 [self refreshBitcoinPacPrice];
-                                             }
+                                         NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+                                         NSLocale *usa = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+                                         numberFormatter.locale = usa;
+                                         numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+                                         NSString* priceString = [json objectForKey:@"Price"];
+                                         if (priceString) {
+                                             NSNumber *lastTradePriceNumber = [numberFormatter numberFromString:priceString];
+                                             
+                                             NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+                                             [defs setObject:lastTradePriceNumber forKey:BREAKCRYPTO_PAC_USD_PRICE_KEY];
+                                             [defs setObject:[NSDate date] forKey:BREAKCRYPTO_PAC_USD_UPDATE_TIME_KEY];
+                                             [defs synchronize];
+                                             [self refreshBitcoinPacPrice];
                                          }
+
+//
+//                                         NSArray * asks = [json objectForKey:@"asks"];
+//                                         NSArray * bids = [json objectForKey:@"bids"];
+//                                         if ([asks count] && [bids count] && [[asks objectAtIndex:0] count] && [[bids objectAtIndex:0] count]) {
+//                                             NSString * lastTradePriceStringAsks = [[asks objectAtIndex:0] objectAtIndex:0];
+//                                             NSString * lastTradePriceStringBids = [[bids objectAtIndex:0] objectAtIndex:0];
+//                                             if (lastTradePriceStringAsks && lastTradePriceStringBids) {
+//                                                 NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+//                                                 NSLocale *usa = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+//                                                 numberFormatter.locale = usa;
+//                                                 numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+//                                                 NSNumber *lastTradePriceNumberAsks = [numberFormatter numberFromString:lastTradePriceStringAsks];
+//                                                 NSNumber *lastTradePriceNumberBids = [numberFormatter numberFromString:lastTradePriceStringBids];
+//                                                 NSNumber * lastTradePriceNumber = @((lastTradePriceNumberAsks.floatValue + lastTradePriceNumberBids.floatValue) / 2);
+//                                                 NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+//                                                 [defs setObject:lastTradePriceNumber forKey:POLONIEX_PAC_BTC_PRICE_KEY];
+//                                                 [defs setObject:[NSDate date] forKey:POLONIEX_PAC_BTC_UPDATE_TIME_KEY];
+//                                                 [defs synchronize];
+//                                                 [self refreshBitcoinPacPrice];
+//                                             }
+//                                         }
 #if EXCHANGE_RATES_LOGGING
                                          NSLog(@"poloniex exchange rate updated to %@/%@", [self localCurrencyStringForPacAmount:DUFFS],
                                                [self stringForPacAmount:DUFFS]);
@@ -1340,10 +1359,10 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
 }
 
 // until there is a public api for $PAC prices among multiple currencies it's better that we pull Bitcoin prices per currency and convert it to $PAC
-- (void)updatePACCentralExchangeRateFallback
+- (void)updateDashCentralExchangeRateFallback
 {
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updatePACCentralExchangeRateFallback) object:nil];
-    [self performSelector:@selector(updatePACCentralExchangeRateFallback) withObject:nil afterDelay:TICKER_REFRESH_TIME];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateDashCentralExchangeRateFallback) object:nil];
+    [self performSelector:@selector(updateDashCentralExchangeRateFallback) withObject:nil afterDelay:TICKER_REFRESH_TIME];
     if (self.reachability.currentReachabilityStatus == NotReachable) return;
     
     
