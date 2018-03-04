@@ -2,8 +2,7 @@
 //  IntTypes.h
 //  BreadWallet
 //
-//  Created by Sam Westrich on 7/20/16.
-//  Copyright © 2017 Dash Foundation. All rights reserved.
+//  Created by Chase Gray on 2/28/2018
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal

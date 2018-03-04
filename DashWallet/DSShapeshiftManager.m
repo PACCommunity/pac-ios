@@ -1,6 +1,6 @@
 //
 //  DSShapeshiftManager.m
-//  DashWallet
+//  PacWallet
 //
 //  Created by Quantum Explorer on 7/14/15.
 //  Copyright (c) 2015 Aaron Voisine. All rights reserved.
@@ -160,12 +160,12 @@
 
 ////////////////////////////////////////////////////////////////////
 /*
- url: shapeshift.io/marketinfo/dash_btc
+ url: shapeshift.io/marketinfo/pac_btc
  method: GET
  
  Success Output:
  {
- "pair"     : "dash_btc",
+ "pair"     : "pac_btc",
  "rate"     : 130.12345678,
  "limit"    : 1.2345,
  "min"      : 0.02621232,
@@ -175,14 +175,14 @@
 ////////////////////////////////////////////////////////////////////
 
 -(void)GET_marketInfo:(void (^)(NSDictionary *marketInfo, NSError *error))completionBlock {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://shapeshift.io/marketinfo/dash_btc"]
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://shapeshift.io/marketinfo/pac_btc"]
                                          cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
     NSURLSession *session = [NSURLSession sharedSession];
     [[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable connectionError) {
         if (((((NSHTTPURLResponse*)response).statusCode /100) != 2) || connectionError) {
             NSError * returnError = connectionError;
             if (!returnError) {
-                returnError = [NSError errorWithDomain:@"DashWallet" code:((NSHTTPURLResponse*)response).statusCode userInfo:nil];
+                returnError = [NSError errorWithDomain:@"PacWallet" code:((NSHTTPURLResponse*)response).statusCode userInfo:nil];
             }
             dispatch_async(dispatch_get_main_queue(), ^{
                 completionBlock(nil,returnError);
@@ -261,7 +261,7 @@
                                if (((((NSHTTPURLResponse*)response).statusCode /100) != 2) || connectionError) {
                                    NSError * returnError = connectionError;
                                    if (!returnError) {
-                                       returnError = [NSError errorWithDomain:@"DashWallet" code:((NSHTTPURLResponse*)response).statusCode userInfo:nil];
+                                       returnError = [NSError errorWithDomain:@"PacWallet" code:((NSHTTPURLResponse*)response).statusCode userInfo:nil];
                                    }
                                    dispatch_async(dispatch_get_main_queue(), ^{
                                        completionBlock(nil,returnError);
@@ -313,7 +313,7 @@
 ////////////////////////////////////////////////////////////////////
 
 -(void)POST_ShiftWithAddress:(NSString*)withdrawalAddress returnAddress:(NSString*)returnAddress completionBlock:(void (^)(NSDictionary *shiftInfo, NSError *error))completionBlock {
-    NSDictionary *params = @{@"withdrawal": withdrawalAddress, @"pair": @"dash_btc", @"returnAddress":returnAddress,@"apiKey":SHAPESHIFT_PUBLIC_KEY};
+    NSDictionary *params = @{@"withdrawal": withdrawalAddress, @"pair": @"pac_btc", @"returnAddress":returnAddress,@"apiKey":SHAPESHIFT_PUBLIC_KEY};
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://shapeshift.io/shift"] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
@@ -325,7 +325,7 @@
                                if (((((NSHTTPURLResponse*)response).statusCode /100) != 2) || connectionError) {
                                    NSError * returnError = connectionError;
                                    if (!returnError) {
-                                       returnError = [NSError errorWithDomain:@"DashWallet" code:((NSHTTPURLResponse*)response).statusCode userInfo:nil];
+                                       returnError = [NSError errorWithDomain:@"PacWallet" code:((NSHTTPURLResponse*)response).statusCode userInfo:nil];
                                    }
                                    dispatch_async(dispatch_get_main_queue(), ^{
                                        completionBlock(nil,returnError);
@@ -342,7 +342,7 @@
                                }
                                dispatch_async(dispatch_get_main_queue(), ^{
                                    if ([dictionary objectForKey:@"error"]) {
-                                       completionBlock(nil,[NSError errorWithDomain:@"DashWallet" code:500 userInfo:@{NSLocalizedDescriptionKey:[dictionary objectForKey:@"error"]
+                                       completionBlock(nil,[NSError errorWithDomain:@"PacWallet" code:500 userInfo:@{NSLocalizedDescriptionKey:[dictionary objectForKey:@"error"]
                                                                                                                       }]);
                                    } else {
                                        completionBlock(dictionary,nil);
@@ -458,7 +458,7 @@
 ////////////////////////////////////////////////////////////////////
 
 -(void)POST_SendAmount:(NSNumber*)amount withAddress:(NSString*)withdrawalAddress returnAddress:(NSString*)returnAddress completionBlock:(void (^)(NSDictionary *shiftInfo, NSError *error))completionBlock {
-    NSDictionary *params = @{@"amount":amount,@"withdrawal": withdrawalAddress, @"pair": @"dash_btc", @"returnAddress":returnAddress,@"apiKey":SHAPESHIFT_PUBLIC_KEY};
+    NSDictionary *params = @{@"amount":amount,@"withdrawal": withdrawalAddress, @"pair": @"pac_btc", @"returnAddress":returnAddress,@"apiKey":SHAPESHIFT_PUBLIC_KEY};
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://shapeshift.io/sendamount"] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
@@ -531,7 +531,7 @@
                                if (((((NSHTTPURLResponse*)response).statusCode /100) != 2) || connectionError) {
                                    NSError * returnError = connectionError;
                                    if (!returnError) {
-                                       returnError = [NSError errorWithDomain:@"DashWallet" code:((NSHTTPURLResponse*)response).statusCode userInfo:nil];
+                                       returnError = [NSError errorWithDomain:@"PacWallet" code:((NSHTTPURLResponse*)response).statusCode userInfo:nil];
                                    }
                                    dispatch_async(dispatch_get_main_queue(), ^{
                                        completionBlock(nil,returnError);
@@ -548,7 +548,7 @@
                                }
                                dispatch_async(dispatch_get_main_queue(), ^{
                                    if ([dictionary objectForKey:@"error"]) {
-                                       completionBlock(nil,[NSError errorWithDomain:@"DashWallet" code:500 userInfo:@{NSLocalizedDescriptionKey:[dictionary objectForKey:@"error"]
+                                       completionBlock(nil,[NSError errorWithDomain:@"PacWallet" code:500 userInfo:@{NSLocalizedDescriptionKey:[dictionary objectForKey:@"error"]
                                                                                                                       }]);
                                    } else {
                                        completionBlock(dictionary,nil);

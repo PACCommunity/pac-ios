@@ -184,7 +184,7 @@ class BRAWWatchDataManager: NSObject, WCSessionDelegate {
     
     func balanceAttributedString() -> NSAttributedString? {
        if let originalBalanceString = BRAWWatchDataManager.sharedInstance.balance {
-            var balanceString = originalBalanceString.replacingOccurrences(of: "DASH", with: "")
+            var balanceString = originalBalanceString.replacingOccurrences(of: "$PAC", with: "")
             balanceString = balanceString.trimmingCharacters(in: CharacterSet.whitespaces)
             return attributedStringForBalance(balanceString)
         }
@@ -195,11 +195,11 @@ class BRAWWatchDataManager: NSObject, WCSessionDelegate {
         let attributedString = NSMutableAttributedString()
         
         attributedString.append(
-            NSAttributedString(string: "Đ", attributes: [NSAttributedStringKey.foregroundColor : UIColor.gray]))
+            NSAttributedString(string: "", attributes: [NSAttributedStringKey.foregroundColor : UIColor.yellow]))
         
         attributedString.append(
             NSAttributedString(string: balance ?? "0", attributes:
-                [NSAttributedStringKey.foregroundColor : UIColor.white]))
+                [NSAttributedStringKey.foregroundColor : UIColor.yellow]))
         
         return attributedString
     }

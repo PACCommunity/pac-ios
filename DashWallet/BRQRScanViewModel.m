@@ -1,6 +1,6 @@
 //
 //  BRQRScanViewModel.m
-//  dashwallet
+//  pacwallet
 //
 //  Created by Andrew Podkovyrin on 21/12/2017.
 //  Copyright © 2017 Aaron Voisine. All rights reserved.
@@ -26,7 +26,7 @@
 #import <AVFoundation/AVFoundation.h>
 
 #import "NSString+Bitcoin.h"
-#import "NSString+Dash.h"
+#import "NSString+Pac.h"
 #import "BREventManager.h"
 #import "BRPaymentRequest.h"
 
@@ -275,7 +275,7 @@ static NSTimeInterval const kResumeSearchTimeInterval = 1.0;
     
     NSString *addr = [codeObject.stringValue stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     BRPaymentRequest *request = [BRPaymentRequest requestWithString:addr];
-    if (request.isValid || [addr isValidBitcoinPrivateKey] || [addr isValidDashPrivateKey] || [addr isValidDashBIP38Key]) {
+    if (request.isValid || [addr isValidBitcoinPrivateKey] || [addr isValidPacPrivateKey] || [addr isValidPacBIP38Key]) {
         dispatch_sync(dispatch_get_main_queue(), ^{ // sync!
             [self.qrCodeObject setValid];
         });
@@ -311,10 +311,10 @@ static NSTimeInterval const kResumeSearchTimeInterval = 1.0;
                              }
                              else {
                                  NSString *errorMessage = nil;
-                                 if (([request.scheme isEqual:@"dash"] && request.paymentAddress.length > 1) ||
+                                 if (([request.scheme isEqual:@"paccoin"] && request.paymentAddress.length > 1) ||
                                      [request.paymentAddress hasPrefix:@"X"] || [request.paymentAddress hasPrefix:@"7"]) {
                                      errorMessage = [NSString stringWithFormat:@"%@:\n%@",
-                                                     NSLocalizedString(@"not a valid dash address", nil),
+                                                     NSLocalizedString(@"not a valid $PAC address", nil),
                                                      request.paymentAddress];
                                  } else if (([request.scheme isEqual:@"bitcoin"] && request.paymentAddress.length > 1) ||
                                             [request.paymentAddress hasPrefix:@"1"] || [request.paymentAddress hasPrefix:@"3"]) {
@@ -323,7 +323,7 @@ static NSTimeInterval const kResumeSearchTimeInterval = 1.0;
                                                      request.paymentAddress];
                                  }
                                  else {
-                                     errorMessage = NSLocalizedString(@"not a dash or bitcoin QR code", nil);
+                                     errorMessage = NSLocalizedString(@"not a $PAC or bitcoin QR code", nil);
                                  }
                                  [strongSelf.qrCodeObject setInvalidWithErrorMessage:errorMessage];
                                  

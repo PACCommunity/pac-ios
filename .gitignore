@@ -17,6 +17,7 @@ profile
 *.moved-aside
 DerivedData
 .idea/
+Pods/
 
 # fastlane specific
 fastlane/report.xml

@@ -58,12 +58,12 @@
     sent = [manager.wallet amountSentByTransaction:self];
 
     if (sent > 0 && received == sent) {
-        return [NSString stringWithFormat:@"(%@)", [manager localCurrencyStringForDashAmount:sent]];
+        return [NSString stringWithFormat:@"(%@)", [manager localCurrencyStringForPacAmount:sent]];
     }
     else if (sent > 0) {
-        return [NSString stringWithFormat:@"(%@)", [manager localCurrencyStringForDashAmount:received - sent]];
+        return [NSString stringWithFormat:@"(%@)", [manager localCurrencyStringForPacAmount:received - sent]];
     }
-    else return [NSString stringWithFormat:@"(%@)", [manager localCurrencyStringForDashAmount:received]];
+    else return [NSString stringWithFormat:@"(%@)", [manager localCurrencyStringForPacAmount:received]];
 }
 
 - (NSString*)amountText
@@ -74,12 +74,12 @@
     sent = [manager.wallet amountSentByTransaction:self];
 
     if (sent > 0 && received == sent) {
-        return [manager stringForDashAmount:sent];
+        return [manager stringForPacAmount:sent];
     }
     else if (sent > 0) {
-        return [manager stringForDashAmount:received - sent];
+        return [manager stringForPacAmount:received - sent];
     }
-    else return [manager stringForDashAmount:received];
+    else return [manager stringForPacAmount:received];
 }
 
 - (uint32_t)lastBlockHeight

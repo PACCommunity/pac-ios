@@ -1,9 +1,8 @@
 //
 //  DWGenerateViewController.h
-//  dashwallet
+//  pacwallet
 //
-//  Created by Quantum Explorer on 10/11/17.
-//  Copyright © 2017 Dash Foundation. All rights reserved.
+//  Created by Chase Gray on 2/28/2018.
 //
 
 #import <UIKit/UIKit.h>

@@ -58,6 +58,10 @@
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     self.newwalletButton.titleLabel.adjustsLetterSpacingToFitWidth = YES;
     self.recoverButton.titleLabel.adjustsLetterSpacingToFitWidth = YES;
+    self.newwalletButton.layer.cornerRadius = 0.15 * self.newwalletButton.bounds.size.height;
+    self.newwalletButton.layer.borderWidth = 1.0;
+    self.recoverButton.layer.cornerRadius = 0.15 * self.recoverButton.bounds.size.height;
+    self.recoverButton.layer.borderWidth = 1.0;
 #pragma clang diagnostic pop
 
     self.foregroundObserver =
@@ -175,7 +179,7 @@
     
     UIViewController *c = [self.storyboard instantiateViewControllerWithIdentifier:@"GenerateViewController"];
     
-    [self.navigationController pushViewController:c animated:YES];
+    [self.navigationController pushViewController:c animated:NO];
 }
 
 - (IBAction)recover:(id)sender
@@ -184,7 +188,7 @@
 
     UIViewController *c = [self.storyboard instantiateViewControllerWithIdentifier:@"RecoverViewController"];
 
-    [self.navigationController pushViewController:c animated:YES];
+    [self.navigationController pushViewController:c animated:NO];
 }
 
 // MARK: UIViewControllerAnimatedTransitioning

@@ -36,9 +36,9 @@
 #import "BRWalletManager.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 
-#define QR_TIP      NSLocalizedString(@"Let others scan this QR code to get your dash address. Anyone can send "\
-                    "dash to your wallet by transferring them to your address.", nil)
-#define ADDRESS_TIP NSLocalizedString(@"This is your dash address. Tap to copy it or send it by email or sms. The "\
+#define QR_TIP      NSLocalizedString(@"Let others scan this QR code to get your $PAC address. Anyone can send "\
+                    "$PAC to your wallet by transferring them to your address.", nil)
+#define ADDRESS_TIP NSLocalizedString(@"This is your $PAC address. Tap to copy it or send it by email or sms. The "\
                     "address will change each time you receive funds, but old addresses always work.", nil)
 
 //#define QR_IMAGE_FILE [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject\
@@ -55,6 +55,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *label;
 @property (nonatomic, strong) IBOutlet UIButton *addressButton;
 @property (nonatomic, strong) IBOutlet UIImageView *qrView;
+@property (strong, nonatomic) IBOutlet UIView *TopBlackArea;
 
 @end
 
@@ -63,7 +64,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.TopBlackArea.layer.cornerRadius = 0.05 * self.TopBlackArea.bounds.size.width;
     BRWalletManager *manager = [BRWalletManager sharedInstance];
     BRPaymentRequest *req;
 
@@ -84,11 +85,11 @@
     
     if (req.amount > 0) {
         BRWalletManager *manager = [BRWalletManager sharedInstance];
-        NSMutableAttributedString * attributedDashString = [[manager attributedStringForDashAmount:req.amount withTintColor:[UIColor darkTextColor] useSignificantDigits:FALSE] mutableCopy];
+        NSMutableAttributedString * attributedPacString = [[manager attributedStringForPacAmount:req.amount withTintColor:[UIColor darkTextColor] useSignificantDigits:FALSE] mutableCopy];
         NSString * titleString = [NSString stringWithFormat:@" (%@)",
-                                  [manager localCurrencyStringForDashAmount:req.amount]];
-        [attributedDashString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor darkTextColor]}]];
-        self.label.attributedText = attributedDashString;
+                                  [manager localCurrencyStringForPacAmount:req.amount]];
+        [attributedPacString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor darkTextColor]}]];
+        self.label.attributedText = attributedPacString;
     }
 
     self.addressButton.titleLabel.adjustsFontSizeToFitWidth = YES;
@@ -157,11 +158,11 @@
             
             if (req.amount > 0) {
                 BRWalletManager *manager = [BRWalletManager sharedInstance];
-                NSMutableAttributedString * attributedDashString = [[manager attributedStringForDashAmount:req.amount withTintColor:[UIColor darkTextColor] useSignificantDigits:FALSE] mutableCopy];
+                NSMutableAttributedString * attributedPacString = [[manager attributedStringForPacAmount:req.amount withTintColor:[UIColor darkTextColor] useSignificantDigits:FALSE] mutableCopy];
                 NSString * titleString = [NSString stringWithFormat:@" (%@)",
-                                          [manager localCurrencyStringForDashAmount:req.amount]];
-                [attributedDashString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor darkTextColor]}]];
-                self.label.attributedText = attributedDashString;
+                                          [manager localCurrencyStringForPacAmount:req.amount]];
+                [attributedPacString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor darkTextColor]}]];
+                self.label.attributedText = attributedPacString;
                 
                 if (! self.balanceObserver) {
                     self.balanceObserver =
@@ -187,7 +188,7 @@
 {
     BRWalletManager *manager = [BRWalletManager sharedInstance];
     BRPaymentRequest *req = self.paymentRequest;
-    uint64_t total = 0, fuzz = [manager amountForLocalCurrencyString:[manager localCurrencyStringForDashAmount:1]]*2;
+    uint64_t total = 0, fuzz = [manager amountForLocalCurrencyString:[manager localCurrencyStringForPacAmount:1]]*2;
     
     if (! [manager.wallet addressIsUsed:self.paymentAddress]) return;
 
@@ -202,8 +203,8 @@
 
             [self done:nil];
             [view addSubview:[[[BRBubbleView viewWithText:[NSString
-             stringWithFormat:NSLocalizedString(@"received %@ (%@)", nil), [manager stringForDashAmount:total],
-             [manager localCurrencyStringForDashAmount:total]]
+             stringWithFormat:NSLocalizedString(@"received %@ (%@)", nil), [manager stringForPacAmount:total],
+             [manager localCurrencyStringForPacAmount:total]]
              center:CGPointMake(view.bounds.size.width/2, view.bounds.size.height/2)] popIn] popOutAfterDelay:3.0]];
             break;
         }
@@ -284,7 +285,7 @@
 
     BOOL req = (_paymentRequest) ? YES : NO;
 
-    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Receive dash at this address: %@", nil),
+    UIAlertController *actionSheet = [UIAlertController alertControllerWithTitle:[NSString stringWithFormat:NSLocalizedString(@"Receive $PAC at this address: %@", nil),
                                                                                   self.paymentAddress] message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
     [actionSheet addAction:[UIAlertAction actionWithTitle:(req) ? NSLocalizedString(@"copy request to clipboard", nil) :
                             NSLocalizedString(@"copy address to clipboard", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -304,7 +305,7 @@
                                     if ([MFMailComposeViewController canSendMail]) {
                                         MFMailComposeViewController *composeController = [MFMailComposeViewController new];
                                         
-                                        composeController.subject = NSLocalizedString(@"Dash address", nil);
+                                        composeController.subject = NSLocalizedString(@"$PAC address", nil);
                                         [composeController setMessageBody:self.paymentRequest.string isHTML:NO];
                                         [composeController addAttachmentData:UIImagePNGRepresentation(self.qrView.image) mimeType:@"image/png"
                                                                     fileName:@"qr.png"];
@@ -340,7 +341,7 @@
                                         MFMessageComposeViewController *composeController = [MFMessageComposeViewController new];
                                         
                                         if ([MFMessageComposeViewController canSendSubject]) {
-                                            composeController.subject = NSLocalizedString(@"Dash address", nil);
+                                            composeController.subject = NSLocalizedString(@"$PAC address", nil);
                                         }
                                         
                                         composeController.body = self.paymentRequest.string;
@@ -417,8 +418,8 @@ error:(NSError *)error
     if (amount < manager.wallet.minOutputAmount) {
         UIAlertController * alert = [UIAlertController
                                      alertControllerWithTitle:NSLocalizedString(@"amount too small", nil)
-                                     message:[NSString stringWithFormat:NSLocalizedString(@"dash payments can't be less than %@", nil),
-                                              [manager stringForDashAmount:manager.wallet.minOutputAmount]]
+                                     message:[NSString stringWithFormat:NSLocalizedString(@"$PAC payments can't be less than %@", nil),
+                                              [manager stringForPacAmount:manager.wallet.minOutputAmount]]
                                      preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction* okButton = [UIAlertAction
                                    actionWithTitle:NSLocalizedString(@"ok", nil)
@@ -438,7 +439,7 @@ error:(NSError *)error
     
     receiveController.paymentRequest = self.paymentRequest;
     receiveController.paymentRequest.amount = amount;
-    NSNumber *number = [manager localCurrencyNumberForDashAmount:amount];
+    NSNumber *number = [manager localCurrencyNumberForPacAmount:amount];
     if (number) {
         receiveController.paymentRequest.currencyAmount = number.stringValue;
     }

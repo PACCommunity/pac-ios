@@ -1,9 +1,8 @@
 //
 //  DWGenerateViewController.m
-//  dashwallet
+//  pacwallet
 //
-//  Created by Quantum Explorer on 10/11/17.
-//  Copyright © 2017 Dash Foundation. All rights reserved.
+//  Created by Chase Gray on 2/28/2018
 //
 
 #import "DWGenerateViewController.h"
@@ -29,35 +28,38 @@
     // Do any additional setup after loading the view.
     
     self.generateButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.generateButton.layer.cornerRadius = 0.15 * self.generateButton.bounds.size.height;
+    self.generateButton.layer.borderWidth = 1.0;
     
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     self.generateButton.titleLabel.adjustsLetterSpacingToFitWidth = YES;
 #pragma clang diagnostic pop
     
-    
     NSTextAttachment *noEye = [NSTextAttachment new], *noKey = [NSTextAttachment new];
     NSMutableAttributedString *s = [[NSMutableAttributedString alloc]
                                     initWithAttributedString:self.warningLabel.attributedText];
-    
+
     noEye.image = [UIImage imageNamed:@"no-eye"];
     [s replaceCharactersInRange:[s.string rangeOfString:@"%no-eye%"]
            withAttributedString:[NSAttributedString attributedStringWithAttachment:noEye]];
+
     noKey.image = [UIImage imageNamed:@"no-key"];
     [s replaceCharactersInRange:[s.string rangeOfString:@"%no-key%"]
            withAttributedString:[NSAttributedString attributedStringWithAttachment:noKey]];
-    
+
     [s replaceCharactersInRange:[s.string rangeOfString:@"WARNING"] withString:NSLocalizedString(@"WARNING", nil)];
     [s replaceCharactersInRange:[s.string rangeOfString:@"\nDO NOT let anyone see your recovery\n"
-                                 "phrase or they can spend your dash.\n"]
+                                 "phrase or they can spend your $PAC.\n"]
                      withString:NSLocalizedString(@"\nDO NOT let anyone see your recovery\n"
-                                                  "phrase or they can spend your dash.\n", nil)];
+                                                  "phrase or they can spend your $PAC.\n", nil)];
+    NSLog(@"before NEVER");
     [s replaceCharactersInRange:[s.string rangeOfString:@"\nNEVER type your recovery phrase into\n"
                                  "password managers or elsewhere.\nOther devices may be infected.\n"]
                      withString:NSLocalizedString(@"\nNEVER type your recovery phrase into\npassword managers or elsewhere.\n"
                                                   "Other devices may be infected.\n", nil)];
     self.warningLabel.attributedText = s;
-    //self.generateButton.superview.backgroundColor = [UIColor clearColor];
+    self.navigationController.navigationBar.tintColor = UIColor.whiteColor;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,7 +83,7 @@
                                    handler:^(UIAlertAction * action) {
                                    }];
         [alert addAction:okButton];
-        [self presentViewController:alert animated:YES completion:nil];
+        [self presentViewController:alert animated:NO completion:nil];
         return;
     }
     

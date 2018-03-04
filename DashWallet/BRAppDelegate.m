@@ -30,8 +30,10 @@
 #import "BRPhoneWCSessionManager.h"
 #import "DSShapeshiftManager.h"
 #import <UserNotifications/UserNotifications.h>
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
-#if DASH_TESTNET
+#if PAC_TESTNET
 #pragma message "testnet build"
 #endif
 
@@ -54,14 +56,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-
+    [Fabric with:@[[Crashlytics class]]];
     // use background fetch to stay synced with the blockchain
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
 
     UIPageControl.appearance.pageIndicatorTintColor = [UIColor lightGrayColor];
     UIPageControl.appearance.currentPageIndicatorTintColor = [UIColor blueColor];
     
-    UIImage * tabBarImage = [[UIImage imageNamed:@"tab-bar-dash"]
+    UIImage * tabBarImage = [[UIImage imageNamed:@"tab-bar-dash2"]
      resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0) resizingMode:UIImageResizingModeStretch];
     [[UINavigationBar appearance] setBackgroundImage:tabBarImage forBarMetrics:UIBarMetricsDefault];
 
@@ -146,9 +148,9 @@ shouldAllowExtensionPointIdentifier:(NSString *)extensionPointIdentifier
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication
 annotation:(id)annotation
 {
-    if (! [url.scheme isEqual:@"dash"] && ! [url.scheme isEqual:@"dashwallet"]) {
+    if (! [url.scheme isEqual:@"paccoin"] && ! [url.scheme isEqual:@"pacwallet"]) {
         UIAlertController * alert = [UIAlertController
-                                     alertControllerWithTitle:@"Not a dash URL"
+                                     alertControllerWithTitle:@"Not a $PAC URL"
                                      message:url.absoluteString
                                      preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction* okButton = [UIAlertAction
@@ -230,8 +232,8 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
     // sync events to the server
     [[BREventManager sharedEventManager] sync];
     
-//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"has_alerted_buy_dash"] == NO &&
-//        [WKWebView class] && [[BRAPIClient sharedClient] featureEnabled:BRFeatureFlagsBuyDash] &&
+//    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"has_alerted_buy_pac"] == NO &&
+//        [WKWebView class] && [[BRAPIClient sharedClient] featureEnabled:BRFeatureFlagsBuyPac] &&
 //        [UIApplication sharedApplication].applicationIconBadgeNumber == 0) {
 //        [UIApplication sharedApplication].applicationIconBadgeNumber = 1;
 //    }
@@ -249,8 +251,8 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
             if (self.balance < manager.wallet.balance) {
                 BOOL send = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_LOCAL_NOTIFICATIONS_KEY];
                 NSString *noteText = [NSString stringWithFormat:NSLocalizedString(@"received %@ (%@)", nil),
-                                      [manager stringForDashAmount:manager.wallet.balance - self.balance],
-                                      [manager localCurrencyStringForDashAmount:manager.wallet.balance - self.balance]];
+                                      [manager stringForPacAmount:manager.wallet.balance - self.balance],
+                                      [manager localCurrencyStringForPacAmount:manager.wallet.balance - self.balance]];
                 
                 NSLog(@"local notifications enabled=%d", send);
                 

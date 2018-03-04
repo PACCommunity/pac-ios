@@ -5,37 +5,37 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Dash</string>
+	<string>$PAC</string>
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
 			<key>CFBundleTypeIconFiles</key>
 			<array/>
 			<key>CFBundleTypeName</key>
-			<string>Dash Payment Request</string>
+			<string>$PAC Payment Request</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>dash.paymentrequest</string>
+				<string>pac.paymentrequest</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeIconFiles</key>
 			<array/>
 			<key>CFBundleTypeName</key>
-			<string>Dash Payment</string>
+			<string>$PAC Payment</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>dash.payment</string>
+				<string>pac.payment</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeIconFiles</key>
 			<array/>
 			<key>CFBundleTypeName</key>
-			<string>Dash Payment ACK</string>
+			<string>$PAC Payment ACK</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>dash.paymentack</string>
+				<string>pac.paymentack</string>
 			</array>
 		</dict>
 	</array>
@@ -50,7 +50,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.8.12</string>
+	<string>0.1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -59,40 +59,54 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>dash</string>
+			<string>pac</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>dash</string>
+				<string>pac</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>org.dashfoundation.dash</string>
+			<string>org.paccoin.wallet</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>dashwallet</string>
+				<string>pacwallet</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>dashid</string>
+			<string>pacid</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>dashid</string>
+				<string>pacid</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>5</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>a68d9754b4ecc328a9b509b49a34bcf23ced339f</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>dashcontrol</string>
+		<string>paccontrol</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -140,13 +154,13 @@
 				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>Dash Payment Request</string>
+			<string>$PAC Payment Request</string>
 			<key>UTTypeIdentifier</key>
-			<string>dash.paymentrequest</string>
+			<string>pac.paymentrequest</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.mime-type</key>
-				<string>application/dash-paymentrequest</string>
+				<string>application/pac-paymentrequest</string>
 			</dict>
 		</dict>
 		<dict>
@@ -155,13 +169,13 @@
 				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>Dash Payment</string>
+			<string>$PAC Payment</string>
 			<key>UTTypeIdentifier</key>
-			<string>dash.payment</string>
+			<string>pac.payment</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.mime-type</key>
-				<string>application/dash-payment</string>
+				<string>application/pac-payment</string>
 			</dict>
 		</dict>
 		<dict>
@@ -170,13 +184,13 @@
 				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>Dash Payment ACK</string>
+			<string>$PAC Payment ACK</string>
 			<key>UTTypeIdentifier</key>
-			<string>dash.paymentack</string>
+			<string>pac.paymentack</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.mime-type</key>
-				<string>application/dash-paymentack</string>
+				<string>application/pac-paymentack</string>
 			</dict>
 		</dict>
 	</array>

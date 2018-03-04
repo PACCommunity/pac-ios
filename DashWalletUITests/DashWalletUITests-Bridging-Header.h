@@ -1,9 +1,9 @@
 //
-//  DashWalletUITests-Bridging-Header.h
-//  DashWallet
+//  PacWalletUITests-Bridging-Header.h
+//  PacWallet
 //
 //  Created by Aaron Voisine on 5/3/16.
-//  Copyright (c) 2016 Dashwallet LLC
+//  Copyright (c) 2016 Pacwallet LLC
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -23,10 +23,10 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#ifndef DashWalletUITests_Bridging_Header_h
-#define DashWalletUITests_Bridging_Header_h
+#ifndef PacWalletUITests_Bridging_Header_h
+#define PacWalletUITests_Bridging_Header_h
 
-#include "DashWallet-Prefix.pch"
+#include "PacWallet-Prefix.pch"
 
 #if SNAPSHOT
 static const bool _SNAPSHOT = 1;
@@ -34,4 +34,4 @@ static const bool _SNAPSHOT = 1;
 static const bool _SNAPSHOT = 0;
 #endif
 
-#endif /* DashWalletUITests_Bridging_Header_h */
+#endif /* PacWalletUITests_Bridging_Header_h */
