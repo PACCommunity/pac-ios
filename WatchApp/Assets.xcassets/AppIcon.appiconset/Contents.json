@@ -67,14 +67,6 @@
       "idiom" : "watch-marketing",
       "filename" : "storeIcon.png",
       "scale" : "1x"
-    },
-    {
-      "size" : "  27.5x27.5",
-      "idiom" : "watch",
-      "filename" : "Icon-Spotlight-27.5@2x.png",
-      "scale" : "2x",
-      "role" : "notificationCenter",
-      "subtype" : "42mm"
     }
   ],
   "info" : {
