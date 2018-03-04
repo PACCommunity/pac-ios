@@ -280,7 +280,7 @@ static NSString *sanitizeString(NSString *s)
             }
             if (dictionary[@"pay"] && dictionary[@"sender"]) {
                 if (dictionary[@"label"]) [dictionary removeObjectForKey:@"label"];
-                NSURLComponents *components = [NSURLComponents componentsWithString:[NSString stringWithFormat:@"$PAC:%@",dictionary[@"pay"]]];
+                NSURLComponents *components = [NSURLComponents componentsWithString:[NSString stringWithFormat:@"pac:%@",dictionary[@"pay"]]]; 
                 NSMutableArray *queryItems = [NSMutableArray array];
                 NSURLQueryItem *label = [NSURLQueryItem queryItemWithName:@"label" value:[NSString stringWithFormat:NSLocalizedString(@"Application %@ is requesting a payment to",nil),[dictionary[@"sender"] capitalizedString]]];
                 [queryItems addObject:label];
@@ -294,7 +294,7 @@ static NSString *sanitizeString(NSString *s)
             }
         }
     }
-    else if ([url.scheme isEqual:@"$PAC"]) {
+    else if ([url.scheme isEqual:@"pac"]) {
         [self confirmRequest:[BRPaymentRequest requestWithURL:url]];
     }
     else {
@@ -472,7 +472,7 @@ static NSString *sanitizeString(NSString *s)
 }
 
 - (void)confirmProtocolRequest:(BRPaymentProtocolRequest *)protoReq {
-    [self confirmProtocolRequest:protoReq currency:@"$PAC" associatedShapeshift:nil localCurrency:nil localCurrencyAmount:nil];
+    [self confirmProtocolRequest:protoReq currency:@"pac" associatedShapeshift:nil localCurrency:nil localCurrencyAmount:nil];
 }
 
 - (void)confirmProtocolRequest:(BRPaymentProtocolRequest *)protoReq currency:(NSString*)currency associatedShapeshift:(DSShapeshiftEntity*)shapeshift localCurrency:(NSString *)localCurrency localCurrencyAmount:(NSString *)localCurrencyAmount
@@ -515,7 +515,7 @@ static NSString *sanitizeString(NSString *s)
     }
     else amount = self.amount;
     
-    if ([currency isEqualToString:@"$PAC"]) {
+    if ([currency isEqualToString:@"pac"]) {
         NSString *address = [NSString addressWithScriptPubKey:protoReq.details.outputScripts.firstObject];
         if ([manager.wallet containsAddress:address]) {
             UIAlertController * alert = [UIAlertController
@@ -774,7 +774,7 @@ static NSString *sanitizeString(NSString *s)
         }
         
         self.request = protoReq;
-        self.scheme = @"$PAC";
+        self.scheme = @"pac";
         
         if (self.amount == 0) {
             
@@ -1119,7 +1119,7 @@ static NSString *sanitizeString(NSString *s)
                     
                     NSLog(@"posting payment to: %@", self.request.details.paymentURL);
                     
-                    [BRPaymentRequest postPayment:payment scheme:@"$PAC" to:self.request.details.paymentURL timeout:20.0
+                    [BRPaymentRequest postPayment:payment scheme:@"pac" to:self.request.details.paymentURL timeout:20.0
                                        completion:^(BRPaymentProtocolACK *ack, NSError *error) {
                                            dispatch_async(dispatch_get_main_queue(), ^{
                                                [(id)self.parentViewController.parentViewController stopActivityWithSuccess:(! error)];
@@ -1761,7 +1761,7 @@ static NSString *sanitizeString(NSString *s)
                 DSShapeshiftEntity * shapeshift = [DSShapeshiftEntity registerShapeshiftWithInputAddress:depositAddress andWithdrawalAddress:withdrawalAddress withStatus:eShapeshiftAddressStatus_Unused fixedAmountOut:depositAmountNumber amountIn:depositAmountNumber];
                 
                 BRPaymentRequest * request = [BRPaymentRequest requestWithString:[NSString stringWithFormat:@"pac:%@?amount=%llu&label=%@&message=Shapeshift to %@",depositAddress,depositAmount,sanitizeString(self.shapeshiftRequest.commonName),withdrawalAddress]];
-                [self confirmProtocolRequest:request.protocolRequest currency:@"$PAC" associatedShapeshift:shapeshift localCurrency:nil localCurrencyAmount:nil];
+                [self confirmProtocolRequest:request.protocolRequest currency:@"pac" associatedShapeshift:shapeshift localCurrency:nil localCurrencyAmount:nil];
             }
         }];
     } failureBlock:^{
@@ -1785,7 +1785,7 @@ static NSString *sanitizeString(NSString *s)
         if (shapeshift) {
             [hud hideAnimated:TRUE];
             BRPaymentRequest * request = [BRPaymentRequest requestWithString:[NSString stringWithFormat:@"pac:%@?amount=%llu&label=%@&message=Shapeshift to %@",depositAddress,self.amount,sanitizeString(self.request.commonName),address]];
-            [self confirmProtocolRequest:request.protocolRequest currency:@"$PAC" associatedShapeshift:shapeshift localCurrency:nil localCurrencyAmount:nil];
+            [self confirmProtocolRequest:request.protocolRequest currency:@"pac" associatedShapeshift:shapeshift localCurrency:nil localCurrencyAmount:nil];
         } else {
             [[DSShapeshiftManager sharedInstance] POST_ShiftWithAddress:address returnAddress:returnAddress completionBlock:^(NSDictionary *shiftInfo, NSError *error) {
                 [hud hideAnimated:TRUE];
@@ -1809,7 +1809,7 @@ static NSString *sanitizeString(NSString *s)
                 if (withdrawalAddress && depositAddress) {
                     DSShapeshiftEntity * shapeshift = [DSShapeshiftEntity registerShapeshiftWithInputAddress:depositAddress andWithdrawalAddress:withdrawalAddress withStatus:eShapeshiftAddressStatus_Unused];
                     BRPaymentRequest * request = [BRPaymentRequest requestWithString:[NSString stringWithFormat:@"pac:%@?amount=%llu&label=%@&message=Shapeshift to %@",depositAddress,self.amount,sanitizeString(self.shapeshiftRequest.commonName),withdrawalAddress]];
-                    [self confirmProtocolRequest:request.protocolRequest currency:@"$PAC" associatedShapeshift:shapeshift localCurrency:nil localCurrencyAmount:nil];
+                    [self confirmProtocolRequest:request.protocolRequest currency:@"pac" associatedShapeshift:shapeshift localCurrency:nil localCurrencyAmount:nil];
                 }
             }];
         }

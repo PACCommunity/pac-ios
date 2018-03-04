@@ -89,7 +89,7 @@
             self.scheme = @"bitcoin";
         } else if ([s isValidPacAddress] || [s isValidPacPrivateKey] || [s isValidPacBIP38Key]) {
             url = [NSURL URLWithString:[NSString stringWithFormat:@"pac://%@", s]];
-            self.scheme = @"$PAC";
+            self.scheme = @"pac";
         }
     }
     else if (! url.host && url.resourceSpecifier) {
@@ -98,10 +98,10 @@
     } else if (url.scheme) {
         self.scheme = url.scheme;
     } else {
-        self.scheme = @"$PAC";
+        self.scheme = @"pac";
     }
     
-    if ([url.scheme isEqualToString:@"$PAC"] || [url.scheme isEqualToString:@"bitcoin"]) {
+    if ([url.scheme isEqualToString:@"pac"] || [url.scheme isEqualToString:@"bitcoin"]) {
         self.paymentAddress = url.host;
     
         //TODO: correctly handle unknown but required url arguments (by reporting the request invalid)
@@ -162,7 +162,7 @@
 
 - (NSString *)string
 {
-    if (! ([self.scheme isEqual:@"bitcoin"] || [self.scheme isEqual:@"$PAC"])) return self.r;
+    if (! ([self.scheme isEqual:@"bitcoin"] || [self.scheme isEqual:@"pac"])) return self.r;
 
     NSMutableString *s = [NSMutableString stringWithFormat:@"%@:",self.scheme];
     NSMutableArray *q = [NSMutableArray array];
@@ -233,7 +233,7 @@
 
 - (BOOL)isValid
 {
-    if ([self.scheme isEqualToString:@"$PAC"]) {
+    if ([self.scheme isEqualToString:@"pac"]) {
         BOOL valid = ([self.paymentAddress isValidPacAddress] || (self.r && [NSURL URLWithString:self.r])) ? YES : NO;
         if (!valid) {
             NSLog(@"Not a valid $PAC request");

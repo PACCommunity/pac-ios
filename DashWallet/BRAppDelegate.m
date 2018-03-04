@@ -146,7 +146,7 @@ shouldAllowExtensionPointIdentifier:(NSString *)extensionPointIdentifier
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication
 annotation:(id)annotation
 {
-    if (! [url.scheme isEqual:@"$PAC"] && ! [url.scheme isEqual:@"pacwallet"]) {
+    if (! [url.scheme isEqual:@"pac"] && ! [url.scheme isEqual:@"pacwallet"]) {
         UIAlertController * alert = [UIAlertController
                                      alertControllerWithTitle:@"Not a $PAC URL"
                                      message:url.absoluteString
