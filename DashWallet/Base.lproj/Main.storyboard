@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BeO-Yt-c4D">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BeO-Yt-c4D">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -837,6 +837,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDt-79-hdf" userLabel="Layout View">
+                                <rect key="frame" x="0.0" y="215" width="320" height="79"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZVN-nj-GEF">
                                 <rect key="frame" x="0.0" y="-44" width="320" height="272"/>
                                 <subviews>
@@ -860,10 +864,6 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N4m-rf-eq3" userLabel="Layout View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDt-79-hdf" userLabel="Layout View">
-                                <rect key="frame" x="0.0" y="215" width="320" height="79"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receive $PAC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qel-3J-2VC">
@@ -956,7 +956,9 @@
                     <connections>
                         <outlet property="TopBlackArea" destination="ZVN-nj-GEF" id="ePz-7c-f35"/>
                         <outlet property="addressButton" destination="XV7-2s-hZs" id="jn1-4G-QVT"/>
+                        <outlet property="pacIcon" destination="hNY-ax-mHG" id="yug-RD-v8P"/>
                         <outlet property="qrView" destination="PTm-4L-adQ" id="Ti4-bc-a9W"/>
+                        <outlet property="receiveLabel" destination="qel-3J-2VC" id="APv-bq-rUj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gHQ-qn-UpO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1214,6 +1216,8 @@
                         <outlet property="clipboardButton" destination="bfj-xS-5rN" id="mfH-NX-2iX"/>
                         <outlet property="instantSwitch" destination="aeV-sO-1m0" id="T13-wq-XNf"/>
                         <outlet property="leftOfNFCButtonWhitespaceConstraint" destination="tPV-6A-6Xh" id="d3I-WF-sey"/>
+                        <outlet property="pacIconNewDevices" destination="4Ur-j7-v3L" id="JVk-8r-LT6"/>
+                        <outlet property="pacLabel" destination="JX8-EK-nQw" id="fl7-Ct-LJq"/>
                         <outlet property="scanButton" destination="ce6-Wi-wk4" id="tr9-fj-NRa"/>
                         <outlet property="sendLabel" destination="l5l-JR-LKA" id="uWh-qp-akV"/>
                         <outlet property="shapeshiftLabel" destination="adc-g6-wnP" id="u0R-FU-WdX"/>

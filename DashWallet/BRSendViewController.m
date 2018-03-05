@@ -79,6 +79,7 @@ static NSString *sanitizeString(NSString *s)
 @property (nonatomic, strong) BRBubbleView *tipView;
 
 @property (nonatomic, strong) IBOutlet UILabel *sendLabel;
+@property (nonatomic, strong) IBOutlet UILabel *sendLabelSmallScreen;
 @property (nonatomic, strong) IBOutlet UISwitch *instantSwitch;
 @property (nonatomic, strong) IBOutlet UIButton *scanButton, *clipboardButton;
 @property (nonatomic, strong) IBOutlet UIView * shapeshiftView;
@@ -86,6 +87,11 @@ static NSString *sanitizeString(NSString *s)
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint * NFCWidthConstraint;
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint * leftOfNFCButtonWhitespaceConstraint;
 @property (strong, nonatomic) IBOutlet UIView *topBlackArea;
+@property (strong, nonatomic) IBOutlet UIView *topBlackAreaSmallScreen;
+@property (strong, nonatomic) IBOutlet UIImageView *pacIcon;
+@property (strong, nonatomic) IBOutlet UIImageView *pacIconNewDevices;
+@property (strong, nonatomic) IBOutlet UILabel *pacLabel;
+@property (strong, nonatomic) IBOutlet UILabel *pacLabelSmallScreen;
 
 @end
 
@@ -95,6 +101,45 @@ static NSString *sanitizeString(NSString *s)
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
+        NSString *device = @"";
+        switch ((int)[[UIScreen mainScreen] nativeBounds].size.height) {
+                
+            case 1136:
+                printf("iPhone 5 or 5S or 5C");
+                device = @"iPhone 5";
+                self.topBlackArea.hidden = YES;
+                self.pacIconNewDevices.hidden = YES;
+                self.sendLabel.hidden = YES;
+                self.pacLabel.hidden = YES;
+                
+                _topBlackAreaSmallScreen=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 200)];
+                [_topBlackAreaSmallScreen setBackgroundColor:[UIColor blackColor]];
+                [self.view addSubview:_topBlackAreaSmallScreen];
+                self.topBlackAreaSmallScreen.layer.cornerRadius = 0.05 * self.topBlackAreaSmallScreen.bounds.size.width;
+                
+                 _pacIcon =[[UIImageView alloc] initWithFrame:CGRectMake(self.topBlackAreaSmallScreen.bounds.size.width/3.5,self.topBlackAreaSmallScreen.bounds.size.height/3,150,150)];
+                _pacIcon.image=[UIImage imageNamed:@"dash-center-logo.png"];
+                [self.view addSubview:_pacIcon];
+                
+                _sendLabelSmallScreen =[[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/3.5,240,200,40)];
+                _sendLabelSmallScreen.font = [UIFont systemFontOfSize:30];
+                [_sendLabelSmallScreen setTextColor:[UIColor blackColor]];
+                _sendLabelSmallScreen.text = @"Send $PAC";
+                [self.view addSubview:_sendLabelSmallScreen];
+                
+                _pacLabelSmallScreen =[[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/6,200,400,20)];
+                _pacLabelSmallScreen.font = [UIFont systemFontOfSize:15];
+                [_pacLabelSmallScreen setTextColor:[UIColor blackColor]];
+                _pacLabelSmallScreen.text = @"The People's Alternative Choice";
+                [self.view addSubview:_pacLabelSmallScreen];
+                
+                break;
+            default:
+                self.topBlackArea.hidden = NO;
+        }
+    }
     
     // TODO: XXX redesign page with round buttons like the iOS power down screen... apple watch also has round buttons
     self.scanButton.titleLabel.adjustsFontSizeToFitWidth = YES;

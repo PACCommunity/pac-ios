@@ -55,7 +55,13 @@
 @property (nonatomic, strong) IBOutlet UILabel *label;
 @property (nonatomic, strong) IBOutlet UIButton *addressButton;
 @property (nonatomic, strong) IBOutlet UIImageView *qrView;
+@property (nonatomic, strong) IBOutlet UIImageView *qrViewSmallScreen;
 @property (strong, nonatomic) IBOutlet UIView *TopBlackArea;
+@property (strong, nonatomic) IBOutlet UIView *topBlackAreaSmallScreen;
+@property (strong, nonatomic) IBOutlet UILabel *receiveLabel;
+@property (strong, nonatomic) IBOutlet UILabel *receiveLabelSmallScreen;
+@property (strong, nonatomic) IBOutlet UIImageView *pacIcon;
+@property (strong, nonatomic) IBOutlet UIImageView *pacIconSmallScreen;
 
 @end
 
@@ -64,6 +70,39 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
+        NSString *device = @"";
+        switch ((int)[[UIScreen mainScreen] nativeBounds].size.height) {
+                
+            case 1136:
+                printf("iPhone 5 or 5S or 5C");
+                device = @"iPhone 5";
+                self.TopBlackArea.hidden = YES;
+                self.pacIcon.hidden = YES;
+                self.receiveLabel.hidden = YES;
+                
+                _topBlackAreaSmallScreen =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 200)];
+                [_topBlackAreaSmallScreen setBackgroundColor:[UIColor blackColor]];
+                [self.view addSubview:_topBlackAreaSmallScreen];
+                self.topBlackAreaSmallScreen.layer.cornerRadius = 0.05 * self.topBlackAreaSmallScreen.bounds.size.width;
+                
+                _pacIconSmallScreen =[[UIImageView alloc] initWithFrame:CGRectMake(self.topBlackAreaSmallScreen.bounds.size.width/3.5,self.topBlackAreaSmallScreen.bounds.size.height/3,150,150)];
+                _pacIconSmallScreen.image=[UIImage imageNamed:@"dash-center-logo.png"];
+                [self.view addSubview:_pacIconSmallScreen];
+                
+                _receiveLabelSmallScreen =[[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/4.8,210,200,40)];
+                _receiveLabelSmallScreen.font = [UIFont systemFontOfSize:30];
+                [_receiveLabelSmallScreen setTextColor:[UIColor blackColor]];
+                _receiveLabelSmallScreen.text = @"Receive $PAC";
+                [self.view addSubview:_receiveLabelSmallScreen];
+
+                break;
+            default:
+                self.TopBlackArea.hidden = NO;
+        }
+    }
+    
     self.TopBlackArea.layer.cornerRadius = 0.05 * self.TopBlackArea.bounds.size.width;
     BRWalletManager *manager = [BRWalletManager sharedInstance];
     BRPaymentRequest *req;
