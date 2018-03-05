@@ -147,7 +147,7 @@
 "clear trusted node?" = "изчистване на познатите нодове?";
 
 /* No comment provided by engineer. */
-"clipboard doesn't contain a valid $PAC or bitcoin address" = "клипборда не съдържа валиден $PAC или bitcoin адрес";
+"clipboard doesn't contain a valid $PAC address" = "клипборда не съдържа валиден $PAC или bitcoin адрес";
 
 /* No comment provided by engineer. */
 "close app" = "затвори приложението";
@@ -315,7 +315,7 @@
 "no peers found" = "няма намерени пиъри";
 
 /* No comment provided by engineer. */
-"not a $PAC or bitcoin QR code" = "не е $PAC или bitcoin QR код";
+"not a $PAC QR code" = "не е $PAC или bitcoin QR код";
 
 /* No comment provided by engineer. */
 "not a valid bitcoin address" = "не е валиден Bitcoin адрес";
@@ -324,7 +324,7 @@
 "not a valid $PAC address" = "не е валиден $PAC адрес";
 
 /* No comment provided by engineer. */
-"not a valid $PAC or bitcoin address" = "не е валиден $PAC или Bitcoin адрес";
+"not a valid $PAC address" = "не е валиден $PAC или Bitcoin адрес";
 
 /* No comment provided by engineer. */
 "not a valid private key" = "не е валиден частен ключ";
@@ -423,7 +423,7 @@
 "retry" = "повторен опит";
 
 /* No comment provided by engineer. */
-"Scan someone else's QR code to get their $PAC or bitcoin address. You can send a payment to anyone with an address." = "Сканирайте някой друг QR код за да получите техният $PAC или bitcoin адрес. Можете да изпратите плащане към всеки с наличен адрес.";
+"Scan someone else's QR code to get their $PAC address. You can send a payment to anyone with an address." = "Сканирайте някой друг QR код за да получите техният $PAC или bitcoin адрес. Можете да изпратите плащане към всеки с наличен адрес.";
 
 /* No comment provided by engineer. */
 "Screenshots are visible to other apps and devices. Generate a new recovery phrase and keep it secret." = "Снимките на екрана са видими от други приложения и устройства. Генерирайте нова фраза за възстановяване и го запазете в тайна.";

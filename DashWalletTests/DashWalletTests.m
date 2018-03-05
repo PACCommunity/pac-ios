@@ -565,7 +565,7 @@
 - (void)testPaymentRequest
 {
     BRPaymentRequest *r = [BRPaymentRequest requestWithString:@"Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy"];
-    XCTAssertEqualObjects(@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy", r.string,
+    XCTAssertEqualObjects(@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy", r.string,
                           @"[BRPaymentRequest requestWithString:]");
     
     r = [BRPaymentRequest requestWithString:@"Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emc"];
@@ -573,70 +573,70 @@
     XCTAssertEqualObjects(@"Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emc", r.string,
                           @"[BRPaymentRequest requestWithString:]");
     
-    r = [BRPaymentRequest requestWithString:@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy"];
-    XCTAssertEqualObjects(@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy", r.string,
+    r = [BRPaymentRequest requestWithString:@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy"];
+    XCTAssertEqualObjects(@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy", r.string,
                           @"[BRPaymentRequest requestWithString:]");
     
-    r = [BRPaymentRequest requestWithString:@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=1"];
+    r = [BRPaymentRequest requestWithString:@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=1"];
     XCTAssertEqual(100000000, r.amount, @"[BRPaymentRequest requestWithString:]");
-    XCTAssertEqualObjects(@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=1", r.string,
+    XCTAssertEqualObjects(@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=1", r.string,
                           @"[BRPaymentRequest requestWithString:]");
     
-    r = [BRPaymentRequest requestWithString:@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=0.00000001"];
+    r = [BRPaymentRequest requestWithString:@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=0.00000001"];
     XCTAssertEqual(1, r.amount, @"[BRPaymentRequest requestWithString:]");
-    XCTAssertEqualObjects(@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=0.00000001", r.string,
+    XCTAssertEqualObjects(@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=0.00000001", r.string,
                           @"[BRPaymentRequest requestWithString:]");
     
-    r = [BRPaymentRequest requestWithString:@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=21000000"];
+    r = [BRPaymentRequest requestWithString:@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=21000000"];
     XCTAssertEqual(2100000000000000, r.amount, @"[BRPaymentRequest requestWithString:]");
-    XCTAssertEqualObjects(@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=21000000", r.string,
+    XCTAssertEqualObjects(@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=21000000", r.string,
                           @"[BRPaymentRequest requestWithString:]");
     
     // test for floating point rounding issues, these values cannot be exactly represented with an IEEE 754 double
-    r = [BRPaymentRequest requestWithString:@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=20999999.99999999"];
+    r = [BRPaymentRequest requestWithString:@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=20999999.99999999"];
     XCTAssertEqual(2099999999999999, r.amount, @"[BRPaymentRequest requestWithString:]");
-    XCTAssertEqualObjects(@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=20999999.99999999", r.string,
+    XCTAssertEqualObjects(@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=20999999.99999999", r.string,
                           @"[BRPaymentRequest requestWithString:]");
     
-    r = [BRPaymentRequest requestWithString:@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=20999999.99999995"];
+    r = [BRPaymentRequest requestWithString:@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=20999999.99999995"];
     XCTAssertEqual(2099999999999995, r.amount, @"[BRPaymentRequest requestWithString:]");
-    XCTAssertEqualObjects(@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=20999999.99999995", r.string,
+    XCTAssertEqualObjects(@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=20999999.99999995", r.string,
                           @"[BRPaymentRequest requestWithString:]");
     
-    r = [BRPaymentRequest requestWithString:@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=20999999.9999999"];
+    r = [BRPaymentRequest requestWithString:@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=20999999.9999999"];
     XCTAssertEqual(2099999999999990, r.amount, @"[BRPaymentRequest requestWithString:]");
-    XCTAssertEqualObjects(@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=20999999.9999999", r.string,
+    XCTAssertEqualObjects(@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=20999999.9999999", r.string,
                           @"[BRPaymentRequest requestWithString:]");
     
-    r = [BRPaymentRequest requestWithString:@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=0.07433"];
+    r = [BRPaymentRequest requestWithString:@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=0.07433"];
     XCTAssertEqual(7433000, r.amount, @"[BRPaymentRequest requestWithString:]");
-    XCTAssertEqualObjects(@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=0.07433", r.string,
+    XCTAssertEqualObjects(@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=0.07433", r.string,
                           @"[BRPaymentRequest requestWithString:]");
     
     // invalid amount string
-    r = [BRPaymentRequest requestWithString:@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=foobar"];
-    XCTAssertEqualObjects(@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy", r.string,
+    r = [BRPaymentRequest requestWithString:@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?amount=foobar"];
+    XCTAssertEqualObjects(@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy", r.string,
                           @"[BRPaymentRequest requestWithString:]");
     
     // test correct encoding of '&' in argument value
-    r = [BRPaymentRequest requestWithString:@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?label=foo%26bar"];
-    XCTAssertEqualObjects(@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?label=foo%26bar", r.string,
+    r = [BRPaymentRequest requestWithString:@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?label=foo%26bar"];
+    XCTAssertEqualObjects(@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?label=foo%26bar", r.string,
                           @"[BRPaymentRequest requestWithString:]");
     
     // test handling of ' ' in label or message
     r = [BRPaymentRequest
-         requestWithString:@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?label=foo bar&message=bar foo"];
-    XCTAssertEqualObjects(@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?label=foo%20bar&message=bar%20foo", r.string,
+         requestWithString:@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?label=foo bar&message=bar foo"];
+    XCTAssertEqualObjects(@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?label=foo%20bar&message=bar%20foo", r.string,
                           @"[BRPaymentRequest requestWithString:]");
     
     // test bip73
-    r = [BRPaymentRequest requestWithString:@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?r=https://foobar.com"];
-    XCTAssertEqualObjects(@"pac:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?r=https://foobar.com", r.string,
+    r = [BRPaymentRequest requestWithString:@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?r=https://foobar.com"];
+    XCTAssertEqualObjects(@"paccoin:Xj74g7h8pZTzqudPSzVEL7dFxNZY95Emcy?r=https://foobar.com", r.string,
                           @"[BRPaymentRequest requestWithString:]");
     
-    r = [BRPaymentRequest requestWithString:@"pac:?r=https://foobar.com"];
+    r = [BRPaymentRequest requestWithString:@"paccoin:?r=https://foobar.com"];
     XCTAssertTrue(r.isValid);
-    XCTAssertEqualObjects(@"pac:?r=https://foobar.com", r.string, @"[BRPaymentRequest requestWithString:]");
+    XCTAssertEqualObjects(@"paccoin:?r=https://foobar.com", r.string, @"[BRPaymentRequest requestWithString:]");
 }
 
 // MARK: - testTransaction

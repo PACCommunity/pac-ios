@@ -147,7 +147,7 @@
 "clear trusted node?" = "quitar nodo de confianza?";
 
 /* No comment provided by engineer. */
-"clipboard doesn't contain a valid $PAC or bitcoin address" = "el porta papeles no contiene una dirección válida de $PAC o bitcoin";
+"clipboard doesn't contain a valid $PAC address" = "el porta papeles no contiene una dirección válida de $PAC o bitcoin";
 
 /* No comment provided by engineer. */
 "close app" = "cerrar app";
@@ -315,7 +315,7 @@
 "no peers found" = "no se encontraron pares";
 
 /* No comment provided by engineer. */
-"not a $PAC or bitcoin QR code" = "no es un código QR de $PAC o bitcoin";
+"not a $PAC QR code" = "no es un código QR de $PAC o bitcoin";
 
 /* No comment provided by engineer. */
 "not a valid bitcoin address" = "no es una dirección válida de bitcoin";
@@ -324,7 +324,7 @@
 "not a valid $PAC address" = "no es una dirección válida de $PAC";
 
 /* No comment provided by engineer. */
-"not a valid $PAC or bitcoin address" = "no es una dirección válida de $PAC o bitcoin";
+"not a valid $PAC address" = "no es una dirección válida de $PAC o bitcoin";
 
 /* No comment provided by engineer. */
 "not a valid private key" = "no es una clave privada válida";
@@ -423,7 +423,7 @@
 "retry" = "reintentar";
 
 /* No comment provided by engineer. */
-"Scan someone else's QR code to get their $PAC or bitcoin address. You can send a payment to anyone with an address." = "Escanee el código QR de terceros para obtener su dirección $PAC o bitcoin. Puede enviar un pago a cualquier poseedor de una dirección.";
+"Scan someone else's QR code to get their $PAC address. You can send a payment to anyone with an address." = "Escanee el código QR de terceros para obtener su dirección $PAC o bitcoin. Puede enviar un pago a cualquier poseedor de una dirección.";
 
 /* No comment provided by engineer. */
 "Screenshots are visible to other apps and devices. Generate a new recovery phrase and keep it secret." = "Las capturas de pantalla son visibles para otras aplicaciones y dispositivos. Genere una nueva frase de recuperación y téngala en secreto.";

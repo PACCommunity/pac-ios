@@ -88,7 +88,7 @@
             url = [NSURL URLWithString:[NSString stringWithFormat:@"bitcoin://%@", s]];
             self.scheme = @"bitcoin";
         } else if ([s isValidPacAddress] || [s isValidPacPrivateKey] || [s isValidPacBIP38Key]) {
-            url = [NSURL URLWithString:[NSString stringWithFormat:@"pac://%@", s]];
+            url = [NSURL URLWithString:[NSString stringWithFormat:@"paccoin://%@", s]];
             self.scheme = @"paccoin";
         }
     }

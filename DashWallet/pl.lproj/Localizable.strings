@@ -147,7 +147,7 @@
 "clear trusted node?" = "usunąć zaufany węzeł?";
 
 /* No comment provided by engineer. */
-"clipboard doesn't contain a valid $PAC or bitcoin address" = "schowek nie zawiera prawidłowego adresu  $PAC lub bitcoin";
+"clipboard doesn't contain a valid $PAC address" = "schowek nie zawiera prawidłowego adresu  $PAC lub bitcoin";
 
 /* No comment provided by engineer. */
 "close app" = "zamknij aplikację";
@@ -315,7 +315,7 @@
 "no peers found" = "nie znaleziono węzłów sieci";
 
 /* No comment provided by engineer. */
-"not a $PAC or bitcoin QR code" = "nieprawidłowy kod QR";
+"not a $PAC QR code" = "nieprawidłowy kod QR";
 
 /* No comment provided by engineer. */
 "not a valid bitcoin address" = "nieprawidłowy adres bitoin";
@@ -324,7 +324,7 @@
 "not a valid $PAC address" = "nieprawidłowy adres $PAC";
 
 /* No comment provided by engineer. */
-"not a valid $PAC or bitcoin address" = "nieprawidłowy adres $PAC lub bitcoin";
+"not a valid $PAC address" = "nieprawidłowy adres $PAC lub bitcoin";
 
 /* No comment provided by engineer. */
 "not a valid private key" = "nieprawidłowy klucz prywatny";
@@ -423,7 +423,7 @@
 "retry" = "spróbuj ponownie";
 
 /* No comment provided by engineer. */
-"Scan someone else's QR code to get their $PAC or bitcoin address. You can send a payment to anyone with an address." = "Zeskanuj kod QR innej osoby by wczytać jego adres $PAC lub bitcoin. Płatność możesz wysłać do każdej osoby, która ma adres.";
+"Scan someone else's QR code to get their $PAC address. You can send a payment to anyone with an address." = "Zeskanuj kod QR innej osoby by wczytać jego adres $PAC lub bitcoin. Płatność możesz wysłać do każdej osoby, która ma adres.";
 
 /* No comment provided by engineer. */
 "Screenshots are visible to other apps and devices. Generate a new recovery phrase and keep it secret." = "Screeny są widoczne dla innych aplikacji i urządzeń. Wygeneruj nową frazę odzyskiwania danych i zachowaj ją w tajemnicy.";

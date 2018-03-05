@@ -1089,7 +1089,7 @@
         UINavigationBar *b = self.navigationController.navigationBar;
         NSString *tip;
         if (manager.bitcoinPacPrice) {
-            tip = (self.shouldShowTips) ? [NSString stringWithFormat:@"%@ \n 1%@ = %.4f%@ (%@)",BALANCE_TIP_START,PAC,manager.bitcoinPacPrice.doubleValue,BTC,[manager localCurrencyStringForPacAmount:DUFFS]] :
+            tip = (self.shouldShowTips) ? [NSString stringWithFormat:@"%@ \n 1%@ = %.8f%@ (%@)",BALANCE_TIP_START,PAC,manager.bitcoinPacPrice.doubleValue,BTC,[manager localCurrencyStringForPacAmount:DUFFS]] :
             [NSString stringWithFormat:NSLocalizedString(@"block #%d of %d", nil),
              [[BRPeerManager sharedInstance] lastBlockHeight],
              [[BRPeerManager sharedInstance] estimatedBlockHeight]];

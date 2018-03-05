@@ -147,7 +147,7 @@
 "clear trusted node?" = "clear trusted node?";
 
 /* No comment provided by engineer. */
-"clipboard doesn't contain a valid $PAC or bitcoin address" = "clipboard doesn't contain a valid $PAC or bitcoin address";
+"clipboard doesn't contain a valid $PAC address" = "clipboard doesn't contain a valid $PAC address";
 
 /* No comment provided by engineer. */
 "close app" = "uygulamayı kapat";
@@ -315,7 +315,7 @@
 "no peers found" = "eşler bulunamadı";
 
 /* No comment provided by engineer. */
-"not a $PAC or bitcoin QR code" = "bir $PAC veya bitcoin QR kodu değildir";
+"not a $PAC QR code" = "bir $PAC veya bitcoin QR kodu değildir";
 
 /* No comment provided by engineer. */
 "not a valid bitcoin address" = "geçerli bir bitcoin adresi değil";
@@ -324,7 +324,7 @@
 "not a valid $PAC address" = "geçerli bir $PAC adresi değil";
 
 /* No comment provided by engineer. */
-"not a valid $PAC or bitcoin address" = "geçerli bir $PAC veya bitcoin adresi değil";
+"not a valid $PAC address" = "geçerli bir $PAC veya bitcoin adresi değil";
 
 /* No comment provided by engineer. */
 "not a valid private key" = "geçerli bir özel anahtar değil";
@@ -423,7 +423,7 @@
 "retry" = "retry";
 
 /* No comment provided by engineer. */
-"Scan someone else's QR code to get their $PAC or bitcoin address. You can send a payment to anyone with an address." = "Başkalarının $PAC veya bitcoin adreslerini öğrenmek için QR kodlarını taratın. Adresi olan herkese ödeme gönderebilirsiniz.";
+"Scan someone else's QR code to get their $PAC address. You can send a payment to anyone with an address." = "Başkalarının $PAC veya bitcoin adreslerini öğrenmek için QR kodlarını taratın. Adresi olan herkese ödeme gönderebilirsiniz.";
 
 /* No comment provided by engineer. */
 "Screenshots are visible to other apps and devices. Generate a new recovery phrase and keep it secret." = "Ekran görüntüleri diğer uygulamalar ve cihazlar tarafından görülebilir. Yeni bir kurtarma metni oluşturun ve gizli tutun.";

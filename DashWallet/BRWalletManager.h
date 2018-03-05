@@ -28,10 +28,10 @@
 #import "BRWallet.h"
 #import "BRMnemonic.h"
 
-#define PAC         @"$PAC"     // capital D with stroke (utf-8)
+#define PAC          @"\x03\xA1"     // capital rho(utf-8)
 #define BTC          @"\xC9\x83"     // capital B with stroke (utf-8)
 #define BITS         @"\xC6\x80"     // lowercase b with stroke (utf-8)
-#define DITS         @"m$PAC"     // lowercase d with stroke (utf-8)
+#define MPAC         @"\x03\xC1"     // lowercase rho (utf-8)
 #define NARROW_NBSP  @"\xE2\x80\xAF" // narrow no-break space (utf-8)
 #define LDQUOTE      @"\xE2\x80\x9C" // left double quote (utf-8)
 #define RDQUOTE      @"\xE2\x80\x9D" // right double quote (utf-8)

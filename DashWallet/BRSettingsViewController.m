@@ -271,15 +271,20 @@
             self.selectorType = 1;
             self.selectorOptions =
             @[NSLocalizedString(@"always require passcode", nil),
-              [NSString stringWithFormat:@"%@      (%@)", [manager stringForPacAmount:DUFFS/10],
-               [manager localCurrencyStringForPacAmount:DUFFS/10]],
-              [NSString stringWithFormat:@"%@   (%@)", [manager stringForPacAmount:DUFFS],
-               [manager localCurrencyStringForPacAmount:DUFFS]],
-              [NSString stringWithFormat:@"%@ (%@)", [manager stringForPacAmount:DUFFS*10],
-               [manager localCurrencyStringForPacAmount:DUFFS*10]]];
-            if (manager.spendingLimit > DUFFS*10) manager.spendingLimit = DUFFS*10;
-            self.selectedOption = self.selectorOptions[(log10(manager.spendingLimit) < 6) ? 0 :
-                                                       (NSUInteger)log10(manager.spendingLimit) - 6];
+              [NSString stringWithFormat:@"%@      (%@)", [manager stringForPacAmount:DUFFS*1000],
+               [manager localCurrencyStringForPacAmount:DUFFS*1000]],
+              [NSString stringWithFormat:@"%@   (%@)", [manager stringForPacAmount:DUFFS*10000],
+               [manager localCurrencyStringForPacAmount:DUFFS*10000]],
+              [NSString stringWithFormat:@"%@ (%@)", [manager stringForPacAmount:DUFFS*100000],
+               [manager localCurrencyStringForPacAmount:DUFFS*100000]]];
+            if (manager.spendingLimit > DUFFS*100000) manager.spendingLimit = DUFFS*100000;
+            if (manager.spendingLimit == DUFFS*1000) {
+                self.selectedOption = self.selectorOptions[1];
+            } else if (manager.spendingLimit == DUFFS*10000) {
+                self.selectedOption = self.selectorOptions[2];
+            }  else if (manager.spendingLimit == DUFFS*100000) {
+                self.selectedOption = self.selectorOptions[3];
+            }
             self.noOptionsText = nil;
             self.selectorController.title = NSLocalizedString(@"touch id spending limit", nil);
             [self.navigationController pushViewController:self.selectorController animated:YES];
@@ -297,7 +302,7 @@
     NSUInteger digits = (((manager.pacFormat.maximumFractionDigits - 2)/3 + 1) % 3)*3 + 2;
     
     manager.pacFormat.currencySymbol = [NSString stringWithFormat:@"%@%@" NARROW_NBSP, (digits == 5) ? @"m" : @"",
-                                     (digits == 2) ? DITS : PAC];
+                                     (digits == 2) ? MPAC : PAC];
     manager.pacFormat.maximumFractionDigits = digits;
     manager.pacFormat.maximum = @(MAX_MONEY/(int64_t)pow(10.0, manager.pacFormat.maximumFractionDigits));
     [[NSUserDefaults standardUserDefaults] setInteger:digits forKey:SETTINGS_MAX_DIGITS_KEY];
@@ -625,7 +630,7 @@ _switch_cell:
                 manager.localCurrencyCode = manager.currencyCodes[indexPath.row];
             }
         }
-        else manager.spendingLimit = (indexPath.row > 0) ? pow(10, indexPath.row + 6) : 0;
+        else manager.spendingLimit = DUFFS * 100*pow(10, indexPath.row);
         
         if (currencyCodeIndex < self.selectorOptions.count && currencyCodeIndex != indexPath.row) {
             [tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:currencyCodeIndex inSection:0], indexPath]

@@ -147,7 +147,7 @@
 "clear trusted node?" = "clear trusted node?";
 
 /* No comment provided by engineer. */
-"clipboard doesn't contain a valid $PAC or bitcoin address" = "clipboard doesn't contain a valid $PAC or bitcoin address";
+"clipboard doesn't contain a valid $PAC address" = "clipboard doesn't contain a valid $PAC address";
 
 /* No comment provided by engineer. */
 "close app" = "fechar o aplicativo";
@@ -315,7 +315,7 @@
 "no peers found" = "não foram encontrados peers";
 
 /* No comment provided by engineer. */
-"not a $PAC or bitcoin QR code" = "não é um código QR de $PAC ou bitcoin";
+"not a $PAC QR code" = "não é um código QR de $PAC ou bitcoin";
 
 /* No comment provided by engineer. */
 "not a valid bitcoin address" = "não um endereço bitcoin válido";
@@ -324,7 +324,7 @@
 "not a valid $PAC address" = "não um endereço $PAC válido";
 
 /* No comment provided by engineer. */
-"not a valid $PAC or bitcoin address" = "não um endereço $PAC ou bitcoin válido";
+"not a valid $PAC address" = "não um endereço $PAC ou bitcoin válido";
 
 /* No comment provided by engineer. */
 "not a valid private key" = "a chave privada não é válida";
@@ -423,7 +423,7 @@
 "retry" = "tente novamente";
 
 /* No comment provided by engineer. */
-"Scan someone else's QR code to get their $PAC or bitcoin address. You can send a payment to anyone with an address." = "Digitalizar o código QR de outra pessoa para obter seu endereço $PAC ou bitcoin. Você pode enviar um pagamento para qualquer pessoa com um endereço.";
+"Scan someone else's QR code to get their $PAC address. You can send a payment to anyone with an address." = "Digitalizar o código QR de outra pessoa para obter seu endereço $PAC ou bitcoin. Você pode enviar um pagamento para qualquer pessoa com um endereço.";
 
 /* No comment provided by engineer. */
 "Screenshots are visible to other apps and devices. Generate a new recovery phrase and keep it secret." = "Capturas de Tela são visíveis para outros dispositivos e aplicativos. Gere uma nova frase de recuperação e a mantenha secreta.";

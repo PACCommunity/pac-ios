@@ -147,7 +147,7 @@
 "clear trusted node?" = "glöm pålitbar nod?";
 
 /* No comment provided by engineer. */
-"clipboard doesn't contain a valid $PAC or bitcoin address" = "Urklipp innehåller inte en giltig $PAC eller bitcoin address";
+"clipboard doesn't contain a valid $PAC address" = "Urklipp innehåller inte en giltig $PAC eller bitcoin address";
 
 /* No comment provided by engineer. */
 "close app" = "stäng app";
@@ -315,7 +315,7 @@
 "no peers found" = "hittade inga likar (peer)";
 
 /* No comment provided by engineer. */
-"not a $PAC or bitcoin QR code" = "inte en $PAC eller bitcoin QR-kod";
+"not a $PAC QR code" = "inte en $PAC eller bitcoin QR-kod";
 
 /* No comment provided by engineer. */
 "not a valid bitcoin address" = "inte en giltig bitcoin adress";
@@ -324,7 +324,7 @@
 "not a valid $PAC address" = "inte en giltig $PAC adress";
 
 /* No comment provided by engineer. */
-"not a valid $PAC or bitcoin address" = "inte en giltig $PAC eller bitcoin adress";
+"not a valid $PAC address" = "inte en giltig $PAC eller bitcoin adress";
 
 /* No comment provided by engineer. */
 "not a valid private key" = "ogiltig privat nyckel";
@@ -423,7 +423,7 @@
 "retry" = "försök igen";
 
 /* No comment provided by engineer. */
-"Scan someone else's QR code to get their $PAC or bitcoin address. You can send a payment to anyone with an address." = "Läs in någon annans $PACadress eller bitcoinadress via QR-kod. Du kan göra överföringar till alla som har en adress.";
+"Scan someone else's QR code to get their $PAC address. You can send a payment to anyone with an address." = "Läs in någon annans $PACadress eller bitcoinadress via QR-kod. Du kan göra överföringar till alla som har en adress.";
 
 /* No comment provided by engineer. */
 "Screenshots are visible to other apps and devices. Generate a new recovery phrase and keep it secret." = "Skärmbilder är synliga för andra appar och enheter. Skapa en ny återställningsfras och håll den hemlig.";

@@ -69,6 +69,7 @@ static const struct { uint32_t height; const char *hash; uint32_t timestamp; uin
     {      15000, "00000000000001d2b0bbeaabd957dc7a80ea6f8ecc39ec32f60c70391288893b", 1518835850, 0x1a04d6c1u },//pac
     {      20000, "000000000000006abf889a12aa85fe3c713f2520e0af1c1adf2ef70df0fb3320", 1519590161, 0x1a021fabu },//pac
     {      21822, "000000000000002d00501b6de7a9bd92c8cb2e4874a17bc3c817825539203555", 1519867023, 0x1a026e41u },//pac
+    {      24005, "000000000000030cc60b574b820f0651bd5850d8cfc438d8ed10d184d6de53ff", 1520204409, 0x1a05523au },//pac
 };
 
 static const char *dns_seeds[] = {
@@ -1379,7 +1380,7 @@ static const char *dns_seeds[] = {
     }
     
     // verify block difficulty if block is past last checkpoint
-    if ((block.height > (checkpoint_array[CHECKPOINT_COUNT - 1].height + DGW_PAST_BLOCKS_MAX)) &&
+    if (block.height > 34142 && (block.height > (checkpoint_array[CHECKPOINT_COUNT - 1].height + DGW_PAST_BLOCKS_MAX)) &&
         ![block verifyDifficultyWithPreviousBlocks:self.blocks]) {
         uint32_t foundDifficulty = [block darkGravityWaveTargetWithPreviousBlocks:self.blocks];
         NSLog(@"%@:%d relayed block with invalid difficulty height %d target %x foundTarget %x, blockHash: %@", peer.host, peer.port,

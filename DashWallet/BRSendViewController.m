@@ -47,7 +47,7 @@
 #import "BRQRScanViewController.h"
 #import "BRQRScanViewModel.h"
 
-#define SCAN_TIP      NSLocalizedString(@"Scan someone else's QR code to get their $PAC or bitcoin address. "\
+#define SCAN_TIP      NSLocalizedString(@"Scan someone else's QR code to get their $PAC address. "\
 "You can send a payment to anyone with an address.", nil)
 #define CLIPBOARD_TIP NSLocalizedString(@"$PAC addresses can also be copied to the clipboard. "\
 "A $PAC address always starts with 'P'.", nil)
@@ -325,7 +325,7 @@ static NSString *sanitizeString(NSString *s)
             }
             if (dictionary[@"pay"] && dictionary[@"sender"]) {
                 if (dictionary[@"label"]) [dictionary removeObjectForKey:@"label"];
-                NSURLComponents *components = [NSURLComponents componentsWithString:[NSString stringWithFormat:@"pac:%@",dictionary[@"pay"]]]; 
+                NSURLComponents *components = [NSURLComponents componentsWithString:[NSString stringWithFormat:@"paccoin:%@",dictionary[@"pay"]]]; 
                 NSMutableArray *queryItems = [NSMutableArray array];
                 NSURLQueryItem *label = [NSURLQueryItem queryItemWithName:@"label" value:[NSString stringWithFormat:NSLocalizedString(@"Application %@ is requesting a payment to",nil),[dictionary[@"sender"] capitalizedString]]];
                 [queryItems addObject:label];
@@ -475,7 +475,7 @@ static NSString *sanitizeString(NSString *s)
         }
         else {
             UIAlertController * alert = [UIAlertController
-                                         alertControllerWithTitle:NSLocalizedString(@"not a valid $PAC or bitcoin address", nil)
+                                         alertControllerWithTitle:NSLocalizedString(@"not a valid $PAC address", nil)
                                          message:request.paymentAddress
                                          preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction* okButton = [UIAlertAction
@@ -1514,7 +1514,7 @@ static NSString *sanitizeString(NSString *s)
     }
     UIAlertController * alert = [UIAlertController
                                  alertControllerWithTitle:@""
-                                 message:NSLocalizedString(@"clipboard doesn't contain a valid $PAC or bitcoin address", nil)
+                                 message:NSLocalizedString(@"clipboard doesn't contain a valid $PAC address", nil)
                                  preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* okButton = [UIAlertAction
                                actionWithTitle:NSLocalizedString(@"ok", nil)
@@ -1805,7 +1805,7 @@ static NSString *sanitizeString(NSString *s)
                 
                 DSShapeshiftEntity * shapeshift = [DSShapeshiftEntity registerShapeshiftWithInputAddress:depositAddress andWithdrawalAddress:withdrawalAddress withStatus:eShapeshiftAddressStatus_Unused fixedAmountOut:depositAmountNumber amountIn:depositAmountNumber];
                 
-                BRPaymentRequest * request = [BRPaymentRequest requestWithString:[NSString stringWithFormat:@"pac:%@?amount=%llu&label=%@&message=Shapeshift to %@",depositAddress,depositAmount,sanitizeString(self.shapeshiftRequest.commonName),withdrawalAddress]];
+                BRPaymentRequest * request = [BRPaymentRequest requestWithString:[NSString stringWithFormat:@"paccoin:%@?amount=%llu&label=%@&message=Shapeshift to %@",depositAddress,depositAmount,sanitizeString(self.shapeshiftRequest.commonName),withdrawalAddress]];
                 [self confirmProtocolRequest:request.protocolRequest currency:@"paccoin" associatedShapeshift:shapeshift localCurrency:nil localCurrencyAmount:nil];
             }
         }];
@@ -1829,7 +1829,7 @@ static NSString *sanitizeString(NSString *s)
         
         if (shapeshift) {
             [hud hideAnimated:TRUE];
-            BRPaymentRequest * request = [BRPaymentRequest requestWithString:[NSString stringWithFormat:@"pac:%@?amount=%llu&label=%@&message=Shapeshift to %@",depositAddress,self.amount,sanitizeString(self.request.commonName),address]];
+            BRPaymentRequest * request = [BRPaymentRequest requestWithString:[NSString stringWithFormat:@"paccoin:%@?amount=%llu&label=%@&message=Shapeshift to %@",depositAddress,self.amount,sanitizeString(self.request.commonName),address]];
             [self confirmProtocolRequest:request.protocolRequest currency:@"paccoin" associatedShapeshift:shapeshift localCurrency:nil localCurrencyAmount:nil];
         } else {
             [[DSShapeshiftManager sharedInstance] POST_ShiftWithAddress:address returnAddress:returnAddress completionBlock:^(NSDictionary *shiftInfo, NSError *error) {
@@ -1853,7 +1853,7 @@ static NSString *sanitizeString(NSString *s)
                 NSString * withdrawalAddress = shiftInfo[@"withdrawal"];
                 if (withdrawalAddress && depositAddress) {
                     DSShapeshiftEntity * shapeshift = [DSShapeshiftEntity registerShapeshiftWithInputAddress:depositAddress andWithdrawalAddress:withdrawalAddress withStatus:eShapeshiftAddressStatus_Unused];
-                    BRPaymentRequest * request = [BRPaymentRequest requestWithString:[NSString stringWithFormat:@"pac:%@?amount=%llu&label=%@&message=Shapeshift to %@",depositAddress,self.amount,sanitizeString(self.shapeshiftRequest.commonName),withdrawalAddress]];
+                    BRPaymentRequest * request = [BRPaymentRequest requestWithString:[NSString stringWithFormat:@"paccoin:%@?amount=%llu&label=%@&message=Shapeshift to %@",depositAddress,self.amount,sanitizeString(self.shapeshiftRequest.commonName),withdrawalAddress]];
                     [self confirmProtocolRequest:request.protocolRequest currency:@"paccoin" associatedShapeshift:shapeshift localCurrency:nil localCurrencyAmount:nil];
                 }
             }];

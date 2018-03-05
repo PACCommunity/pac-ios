@@ -147,7 +147,7 @@
 "clear trusted node?" = "vertrouwd punt wissen?";
 
 /* No comment provided by engineer. */
-"clipboard doesn't contain a valid $PAC or bitcoin address" = "het klembord bevat geen geldig $PAC- of bitcoinadres";
+"clipboard doesn't contain a valid $PAC address" = "het klembord bevat geen geldig $PAC- of bitcoinadres";
 
 /* No comment provided by engineer. */
 "close app" = "sluit app";
@@ -315,7 +315,7 @@
 "no peers found" = "geen peers gevonden";
 
 /* No comment provided by engineer. */
-"not a $PAC or bitcoin QR code" = "geen $PAC of bitcoin QR-code";
+"not a $PAC QR code" = "geen $PAC of bitcoin QR-code";
 
 /* No comment provided by engineer. */
 "not a valid bitcoin address" = "ongeldig bitcoin-adres";
@@ -324,7 +324,7 @@
 "not a valid $PAC address" = "ongeldig $PAC-adres";
 
 /* No comment provided by engineer. */
-"not a valid $PAC or bitcoin address" = "ongeldig $PAC- of bitcoinadres";
+"not a valid $PAC address" = "ongeldig $PAC- of bitcoinadres";
 
 /* No comment provided by engineer. */
 "not a valid private key" = "ongeldige persoonlijke sleutel";
@@ -423,7 +423,7 @@
 "retry" = "probeer opnieuw";
 
 /* No comment provided by engineer. */
-"Scan someone else's QR code to get their $PAC or bitcoin address. You can send a payment to anyone with an address." = "Scan de QR-code van iemand anders om zijn of haar $PAC- of bitcoinadres te verkrijgen. Je kan een betaling versturen naar iedereen met een adres.";
+"Scan someone else's QR code to get their $PAC address. You can send a payment to anyone with an address." = "Scan de QR-code van iemand anders om zijn of haar $PAC- of bitcoinadres te verkrijgen. Je kan een betaling versturen naar iedereen met een adres.";
 
 /* No comment provided by engineer. */
 "Screenshots are visible to other apps and devices. Generate a new recovery phrase and keep it secret." = "Schermafdrukken zijn zichtbaar voor andere apps en apparaten. Genereer een nieuwe herstelzin en houdt deze geheim.";

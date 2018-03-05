@@ -323,7 +323,7 @@ static NSTimeInterval const kResumeSearchTimeInterval = 1.0;
                                                      request.paymentAddress];
                                  }
                                  else {
-                                     errorMessage = NSLocalizedString(@"not a $PAC or bitcoin QR code", nil);
+                                     errorMessage = NSLocalizedString(@"not a $PAC QR code", nil);
                                  }
                                  [strongSelf.qrCodeObject setInvalidWithErrorMessage:errorMessage];
                                  

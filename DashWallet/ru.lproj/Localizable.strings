@@ -147,7 +147,7 @@
 "clear trusted node?" = "Удалить доверенный узел?";
 
 /* No comment provided by engineer. */
-"clipboard doesn't contain a valid $PAC or bitcoin address" = "Буфер обмена не содержит корректного адреса $PAC или Bitcoin";
+"clipboard doesn't contain a valid $PAC address" = "Буфер обмена не содержит корректного адреса $PAC или Bitcoin";
 
 /* No comment provided by engineer. */
 "close app" = "Закрыть программу";
@@ -315,7 +315,7 @@
 "no peers found" = "Узлы не найдены";
 
 /* No comment provided by engineer. */
-"not a $PAC or bitcoin QR code" = "Не является QR-кодом для $PAC или Bitcoin";
+"not a $PAC QR code" = "Не является QR-кодом для $PAC или Bitcoin";
 
 /* No comment provided by engineer. */
 "not a valid bitcoin address" = "Некорректный адрес Bitcoin";
@@ -324,7 +324,7 @@
 "not a valid $PAC address" = "Некорректный адрес $PAC";
 
 /* No comment provided by engineer. */
-"not a valid $PAC or bitcoin address" = "Некорректный адрес $PAC или Bitcoin";
+"not a valid $PAC address" = "Некорректный адрес $PAC или Bitcoin";
 
 /* No comment provided by engineer. */
 "not a valid private key" = "Некорректный закрытый ключ";
@@ -423,7 +423,7 @@
 "retry" = "повторить";
 
 /* No comment provided by engineer. */
-"Scan someone else's QR code to get their $PAC or bitcoin address. You can send a payment to anyone with an address." = "Отсканируйте чей-нибудь QR-код, чтобы получить его адрес $PAC или Bitcoin. Вы можете отправить платеж любому, у кого есть адрес.";
+"Scan someone else's QR code to get their $PAC address. You can send a payment to anyone with an address." = "Отсканируйте чей-нибудь QR-код, чтобы получить его адрес $PAC или Bitcoin. Вы можете отправить платеж любому, у кого есть адрес.";
 
 /* No comment provided by engineer. */
 "Screenshots are visible to other apps and devices. Generate a new recovery phrase and keep it secret." = "Скриншоты видимы другими приложениями и устройствами. Создайте новую фразу восстановления и держите ее в секрете.";
