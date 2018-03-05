@@ -58,7 +58,8 @@
 @interface BRRootViewController ()
 
 @property (nonatomic, strong) IBOutlet UIProgressView *progress, *pulse;
-@property (nonatomic, strong) IBOutlet UIView *errorBar, *splash, *logo, *blur;
+@property (nonatomic, strong) IBOutlet UIView *errorBar, *splash, *logo, *blur, *topBlackAreaSmallScreen;
+@property (strong, nonatomic) IBOutlet UIImageView *pacIcon;
 @property (nonatomic, strong) IBOutlet UIGestureRecognizer *navBarTap;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *lock;
 @property (nonatomic, strong) IBOutlet BRBouncyBurgerButton *burger;
@@ -76,6 +77,7 @@
 @property (nonatomic, strong) id activeObserver, resignActiveObserver, foregroundObserver, backgroundObserver;
 @property (nonatomic, assign) NSTimeInterval timeout, start;
 @property (nonatomic, assign) SystemSoundID pingsound;
+@property (strong, nonatomic) IBOutlet UIImageView *pacIconSmallScreen;
 
 @end
 
@@ -91,7 +93,88 @@
     
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     // Do any additional setup after loading the view.
-    
+    if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
+        
+        switch ((int)[[UIScreen mainScreen] nativeBounds].size.height) {
+                
+            case 960:
+                printf("iPhone 4 or 4S");
+                _topBlackAreaSmallScreen =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 200)];
+                [_topBlackAreaSmallScreen setBackgroundColor:[UIColor blackColor]];
+                [self.view addSubview:_topBlackAreaSmallScreen];
+                self.topBlackAreaSmallScreen.layer.cornerRadius = 0.05 * self.topBlackAreaSmallScreen.bounds.size.width;
+                
+                _pacIconSmallScreen =[[UIImageView alloc] initWithFrame:CGRectMake(self.topBlackAreaSmallScreen.bounds.size.width/3.7,self.topBlackAreaSmallScreen.bounds.size.height/3,150,150)];
+                _pacIconSmallScreen.image=[UIImage imageNamed:@"dash-center-logo.png"];
+                [self.view addSubview:_pacIconSmallScreen];
+                break;
+            case 1136:
+                printf("iPhone 5 or 5S or 5C");
+                _topBlackAreaSmallScreen =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 200)];
+                [_topBlackAreaSmallScreen setBackgroundColor:[UIColor blackColor]];
+                [self.view addSubview:_topBlackAreaSmallScreen];
+                self.topBlackAreaSmallScreen.layer.cornerRadius = 0.05 * self.topBlackAreaSmallScreen.bounds.size.width;
+                
+                _pacIconSmallScreen =[[UIImageView alloc] initWithFrame:CGRectMake(self.topBlackAreaSmallScreen.bounds.size.width/3.7,self.topBlackAreaSmallScreen.bounds.size.height/3,150,150)];
+                _pacIconSmallScreen.image=[UIImage imageNamed:@"dash-center-logo.png"];
+                [self.view addSubview:_pacIconSmallScreen];
+                break;
+            case 1334:
+                printf("iPhone 6/6S/7/8");
+                _topBlackAreaSmallScreen=[[UIView alloc]initWithFrame:CGRectMake(0, -30, 375, 258)];
+                [_topBlackAreaSmallScreen setBackgroundColor:[UIColor blackColor]];
+                [self.view addSubview:_topBlackAreaSmallScreen];
+                self.topBlackAreaSmallScreen.layer.cornerRadius = 0.05 * self.topBlackAreaSmallScreen.bounds.size.width;
+                
+                _pacIcon =[[UIImageView alloc] initWithFrame:CGRectMake(self.topBlackAreaSmallScreen.bounds.size.width/3.3,self.topBlackAreaSmallScreen.bounds.size.height/3,150,150)];
+                _pacIcon.image=[UIImage imageNamed:@"dash-center-logo.png"];
+                [self.view addSubview:_pacIcon];
+                break;
+            case 2208:
+                printf("iPhone 6+/6S+/7+/8+");
+                _topBlackAreaSmallScreen=[[UIView alloc]initWithFrame:CGRectMake(0, -30, 414, 258)];
+                [_topBlackAreaSmallScreen setBackgroundColor:[UIColor blackColor]];
+                [self.view addSubview:_topBlackAreaSmallScreen];
+                self.topBlackAreaSmallScreen.layer.cornerRadius = 0.05 * self.topBlackAreaSmallScreen.bounds.size.width;
+                
+                _pacIcon =[[UIImageView alloc] initWithFrame:CGRectMake(self.topBlackAreaSmallScreen.bounds.size.width/3.3,self.topBlackAreaSmallScreen.bounds.size.height/3.3,170,170)];
+                _pacIcon.image=[UIImage imageNamed:@"dash-center-logo.png"];
+                [self.view addSubview:_pacIcon];
+                break;
+            case 1920:
+                printf("iPhone 6+/6S+/7+/8+");
+                _topBlackAreaSmallScreen=[[UIView alloc]initWithFrame:CGRectMake(0, -30, 414, 258)];
+                [_topBlackAreaSmallScreen setBackgroundColor:[UIColor blackColor]];
+                [self.view addSubview:_topBlackAreaSmallScreen];
+                self.topBlackAreaSmallScreen.layer.cornerRadius = 0.05 * self.topBlackAreaSmallScreen.bounds.size.width;
+                
+                _pacIcon =[[UIImageView alloc] initWithFrame:CGRectMake(self.topBlackAreaSmallScreen.bounds.size.width/3.3,self.topBlackAreaSmallScreen.bounds.size.height/3.3,170,170)];
+                _pacIcon.image=[UIImage imageNamed:@"dash-center-logo.png"];
+                [self.view addSubview:_pacIcon];
+                break;
+            case 2436:
+                printf("iPhone X");
+                _topBlackAreaSmallScreen=[[UIView alloc]initWithFrame:CGRectMake(0, -30, 378, 258)];
+                [_topBlackAreaSmallScreen setBackgroundColor:[UIColor blackColor]];
+                [self.view addSubview:_topBlackAreaSmallScreen];
+                self.topBlackAreaSmallScreen.layer.cornerRadius = 0.05 * self.topBlackAreaSmallScreen.bounds.size.width;
+                
+                _pacIcon =[[UIImageView alloc] initWithFrame:CGRectMake(self.topBlackAreaSmallScreen.bounds.size.width/3.3,self.topBlackAreaSmallScreen.bounds.size.height/2.8,150,150)];
+                _pacIcon.image=[UIImage imageNamed:@"dash-center-logo.png"];
+                [self.view addSubview:_pacIcon];
+                break;
+            default:
+                printf("unknown 6+");
+                _topBlackAreaSmallScreen=[[UIView alloc]initWithFrame:CGRectMake(0, -30, 414, 258)];
+                [_topBlackAreaSmallScreen setBackgroundColor:[UIColor blackColor]];
+                [self.view addSubview:_topBlackAreaSmallScreen];
+                self.topBlackAreaSmallScreen.layer.cornerRadius = 0.05 * self.topBlackAreaSmallScreen.bounds.size.width;
+                
+                _pacIcon =[[UIImageView alloc] initWithFrame:CGRectMake(self.topBlackAreaSmallScreen.bounds.size.width/3.3,self.topBlackAreaSmallScreen.bounds.size.height/3.3,170,170)];
+                _pacIcon.image=[UIImage imageNamed:@"dash-center-logo.png"];
+                [self.view addSubview:_pacIcon];
+        }
+    }
     // detect jailbreak so we can throw up an idiot warning, in viewDidLoad so it can't easily be swizzled out
     struct stat s;
     BOOL jailbroken = (stat("/bin/sh", &s) == 0) ? YES : NO; // if we can see /bin/sh, the app isn't sandboxed
@@ -273,6 +356,7 @@
                                                        queue:nil usingBlock:^(NSNotification *note) {
                                                            if (! manager.noWallet) { // lockdown the app
                                                                manager.didAuthenticate = NO;
+                                                               [self.navigationController.navigationBar addSubview:_topBlackAreaSmallScreen];
                                                                self.navigationItem.titleView = self.logo;
                                                                self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"burger"];
                                                                self.navigationItem.rightBarButtonItem = self.lock;
