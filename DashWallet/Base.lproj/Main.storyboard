@@ -837,7 +837,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZVN-nj-GEF">
                                 <rect key="frame" x="0.0" y="-44" width="320" height="272"/>
                                 <subviews>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" image="dash-center-logo" translatesAutoresizingMaskIntoConstraints="NO" id="hNY-ax-mHG">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="hNY-ax-mHG">
                                         <rect key="frame" x="84" y="137" width="151" height="152"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="152" id="ENL-uL-WUM"/>
@@ -846,7 +846,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="hNY-ax-mHG" firstAttribute="top" secondItem="ZVN-nj-GEF" secondAttribute="top" constant="137" id="CBT-KK-Qws"/>
@@ -988,7 +988,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="03N-Pc-aZc">
                                 <rect key="frame" x="0.0" y="-44" width="320" height="272"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="272" id="XVK-sW-ctP"/>
                                 </constraints>
@@ -1062,7 +1062,7 @@
                                     <action selector="scanQR:" destination="RsQ-W7-grB" eventType="touchUpInside" id="wbh-n6-WR8"/>
                                 </connections>
                             </button>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" image="dash-center-logo" translatesAutoresizingMaskIntoConstraints="NO" id="4Ur-j7-v3L">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="4Ur-j7-v3L">
                                 <rect key="frame" x="84" y="93" width="151" height="152"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="151" id="QTl-tA-VO6"/>
@@ -1131,7 +1131,7 @@
                                     <constraint firstAttribute="height" constant="30" id="6Qz-aJ-WXY"/>
                                 </constraints>
                                 <color key="onTintColor" red="0.94901960780000005" green="0.92156862750000001" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="thumbTintColor" red="0.37055522200000002" green="0.37056469920000001" blue="0.37055957319999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="thumbTintColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="enableInstantX:" destination="RsQ-W7-grB" eventType="valueChanged" id="k8Q-dV-O71"/>
                                 </connections>
@@ -2174,7 +2174,7 @@
                                         <switch opaque="NO" tag="1101" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4SS-5m-RoG">
                                             <rect key="frame" x="245" y="6.5" width="51" height="31"/>
                                             <color key="onTintColor" red="0.94901960780000005" green="0.92156862750000001" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="thumbTintColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="thumbTintColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="didUpdateSwitch:" destination="Pe6-Hf-Vsq" eventType="valueChanged" id="kim-Vz-Wk2"/>
                                             </connections>
@@ -3217,7 +3217,6 @@ Other devices may be infected.
         <image name="cameraguide-blue-small" width="20" height="20"/>
         <image name="cameraguide-small" width="20" height="20"/>
         <image name="checkbox-empty" width="22" height="22"/>
-        <image name="dash-center-logo" width="396" height="396"/>
         <image name="dashwallet-white" width="210" height="94"/>
         <image name="deletetoleft" width="29" height="23"/>
         <image name="deletetoleft-pressed" width="29" height="23"/>
