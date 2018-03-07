@@ -356,7 +356,7 @@
                                                        queue:nil usingBlock:^(NSNotification *note) {
                                                            if (! manager.noWallet) { // lockdown the app
                                                                manager.didAuthenticate = NO;
-                                                               [self.navigationController.navigationBar addSubview:_topBlackAreaSmallScreen];
+                                                               
                                                                self.navigationItem.titleView = self.logo;
                                                                self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"burger"];
                                                                self.navigationItem.rightBarButtonItem = self.lock;

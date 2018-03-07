@@ -56,7 +56,6 @@
 @property (nonatomic, strong) IBOutlet UIButton *addressButton;
 @property (nonatomic, strong) IBOutlet UIImageView *qrView;
 @property (nonatomic, strong) IBOutlet UIImageView *qrViewSmallScreen;
-@property (strong, nonatomic) IBOutlet UIView *TopBlackArea;
 @property (strong, nonatomic) IBOutlet UIView *topBlackAreaSmallScreen;
 @property (strong, nonatomic) IBOutlet UILabel *receiveLabel;
 @property (strong, nonatomic) IBOutlet UILabel *receiveLabelSmallScreen;
@@ -78,7 +77,6 @@
             case 1136:
                 printf("iPhone 5 or 5S or 5C");
                 device = @"iPhone 5";
-                self.TopBlackArea.hidden = YES;
                 self.pacIcon.hidden = YES;
                 self.receiveLabel.hidden = YES;
                 
@@ -92,11 +90,10 @@
             default:
                 printf("unknown");
         }
-        self.TopBlackArea.hidden = YES;
         self.pacIcon.hidden = YES;
     }
     
-    self.TopBlackArea.layer.cornerRadius = 0.05 * self.TopBlackArea.bounds.size.width;
+//    self.TopBlackArea.layer.cornerRadius = 0.05 * self.TopBlackArea.bounds.size.width;
     BRWalletManager *manager = [BRWalletManager sharedInstance];
     BRPaymentRequest *req;
 

@@ -86,7 +86,6 @@ static NSString *sanitizeString(NSString *s)
 @property (nonatomic, strong) IBOutlet UILabel * shapeshiftLabel;
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint * NFCWidthConstraint;
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint * leftOfNFCButtonWhitespaceConstraint;
-@property (strong, nonatomic) IBOutlet UIView *topBlackArea;
 @property (strong, nonatomic) IBOutlet UIView *topBlackAreaSmallScreen;
 @property (strong, nonatomic) IBOutlet UIImageView *pacIcon;
 @property (strong, nonatomic) IBOutlet UIImageView *pacIconNewDevices;
@@ -113,7 +112,7 @@ static NSString *sanitizeString(NSString *s)
             case 1136:
                 printf("iPhone 5 or 5S or 5C");
                 device = @"iPhone 5";
-                self.topBlackArea.hidden = YES;
+//                self.topBlackArea.hidden = YES;
                 self.pacIconNewDevices.hidden = YES;
                 self.sendLabel.hidden = YES;
                 self.pacLabel.hidden = YES;
@@ -132,10 +131,8 @@ static NSString *sanitizeString(NSString *s)
                 
                 break;
             default:
-//                self.topBlackArea.hidden = NO;
                 printf("unknown");
         }
-        self.topBlackArea.hidden = YES;
     }
     
     // TODO: XXX redesign page with round buttons like the iOS power down screen... apple watch also has round buttons
@@ -145,7 +142,7 @@ static NSString *sanitizeString(NSString *s)
     self.clipboardButton.layer.borderWidth = 1.0;
     self.scanButton.layer.cornerRadius = 0.15 * self.scanButton.bounds.size.height;
     self.scanButton.layer.borderWidth = 1.0;
-    self.topBlackArea.layer.cornerRadius = 0.05 * self.topBlackArea.bounds.size.width;
+//    self.topBlackArea.layer.cornerRadius = 0.05 * self.topBlackArea.bounds.size.width;
 //    self.instantSwitch.layer.borderWidth = 1.2;
 //    self.instantSwitch.layer.cornerRadius = 0.28 * self.instantSwitch.bounds.size.width;
     
