@@ -101,7 +101,11 @@ static NSString *sanitizeString(NSString *s)
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+    self.instantSwitch.tintColor = [UIColor blackColor];
+    self.instantSwitch.tintColor = [UIColor blackColor];
+    self.instantSwitch.layer.borderWidth = 1;
+    self.instantSwitch.layer.borderColor = UIColor.blackColor.CGColor;
+    self.instantSwitch.layer.cornerRadius = 16.0;
     if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
         NSString *device = @"";
         switch ((int)[[UIScreen mainScreen] nativeBounds].size.height) {
@@ -113,15 +117,6 @@ static NSString *sanitizeString(NSString *s)
                 self.pacIconNewDevices.hidden = YES;
                 self.sendLabel.hidden = YES;
                 self.pacLabel.hidden = YES;
-                
-                _topBlackAreaSmallScreen=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 200)];
-                [_topBlackAreaSmallScreen setBackgroundColor:[UIColor blackColor]];
-                [self.view addSubview:_topBlackAreaSmallScreen];
-                self.topBlackAreaSmallScreen.layer.cornerRadius = 0.05 * self.topBlackAreaSmallScreen.bounds.size.width;
-                
-                 _pacIcon =[[UIImageView alloc] initWithFrame:CGRectMake(self.topBlackAreaSmallScreen.bounds.size.width/3.5,self.topBlackAreaSmallScreen.bounds.size.height/3,150,150)];
-                _pacIcon.image=[UIImage imageNamed:@"dash-center-logo.png"];
-                [self.view addSubview:_pacIcon];
                 
                 _sendLabelSmallScreen =[[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/3.5,240,200,40)];
                 _sendLabelSmallScreen.font = [UIFont systemFontOfSize:30];
@@ -137,8 +132,10 @@ static NSString *sanitizeString(NSString *s)
                 
                 break;
             default:
-                self.topBlackArea.hidden = NO;
+//                self.topBlackArea.hidden = NO;
+                printf("unknown");
         }
+        self.topBlackArea.hidden = YES;
     }
     
     // TODO: XXX redesign page with round buttons like the iOS power down screen... apple watch also has round buttons

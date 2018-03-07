@@ -82,15 +82,6 @@
                 self.pacIcon.hidden = YES;
                 self.receiveLabel.hidden = YES;
                 
-                _topBlackAreaSmallScreen =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 200)];
-                [_topBlackAreaSmallScreen setBackgroundColor:[UIColor blackColor]];
-                [self.view addSubview:_topBlackAreaSmallScreen];
-                self.topBlackAreaSmallScreen.layer.cornerRadius = 0.05 * self.topBlackAreaSmallScreen.bounds.size.width;
-                
-                _pacIconSmallScreen =[[UIImageView alloc] initWithFrame:CGRectMake(self.topBlackAreaSmallScreen.bounds.size.width/3.5,self.topBlackAreaSmallScreen.bounds.size.height/3,150,150)];
-                _pacIconSmallScreen.image=[UIImage imageNamed:@"dash-center-logo.png"];
-                [self.view addSubview:_pacIconSmallScreen];
-                
                 _receiveLabelSmallScreen =[[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/4.8,210,200,40)];
                 _receiveLabelSmallScreen.font = [UIFont systemFontOfSize:30];
                 [_receiveLabelSmallScreen setTextColor:[UIColor blackColor]];
@@ -99,8 +90,10 @@
 
                 break;
             default:
-                self.TopBlackArea.hidden = NO;
+                printf("unknown");
         }
+        self.TopBlackArea.hidden = YES;
+        self.pacIcon.hidden = YES;
     }
     
     self.TopBlackArea.layer.cornerRadius = 0.05 * self.TopBlackArea.bounds.size.width;
