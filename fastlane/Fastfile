@@ -24,7 +24,6 @@ platform :ios do
     increment_build_number
 
     disable_automatic_code_signing(path: ENV["XCODE_PROJECT"])
-
     build_app(
       scheme: ENV["XCODE_SCHEME"],
       configuration: "Release",
@@ -33,10 +32,10 @@ platform :ios do
       export_method: "app-store",
       export_options: {
         provisioningProfiles: { 
-          "org.dashfoundation.dash" => "TODO 1",
-          "org.dashfoundation.dash.TodayExtension" => "TODO 2",
-          "org.dashfoundation.dash.watchkitapp" => "TODO 3",
-          "org.dashfoundation.dash.watchkitapp.watchkitextension" => "TODO 4"
+          "org.paccoin.wallet" => "TODO 1",
+          "org.paccoin.wallet.TodayExtension" => "TODO 2",
+          "org.paccoin.wallet.watchkitapp" => "TODO 3",
+          "org.paccoin.wallet.watchkitapp.watchkitextension" => "TODO 4"
         }
       }
     )

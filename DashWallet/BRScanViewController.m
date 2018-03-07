@@ -32,6 +32,7 @@
 @property (nonatomic, strong) IBOutlet UIView *cameraView;
 @property (nonatomic, strong) IBOutlet UIToolbar *toolbar;
 
+
 @property (nonatomic, strong) AVCaptureSession *session;
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *preview;
 @property (nonatomic, assign) UIStatusBarStyle barStyle;
@@ -117,7 +118,6 @@
     self.preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
     self.preview.frame = self.view.layer.bounds;
     [self.cameraView.layer addSublayer:self.preview];
-
     dispatch_async(dispatch_queue_create("qrscanner", NULL), ^{
         [self.session startRunning];
     });
