@@ -70,6 +70,7 @@ static const struct { uint32_t height; const char *hash; uint32_t timestamp; uin
     {      20000, "000000000000006abf889a12aa85fe3c713f2520e0af1c1adf2ef70df0fb3320", 1519590161, 0x1a021fabu },//pac
     {      21822, "000000000000002d00501b6de7a9bd92c8cb2e4874a17bc3c817825539203555", 1519867023, 0x1a026e41u },//pac
     {      24005, "000000000000030cc60b574b820f0651bd5850d8cfc438d8ed10d184d6de53ff", 1520204409, 0x1a05523au },//pac
+    {      29239, "00000000000001c7cfaf4d57fb28e134a0aaf26ef994c6d8fc499c0141ed6ab2", 1521008299, 0x1a034fc2u },//pac
 };
 
 static const char *dns_seeds[] = {

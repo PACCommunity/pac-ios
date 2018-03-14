@@ -306,6 +306,7 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
     _localFormat = [NSNumberFormatter new];
     self.localFormat.lenient = YES;
     self.localFormat.numberStyle = NSNumberFormatterCurrencyStyle;
+    [self.localFormat setMaximumFractionDigits:3];
     self.localFormat.generatesDecimalNumbers = YES;
     self.localFormat.negativeFormat = self.pacFormat.negativeFormat;
     
