@@ -87,7 +87,7 @@
 "wDZ-DN-szv.text" = "crear una cartera nueva mediante la generación de una frase de recuperación";
 
 /* Class = "UIButton"; normalTitle = "↔︎"; ObjectID = "83W-1O-V9b"; */
-"83W-1O-V9b.normalTitle" = "lel";
+"83W-1O-V9b.normalTitle" = "↔︎";
 
 /* Class = "UIButton"; normalTitle = "."; ObjectID = "Cz1-M6-v6N"; */
 "Cz1-M6-v6N.normalTitle" = ".";
@@ -108,7 +108,7 @@
 "VQH-pt-DQg.normalTitle" = "4";
 
 /* Class = "UIButton"; normalTitle = "5"; ObjectID = "2Af-Xt-dHE"; */
-"2Af-Xt-dHE.normalTitle" = "6 no wait... 4?";
+"2Af-Xt-dHE.normalTitle" = "5";
 
 /* Class = "UIButton"; normalTitle = "6"; ObjectID = "43w-iO-MOK"; */
 "43w-iO-MOK.normalTitle" = "6";
