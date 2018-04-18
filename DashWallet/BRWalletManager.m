@@ -45,8 +45,8 @@
 #define CIRCLE  @"\xE2\x97\x8C" // dotted circle (utf-8)
 #define DOT     @"\xE2\x97\x8F" // black circle (utf-8)
 
-#define UNSPENT_URL          @"http://insight.dash.org/insight-api-dash/addrs/utxo"
-#define UNSPENT_FAILOVER_URL @"https://insight.dash.siampm.com/api/addrs/utxo"
+#define UNSPENT_URL          @"http://explorer.pachub.io/api/addrs/utxo"
+#define UNSPENT_FAILOVER_URL @"http://explorer.foxrtb.com/insight/addrs/utxo"
 #define FEE_PER_KB_URL       0 //not supported @"https://api.breadwallet.com/fee-per-kb"
 #define BITCOIN_TICKER_URL  @"https://bitpay.com/rates"
 #define PAC_PRICE_URL        @"https://api.masternodes.work/pac/price"
