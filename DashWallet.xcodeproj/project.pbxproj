@@ -1150,8 +1150,6 @@
 				BA913C021BD57E4E005A7C0E /* Embed Watch Content */,
 				CEE253DB1E26B3B400A25B15 /* Icon Versioning */,
 				FB0ACB9A1F9A99E400F4AB52 /* ShellScript */,
-				6AA845A6DC6E0180ECC3C107 /* [CP] Embed Pods Frameworks */,
-				9898EB7513E7FE0C0670BF07 /* [CP] Copy Pods Resources */,
 				FBE23432204874CF008E314E /* Fabric */,
 			);
 			buildRules = (
@@ -1411,36 +1409,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6AA845A6DC6E0180ECC3C107 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-pacwallet/Pods-pacwallet-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9898EB7513E7FE0C0670BF07 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-pacwallet/Pods-pacwallet-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B44D5D1DA3ED1B91E6C20400 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1820,7 +1788,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = DashWalletUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet.DashWalletUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.DashWalletUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DashWalletUITests/DashWalletUITests-Bridging-Header.h";
 				TEST_TARGET_NAME = dashwallet;
@@ -1836,7 +1804,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = DashWalletUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet.DashWalletUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.DashWalletUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DashWalletUITests/DashWalletUITests-Bridging-Header.h";
 				TEST_TARGET_NAME = dashwallet;
@@ -1989,7 +1957,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = C5UYU95B7H;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DashWallet/DashWallet-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -2000,10 +1968,10 @@
 				);
 				INFOPLIST_FILE = DashWallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b1c57e3b-33aa-41c5-8eda-f422f32e3dbf";
-				PROVISIONING_PROFILE_SPECIFIER = "Pac Wallet";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -2019,10 +1987,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = dashwallet/dashwallet.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = C5UYU95B7H;
+				DEVELOPMENT_TEAM = 3Z46VJKC57;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DashWallet/DashWallet-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -2033,9 +2002,9 @@
 				);
 				INFOPLIST_FILE = DashWallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b1c57e3b-33aa-41c5-8eda-f422f32e3dbf";
+				PROVISIONING_PROFILE = "e1cd75e6-8b80-4048-9956-8ef7bea0289d";
 				PROVISIONING_PROFILE_SPECIFIER = "Pac Wallet";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2055,7 +2024,7 @@
 				GCC_WARN_PEDANTIC = NO;
 				INFOPLIST_FILE = DashWalletTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DashWalletTests/DashWalletTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pacwallet.app/pacwallet";
@@ -2073,7 +2042,7 @@
 				GCC_WARN_PEDANTIC = NO;
 				INFOPLIST_FILE = DashWalletTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DashWalletTests/DashWalletTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pacwallet.app/pacwallet";
@@ -2085,17 +2054,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = C5UYU95B7H;
+				DEVELOPMENT_TEAM = "";
 				IBSC_MODULE = WatchApp_Extension;
 				INFOPLIST_FILE = WatchApp/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "666e67a3-b461-4be9-970a-3e734c859279";
-				PROVISIONING_PROFILE_SPECIFIER = Watch;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -2108,16 +2077,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = C5UYU95B7H;
+				DEVELOPMENT_TEAM = 3Z46VJKC57;
 				IBSC_MODULE = WatchApp_Extension;
 				INFOPLIST_FILE = WatchApp/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "666e67a3-b461-4be9-970a-3e734c859279";
-				PROVISIONING_PROFILE_SPECIFIER = Watch;
+				PROVISIONING_PROFILE = "1ee568b8-070d-417e-8038-d34808b5f300";
+				PROVISIONING_PROFILE_SPECIFIER = "Pac Any";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -2128,17 +2098,17 @@
 		BA913BFD1BD57E4E005A7C0E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = C5UYU95B7H;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "WatchApp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "666e67a3-b461-4be9-970a-3e734c859279";
-				PROVISIONING_PROFILE_SPECIFIER = Watch;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "WatchApp Extension/WatchApp Extension-Bridging-Header.h";
@@ -2150,16 +2120,17 @@
 		BA913BFE1BD57E4E005A7C0E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = C5UYU95B7H;
+				DEVELOPMENT_TEAM = 3Z46VJKC57;
 				INFOPLIST_FILE = "WatchApp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "666e67a3-b461-4be9-970a-3e734c859279";
-				PROVISIONING_PROFILE_SPECIFIER = Watch;
+				PROVISIONING_PROFILE = "1ee568b8-070d-417e-8038-d34808b5f300";
+				PROVISIONING_PROFILE_SPECIFIER = "Pac Any";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "WatchApp Extension/WatchApp Extension-Bridging-Header.h";
@@ -2172,21 +2143,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = dashwallet/dashwalletTodayExtension.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = C5UYU95B7H;
+				DEVELOPMENT_TEAM = "";
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9755e964-9346-4171-8f9f-11df0a5efb35";
-				PROVISIONING_PROFILE_SPECIFIER = "today extension dist";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2197,21 +2168,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = dashwallet/dashwalletTodayExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = C5UYU95B7H;
+				DEVELOPMENT_TEAM = 3Z46VJKC57;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9755e964-9346-4171-8f9f-11df0a5efb35";
-				PROVISIONING_PROFILE_SPECIFIER = "today extension dist";
+				PROVISIONING_PROFILE = "9f33f61d-6b14-4bf9-8cd7-26ac5f887965";
+				PROVISIONING_PROFILE_SPECIFIER = "Today Ext";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2283,10 +2255,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = dashwallet/dashwallet.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = C5UYU95B7H;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DashWallet/DashWallet-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -2297,10 +2270,10 @@
 				);
 				INFOPLIST_FILE = DashWallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b1c57e3b-33aa-41c5-8eda-f422f32e3dbf";
-				PROVISIONING_PROFILE_SPECIFIER = "Pac Wallet";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -2312,21 +2285,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = dashwallet/dashwalletTodayExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = C5UYU95B7H;
+				DEVELOPMENT_TEAM = "";
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9755e964-9346-4171-8f9f-11df0a5efb35";
-				PROVISIONING_PROFILE_SPECIFIER = "today extension dist";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2344,7 +2318,7 @@
 				GCC_WARN_PEDANTIC = NO;
 				INFOPLIST_FILE = DashWalletTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DashWalletTests/DashWalletTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pacwallet.app/pacwallet";
@@ -2359,7 +2333,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = DashWalletUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet.DashWalletUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.DashWalletUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DashWalletUITests/DashWalletUITests-Bridging-Header.h";
 				TEST_TARGET_NAME = dashwallet;
@@ -2380,16 +2354,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = C5UYU95B7H;
+				DEVELOPMENT_TEAM = "";
 				IBSC_MODULE = WatchApp_Extension;
 				INFOPLIST_FILE = WatchApp/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "666e67a3-b461-4be9-970a-3e734c859279";
-				PROVISIONING_PROFILE_SPECIFIER = Watch;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -2400,16 +2375,17 @@
 		CEE253D91E26A9BC00A25B15 /* Testflight */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = C5UYU95B7H;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "WatchApp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "666e67a3-b461-4be9-970a-3e734c859279";
-				PROVISIONING_PROFILE_SPECIFIER = Watch;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "WatchApp Extension/WatchApp Extension-Bridging-Header.h";
@@ -2493,7 +2469,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = C5UYU95B7H;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DashWallet/DashWallet-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -2504,10 +2480,10 @@
 				);
 				INFOPLIST_FILE = DashWallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b1c57e3b-33aa-41c5-8eda-f422f32e3dbf";
-				PROVISIONING_PROFILE_SPECIFIER = "Pac Wallet";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -2519,21 +2495,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = dashwallet/dashwalletTodayExtension.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = C5UYU95B7H;
+				DEVELOPMENT_TEAM = "";
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9755e964-9346-4171-8f9f-11df0a5efb35";
-				PROVISIONING_PROFILE_SPECIFIER = "today extension dist";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2551,7 +2527,7 @@
 				GCC_WARN_PEDANTIC = NO;
 				INFOPLIST_FILE = DashWalletTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DashWalletTests/DashWalletTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/pacwallet.app/pacwallet";
@@ -2566,7 +2542,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = DashWalletUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet.DashWalletUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.DashWalletUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "DashWalletUITests/DashWalletUITests-Bridging-Header.h";
 				TEST_TARGET_NAME = dashwallet;
@@ -2587,17 +2563,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = C5UYU95B7H;
+				DEVELOPMENT_TEAM = "";
 				IBSC_MODULE = WatchApp_Extension;
 				INFOPLIST_FILE = WatchApp/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "666e67a3-b461-4be9-970a-3e734c859279";
-				PROVISIONING_PROFILE_SPECIFIER = Watch;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -2608,17 +2584,17 @@
 		FB9CC1A11F8511620079309F /* Testnet */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = C5UYU95B7H;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "WatchApp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.wallet.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "666e67a3-b461-4be9-970a-3e734c859279";
-				PROVISIONING_PROFILE_SPECIFIER = Watch;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "WatchApp Extension/WatchApp Extension-Bridging-Header.h";

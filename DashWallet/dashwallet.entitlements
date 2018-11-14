@@ -10,7 +10,7 @@
 	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.org.paccoin.wallet</string>
+		<string>group.org.paccoin.mobilewallet</string>
 	</array>
 </dict>
 </plist>
