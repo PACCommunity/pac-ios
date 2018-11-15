@@ -60,6 +60,7 @@
     // use background fetch to stay synced with the blockchain
     [[UIApplication sharedApplication] setMinimumBackgroundFetchInterval:UIApplicationBackgroundFetchIntervalMinimum];
 
+    //page control customization
     UIPageControl.appearance.pageIndicatorTintColor = [UIColor lightGrayColor];
     UIPageControl.appearance.currentPageIndicatorTintColor = [UIColor blueColor];
     
