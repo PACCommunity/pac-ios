@@ -69,7 +69,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>org.paccoin.wallet</string>
+			<string>net.paccoin.pacmobilewallet</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>pacwallet</string>
