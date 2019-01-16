@@ -14,6 +14,7 @@
     <customFonts key="customFonts">
         <array key="HelveticaNeue.ttc">
             <string>HelveticaNeue</string>
+            <string>HelveticaNeue-Medium</string>
         </array>
         <array key="HelveticaNeueLights.ttc">
             <string>HelveticaNeue-Light</string>
@@ -1244,10 +1245,10 @@
             </objects>
             <point key="canvasLocation" x="550" y="1430"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Pac Navigation Controller-->
         <scene sceneID="c3l-CQ-xKB">
             <objects>
-                <navigationController storyboardIdentifier="NewWalletNav" definesPresentationContext="YES" modalTransitionStyle="flipHorizontal" id="I38-Lg-4a0" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NewWalletNav" definesPresentationContext="YES" modalTransitionStyle="flipHorizontal" id="I38-Lg-4a0" customClass="BRPacNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9fq-wb-Ja5" customClass="BRNavigationBar">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1277,61 +1278,67 @@
                                 <rect key="frame" x="51" y="0.0" width="139" height="568"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallpaper-default-1" translatesAutoresizingMaskIntoConstraints="NO" id="njG-Sf-Qc3">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-black" translatesAutoresizingMaskIntoConstraints="NO" id="njG-Sf-Qc3">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOa-zm-TDG">
-                                <rect key="frame" x="51" y="210" width="218" height="44"/>
-                                <color key="backgroundColor" red="0.94901960780000005" green="0.92156862750000001" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOa-zm-TDG" customClass="BRRoundedButton">
+                                <rect key="frame" x="51" y="235" width="218" height="44"/>
+                                <color key="backgroundColor" red="0.95686274509803915" green="0.91764705882352937" blue="0.074509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="IRs-sK-9Gg"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                 <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="new wallet">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <state key="disabled" backgroundImage="button-bg-disabled"/>
-                                <state key="highlighted" backgroundImage="button-bg-white-pressed">
-                                    <color key="titleColor" red="0.0" green="0.70893455179999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
                                 <connections>
                                     <action selector="start:" destination="jSI-EH-TU3" eventType="touchUpInside" id="NCk-RG-cGT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4w7-k8-9wY">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4w7-k8-9wY" customClass="BRRoundedBorderedButton">
                                 <rect key="frame" x="51" y="314" width="218" height="44"/>
-                                <color key="backgroundColor" red="0.94901960780000005" green="0.92156862750000001" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="e2A-zU-XjZ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                 <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="recover wallet">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.95686274510000002" green="0.91764705879999997" blue="0.074509803920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <state key="disabled" backgroundImage="button-bg-disabled"/>
-                                <state key="highlighted" backgroundImage="button-bg-white-pressed">
-                                    <color key="titleColor" red="0.0" green="0.70893455179999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.95686274509803915" green="0.91764705882352937" blue="0.074509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="recover:" destination="jSI-EH-TU3" eventType="touchUpInside" id="3LA-Wu-m6t"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bienvenido" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k5O-R3-BjX">
+                                <rect key="frame" x="8" y="72" width="304" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" red="0.95686274510000002" green="0.91764705879999997" blue="0.074509803920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="k5O-R3-BjX" firstAttribute="top" secondItem="o5s-iL-0bW" secondAttribute="top" constant="8" id="0vv-ly-TT4"/>
                             <constraint firstItem="1xc-b5-vde" firstAttribute="top" secondItem="TKd-gT-9T7" secondAttribute="top" id="48G-Ym-PEG"/>
                             <constraint firstItem="njG-Sf-Qc3" firstAttribute="trailing" secondItem="o5s-iL-0bW" secondAttribute="trailing" id="7BZ-MN-a8S"/>
                             <constraint firstItem="dOa-zm-TDG" firstAttribute="leading" secondItem="o5s-iL-0bW" secondAttribute="leading" constant="51" id="7fa-KG-s0S"/>
+                            <constraint firstItem="k5O-R3-BjX" firstAttribute="leading" secondItem="o5s-iL-0bW" secondAttribute="leading" constant="8" id="FG7-5N-f3q"/>
                             <constraint firstItem="njG-Sf-Qc3" firstAttribute="leading" secondItem="o5s-iL-0bW" secondAttribute="leading" id="Fzk-MW-Oux"/>
-                            <constraint firstItem="njG-Sf-Qc3" firstAttribute="bottom" secondItem="o5s-iL-0bW" secondAttribute="bottom" id="Sqa-6X-vI7"/>
+                            <constraint firstItem="njG-Sf-Qc3" firstAttribute="bottom" secondItem="TKd-gT-9T7" secondAttribute="bottom" id="Sqa-6X-vI7"/>
                             <constraint firstItem="1xc-b5-vde" firstAttribute="leading" secondItem="TKd-gT-9T7" secondAttribute="leading" constant="51" id="TlR-hQ-bsl"/>
                             <constraint firstItem="dOa-zm-TDG" firstAttribute="leading" secondItem="4w7-k8-9wY" secondAttribute="leading" id="Tvt-TG-z26"/>
                             <constraint firstItem="njG-Sf-Qc3" firstAttribute="top" secondItem="TKd-gT-9T7" secondAttribute="top" id="c6f-cd-U1G"/>
@@ -1339,43 +1346,16 @@
                             <constraint firstItem="1xc-b5-vde" firstAttribute="centerX" secondItem="4w7-k8-9wY" secondAttribute="centerX" constant="-39.5" id="dCN-9a-3G9"/>
                             <constraint firstItem="4w7-k8-9wY" firstAttribute="centerY" secondItem="TKd-gT-9T7" secondAttribute="centerY" constant="52" id="hF3-1s-SMx"/>
                             <constraint firstItem="1xc-b5-vde" firstAttribute="bottom" secondItem="o5s-iL-0bW" secondAttribute="bottom" id="jBq-Hw-lra"/>
-                            <constraint firstItem="4w7-k8-9wY" firstAttribute="top" secondItem="dOa-zm-TDG" secondAttribute="bottom" constant="60" id="jTK-f7-Wao"/>
+                            <constraint firstItem="4w7-k8-9wY" firstAttribute="top" secondItem="dOa-zm-TDG" secondAttribute="bottom" constant="35" id="jTK-f7-Wao"/>
+                            <constraint firstItem="o5s-iL-0bW" firstAttribute="trailing" secondItem="k5O-R3-BjX" secondAttribute="trailing" constant="8" id="paA-Wm-zYn"/>
                             <constraint firstItem="dOa-zm-TDG" firstAttribute="trailing" secondItem="4w7-k8-9wY" secondAttribute="trailing" id="vPx-zY-GZj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="o5s-iL-0bW"/>
                     </view>
                     <navigationItem key="navigationItem" id="XZh-nX-qeL">
                         <nil key="title"/>
-                        <barButtonItem key="backBarButtonItem" title=" " id="9L3-gM-TgP">
-                            <attributedString key="userComments">
-                                <fragment content="#bc-ignore!">
-                                    <attributes>
-                                        <font key="NSFont" metaFont="smallSystem"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
-                        </barButtonItem>
-                        <view key="titleView" hidden="YES" contentMode="scaleToFill" id="QAl-AP-yYv">
-                            <rect key="frame" x="111" y="13" width="98" height="18"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="dashwallet-white" translatesAutoresizingMaskIntoConstraints="NO" id="VBZ-P3-o77">
-                                    <rect key="frame" x="0.0" y="-13" width="98" height="43"/>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="trailing" secondItem="VBZ-P3-o77" secondAttribute="trailing" id="2sD-Xz-T5e"/>
-                                <constraint firstItem="VBZ-P3-o77" firstAttribute="centerY" secondItem="QAl-AP-yYv" secondAttribute="centerY" id="Lz2-Ll-veE"/>
-                                <constraint firstItem="VBZ-P3-o77" firstAttribute="leading" secondItem="QAl-AP-yYv" secondAttribute="leading" id="ZaL-rq-zrT"/>
-                                <constraint firstItem="VBZ-P3-o77" firstAttribute="top" secondItem="QAl-AP-yYv" secondAttribute="top" constant="-13" id="yUQ-F2-ghL"/>
-                            </constraints>
-                        </view>
                     </navigationItem>
                     <connections>
-                        <outlet property="newwalletButton" destination="dOa-zm-TDG" id="kFt-K9-owu"/>
-                        <outlet property="recoverButton" destination="4w7-k8-9wY" id="BC6-ID-6ta"/>
                         <outlet property="restoreXCenter" destination="cgR-0k-6zT" id="tsk-mk-Z87"/>
                         <outlet property="wallpaperContainer" destination="1xc-b5-vde" id="KSS-Ob-b7h"/>
                     </connections>
@@ -2820,7 +2800,7 @@ Other devices may be infected.
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUC-MN-PXO">
-                                <rect key="frame" x="20" y="138" width="88" height="87"/>
+                                <rect key="frame" x="20" y="138" width="87.5" height="87"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="50"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="1" backgroundImage="button-bg-blue">
@@ -2839,7 +2819,7 @@ Other devices may be infected.
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaD-eI-0iC">
-                                <rect key="frame" x="116" y="138" width="88.5" height="87"/>
+                                <rect key="frame" x="115.5" y="138" width="88.5" height="87"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="50"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="2" backgroundImage="button-bg-blue">
@@ -2858,7 +2838,7 @@ Other devices may be infected.
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EnY-9p-vg6">
-                                <rect key="frame" x="212.5" y="138" width="87.5" height="87"/>
+                                <rect key="frame" x="212" y="138" width="88" height="87"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="50"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="3" backgroundImage="button-bg-blue">
@@ -2877,7 +2857,7 @@ Other devices may be infected.
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQH-pt-DQg">
-                                <rect key="frame" x="20" y="233" width="88" height="87"/>
+                                <rect key="frame" x="20" y="233" width="87.5" height="87"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="50"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="4" backgroundImage="button-bg-blue">
@@ -2896,7 +2876,7 @@ Other devices may be infected.
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Af-Xt-dHE">
-                                <rect key="frame" x="116" y="233" width="88.5" height="87"/>
+                                <rect key="frame" x="115.5" y="233" width="88.5" height="87"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="50"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="5" backgroundImage="button-bg-blue">
@@ -2915,7 +2895,7 @@ Other devices may be infected.
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="43w-iO-MOK">
-                                <rect key="frame" x="212.5" y="233" width="87.5" height="87"/>
+                                <rect key="frame" x="212" y="233" width="88" height="87"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="50"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="6" backgroundImage="button-bg-blue">
@@ -2934,7 +2914,7 @@ Other devices may be infected.
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcY-uc-kOc">
-                                <rect key="frame" x="20" y="328" width="88" height="87"/>
+                                <rect key="frame" x="20" y="328" width="87.5" height="87"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="50"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="7" backgroundImage="button-bg-blue">
@@ -2953,7 +2933,7 @@ Other devices may be infected.
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24A-83-L7p">
-                                <rect key="frame" x="116" y="328" width="88.5" height="87"/>
+                                <rect key="frame" x="115.5" y="328" width="88.5" height="87"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="50"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="8" backgroundImage="button-bg-blue">
@@ -2972,7 +2952,7 @@ Other devices may be infected.
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ika-qg-5Cf">
-                                <rect key="frame" x="212.5" y="328" width="87.5" height="87"/>
+                                <rect key="frame" x="212" y="328" width="88" height="87"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="50"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="9" backgroundImage="button-bg-blue">
@@ -2991,7 +2971,7 @@ Other devices may be infected.
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cz1-M6-v6N">
-                                <rect key="frame" x="20" y="423" width="88" height="87"/>
+                                <rect key="frame" x="20" y="423" width="87.5" height="87"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="50"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="." backgroundImage="button-bg-blue">
@@ -3010,7 +2990,7 @@ Other devices may be infected.
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKR-t9-9Lk">
-                                <rect key="frame" x="116" y="423" width="88.5" height="87"/>
+                                <rect key="frame" x="115.5" y="423" width="88.5" height="87"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="50"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="0" backgroundImage="button-bg-blue">
@@ -3029,7 +3009,7 @@ Other devices may be infected.
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X53-jN-wEO">
-                                <rect key="frame" x="212.5" y="423" width="87.5" height="87"/>
+                                <rect key="frame" x="212" y="423" width="88" height="87"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="50"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" image="deletetoleft" backgroundImage="button-bg-blue">
@@ -3205,11 +3185,11 @@ Other devices may be infected.
         </scene>
     </scenes>
     <resources>
+        <image name="background-black" width="500" height="889"/>
         <image name="burger" width="20" height="16"/>
         <image name="button-bg-blue" width="10" height="11"/>
         <image name="button-bg-blue-pressed" width="10" height="44"/>
         <image name="button-bg-disabled" width="10" height="11"/>
-        <image name="button-bg-white-pressed" width="11" height="10"/>
         <image name="cameraguide" width="234" height="234"/>
         <image name="cameraguide-blue-small" width="20" height="20"/>
         <image name="cameraguide-small" width="20" height="20"/>
