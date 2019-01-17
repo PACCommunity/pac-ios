@@ -32,6 +32,7 @@
 #import "NSManagedObject+Sugar.h"
 #import "BREventManager.h"
 #import "BRPeerManager.h"
+#import "BRImageViewLogo.h"
 
 #define PHRASE_LENGTH 12
 
@@ -41,7 +42,8 @@
 @property (nonatomic, strong) IBOutlet UITextView *textView;
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint *textViewYBottom;
 @property (nonatomic, strong) id keyboardObserver, resignActiveObserver;
-
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+    
 @end
 
 
@@ -54,6 +56,8 @@
     
     // TODO: create secure versions of keyboard and UILabel and use in place of UITextView
     // TODO: autocomplete based on 4 letter prefixes of mnemonic words
+    
+    self.navigationItem.titleView = [BRImageViewLogo imageViewWithPACLogo];
     
     self.textView.layer.cornerRadius = 5.0;
     
@@ -76,12 +80,8 @@
     
     self.textView.layer.borderColor = [UIColor colorWithWhite:0.0 alpha:0.25].CGColor;
     self.textView.layer.borderWidth = 0.5;
-    UILabel * titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 1, 100)];
-    titleLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-    [titleLabel setBackgroundColor:[UIColor clearColor]];
-    [titleLabel setText:(self.navigationController.viewControllers.firstObject != self)?NSLocalizedString(@"recovery phrase",@"recovery phrase"):NSLocalizedString(@"confirm",@"confirm")];
-    [titleLabel setTextColor:[UIColor whiteColor]];
-    self.navigationItem.titleView = titleLabel;
+    
+    [self.titleLabel setText:(self.navigationController.viewControllers.firstObject != self)?NSLocalizedString(@"recovery phrase",@"recovery phrase"):NSLocalizedString(@"confirm",@"confirm")];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -381,6 +381,12 @@
     }
     
     return NO;
+}
+
+//MARK: - Status Bar
+    
+-(UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 @end

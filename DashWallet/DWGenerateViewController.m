@@ -8,6 +8,7 @@
 #import "DWGenerateViewController.h"
 #import "BREventManager.h"
 #import "BRWalletManager.h"
+#import "BRImageViewLogo.h"
 
 @interface DWGenerateViewController ()
 
@@ -26,15 +27,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.generateButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    self.generateButton.layer.cornerRadius = 0.15 * self.generateButton.bounds.size.height;
-    self.generateButton.layer.borderWidth = 1.0;
-    
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    self.generateButton.titleLabel.adjustsLetterSpacingToFitWidth = YES;
-#pragma clang diagnostic pop
     
     NSTextAttachment *noEye = [NSTextAttachment new], *noKey = [NSTextAttachment new];
     NSMutableAttributedString *s = [[NSMutableAttributedString alloc]
@@ -60,6 +52,8 @@
                                                   "Other devices may be infected.\n", nil)];
     self.warningLabel.attributedText = s;
     self.navigationController.navigationBar.tintColor = UIColor.whiteColor;
+    
+    self.navigationItem.titleView = [BRImageViewLogo imageViewWithPACLogo];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -114,6 +108,12 @@
         self.navigationController.navigationBar.topItem.hidesBackButton = NO;
         self.generateButton.superview.backgroundColor = [UIColor whiteColor];
     }];
+}
+    
+//MARK: - Status Bar
+
+-(UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 @end
