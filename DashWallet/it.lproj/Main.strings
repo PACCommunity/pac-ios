@@ -1,6 +1,6 @@
 
 /* Class = "UIButton"; normalTitle = "recover wallet"; ObjectID = "4w7-k8-9wY"; */
-"4w7-k8-9wY.normalTitle" = "Recuperare il portafoglio";
+"4w7-k8-9wY.normalTitle" = "recuperare il portafoglio";
 
 /* Class = "UILabel"; text = "https://github.com/chasemgray/pacwallet"; ObjectID = "5OA-tB-Exg"; */
 "5OA-tB-Exg.text" = "https://github.com/chasemgray/pacwallet";
@@ -51,7 +51,10 @@
 "cyp-mV-Bhd.text" = "L'ho appuntata:";
 
 /* Class = "UIButton"; normalTitle = "new wallet"; ObjectID = "dOa-zm-TDG"; */
-"dOa-zm-TDG.normalTitle" = "Nuovo portafoglio";
+"dOa-zm-TDG.normalTitle" = "nuovo portafoglio";
+
+/* Class = "UILabel"; text = "Welcome"; ObjectID = "k5O-R3-BjX"; */
+"k5O-R3-BjX.text" = "benvenuto";
 
 /* Class = "UILabel"; text = "if you ever lose your phone, you will need this phrase to recover your wallet"; ObjectID = "dX6-jg-5IA"; */
 "dX6-jg-5IA.text" = "se perdi il tuo telefono, sarà necessario questa frase per recuperare il tuo portafoglio";

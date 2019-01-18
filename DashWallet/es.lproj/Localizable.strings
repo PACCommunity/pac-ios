@@ -381,7 +381,7 @@
 "received %@ (%@)" = "recibido %1$@ (%2$@)";
 
 /* recovery phrase */
-"recovery phrase" = "frase de recuperación";
+"recovery phrase" = "Frase de recuperación";
 
 /* No comment provided by engineer. */
 "recovery phrase doesn't match" = "la frase de recuperación no coincide";

@@ -51,7 +51,10 @@
 "cyp-mV-Bhd.text" = "Jag har skrivit ned den:";
 
 /* Class = "UIButton"; normalTitle = "new wallet"; ObjectID = "dOa-zm-TDG"; */
-"dOa-zm-TDG.normalTitle" = "Ny plånbok";
+"dOa-zm-TDG.normalTitle" = "ny plånbok";
+
+/* Class = "UILabel"; text = "Welcome"; ObjectID = "k5O-R3-BjX"; */
+"k5O-R3-BjX.text" = "välkommen";
 
 /* Class = "UILabel"; text = "if you ever lose your phone, you will need this phrase to recover your wallet"; ObjectID = "dX6-jg-5IA"; */
 "dX6-jg-5IA.text" = "om du någonsin förlorar din mobil så behöver du denna fras för att återställa plånboken";

@@ -51,7 +51,10 @@
 "cyp-mV-Bhd.text" = "Eu anotei:";
 
 /* Class = "UIButton"; normalTitle = "new wallet"; ObjectID = "dOa-zm-TDG"; */
-"dOa-zm-TDG.normalTitle" = "Nova carteira";
+"dOa-zm-TDG.normalTitle" = "nova carteira";
+
+/* Class = "UILabel"; text = "Welcome"; ObjectID = "k5O-R3-BjX"; */
+"k5O-R3-BjX.text" = "bem vindo";
 
 /* Class = "UILabel"; text = "if you ever lose your phone, you will need this phrase to recover your wallet"; ObjectID = "dX6-jg-5IA"; */
 "dX6-jg-5IA.text" = "se você perder seu telefone, você vai precisar desta frase para recuperar sua carteira";
@@ -60,7 +63,7 @@
 "eJ2-5h-DO2.text" = "não confirmada";
 
 /* Class = "UIButton"; normalTitle = "show"; ObjectID = "efL-Cj-Aho"; */
-"efL-Cj-Aho.normalTitle" = "mostrar";
+"efL-Cj-Aho.normalTitle" = "Mostrar";
 
 /* Class = "UINavigationItem"; title = "confirm:"; ObjectID = "fQN-xb-SYb"; */
 "fQN-xb-SYb.title" = "confirmar:";

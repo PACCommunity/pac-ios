@@ -381,7 +381,7 @@
 "received %@ (%@)" = "received %1$@ (%2$@)";
 
 /* recovery phrase */
-"recovery phrase" = "recovery phrase";
+"recovery phrase" = "Recovery phrase";
 
 /* No comment provided by engineer. */
 "recovery phrase doesn't match" = "recovery phrase doesn't match";

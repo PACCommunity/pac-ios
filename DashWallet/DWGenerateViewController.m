@@ -9,6 +9,7 @@
 #import "BREventManager.h"
 #import "BRWalletManager.h"
 #import "BRImageViewLogo.h"
+#import "UIColor+AppColors.h"
 
 @interface DWGenerateViewController ()
 
@@ -27,20 +28,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
+    self.warningLabel.attributedText = [[NSAttributedString alloc] initWithString:self.warningLabel.attributedText.string attributes: @{NSFontAttributeName: [UIFont boldSystemFontOfSize: 17], NSForegroundColorAttributeName: [UIColor yellowPACColor]}];
     
     NSTextAttachment *noEye = [NSTextAttachment new], *noKey = [NSTextAttachment new];
     NSMutableAttributedString *s = [[NSMutableAttributedString alloc]
                                     initWithAttributedString:self.warningLabel.attributedText];
 
-    noEye.image = [UIImage imageNamed:@"no-eye"];
+    noEye.image = [UIImage imageNamed:@"hideIcn"];
     [s replaceCharactersInRange:[s.string rangeOfString:@"%no-eye%"]
            withAttributedString:[NSAttributedString attributedStringWithAttachment:noEye]];
 
-    noKey.image = [UIImage imageNamed:@"no-key"];
+    noKey.image = [UIImage imageNamed:@"writeIcn"];
     [s replaceCharactersInRange:[s.string rangeOfString:@"%no-key%"]
            withAttributedString:[NSAttributedString attributedStringWithAttachment:noKey]];
 
-    [s replaceCharactersInRange:[s.string rangeOfString:@"WARNING"] withString:NSLocalizedString(@"WARNING", nil)];
     [s replaceCharactersInRange:[s.string rangeOfString:@"\nDO NOT let anyone see your recovery\n"
                                  "phrase or they can spend your $PAC.\n"]
                      withString:NSLocalizedString(@"\nDO NOT let anyone see your recovery\n"
