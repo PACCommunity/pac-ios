@@ -381,7 +381,7 @@
 "received %@ (%@)" = "received %1$@ (%2$@)";
 
 /* recovery phrase */
-"recovery phrase" = "recovery phrase";
+"recovery phrase" = "Recovery phrase";
 
 /* No comment provided by engineer. */
 "recovery phrase doesn't match" = "recovery phrase doesn't match";
@@ -643,3 +643,6 @@
 
 /* No comment provided by engineer. */
 "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain." = "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain.";
+
+/* No comment provided by engineer. */
+"remind me later" = "Remind me later";

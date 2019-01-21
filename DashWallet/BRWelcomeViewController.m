@@ -132,7 +132,7 @@
             self.navigationItem.titleView.hidden = NO;
             self.navigationItem.titleView.alpha = 0.0;
 
-            [UIView animateWithDuration:0.35 delay:1.0 usingSpringWithDamping:0.8 initialSpringVelocity:0.0
+            [UIView animateWithDuration:0.35 delay:0.1 usingSpringWithDamping:0.8 initialSpringVelocity:0.0
             options:UIViewAnimationOptionCurveEaseOut animations:^{
                 self.navigationItem.titleView.alpha = 1.0;
                 [self.navigationController.view layoutIfNeeded];

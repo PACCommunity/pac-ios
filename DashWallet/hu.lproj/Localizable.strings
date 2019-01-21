@@ -643,3 +643,6 @@
 
 /* No comment provided by engineer. */
 "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain." = "A tárcád nincs szinkronban.\nÁltalában segít az, ha újraszkenneled a blockchaint.";
+
+/* No comment provided by engineer. */
+"remind me later" = "Remind me later";

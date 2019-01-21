@@ -643,3 +643,6 @@
 
 /* No comment provided by engineer. */
 "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain." = "Din plånbok kan vara osynkroniserad.\nDetta åtgärdas oftast genom en omläsning av blockkedjan.";
+
+/* No comment provided by engineer. */
+"remind me later" = "påminn mig senare";

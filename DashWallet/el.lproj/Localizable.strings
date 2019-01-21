@@ -643,3 +643,6 @@
 
 /* No comment provided by engineer. */
 "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain." = "Το πορτοφόλι σας μπορεί να είναι εκτός συγχρονισμού. Αυτό μπορεί συχνά να διορθωθεί με την επανεξέταση των μπλόκ συναλλαγών.";
+
+/* No comment provided by engineer. */
+"remind me later" = "υπενθύμιση αργότερα";

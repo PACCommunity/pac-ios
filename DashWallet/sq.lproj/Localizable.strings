@@ -643,3 +643,6 @@
 
 /* No comment provided by engineer. */
 "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain." = "Si duket kuleta juaj nuk është e sinkronizuar.\nKjo shpesh mund të rregullohet duke riskanuar blockchain.";
+
+/* No comment provided by engineer. */
+"remind me later" = "ma kujto më vonë";

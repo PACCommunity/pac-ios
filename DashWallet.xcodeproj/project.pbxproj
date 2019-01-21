@@ -28,10 +28,13 @@
 		2AC92C8A1FEB0B8B008CAEE0 /* BRQRScanViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC92C891FEB0B8B008CAEE0 /* BRQRScanViewModel.m */; };
 		31D68B531C23B6C10030FAAA /* DashWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D68B521C23B6C10030FAAA /* DashWalletUITests.swift */; };
 		31D68B5B1C23B6FD0030FAAA /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D68B5A1C23B6FD0030FAAA /* SnapshotHelper.swift */; };
+		3939345121F170460016D2A3 /* UIColor+Hexadecimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 3939345021F170460016D2A3 /* UIColor+Hexadecimal.m */; };
+		3939345421F173680016D2A3 /* UIColor+AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 3939345321F173680016D2A3 /* UIColor+AppColors.m */; };
 		39A2C59021EF06CC00DDB1E3 /* BRRoundedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C58C21EF06CA00DDB1E3 /* BRRoundedButton.m */; };
 		39A2C59121EF06CC00DDB1E3 /* BRRoundedBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C58D21EF06CB00DDB1E3 /* BRRoundedBorderedButton.m */; };
 		39A2C59221EF06CC00DDB1E3 /* BRImageViewLogo.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C58E21EF06CB00DDB1E3 /* BRImageViewLogo.m */; };
 		39A2C59521EF0B2300DDB1E3 /* BRPacNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C59421EF0B2300DDB1E3 /* BRPacNavigationController.m */; };
+		39EF817A21F2AF5000F51AEB /* BRBorderedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF817921F2AF5000F51AEB /* BRBorderedView.m */; };
 		42FA916C11654751C6DA3A46 /* libPods-pacwallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8449DC316E2D67D98F173D00 /* libPods-pacwallet.a */; };
 		751B2B5C1B68911700EA87FB /* BRTxHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 751B2B5B1B68911700EA87FB /* BRTxHistoryViewController.m */; };
 		7525B619192453840041C0F2 /* BRNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7525B618192453840041C0F2 /* BRNavigationBar.m */; };
@@ -244,6 +247,10 @@
 		31D68B521C23B6C10030FAAA /* DashWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashWalletUITests.swift; sourceTree = "<group>"; };
 		31D68B541C23B6C10030FAAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31D68B5A1C23B6FD0030FAAA /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		3939344F21F170460016D2A3 /* UIColor+Hexadecimal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hexadecimal.h"; sourceTree = "<group>"; };
+		3939345021F170460016D2A3 /* UIColor+Hexadecimal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hexadecimal.m"; sourceTree = "<group>"; };
+		3939345221F173680016D2A3 /* UIColor+AppColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppColors.h"; sourceTree = "<group>"; };
+		3939345321F173680016D2A3 /* UIColor+AppColors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppColors.m"; sourceTree = "<group>"; };
 		39A2C58A21EF06C900DDB1E3 /* BRImageViewLogo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRImageViewLogo.h; sourceTree = "<group>"; };
 		39A2C58B21EF06CA00DDB1E3 /* BRRoundedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRRoundedButton.h; sourceTree = "<group>"; };
 		39A2C58C21EF06CA00DDB1E3 /* BRRoundedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRRoundedButton.m; sourceTree = "<group>"; };
@@ -252,6 +259,8 @@
 		39A2C58F21EF06CC00DDB1E3 /* BRRoundedBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRRoundedBorderedButton.h; sourceTree = "<group>"; };
 		39A2C59321EF0B2300DDB1E3 /* BRPacNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRPacNavigationController.h; sourceTree = "<group>"; };
 		39A2C59421EF0B2300DDB1E3 /* BRPacNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRPacNavigationController.m; sourceTree = "<group>"; };
+		39EF817821F2AF5000F51AEB /* BRBorderedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRBorderedView.h; sourceTree = "<group>"; };
+		39EF817921F2AF5000F51AEB /* BRBorderedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRBorderedView.m; sourceTree = "<group>"; };
 		3F38DCFEF402B5758E496206 /* Pods-pacwallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pacwallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pacwallet/Pods-pacwallet.debug.xcconfig"; sourceTree = "<group>"; };
 		4C7F2168B337F34AC59E771A /* Pods-pacwallet.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pacwallet.testflight.xcconfig"; path = "Pods/Target Support Files/Pods-pacwallet/Pods-pacwallet.testflight.xcconfig"; sourceTree = "<group>"; };
 		7509C10C1AF3076000D03FD5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -679,6 +688,8 @@
 				39A2C58D21EF06CB00DDB1E3 /* BRRoundedBorderedButton.m */,
 				39A2C58B21EF06CA00DDB1E3 /* BRRoundedButton.h */,
 				39A2C58C21EF06CA00DDB1E3 /* BRRoundedButton.m */,
+				39EF817821F2AF5000F51AEB /* BRBorderedView.h */,
+				39EF817921F2AF5000F51AEB /* BRBorderedView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -770,6 +781,10 @@
 				BA7B535B1BDBC36700355E8D /* BRTransaction+Utils.m */,
 				FB021E4D1E42EB5F00D17638 /* NSAttributedString+Attachments.h */,
 				FB021E4E1E42EB5F00D17638 /* NSAttributedString+Attachments.m */,
+				3939344F21F170460016D2A3 /* UIColor+Hexadecimal.h */,
+				3939345021F170460016D2A3 /* UIColor+Hexadecimal.m */,
+				3939345221F173680016D2A3 /* UIColor+AppColors.h */,
+				3939345321F173680016D2A3 /* UIColor+AppColors.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1507,6 +1522,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22F04A001C9714EF00F137D8 /* BRUserDefaultsSwitchCell.m in Sources */,
+				3939345421F173680016D2A3 /* UIColor+AppColors.m in Sources */,
 				752E28AA19234AE300DB5A3C /* BRAddressEntity.m in Sources */,
 				75AA5F55194143D5003F23BD /* BRBouncyBurgerButton.m in Sources */,
 				752E28AB19234AE300DB5A3C /* BRMerkleBlockEntity.m in Sources */,
@@ -1524,6 +1540,7 @@
 				BA7B535C1BDBC36700355E8D /* BRTransaction+Utils.m in Sources */,
 				758DBD0E1980634900389E2A /* BRTxDetailViewController.m in Sources */,
 				FB021E4F1E42EB5F00D17638 /* NSAttributedString+Attachments.m in Sources */,
+				39EF817A21F2AF5000F51AEB /* BRBorderedView.m in Sources */,
 				7548CF3719556FD700EF827F /* BRCopyLabel.m in Sources */,
 				2AC92C8A1FEB0B8B008CAEE0 /* BRQRScanViewModel.m in Sources */,
 				752E28D119234C3600DB5A3C /* BRKey.m in Sources */,
@@ -1558,6 +1575,7 @@
 				752E28E719234DA200DB5A3C /* NSData+Bitcoin.m in Sources */,
 				2AC92C841FEB0A6D008CAEE0 /* BRQRScanViewController.m in Sources */,
 				FB9CC2711F8E27B80079309F /* DWGenerateViewController.m in Sources */,
+				3939345121F170460016D2A3 /* UIColor+Hexadecimal.m in Sources */,
 				220128D31C753C670001CAC1 /* BRSocketHelpers.c in Sources */,
 				752E28E919234DA200DB5A3C /* NSManagedObject+Sugar.m in Sources */,
 				BA7B53541BDAA0A800355E8D /* BRAppleWatchTransactionData.m in Sources */,
