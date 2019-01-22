@@ -6,13 +6,13 @@
 "5OA-tB-Exg.text" = "https://github.com/chasemgray/pacwallet";
 
 /* Class = "UILabel"; text = "local currency"; ObjectID = "8e2-ar-Ehc"; */
-"8e2-ar-Ehc.text" = "local currency";
+"8e2-ar-Ehc.text" = "Local currency";
 
 /* Class = "UIButton"; normalTitle = "generate recovery phrase"; ObjectID = "A4M-yq-26d"; */
 "A4M-yq-26d.normalTitle" = "Generate recovery phrase";
 
 /* Class = "UILabel"; text = "start/recover another wallet"; ObjectID = "D1b-HB-lKH"; */
-"D1b-HB-lKH.text" = "start/recover another wallet";
+"D1b-HB-lKH.text" = "Start/recover another wallet";
 
 /* Class = "UILabel"; text = "exchange rate data provided by\nbitpay.com/rates, poloniex, and masternodes.work"; ObjectID = "D4H-hd-LsX"; */
 "D4H-hd-LsX.text" = "exchange rate data provided by\nbitpay.com/rates, poloniex, and masternodes.work";

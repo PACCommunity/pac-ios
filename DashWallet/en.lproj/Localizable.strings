@@ -72,7 +72,7 @@
 "\ntry again in %d %@" = "\ntry again in %1$d %2$@";
 
 /* No comment provided by engineer. */
-"about" = "about";
+"about" = "About";
 
 /* No comment provided by engineer. */
 "always require passcode" = "always require passcode";
@@ -126,7 +126,7 @@
 "change" = "change";
 
 /* No comment provided by engineer. */
-"change passcode" = "change passcode";
+"change passcode" = "Change passcode";
 
 /* No comment provided by engineer. */
 "change payment amount?" = "change payment amount?";
@@ -228,7 +228,7 @@
 "enable" = "enable";
 
 /* No comment provided by engineer. */
-"enable receive notifications" = "enable receive notifications";
+"enable receive notifications" = "Enable receive notifications";
 
 /* No comment provided by engineer. */
 "enter" = "enter";
@@ -411,7 +411,7 @@
 "rescan" = "rescan";
 
 /* No comment provided by engineer. */
-"rescan blockchain" = "rescan blockchain";
+"rescan blockchain" = "Rescan blockchain";
 
 /* No comment provided by engineer. */
 "rescan blockchain if you think you may have missing transactions, or are having trouble sending (rescanning can take several minutes)" = "rescan blockchain if you think you may have missing transactions, or are having trouble sending (rescanning can take several minutes)";
@@ -555,7 +555,7 @@
 "to: %@ (via Shapeshift)" = "to: %@ (via Shapeshift)";
 
 /* No comment provided by engineer. */
-"touch id limit" = "touch id limit";
+"touch id limit" = "Touch id limit";
 
 /* No comment provided by engineer. */
 "touch id spending limit" = "touch id spending limit";

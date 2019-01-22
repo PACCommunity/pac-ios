@@ -14,4 +14,8 @@
     return [UIColor colorWithHexString:@"#F4EA13"];
 }
 
++(UIColor *) blackPACColor {
+    return [UIColor colorWithHexString:@"#212121"];
+}
+
 @end

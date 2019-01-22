@@ -35,6 +35,7 @@
 #import <sys/socket.h>
 #import <netdb.h>
 #import <arpa/inet.h>
+#import "UIColor+AppColors.h"
 
 @interface BRSettingsViewController ()
 
@@ -55,6 +56,8 @@
 {
     [super viewDidLoad];
     self.touchId = [BRWalletManager sharedInstance].touchIdEnabled;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //self.tableView.separatorColor = [UIColor blackPACColor];
 }
 
 
@@ -122,7 +125,7 @@
     _selectorController.transitioningDelegate = self.navigationController.viewControllers.firstObject;
     _selectorController.tableView.dataSource = self;
     _selectorController.tableView.delegate = self;
-    _selectorController.tableView.backgroundColor = [UIColor whiteColor];
+    _selectorController.tableView.backgroundColor = [UIColor blackPACColor];
     return _selectorController;
 }
 
@@ -130,6 +133,10 @@
 {    
     [cell viewWithTag:100].hidden = (path.row > 0);
     [cell viewWithTag:101].hidden = (path.row + 1 < [self tableView:tableView numberOfRowsInSection:path.section]);
+    
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
+    [cell setSelectedBackgroundView:bgColorView];
 }
 
 - (NSString *)stats
@@ -317,7 +324,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if (tableView == self.selectorController.tableView) return 1;
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -325,9 +332,9 @@
     if (tableView == self.selectorController.tableView) return self.selectorOptions.count;
     
     switch (section) {
-        case 0: return 2;
-        case 1: return (self.touchId) ? 3 : 2;
-        case 2: return 3;
+        case 0: return (self.touchId) ? 5 : 4;//return 2;
+        //case 1: return (self.touchId) ? 3 : 2;
+        case 1: return 3;
     }
     
     return 0;
@@ -366,18 +373,11 @@
                 case 1:
                     cell.textLabel.text = NSLocalizedString(@"recovery phrase", nil);
                     break;
-            }
-            
-            break;
-            
-        case 1:
-            switch (indexPath.row) {
-                case 0:
+                case 2:
                     cell = [tableView dequeueReusableCellWithIdentifier:selectorIdent];
                     cell.detailTextLabel.text = manager.localCurrencyCode;
                     break;
-            
-                case 1:
+                case 3:
                     if (self.touchId) {
                         cell = [tableView dequeueReusableCellWithIdentifier:selectorIdent];
                         cell.textLabel.text = NSLocalizedString(@"touch id limit", nil);
@@ -386,21 +386,21 @@
                         goto _switch_cell;
                     }
                     break;
-                case 2:
+                case 4:
                 {
-_switch_cell:
+                _switch_cell:
                     cell = [tableView dequeueReusableCellWithIdentifier:@"SwitchCell" forIndexPath:indexPath];
                     BRUserDefaultsSwitchCell *switchCell = (BRUserDefaultsSwitchCell *)cell;
                     switchCell.titleLabel.text = NSLocalizedString(@"enable receive notifications", nil);
                     [switchCell setUserDefaultsKey:USER_DEFAULTS_LOCAL_NOTIFICATIONS_KEY];
                     break;
                 }
-                    
             }
             
             break;
             
-        case 2:
+        case 1:
+            
             switch (indexPath.row) {
                 case 0:
                     cell = [tableView dequeueReusableCellWithIdentifier:actionIdent];
@@ -415,13 +415,14 @@ _switch_cell:
                     cell = [tableView dequeueReusableCellWithIdentifier:actionIdent];
                     cell.textLabel.text = NSLocalizedString(@"rescan blockchain", nil);
                     break;
-
+                    
             }
             break;
             
     }
     
     [self setBackgroundForCell:cell tableView:tableView indexPath:indexPath];
+    
     return cell;
 }
 
@@ -437,9 +438,6 @@ _switch_cell:
             return nil;
             
         case 2:
-            return nil;
-            
-        case 3:
             return NSLocalizedString(@"rescan blockchain if you think you may have missing transactions, "
                                      "or are having trouble sending (rescanning can take several minutes)", nil);
     }
@@ -651,18 +649,12 @@ _switch_cell:
                 case 1: // recovery phrase
                     [self showRecoveryPhrase];
                     break;
-            }
-            
-            break;
-            
-        case 1:
-            switch (indexPath.row) {
-                case 0: // local currency
+                case 2: // local currency
                     [self showCurrencySelector];
                     
                     break;
                     
-                case 1: // touch id spending limit
+                case 3: // touch id spending limit
                     if (self.touchId) {
                         [self performSelector:@selector(touchIdLimit:) withObject:nil afterDelay:0.0];
                         break;
@@ -670,24 +662,24 @@ _switch_cell:
                         goto _deselect_switch;
                     }
                     break;
-                case 2:
-_deselect_switch:
-                    {
-                        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-                    }
+                case 4:
+                _deselect_switch:
+                {
+                    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+                }
                     break;
             }
             
             break;
             
-        case 2:
+        case 1:
             switch (indexPath.row) {
                 case 0: // change passcode
                     [BREventManager saveEvent:@"settings:change_pin"];
                     [tableView deselectRowAtIndexPath:indexPath animated:YES];
                     [manager performSelector:@selector(setPinWithCompletion:) withObject:nil afterDelay:0.0];
                     break;
-
+                    
                 case 1: // start/recover another wallet (handled by storyboard)
                     [BREventManager saveEvent:@"settings:recover"];
                     break;
