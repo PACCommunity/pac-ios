@@ -36,6 +36,7 @@
 #import <netdb.h>
 #import <arpa/inet.h>
 #import "UIColor+AppColors.h"
+#import "NSString+Attributed.h"
 
 @interface BRSettingsViewController ()
 
@@ -350,11 +351,18 @@
     if (tableView == self.selectorController.tableView) {
         cell = [self.tableView dequeueReusableCellWithIdentifier:selectorOptionCell];
         [self setBackgroundForCell:cell tableView:tableView indexPath:indexPath];
-        cell.textLabel.text = self.selectorOptions[indexPath.row];
+        
+        
+        NSString *text = self.selectorOptions[indexPath.row];
+        NSString *word = manager.currencyCodes[indexPath.row];
+        NSAttributedString *attrString = [text attributedStringForWord:word attributesFullText:@{NSForegroundColorAttributeName: UIColor.whiteColor, NSFontAttributeName: [UIFont systemFontOfSize:17 weight:UIFontWeightLight]}
+                                                       attributtesWord:@{NSForegroundColorAttributeName: UIColor.whiteColor, NSFontAttributeName: [UIFont systemFontOfSize:17 weight:UIFontWeightSemibold]}];
+        
+        cell.textLabel.attributedText = attrString;
         
         if ([self.selectedOption isEqual:self.selectorOptions[indexPath.row]]) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
-            cell.tintColor = UIColor.blackColor;
+            cell.tintColor = UIColor.yellowPACColor;
         }
         else cell.accessoryType = UITableViewCellAccessoryNone;
         
