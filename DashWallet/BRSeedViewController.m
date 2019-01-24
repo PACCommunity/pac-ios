@@ -29,6 +29,8 @@
 #import "NSMutableData+Bitcoin.h"
 #import "BREventManager.h"
 #import "BRImageViewLogo.h"
+#import "UIColor+AppColors.h"
+#import "BRBorderedView.h"
 
 #define LABEL_MARGIN       20.0
 #define WRITE_TOGGLE_DELAY 15.0
@@ -43,8 +45,11 @@
 @property (nonatomic, strong) IBOutlet UIButton *writeButton;
 @property (nonatomic, strong) IBOutlet UIButton *remindButton;
 @property (nonatomic, strong) IBOutlet UIImageView *wallpaper;
-
 @property (nonatomic, strong) id resignActiveObserver, screenshotObserver;
+@property (weak, nonatomic) IBOutlet BRBorderedView *borderedView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
+
 
 @end
 
@@ -90,7 +95,14 @@
     
     if (self.navigationController.viewControllers.firstObject != self) {
         self.wallpaper.hidden = YES;
-        self.view.backgroundColor = [UIColor redColor];
+        self.borderedView.borderColor = UIColor.blackColor;
+        self.seedLabel.textColor = UIColor.blackColor;
+        self.titleLabel.shadowColor = UIColor.clearColor;
+        self.titleLabel.textColor = UIColor.blackColor;
+        self.subTitleLabel.textColor = UIColor.blackColor;
+        self.writeLabel.textColor = UIColor.blackColor;
+        self.writeButton.tintColor = UIColor.blackColor;
+        self.view.backgroundColor = [UIColor yellowPACColor];
     }
     
     [self.remindButton setTitle:NSLocalizedString(@"remind me later", nil) forState:UIControlStateNormal];

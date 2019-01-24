@@ -14,6 +14,12 @@
 
 @implementation BRPacNavigationController
 
+-(void) viewDidLoad {
+    [super viewDidLoad];
+    
+    self.navigationBar.tintColor = UIColor.whiteColor;
+}
+
 -(UIViewController*) childViewControllerForStatusBarStyle {
     return self.topViewController;
 }

@@ -18,7 +18,7 @@
 "D4H-hd-LsX.text" = "exchange rate data provided by\nbitpay.com/rates, poloniex, and masternodes.work";
 
 /* Class = "UILabel"; text = "if you ever lose your phone, you will need this phrase to recover your wallet"; ObjectID = "EQG-Km-ZKY"; */
-"EQG-Km-ZKY.text" = "if you ever lose your phone, you will need this phrase to recover your wallet";
+"EQG-Km-ZKY.text" = "If you ever lose your phone, you will need this phrase to recover your wallet";
 
 /* Class = "UILabel"; text = "sent"; ObjectID = "FjB-H2-BnK"; */
 "FjB-H2-BnK.text" = "sent";
@@ -27,7 +27,7 @@
 "QQS-Me-RNh.title" = "remind me later";
 
 /* Class = "UILabel"; text = "please write it down"; ObjectID = "Td7-xP-kmB"; */
-"Td7-xP-kmB.text" = "please write it down";
+"Td7-xP-kmB.text" = "Please write it down";
 
 /* Class = "UILabel"; text = "not connected"; ObjectID = "UyF-OV-QVY"; */
 "UyF-OV-QVY.text" = "not connected";
