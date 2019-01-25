@@ -369,7 +369,7 @@
 "please enter pin to upgrade wallet" = "please enter pin to upgrade wallet";
 
 /* No comment provided by engineer. */
-"rate: %@ = %@\nupdated: %@\nblock #%d of %d\nconnected peers: %d\ndl peer: %@" = "rate: %@ = %@\nupdated: %@\nblock #%d of %d\nconnected peers: %d\ndl peer: %@";
+"rate: %@ = %@\nupdated: %@\nblock #%d of %d\nconnected peers: %d\ndl peer: %@" = "Rate: %@ = %@\nUpdated: %@\nBlock #%d of %d\nConnected Peers: %d\nDL Peer: %@";
 
 /* No comment provided by engineer. */
 "Receive $PAC at this address: %@" = "Receive $PAC at this address: %@";
@@ -646,3 +646,6 @@
 
 /* No comment provided by engineer. */
 "remind me later" = "Remind me later";
+
+/* No comment provided by engineer. */
+"About PAC Wallet" = "About PAC Wallet";

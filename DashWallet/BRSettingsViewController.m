@@ -505,6 +505,17 @@
 {
     [BREventManager saveEvent:@"settings:show_about"];
     UIViewController *c = [self.storyboard instantiateViewControllerWithIdentifier:@"AboutViewController"];
+    
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.font = [UIFont systemFontOfSize:17 weight:UIFontWeightBold];
+    titleLabel.textColor = [UIColor yellowPACColor];
+    titleLabel.text = NSLocalizedString(@"About PAC Wallet", nil);
+    titleLabel.adjustsFontSizeToFitWidth = YES;
+    titleLabel.minimumScaleFactor = 0.5f;
+    [titleLabel sizeToFit];
+    
+    c.navigationItem.titleView = titleLabel;
+    
     UILabel *l = (id)[c.view viewWithTag:411];
     NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithAttributedString:l.attributedText];
     UIButton *b = nil;
@@ -529,6 +540,7 @@
 
     b = (id)[c.view viewWithTag:412];
     [b setTitle:self.stats forState:UIControlStateNormal];
+    [b.titleLabel setTextAlignment: NSTextAlignmentCenter];
     [b addTarget:self action:@selector(fixedPeer:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.navigationController pushViewController:c animated:YES];
