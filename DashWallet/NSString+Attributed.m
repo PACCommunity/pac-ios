@@ -20,4 +20,16 @@
     return  attrString;
 }
 
+- (NSMutableAttributedString *) attributedStringForWords: (NSArray<NSString *> *)words attributesFullText: (NSDictionary *) atributesFullText attributtesWords: (NSDictionary *) attributtesWords {
+    
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:self attributes: atributesFullText];
+    
+    for (NSString *word in words) {
+        NSRange range = [self rangeOfString: word];
+        [attrString addAttributes:attributtesWords range:range];
+    }
+    
+    return  attrString;
+}
+
 @end

@@ -14,8 +14,8 @@
 /* Class = "UILabel"; text = "start/recover another wallet"; ObjectID = "D1b-HB-lKH"; */
 "D1b-HB-lKH.text" = "Comenzar/recuperar otra cartera";
 
-/* Class = "UILabel"; text = "exchange rate data provided by\nbitpay.com/rates, poloniex, and masternodes.work"; ObjectID = "D4H-hd-LsX"; */
-"D4H-hd-LsX.text" = "datos de tasa de cambio proporcionados por\nbitpay.com/rates";
+/* Class = "UILabel"; text = "exchange rate data provided by\n\nbitpay.com/rates, poloniex, and masternodes.work"; ObjectID = "D4H-hd-LsX"; */
+"D4H-hd-LsX.text" = "Datos de tasa de cambio proporcionados por\n\nbitpay.com/rates y poloneix.com";
 
 /* Class = "UILabel"; text = "if you ever lose your phone, you will need this phrase to recover your wallet"; ObjectID = "EQG-Km-ZKY"; */
 "EQG-Km-ZKY.text" = "Si alguna vez pierdes tu teléfono, necesitarás esta frase para recuperar tu cartera";
@@ -83,8 +83,8 @@
 /* Class = "UILabel"; text = "no transactions"; ObjectID = "t1j-JZ-FW0"; */
 "t1j-JZ-FW0.text" = "ninguna transacción";
 
-/* Class = "UILabel"; text = "pacwallet v%ver%%net%\nForked from breadwallet.\nThis app is open source:"; ObjectID = "uvz-hk-Nr4"; */
-"uvz-hk-Nr4.text" = "pacwallet v%ver%%net%\nBasado en breadwallet\nesta aplicación es de código abierto";
+/* Class = "UILabel"; text = "pacwallet v%ver%%net%\nPeople’s Alternative Choice © 2018\n\nForked from breadwallet.\nThis app is open source:"; ObjectID = "uvz-hk-Nr4"; */
+"uvz-hk-Nr4.text" = "PAC Wallet v%ver%%net%\nElección alternativa de la gente © 2018\n\nBasado en breadwallet\nesta aplicación es de código abierto";
 
 /* Class = "UILabel"; text = "start a new wallet by generating a wallet recovery phrase"; ObjectID = "wDZ-DN-szv"; */
 "wDZ-DN-szv.text" = "Crear una cartera nueva mediante la generación de una frase de recuperación";

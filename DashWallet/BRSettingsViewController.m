@@ -37,6 +37,7 @@
 #import <arpa/inet.h>
 #import "UIColor+AppColors.h"
 #import "NSString+Attributed.h"
+#import "NSString+Attributed.h"
 
 @interface BRSettingsViewController ()
 
@@ -506,6 +507,7 @@
     [BREventManager saveEvent:@"settings:show_about"];
     UIViewController *c = [self.storyboard instantiateViewControllerWithIdentifier:@"AboutViewController"];
     
+    //label for navigation bar title
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.font = [UIFont systemFontOfSize:17 weight:UIFontWeightBold];
     titleLabel.textColor = [UIColor yellowPACColor];
@@ -514,7 +516,14 @@
     titleLabel.minimumScaleFactor = 0.5f;
     [titleLabel sizeToFit];
     
+    //we set the navigation bar title
     c.navigationItem.titleView = titleLabel;
+    
+    //bitpay.com/rates y poloneix.com
+    
+    UILabel *rateDataLabel = (id)[c.view viewWithTag:414];
+    rateDataLabel.attributedText = [rateDataLabel.text attributedStringForWords:@[@"bitpay.com/rates", @"poloneix.com"]
+                                                             attributesFullText:@{NSFontAttributeName: [UIFont systemFontOfSize: 17], NSForegroundColorAttributeName: [UIColor whiteColor]} attributtesWords:@{NSFontAttributeName: [UIFont systemFontOfSize: 17], NSForegroundColorAttributeName: [UIColor yellowPACColor]}];
     
     UILabel *l = (id)[c.view viewWithTag:411];
     NSMutableAttributedString *s = [[NSMutableAttributedString alloc] initWithAttributedString:l.attributedText];
@@ -523,12 +532,17 @@
 #if PAC_TESTNET
     [s replaceCharactersInRange:[s.string rangeOfString:@"%net%" options:NSCaseInsensitiveSearch] withString:@"%net% (testnet)"];
 #endif
+    NSString *appVersion = NSBundle.mainBundle.infoDictionary[@"CFBundleShortVersionString"];
     [s replaceCharactersInRange:[s.string rangeOfString:@"%ver%" options:NSCaseInsensitiveSearch]
-     withString:[NSString stringWithFormat:@"%@ - %@",
-                 NSBundle.mainBundle.infoDictionary[@"CFBundleShortVersionString"],
-                 NSBundle.mainBundle.infoDictionary[@"CFBundleVersion"]]];
+     withString:[NSString stringWithFormat:@"%@", appVersion]];
     [s replaceCharactersInRange:[s.string rangeOfString:@"%net%" options:NSCaseInsensitiveSearch] withString:@""];
-    l.attributedText = s;
+    
+    NSString *word = [NSString stringWithFormat:@"%@ v%@", @"PAC Wallet", appVersion];
+    l.attributedText = [s.string attributedStringForWord: word
+                                      attributesFullText:@{NSFontAttributeName: [UIFont systemFontOfSize:17 weight:UIFontWeightLight], NSForegroundColorAttributeName: [UIColor whiteColor]} attributtesWord:@{NSFontAttributeName: [UIFont boldSystemFontOfSize: 17], NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    
+    
+    
     [l.superview.gestureRecognizers.firstObject addTarget:self action:@selector(about:)];
 #if DEBUG
     {

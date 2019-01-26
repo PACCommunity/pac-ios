@@ -12,4 +12,6 @@
 
 - (NSMutableAttributedString *) attributedStringForWord: (NSString *)word attributesFullText: (NSDictionary *) atributesFullText attributtesWord: (NSDictionary *) attributtesWord;
 
+- (NSMutableAttributedString *) attributedStringForWords: (NSArray<NSString *> *)words attributesFullText: (NSDictionary *) atributesFullText attributtesWords: (NSDictionary *) attributtesWords;
+
 @end
