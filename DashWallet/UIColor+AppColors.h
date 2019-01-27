@@ -12,5 +12,6 @@
 @interface UIColor (AppColors)
 
 +(UIColor *) yellowPACColor;
++(UIColor *) blackPACColor;
 
 @end

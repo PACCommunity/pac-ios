@@ -72,7 +72,7 @@
 "\ntry again in %d %@" = "\ninténtalo de nuevo %1$d %2$@";
 
 /* No comment provided by engineer. */
-"about" = "acerca de";
+"about" = "Acerca de";
 
 /* No comment provided by engineer. */
 "always require passcode" = "siempre requiere el numero de seguridad";
@@ -126,7 +126,7 @@
 "change" = "cambiar";
 
 /* No comment provided by engineer. */
-"change passcode" = "cambiar código de acceso";
+"change passcode" = "Cambiar código de acceso";
 
 /* No comment provided by engineer. */
 "change payment amount?" = "¿cambiar la cantidad a pagar?";
@@ -228,7 +228,7 @@
 "enable" = "habilitar";
 
 /* No comment provided by engineer. */
-"enable receive notifications" = "habilitar recibir notificaciones";
+"enable receive notifications" = "Habilitar recibir notificaciones";
 
 /* No comment provided by engineer. */
 "enter" = "entrar";
@@ -369,7 +369,7 @@
 "please enter pin to upgrade wallet" = "por favor ingrese pin para actualizar la cartera";
 
 /* No comment provided by engineer. */
-"rate: %@ = %@\nupdated: %@\nblock #%d of %d\nconnected peers: %d\ndl peer: %@" = "cambio: %@ = %@\nactualizado: %@\nblock # %d de %d\npares conectados: %d\npares descargados: %@";
+"rate: %@ = %@\nupdated: %@\nblock #%d of %d\nconnected peers: %d\ndl peer: %@" = "Cambio: %@ = %@\nActualizado: %@\nBlock # %d de %d\nPares conectados: %d\nPares descargados: %@";
 
 /* No comment provided by engineer. */
 "Receive $PAC at this address: %@" = "Recibe $PAC en esta dirección: %@";
@@ -411,7 +411,7 @@
 "rescan" = "escanear de nuevo";
 
 /* No comment provided by engineer. */
-"rescan blockchain" = "escanear de nuevo la cadena de bloques";
+"rescan blockchain" = "Escanear de nuevo la cadena de bloques";
 
 /* No comment provided by engineer. */
 "rescan blockchain if you think you may have missing transactions, or are having trouble sending (rescanning can take several minutes)" = "escanee de nuevo la cadena de bloques si piensa que puede tener transacciones no reflejadas, o si tiene problemas de envío (el escaneado puede durar algunos minutos)";
@@ -555,7 +555,7 @@
 "to: %@ (via Shapeshift)" = "a: %@ (vía Shapeshift)";
 
 /* No comment provided by engineer. */
-"touch id limit" = "límite de touch id";
+"touch id limit" = "Límite de touch id";
 
 /* No comment provided by engineer. */
 "touch id spending limit" = "límite de gasto de touch id";
@@ -646,3 +646,6 @@
 
 /* No comment provided by engineer. */
 "remind me later" = "Recordármelo más tarde";
+
+/* No comment provided by engineer. */
+"About PAC Wallet" = "Acerca de PAC Wallet";

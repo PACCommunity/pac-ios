@@ -20,6 +20,10 @@
     [self configureProperties];
 }
 
+- (void) setBorderColor:(UIColor *)borderColor {
+    [self configureProperties];
+}
+
 #pragma mark - Util methods
 
 - (void) configureProperties {

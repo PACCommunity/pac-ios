@@ -60,7 +60,7 @@
     self.navigationItem.titleView = [BRImageViewLogo imageViewWithPACLogo];
     
     self.textView.layer.cornerRadius = 5.0;
-    
+
     self.keyboardObserver =
         [[NSNotificationCenter defaultCenter] addObserverForName:UIKeyboardWillShowNotification object:nil queue:nil
         usingBlock:^(NSNotification *note) {

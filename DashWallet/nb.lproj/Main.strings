@@ -14,8 +14,8 @@
 /* Class = "UILabel"; text = "start/recover another wallet"; ObjectID = "D1b-HB-lKH"; */
 "D1b-HB-lKH.text" = "opprett/gjenopprett annen lommebok";
 
-/* Class = "UILabel"; text = "exchange rate data provided by\nbitpay.com/rates, poloniex, and masternodes.work"; ObjectID = "D4H-hd-LsX"; */
-"D4H-hd-LsX.text" = "data for vekslingskurs hentet fra \nbitpay.com/rates";
+/* Class = "UILabel"; text = "exchange rate data provided by\n\nbitpay.com/rates, poloniex, and masternodes.work"; ObjectID = "D4H-hd-LsX"; */
+"D4H-hd-LsX.text" = "data for vekslingskurs hentet fra \n\nbitpay.com/rates og poloneix.com";
 
 /* Class = "UILabel"; text = "if you ever lose your phone, you will need this phrase to recover your wallet"; ObjectID = "EQG-Km-ZKY"; */
 "EQG-Km-ZKY.text" = "om du mister telefonen din vil du trenge denne frasen for å gjenopprette lommeboken din";
@@ -83,8 +83,8 @@
 /* Class = "UILabel"; text = "no transactions"; ObjectID = "t1j-JZ-FW0"; */
 "t1j-JZ-FW0.text" = "ingen transaksjoner";
 
-/* Class = "UILabel"; text = "pacwallet v%ver%%net%\nForked from breadwallet.\nThis app is open source:"; ObjectID = "uvz-hk-Nr4"; */
-"uvz-hk-Nr4.text" = "pacwallet v%ver%%net%\nForked from breadwallet.\nThis app is open source:";
+/* Class = "UILabel"; text = "pacwallet v%ver%%net%\nPeople’s Alternative Choice © 2018\n\nForked from breadwallet.\nThis app is open source:"; ObjectID = "uvz-hk-Nr4"; */
+"uvz-hk-Nr4.text" = "PAC Wallet v%ver%%net%\nFolkets alternativvalg © 2018\n\nForked from breadwallet.\nThis app is open source:";
 
 /* Class = "UILabel"; text = "start a new wallet by generating a wallet recovery phrase"; ObjectID = "wDZ-DN-szv"; */
 "wDZ-DN-szv.text" = "start en ny lommebok ved å generere en gjenopprettingsfrase";
