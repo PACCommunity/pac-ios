@@ -649,3 +649,6 @@
 
 /* No comment provided by engineer. */
 "About PAC Wallet" = "PAC 지갑 정보";
+
+/* No comment provided by engineer. */
+"no transactions" = "거래 없음";

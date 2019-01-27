@@ -38,6 +38,8 @@
 #import "BREventManager.h"
 #import "NSString+Pac.h"
 #import <WebKit/WebKit.h>
+#import "BRHistoryActionCell.h"
+#import "BRHistoryNoTxCell.h"
 
 #define TRANSACTION_CELL_HEIGHT 75
 
@@ -59,15 +61,14 @@ static NSString *dateFormat(NSString *template)
 
 @interface BRTxHistoryViewController ()
 
-@property (nonatomic, strong) IBOutlet UIView *logo;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *lock;
+@property (nonatomic, strong) IBOutlet UIView *logoView;
 
 @property (nonatomic, strong) NSArray *transactions;
 @property (nonatomic, assign) BOOL moreTx;
 @property (nonatomic, strong) NSMutableDictionary *txDates;
 @property (nonatomic, strong) id backgroundObserver, balanceObserver, txStatusObserver;
 @property (nonatomic, strong) id syncStartedObserver, syncFinishedObserver, syncFailedObserver;
-@property (nonatomic, strong) UIImageView *wallpaper;
 
 @end
 
@@ -78,14 +79,8 @@ static NSString *dateFormat(NSString *template)
     [super viewDidLoad];
 
     self.txDates = [NSMutableDictionary dictionary];
-    self.wallpaper = [[UIImageView alloc] initWithFrame:self.navigationController.view.bounds];
-    self.wallpaper.image = [UIImage imageNamed:@"wallpaper-default"];
-    self.wallpaper.contentMode = UIViewContentModeScaleAspectFill;
-    self.wallpaper.clipsToBounds = YES;
-    self.wallpaper.center = CGPointMake(self.wallpaper.frame.size.width/2,
-                                        self.navigationController.view.frame.size.height -
-                                        self.wallpaper.frame.size.height/2);
-    [self.navigationController.view insertSubview:self.wallpaper atIndex:0];
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.navigationController.delegate = self;
     self.moreTx = YES;
 }
@@ -139,7 +134,7 @@ static NSString *dateFormat(NSString *template)
                 self.moreTx = YES;
                 self.transactions = manager.wallet.allTransactions;
                 [self.tableView reloadData];
-                self.navigationItem.titleView = self.logo;
+                self.navigationItem.titleView = self.logoView;
                 self.navigationItem.rightBarButtonItem = self.lock;
             }];
     }
@@ -153,7 +148,7 @@ static NSString *dateFormat(NSString *template)
                 self.transactions = manager.wallet.allTransactions;
 
                 if (! [self.navigationItem.title isEqual:NSLocalizedString(@"Syncing:", nil)]) {
-                    if (! manager.didAuthenticate) self.navigationItem.titleView = self.logo;
+                    if (! manager.didAuthenticate) self.navigationItem.titleView = self.logoView;
                     else [self updateTitleView];
                 }
 
@@ -192,7 +187,7 @@ static NSString *dateFormat(NSString *template)
         self.syncFinishedObserver =
             [[NSNotificationCenter defaultCenter] addObserverForName:BRPeerManagerSyncFinishedNotification object:nil
             queue:nil usingBlock:^(NSNotification *note) {
-                if (! manager.didAuthenticate) self.navigationItem.titleView = self.logo;
+                if (! manager.didAuthenticate) self.navigationItem.titleView = self.logoView;
                 else [self updateTitleView];
             }];
     }
@@ -201,7 +196,7 @@ static NSString *dateFormat(NSString *template)
         self.syncFailedObserver =
             [[NSNotificationCenter defaultCenter] addObserverForName:BRPeerManagerSyncFailedNotification object:nil
             queue:nil usingBlock:^(NSNotification *note) {
-                if (! manager.didAuthenticate) self.navigationItem.titleView = self.logo;
+                if (! manager.didAuthenticate) self.navigationItem.titleView = self.logoView;
                 [self updateTitleView];
             }];
     }
@@ -256,8 +251,7 @@ static NSString *dateFormat(NSString *template)
         self.syncFinishedObserver = nil;
         if (self.syncFailedObserver) [[NSNotificationCenter defaultCenter] removeObserver:self.syncFailedObserver];
         self.syncFailedObserver = nil;
-        self.wallpaper.clipsToBounds = YES;
-        
+
         //self.buyController = nil;
     }
 
@@ -313,6 +307,10 @@ static NSString *dateFormat(NSString *template)
 {    
     [cell viewWithTag:100].hidden = (path.row > 0);
     [cell viewWithTag:101].hidden = (path.row + 1 < [self tableView:tableView numberOfRowsInSection:path.section]);
+    
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
+    [cell setSelectedBackgroundView:bgColorView];
 }
 
 - (NSString *)dateForTx:(BRTransaction *)tx
@@ -493,8 +491,7 @@ static NSString *dateFormat(NSString *template)
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *noTxIdent = @"NoTxCell", *transactionIdent = @"TransactionCell", *actionIdent = @"ActionCell",
-                    *disclosureIdent = @"DisclosureCell";
+    static NSString *noTxIdent = @"NoTxCell", *transactionIdent = @"TransactionCell", *moreCellIden = @"MoreCell";
     UITableViewCell *cell = nil;
     UILabel *textLabel, *unconfirmedLabel, *sentLabel, *localCurrencyLabel, *balanceLabel, *localBalanceLabel,
             *detailTextLabel;
@@ -504,12 +501,16 @@ static NSString *dateFormat(NSString *template)
     switch (indexPath.section) {
         case 0:
             if (self.moreTx && indexPath.row >= self.transactions.count) {
-                cell = [tableView dequeueReusableCellWithIdentifier:actionIdent];
-                cell.textLabel.text = (indexPath.row > 0) ? NSLocalizedString(@"more...", nil) :
-                                      NSLocalizedString(@"transaction history", nil);
-                cell.imageView.image = nil;
-//                cell.textLabel.textColor = [UIColor whiteColor];//colorWithRed:0.0f/255.0f green:122.0f/255.0f blue:255.0f/255.0f alpha:1.0f];
-//                cell.tintColor = UIColor.whiteColor;
+                
+                if(indexPath.row > 0) {
+                    cell = [tableView dequeueReusableCellWithIdentifier:moreCellIden];
+                    cell.textLabel.text = NSLocalizedString(@"more...", nil);
+                } else {
+                    cell = [tableView dequeueReusableCellWithIdentifier:noTxIdent];
+                    BRHistoryNoTxCell *noTxCell = (BRHistoryNoTxCell *)cell;
+                    [noTxCell configureWithText:NSLocalizedString(@"transaction history", nil)];
+                }
+
             }
             else if (self.transactions.count > 0) {
                 cell = [tableView dequeueReusableCellWithIdentifier:transactionIdent];
@@ -608,30 +609,35 @@ static NSString *dateFormat(NSString *template)
                     sentLabel.highlightedTextColor = sentLabel.textColor;
                 }
             }
-            else cell = [tableView dequeueReusableCellWithIdentifier:noTxIdent];
+            else {
+                cell = [tableView dequeueReusableCellWithIdentifier:noTxIdent];
+                BRHistoryNoTxCell *noTxCell = (BRHistoryNoTxCell *)cell;
+                [noTxCell configureWithText: NSLocalizedString(@"no transactions", nil)];
+            }
             
             break;
 
         case 1:
-            cell = [tableView dequeueReusableCellWithIdentifier:actionIdent];
+            
+            cell = [tableView dequeueReusableCellWithIdentifier: [BRHistoryActionCell reuseCellId]];
+            BRHistoryActionCell *actionCell = (BRHistoryActionCell *)cell;
+            
             bool buyEnabled = FALSE;
             long adjustedRow = !buyEnabled ? indexPath.row + 1 : indexPath.row;
             switch (adjustedRow) {
                 case 0:
-                    cell.textLabel.text = NSLocalizedString(@"Buy $PAC", nil);
-                    cell.imageView.image = [UIImage imageNamed:@"dash-buy-blue-small"];
+                    
+                    [actionCell configureWithText:NSLocalizedString(@"Buy $PAC", nil) image:[UIImage imageNamed:@"dash-buy-blue-small"]];
                     break;
                     
                 case 1:
-                    cell.textLabel.text = NSLocalizedString(@"import private key", nil);
-                    cell.imageView.image = [UIImage imageNamed:@"cameraguide-blue-small"];
-//                    cell.textLabel.textColor = [UIColor whiteColor];
+                    
+                    [actionCell configureWithText:NSLocalizedString(@"import private key", nil) image:[UIImage imageNamed:@"scnicngray"]];
                     break;
 
                 case 2:
-                    cell = [tableView dequeueReusableCellWithIdentifier:disclosureIdent];
-                    cell.textLabel.text = NSLocalizedString(@"settings", nil);
-                    cell.imageView.image = [UIImage imageNamed:@"settings"];
+                    
+                    [actionCell configureWithText:NSLocalizedString(@"settings", nil) image:[UIImage imageNamed:@"settingsIcn"]];
                     break;
             }
             
@@ -648,7 +654,7 @@ static NSString *dateFormat(NSString *template)
 {
     switch (indexPath.section) {
         case 0: return (self.moreTx && indexPath.row >= self.transactions.count) ? 44.0 : TRANSACTION_CELL_HEIGHT;
-        case 1: return 44.0;
+        case 1: return TRANSACTION_CELL_HEIGHT;
     }
     
     return 44.0;
@@ -764,8 +770,6 @@ static NSString *dateFormat(NSString *template)
                      *from = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     BOOL pop = (to == self || (from != self && [to isKindOfClass:[BRSettingsViewController class]])) ? YES : NO;
 
-    if (self.wallpaper.superview != containerView) [containerView insertSubview:self.wallpaper belowSubview:from.view];
-    self.wallpaper.clipsToBounds = NO;
     to.view.center = CGPointMake(containerView.frame.size.width*(pop ? -1 : 3)/2, to.view.center.y);
     [containerView addSubview:to.view];
 
@@ -773,9 +777,6 @@ static NSString *dateFormat(NSString *template)
     initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         to.view.center = from.view.center;
         from.view.center = CGPointMake(containerView.frame.size.width*(pop ? 3 : -1)/2, from.view.center.y);
-        self.wallpaper.center = CGPointMake(self.wallpaper.frame.size.width/2 -
-                                            containerView.frame.size.width*(pop ? 0 : 1)*PARALAX_RATIO,
-                                            self.wallpaper.center.y);
     } completion:^(BOOL finished) {
         if (pop) [from.view removeFromSuperview];
         [transitionContext completeTransition:YES];

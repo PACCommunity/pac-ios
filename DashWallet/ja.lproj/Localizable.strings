@@ -649,3 +649,6 @@
 
 /* No comment provided by engineer. */
 "About PAC Wallet" = "PACウォレットについて";
+
+/* No comment provided by engineer. */
+"no transactions" = "取引がありません";

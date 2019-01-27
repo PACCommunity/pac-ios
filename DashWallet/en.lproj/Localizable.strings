@@ -267,7 +267,7 @@
 "ignore" = "ignore";
 
 /* No comment provided by engineer. */
-"import private key" = "import private key";
+"import private key" = "Import private key";
 
 /* No comment provided by engineer. */
 "IMPORTANT" = "IMPORTANT";
@@ -468,7 +468,7 @@
 "set a trusted node" = "set a trusted node";
 
 /* No comment provided by engineer. */
-"settings" = "settings";
+"Settings" = "settings";
 
 /* No comment provided by engineer. */
 "shapeshift bitcoin id:" = "shapeshift bitcoin id:";
@@ -649,3 +649,6 @@
 
 /* No comment provided by engineer. */
 "About PAC Wallet" = "About PAC Wallet";
+
+/* No comment provided by engineer. */
+"no transactions" = "No transactions";

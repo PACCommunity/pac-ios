@@ -80,9 +80,6 @@
 /* Class = "UITableViewController"; title = "transaction details"; ObjectID = "s4T-yd-VfX"; */
 "s4T-yd-VfX.title" = "detalles de la transacción";
 
-/* Class = "UILabel"; text = "no transactions"; ObjectID = "t1j-JZ-FW0"; */
-"t1j-JZ-FW0.text" = "ninguna transacción";
-
 /* Class = "UILabel"; text = "pacwallet v%ver%%net%\nPeople’s Alternative Choice © 2018\n\nForked from breadwallet.\nThis app is open source:"; ObjectID = "uvz-hk-Nr4"; */
 "uvz-hk-Nr4.text" = "PAC Wallet v%ver%%net%\nElección alternativa de la gente © 2018\n\nBasado en breadwallet\nesta aplicación es de código abierto";
 
