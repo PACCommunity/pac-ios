@@ -93,7 +93,7 @@
     
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     // Do any additional setup after loading the view.
-    if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
+    /*if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
         
         switch ((int)[[UIScreen mainScreen] nativeBounds].size.height) {
                 
@@ -174,7 +174,7 @@
                 _pacIcon.image=[UIImage imageNamed:@"dash-center-logo.png"];
                 [self.view addSubview:_pacIcon];
         }
-    }
+    }*/
     // detect jailbreak so we can throw up an idiot warning, in viewDidLoad so it can't easily be swizzled out
     struct stat s;
     BOOL jailbroken = (stat("/bin/sh", &s) == 0) ? YES : NO; // if we can see /bin/sh, the app isn't sandboxed

@@ -29,6 +29,7 @@
 #import "NSMutableData+Bitcoin.h"
 #import "UIImage+Utils.h"
 #import "BRWalletManager.h"
+#import "UIColor+Hexadecimal.h"
 
 @implementation NSString (Pac)
 
@@ -163,7 +164,7 @@
 }
 
 - (NSAttributedString*)attributedStringForPacSymbol {
-    return [self attributedStringForPacSymbolWithTintColor:[UIColor blackColor]];
+    return [self attributedStringForPacSymbolWithTintColor:[UIColor colorWithHexString:@"#B2B2B2"]];
 }
 
 - (NSAttributedString*)attributedStringForPacSymbolWithTintColor:(UIColor*)color {
