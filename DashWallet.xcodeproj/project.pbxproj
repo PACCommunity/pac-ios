@@ -35,6 +35,7 @@
 		3969628122000E6C00AAFAFD /* BRHistoryTransactionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969628022000E6C00AAFAFD /* BRHistoryTransactionCell.m */; };
 		396962842200140200AAFAFD /* BRTransaction+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 396962832200140200AAFAFD /* BRTransaction+Date.m */; };
 		397060FD21F81D3800FC07B1 /* NSString+Attributed.m in Sources */ = {isa = PBXBuildFile; fileRef = 397060FC21F81D3800FC07B1 /* NSString+Attributed.m */; };
+		399C1A3E22017B0000D121F8 /* BRCustomSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 399C1A3D22017B0000D121F8 /* BRCustomSwitch.m */; };
 		39A2C59021EF06CC00DDB1E3 /* BRRoundedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C58C21EF06CA00DDB1E3 /* BRRoundedButton.m */; };
 		39A2C59121EF06CC00DDB1E3 /* BRRoundedBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C58D21EF06CB00DDB1E3 /* BRRoundedBorderedButton.m */; };
 		39A2C59221EF06CC00DDB1E3 /* BRImageViewLogo.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C58E21EF06CB00DDB1E3 /* BRImageViewLogo.m */; };
@@ -266,6 +267,8 @@
 		396962832200140200AAFAFD /* BRTransaction+Date.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BRTransaction+Date.m"; sourceTree = "<group>"; };
 		397060FB21F81D3800FC07B1 /* NSString+Attributed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Attributed.h"; sourceTree = "<group>"; };
 		397060FC21F81D3800FC07B1 /* NSString+Attributed.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Attributed.m"; sourceTree = "<group>"; };
+		399C1A3C22017B0000D121F8 /* BRCustomSwitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRCustomSwitch.h; sourceTree = "<group>"; };
+		399C1A3D22017B0000D121F8 /* BRCustomSwitch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRCustomSwitch.m; sourceTree = "<group>"; };
 		39A2C58A21EF06C900DDB1E3 /* BRImageViewLogo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRImageViewLogo.h; sourceTree = "<group>"; };
 		39A2C58B21EF06CA00DDB1E3 /* BRRoundedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRRoundedButton.h; sourceTree = "<group>"; };
 		39A2C58C21EF06CA00DDB1E3 /* BRRoundedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRRoundedButton.m; sourceTree = "<group>"; };
@@ -705,6 +708,8 @@
 				39A2C58C21EF06CA00DDB1E3 /* BRRoundedButton.m */,
 				39EF817821F2AF5000F51AEB /* BRBorderedView.h */,
 				39EF817921F2AF5000F51AEB /* BRBorderedView.m */,
+				399C1A3C22017B0000D121F8 /* BRCustomSwitch.h */,
+				399C1A3D22017B0000D121F8 /* BRCustomSwitch.m */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -1598,6 +1603,7 @@
 				2204604E1B9F61E600D07B61 /* BREventManager.m in Sources */,
 				FBF267FD1E414AA2001A1C8B /* DSShapeshiftManager.m in Sources */,
 				752E28D219234C3600DB5A3C /* BRKey+BIP38.m in Sources */,
+				399C1A3E22017B0000D121F8 /* BRCustomSwitch.m in Sources */,
 				39A2C59121EF06CC00DDB1E3 /* BRRoundedBorderedButton.m in Sources */,
 				220460551BA0BEEE00D07B61 /* BREventConfirmView.m in Sources */,
 				752E28D919234C3600DB5A3C /* BRTransaction.m in Sources */,

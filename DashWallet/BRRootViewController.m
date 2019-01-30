@@ -92,6 +92,7 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+
     // Do any additional setup after loading the view.
     /*if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
         
@@ -199,7 +200,8 @@
                                       direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
     self.pageViewController.view.frame = self.view.bounds;
     [self addChildViewController:self.pageViewController];
-    [self.view insertSubview:self.pageViewController.view belowSubview:self.splash];
+    //[self.view insertSubview:self.pageViewController.view belowSubview:self.splash];
+    [self.view addSubview:self.pageViewController.view];
     [self.pageViewController didMoveToParentViewController:self];
     
     self.shouldShowTips = TRUE;

@@ -100,11 +100,7 @@ static NSString *sanitizeString(NSString *s)
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.instantSwitch.tintColor = [UIColor blackColor];
-    self.instantSwitch.tintColor = [UIColor blackColor];
-    self.instantSwitch.layer.borderWidth = 1;
-    self.instantSwitch.layer.borderColor = UIColor.blackColor.CGColor;
-    self.instantSwitch.layer.cornerRadius = 16.0;
+    
     if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
         NSString *device = @"";
         switch ((int)[[UIScreen mainScreen] nativeBounds].size.height) {
