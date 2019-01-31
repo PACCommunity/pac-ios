@@ -24,6 +24,8 @@
 //  THE SOFTWARE.
 
 #import "BRBubbleView.h"
+#import "UIColor+Hexadecimal.h"
+#import "UIColor+AppColors.h"
 
 #define RADIUS       8.0
 #define MARGIN_X    16.0
@@ -94,7 +96,7 @@
     if (! (self = [super initWithFrame:frame])) return nil;
 
     self.layer.cornerRadius = RADIUS;
-    self.backgroundColor = [UIColor lightGrayColor];
+    self.backgroundColor = [UIColor blackPACColor];
     self.label = [[UILabel alloc] initWithFrame:CGRectMake(MARGIN_X, MARGIN_Y, frame.size.width - MARGIN_X*2,
                                                            frame.size.height - MARGIN_Y*2)];
     self.label.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;

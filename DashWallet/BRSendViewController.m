@@ -46,6 +46,7 @@
 #import "BRBIP32Sequence.h"
 #import "BRQRScanViewController.h"
 #import "BRQRScanViewModel.h"
+#import "NSString+Attributed.h"
 
 #define SCAN_TIP      NSLocalizedString(@"Scan someone else's QR code to get their $PAC address. "\
 "You can send a payment to anyone with an address.", nil)
@@ -85,12 +86,13 @@ static NSString *sanitizeString(NSString *s)
 @property (nonatomic, strong) IBOutlet UIView * shapeshiftView;
 @property (nonatomic, strong) IBOutlet UILabel * shapeshiftLabel;
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint * NFCWidthConstraint;
-@property (nonatomic, strong) IBOutlet NSLayoutConstraint * leftOfNFCButtonWhitespaceConstraint;
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint * NFCHeightButtonConstraint;
 @property (strong, nonatomic) IBOutlet UIView *topBlackAreaSmallScreen;
 @property (strong, nonatomic) IBOutlet UIImageView *pacIcon;
 @property (strong, nonatomic) IBOutlet UIImageView *pacIconNewDevices;
 @property (strong, nonatomic) IBOutlet UILabel *pacLabel;
 @property (strong, nonatomic) IBOutlet UILabel *pacLabelSmallScreen;
+@property (strong, nonatomic) IBOutlet UIView *containerView;
 
 @end
 
@@ -99,9 +101,14 @@ static NSString *sanitizeString(NSString *s)
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
+    self.scanButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
-    if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
+    NSString *word = @"$PAC:";
+    self.sendLabel.attributedText = [self.sendLabel.text attributedStringForWord: word
+                                      attributesFullText:@{NSFontAttributeName: [UIFont systemFontOfSize:17 weight:UIFontWeightLight], NSForegroundColorAttributeName: [UIColor whiteColor]} attributtesWord:@{NSFontAttributeName: [UIFont boldSystemFontOfSize: 17], NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    
+    /*if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
         NSString *device = @"";
         switch ((int)[[UIScreen mainScreen] nativeBounds].size.height) {
                 
@@ -129,15 +136,16 @@ static NSString *sanitizeString(NSString *s)
             default:
                 printf("unknown");
         }
-    }
+    }*/
     
     // TODO: XXX redesign page with round buttons like the iOS power down screen... apple watch also has round buttons
-    self.scanButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    /*self.scanButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     self.clipboardButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     self.clipboardButton.layer.cornerRadius = 0.15 * self.clipboardButton.bounds.size.height;
     self.clipboardButton.layer.borderWidth = 1.0;
     self.scanButton.layer.cornerRadius = 0.15 * self.scanButton.bounds.size.height;
-    self.scanButton.layer.borderWidth = 1.0;
+    self.scanButton.layer.borderWidth = 1.0;*/
+    
 //    self.topBlackArea.layer.cornerRadius = 0.05 * self.topBlackArea.bounds.size.width;
 //    self.instantSwitch.layer.borderWidth = 1.2;
 //    self.instantSwitch.layer.cornerRadius = 0.28 * self.instantSwitch.bounds.size.width;
@@ -194,7 +202,7 @@ static NSString *sanitizeString(NSString *s)
     
     if (!hasNFC) {
         [self.NFCWidthConstraint setConstant:0];
-        [self.leftOfNFCButtonWhitespaceConstraint setConstant:0];
+        [self.NFCHeightButtonConstraint setConstant:0];
     }
 }
 
@@ -1413,7 +1421,7 @@ static NSString *sanitizeString(NSString *s)
         self.tipView.backgroundColor = tipView.backgroundColor;
         self.tipView.font = tipView.font;
         self.tipView.userInteractionEnabled = NO;
-        [self.view addSubview:[self.tipView popIn]];
+        [self.containerView addSubview:[self.tipView popIn]];
     }
     else if (self.showTips && [tipView.text hasPrefix:CLIPBOARD_TIP]) {
         self.showTips = NO;
@@ -1591,7 +1599,7 @@ static NSString *sanitizeString(NSString *s)
                                      tipPoint:CGPointMake(self.scanButton.center.x, self.scanButton.center.y - 10.0)
                                  tipDirection:BRBubbleTipDirectionDown];
     self.tipView.font = [UIFont systemFontOfSize:15.0];
-    [self.view addSubview:[self.tipView popIn]];
+    [self.containerView addSubview:[self.tipView popIn]];
 }
 
 - (IBAction)enableInstantX:(id)sender {

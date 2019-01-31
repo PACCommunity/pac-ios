@@ -39,7 +39,7 @@
 - (instancetype)customInitWithSize:(CGSize)size
 {
     CGFloat x = size.width/2.0, y = size.height/2.0;
-
+    
     self.bar1 = [[UIView alloc] initWithFrame:CGRectMake(x - BAR_WIDTH/2.0, y - BAR_SPACING, BAR_WIDTH, BAR_HEIGHT)];
     self.bar2 = [[UIView alloc] initWithFrame:CGRectMake(x - BAR_WIDTH/2.0, y, BAR_WIDTH, BAR_HEIGHT)];
     self.bar3 = [[UIView alloc] initWithFrame:CGRectMake(x - BAR_WIDTH/2.0, y + BAR_SPACING, BAR_WIDTH, BAR_HEIGHT)];
@@ -68,10 +68,40 @@
     [self setX:x completion:nil];
 }
 
+-(void) adjustWidthForXShowing {
+    
+    CGRect frame1 = self.bar1.frame;
+    frame1.size.width = BAR_WIDTH;
+    self.bar1.frame = frame1;
+    
+    CGRect frame2 = self.bar2.frame;
+    frame2.size.width = BAR_WIDTH;
+    self.bar2.frame = frame2;
+}
+
+-(void) adjustWidthForXDismissing {
+    
+    CGRect frame1 = self.bar1.frame;
+    frame1.size.width = BAR_WIDTH - 10;
+    self.bar1.frame = frame1;
+    
+    CGRect frame2 = self.bar2.frame;
+    frame2.size.width = BAR_WIDTH - 8;
+    self.bar2.frame = frame2;
+    
+    CGRect frame3 = self.bar3.frame;
+    frame3.size.width = BAR_WIDTH;
+    self.bar3.frame = frame3;
+}
+
 - (void)setX:(BOOL)x completion:(void (^)(BOOL finished))completion;
 {
     _x = x;
-
+    
+    if(x) {
+        [self adjustWidthForXShowing];
+    }
+    
     [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.bar1.transform = CGAffineTransformMakeRotation(M_PI_4*(x ? 1.5 : -0.35));
         self.bar1.center = CGPointMake(self.bar1.center.x, self.bar2.center.y - (x ? 0.0 : BAR_SPACING));
@@ -80,10 +110,15 @@
         self.bar3.center = CGPointMake(self.bar3.center.x, self.bar2.center.y + (x ? 0.0 : BAR_SPACING));
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.8 delay:0.0 usingSpringWithDamping:0.3 initialSpringVelocity:0.0
-         options:UIViewAnimationOptionCurveEaseIn animations:^{
-            self.bar1.transform = CGAffineTransformMakeRotation(x ? M_PI_4 : 0.0);
-            self.bar3.transform = CGAffineTransformMakeRotation(x ? -M_PI_4 : 0.0);
-        } completion:completion];
+                            options:UIViewAnimationOptionCurveEaseIn animations:^{
+                                self.bar1.transform = CGAffineTransformMakeRotation(x ? M_PI_4 : 0.0);
+                                self.bar3.transform = CGAffineTransformMakeRotation(x ? -M_PI_4 : 0.0);
+                                
+                                if(!x) {
+                                    [self adjustWidthForXDismissing];
+                                }
+   
+                            } completion:completion];
     }];
 }
 
