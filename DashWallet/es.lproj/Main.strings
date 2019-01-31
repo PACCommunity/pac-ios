@@ -36,7 +36,7 @@
 "W8m-Eh-Nf9.title" = "Configuración";
 
 /* Class = "UILabel"; text = "amount:"; ObjectID = "XJu-9x-HqQ"; */
-"XJu-9x-HqQ.text" = "cantidad:";
+"XJu-9x-HqQ.text" = "Cantidad:";
 
 /* Class = "UILabel"; text = "Enter this wallet's recovery phrase to wipe it and start/recover another. Your current balance remains on this phrase."; ObjectID = "YC6-rN-4P5"; */
 "YC6-rN-4P5.text" = "Introduzca esta frase de recuperación de cartera para borrarla y crear/recuperar otra. Su saldo actual se conserva en esta frase.";
@@ -78,10 +78,7 @@
 "qel-3J-2VC.text" = "recibir dinero:";
 
 /* Class = "UITableViewController"; title = "transaction details"; ObjectID = "s4T-yd-VfX"; */
-"s4T-yd-VfX.title" = "detalles de la transacción";
-
-/* Class = "UILabel"; text = "no transactions"; ObjectID = "t1j-JZ-FW0"; */
-"t1j-JZ-FW0.text" = "ninguna transacción";
+"s4T-yd-VfX.title" = "Detalles de la transacción";
 
 /* Class = "UILabel"; text = "pacwallet v%ver%%net%\nPeople’s Alternative Choice © 2018\n\nForked from breadwallet.\nThis app is open source:"; ObjectID = "uvz-hk-Nr4"; */
 "uvz-hk-Nr4.text" = "PAC Wallet v%ver%%net%\nElección alternativa de la gente © 2018\n\nBasado en breadwallet\nesta aplicación es de código abierto";

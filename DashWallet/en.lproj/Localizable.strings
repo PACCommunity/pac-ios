@@ -249,7 +249,7 @@
 "failed wallet update" = "failed wallet update";
 
 /* No comment provided by engineer. */
-"from:" = "from:";
+"from:" = "From:";
 
 /* No comment provided by engineer. */
 "hour" = "hour";
@@ -258,7 +258,7 @@
 "hours" = "hours";
 
 /* No comment provided by engineer. */
-"id:" = "id:";
+"id:" = "ID:";
 
 /* No comment provided by engineer. */
 "If you still would like to wipe it please input : \"I accept that I will lose my coins if I no longer possess the recovery phrase\"" = "If you still would like to wipe it please input : \"I accept that I will lose my coins if I no longer possess the recovery phrase\"";
@@ -267,7 +267,7 @@
 "ignore" = "ignore";
 
 /* No comment provided by engineer. */
-"import private key" = "import private key";
+"import private key" = "Import private key";
 
 /* No comment provided by engineer. */
 "IMPORTANT" = "IMPORTANT";
@@ -468,7 +468,7 @@
 "set a trusted node" = "set a trusted node";
 
 /* No comment provided by engineer. */
-"settings" = "settings";
+"Settings" = "settings";
 
 /* No comment provided by engineer. */
 "shapeshift bitcoin id:" = "shapeshift bitcoin id:";
@@ -546,7 +546,7 @@
 "This wallet is not empty or sync has not finished, you may not wipe it without the recovery phrase" = "This wallet is not empty or sync has not finished, you may not wipe it without the recovery phrase";
 
 /* No comment provided by engineer. */
-"to:" = "to:";
+"to:" = "To:";
 
 /* No comment provided by engineer. */
 "to: %@" = "to: %@";
@@ -649,3 +649,6 @@
 
 /* No comment provided by engineer. */
 "About PAC Wallet" = "About PAC Wallet";
+
+/* No comment provided by engineer. */
+"no transactions" = "No transactions";

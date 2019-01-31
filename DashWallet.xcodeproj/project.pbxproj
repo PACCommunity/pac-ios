@@ -28,9 +28,14 @@
 		2AC92C8A1FEB0B8B008CAEE0 /* BRQRScanViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC92C891FEB0B8B008CAEE0 /* BRQRScanViewModel.m */; };
 		31D68B531C23B6C10030FAAA /* DashWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D68B521C23B6C10030FAAA /* DashWalletUITests.swift */; };
 		31D68B5B1C23B6FD0030FAAA /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D68B5A1C23B6FD0030FAAA /* SnapshotHelper.swift */; };
+		392E077121FE4FDA00F04BAD /* BRHistoryActionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 392E077021FE4FDA00F04BAD /* BRHistoryActionCell.m */; };
+		392E077421FE66E500F04BAD /* BRHistoryNoTxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 392E077321FE66E500F04BAD /* BRHistoryNoTxCell.m */; };
 		3939345121F170460016D2A3 /* UIColor+Hexadecimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 3939345021F170460016D2A3 /* UIColor+Hexadecimal.m */; };
 		3939345421F173680016D2A3 /* UIColor+AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 3939345321F173680016D2A3 /* UIColor+AppColors.m */; };
+		3969628122000E6C00AAFAFD /* BRHistoryTransactionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969628022000E6C00AAFAFD /* BRHistoryTransactionCell.m */; };
+		396962842200140200AAFAFD /* BRTransaction+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 396962832200140200AAFAFD /* BRTransaction+Date.m */; };
 		397060FD21F81D3800FC07B1 /* NSString+Attributed.m in Sources */ = {isa = PBXBuildFile; fileRef = 397060FC21F81D3800FC07B1 /* NSString+Attributed.m */; };
+		399C1A3E22017B0000D121F8 /* BRCustomSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 399C1A3D22017B0000D121F8 /* BRCustomSwitch.m */; };
 		39A2C59021EF06CC00DDB1E3 /* BRRoundedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C58C21EF06CA00DDB1E3 /* BRRoundedButton.m */; };
 		39A2C59121EF06CC00DDB1E3 /* BRRoundedBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C58D21EF06CB00DDB1E3 /* BRRoundedBorderedButton.m */; };
 		39A2C59221EF06CC00DDB1E3 /* BRImageViewLogo.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C58E21EF06CB00DDB1E3 /* BRImageViewLogo.m */; };
@@ -248,12 +253,22 @@
 		31D68B521C23B6C10030FAAA /* DashWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashWalletUITests.swift; sourceTree = "<group>"; };
 		31D68B541C23B6C10030FAAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31D68B5A1C23B6FD0030FAAA /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		392E076F21FE4FDA00F04BAD /* BRHistoryActionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRHistoryActionCell.h; sourceTree = "<group>"; };
+		392E077021FE4FDA00F04BAD /* BRHistoryActionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRHistoryActionCell.m; sourceTree = "<group>"; };
+		392E077221FE66E500F04BAD /* BRHistoryNoTxCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRHistoryNoTxCell.h; sourceTree = "<group>"; };
+		392E077321FE66E500F04BAD /* BRHistoryNoTxCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRHistoryNoTxCell.m; sourceTree = "<group>"; };
 		3939344F21F170460016D2A3 /* UIColor+Hexadecimal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hexadecimal.h"; sourceTree = "<group>"; };
 		3939345021F170460016D2A3 /* UIColor+Hexadecimal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hexadecimal.m"; sourceTree = "<group>"; };
 		3939345221F173680016D2A3 /* UIColor+AppColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppColors.h"; sourceTree = "<group>"; };
 		3939345321F173680016D2A3 /* UIColor+AppColors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppColors.m"; sourceTree = "<group>"; };
+		3969627F22000E6C00AAFAFD /* BRHistoryTransactionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRHistoryTransactionCell.h; sourceTree = "<group>"; };
+		3969628022000E6C00AAFAFD /* BRHistoryTransactionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRHistoryTransactionCell.m; sourceTree = "<group>"; };
+		396962822200140200AAFAFD /* BRTransaction+Date.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BRTransaction+Date.h"; sourceTree = "<group>"; };
+		396962832200140200AAFAFD /* BRTransaction+Date.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BRTransaction+Date.m"; sourceTree = "<group>"; };
 		397060FB21F81D3800FC07B1 /* NSString+Attributed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Attributed.h"; sourceTree = "<group>"; };
 		397060FC21F81D3800FC07B1 /* NSString+Attributed.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Attributed.m"; sourceTree = "<group>"; };
+		399C1A3C22017B0000D121F8 /* BRCustomSwitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRCustomSwitch.h; sourceTree = "<group>"; };
+		399C1A3D22017B0000D121F8 /* BRCustomSwitch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRCustomSwitch.m; sourceTree = "<group>"; };
 		39A2C58A21EF06C900DDB1E3 /* BRImageViewLogo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRImageViewLogo.h; sourceTree = "<group>"; };
 		39A2C58B21EF06CA00DDB1E3 /* BRRoundedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRRoundedButton.h; sourceTree = "<group>"; };
 		39A2C58C21EF06CA00DDB1E3 /* BRRoundedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRRoundedButton.m; sourceTree = "<group>"; };
@@ -669,7 +684,7 @@
 			path = DashWalletUITests;
 			sourceTree = "<group>";
 		};
-		752E289B19234A3F00DB5A3C /* Views */ = {
+		392E076C21FE4E5700F04BAD /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
 				7525B617192453840041C0F2 /* BRNavigationBar.h */,
@@ -693,6 +708,38 @@
 				39A2C58C21EF06CA00DDB1E3 /* BRRoundedButton.m */,
 				39EF817821F2AF5000F51AEB /* BRBorderedView.h */,
 				39EF817921F2AF5000F51AEB /* BRBorderedView.m */,
+				399C1A3C22017B0000D121F8 /* BRCustomSwitch.h */,
+				399C1A3D22017B0000D121F8 /* BRCustomSwitch.m */,
+			);
+			name = "Custom Views";
+			sourceTree = "<group>";
+		};
+		392E076D21FE4E7000F04BAD /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				392E076E21FE4E8A00F04BAD /* Principal Menu */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		392E076E21FE4E8A00F04BAD /* Principal Menu */ = {
+			isa = PBXGroup;
+			children = (
+				392E076F21FE4FDA00F04BAD /* BRHistoryActionCell.h */,
+				392E077021FE4FDA00F04BAD /* BRHistoryActionCell.m */,
+				392E077221FE66E500F04BAD /* BRHistoryNoTxCell.h */,
+				392E077321FE66E500F04BAD /* BRHistoryNoTxCell.m */,
+				3969627F22000E6C00AAFAFD /* BRHistoryTransactionCell.h */,
+				3969628022000E6C00AAFAFD /* BRHistoryTransactionCell.m */,
+			);
+			name = "Principal Menu";
+			sourceTree = "<group>";
+		};
+		752E289B19234A3F00DB5A3C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				392E076D21FE4E7000F04BAD /* Cells */,
+				392E076C21FE4E5700F04BAD /* Custom Views */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -790,6 +837,8 @@
 				3939345321F173680016D2A3 /* UIColor+AppColors.m */,
 				397060FB21F81D3800FC07B1 /* NSString+Attributed.h */,
 				397060FC21F81D3800FC07B1 /* NSString+Attributed.m */,
+				396962822200140200AAFAFD /* BRTransaction+Date.h */,
+				396962832200140200AAFAFD /* BRTransaction+Date.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1554,6 +1603,7 @@
 				2204604E1B9F61E600D07B61 /* BREventManager.m in Sources */,
 				FBF267FD1E414AA2001A1C8B /* DSShapeshiftManager.m in Sources */,
 				752E28D219234C3600DB5A3C /* BRKey+BIP38.m in Sources */,
+				399C1A3E22017B0000D121F8 /* BRCustomSwitch.m in Sources */,
 				39A2C59121EF06CC00DDB1E3 /* BRRoundedBorderedButton.m in Sources */,
 				220460551BA0BEEE00D07B61 /* BREventConfirmView.m in Sources */,
 				752E28D919234C3600DB5A3C /* BRTransaction.m in Sources */,
@@ -1578,7 +1628,9 @@
 				757BE7E3192C0E9D0061CB20 /* BRRestoreViewController.m in Sources */,
 				757BE7E6192C1FF70061CB20 /* BRWelcomeViewController.m in Sources */,
 				757BE7E9192D4E880061CB20 /* BRSeedViewController.m in Sources */,
+				392E077121FE4FDA00F04BAD /* BRHistoryActionCell.m in Sources */,
 				752E28E719234DA200DB5A3C /* NSData+Bitcoin.m in Sources */,
+				396962842200140200AAFAFD /* BRTransaction+Date.m in Sources */,
 				2AC92C841FEB0A6D008CAEE0 /* BRQRScanViewController.m in Sources */,
 				FB9CC2711F8E27B80079309F /* DWGenerateViewController.m in Sources */,
 				3939345121F170460016D2A3 /* UIColor+Hexadecimal.m in Sources */,
@@ -1586,6 +1638,7 @@
 				752E28E919234DA200DB5A3C /* NSManagedObject+Sugar.m in Sources */,
 				BA7B53541BDAA0A800355E8D /* BRAppleWatchTransactionData.m in Sources */,
 				FB021E571E47E17200D17638 /* FBShimmeringView.m in Sources */,
+				392E077421FE66E500F04BAD /* BRHistoryNoTxCell.m in Sources */,
 				FBF267A11E414877001A1C8B /* NSString+Pac.m in Sources */,
 				FB021E5B1E4DEFE800D17638 /* MBProgressHUD.m in Sources */,
 				39A2C59221EF06CC00DDB1E3 /* BRImageViewLogo.m in Sources */,
@@ -1593,6 +1646,7 @@
 				2AC92C871FEB0AE8008CAEE0 /* BRQRScanView.m in Sources */,
 				752E28EA19234DA200DB5A3C /* NSMutableData+Bitcoin.m in Sources */,
 				752E28EB19234DA200DB5A3C /* NSString+Bitcoin.m in Sources */,
+				3969628122000E6C00AAFAFD /* BRHistoryTransactionCell.m in Sources */,
 				757C89521A2FCE420076B373 /* BRSettingsViewController.m in Sources */,
 				75D5F3D2191EC270004AB296 /* BRAppDelegate.m in Sources */,
 				759FBB36193290F600AB4465 /* BRRootViewController.m in Sources */,

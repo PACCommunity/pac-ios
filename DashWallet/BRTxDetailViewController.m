@@ -33,6 +33,7 @@
 #import "BREventManager.h"
 #import "NSString+Pac.h"
 #import "NSData+Pac.h"
+#import "UIColor+Hexadecimal.h"
 
 #define TRANSACTION_CELL_HEIGHT 75
 
@@ -49,6 +50,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -177,8 +180,12 @@
 
 - (void)setBackgroundForCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)path
 {    
-    [cell viewWithTag:100].hidden = (path.row > 0);
-    [cell viewWithTag:101].hidden = (path.row + 1 < [self tableView:self.tableView numberOfRowsInSection:path.section]);
+    //[cell viewWithTag:100].hidden = (path.row > 0);
+    //[cell viewWithTag:101].hidden = (path.row + 1 < [self tableView:self.tableView numberOfRowsInSection:path.section]);
+    
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
+    [cell setSelectedBackgroundView:bgColorView];
 }
 
 // MARK: - Table view data source
@@ -352,7 +359,7 @@
                                                    [manager localCurrencyStringForBitcoinAmount:[self.outputAmount[indexPath.row]
                                                                                            longLongValue]]];
                     } else {
-                        amountLabel.attributedText = [manager attributedStringForPacAmount:[self.outputAmount[indexPath.row] longLongValue] withTintColor:amountLabel.textColor pacSymbolSize:CGSizeMake(9, 9)];
+                        amountLabel.attributedText = [manager attributedStringForPacAmount:[self.outputAmount[indexPath.row] longLongValue] withTintColor:[UIColor colorWithHexString:@"#B2B2B2"] pacSymbolSize:CGSizeMake(9, 9)];
                         localCurrencyLabel.text = [NSString stringWithFormat:@"(%@)",
                                                    [manager localCurrencyStringForPacAmount:[self.outputAmount[indexPath.row]
                                                                                         longLongValue]]];
@@ -428,7 +435,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.section) {
-        case 0: return 44.0;
+        case 0: return 60.0;
         case 1: return (self.sent > 0 && [self.outputText[indexPath.row] length] == 0) ? 40 : 60.0;
         case 2: return 60.0;
     }
@@ -444,7 +451,7 @@
     
     CGRect textRect = [sectionTitle boundingRectWithSize:CGSizeMake(self.view.frame.size.width - 30.0, CGFLOAT_MAX)
                 options:NSStringDrawingUsesLineFragmentOrigin
-                attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17 weight:UIFontWeightLight]} context:nil];
+                attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17 weight:UIFontWeightMedium]} context:nil];
     
     return textRect.size.height + 12.0;
 }
@@ -458,8 +465,8 @@
     
     titleLabel.text = [self tableView:tableView titleForHeaderInSection:section];
     titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.font = [UIFont systemFontOfSize:17 weight:UIFontWeightLight];
-    titleLabel.textColor = [UIColor darkTextColor];
+    titleLabel.font = [UIFont systemFontOfSize:17 weight:UIFontWeightMedium];
+    titleLabel.textColor = [UIColor whiteColor];
     titleLabel.numberOfLines = 0;
     headerview.backgroundColor = [UIColor clearColor];
     [headerview addSubview:titleLabel];
