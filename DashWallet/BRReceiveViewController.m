@@ -35,6 +35,7 @@
 #import "BREventManager.h"
 #import "BRWalletManager.h"
 #import <MobileCoreServices/UTCoreTypes.h>
+#import "NSString+Attributed.h"
 
 #define QR_TIP      NSLocalizedString(@"Let others scan this QR code to get your $PAC address. Anyone can send "\
                     "$PAC to your wallet by transferring them to your address.", nil)
@@ -59,8 +60,8 @@
 @property (strong, nonatomic) IBOutlet UIView *topBlackAreaSmallScreen;
 @property (strong, nonatomic) IBOutlet UILabel *receiveLabel;
 @property (strong, nonatomic) IBOutlet UILabel *receiveLabelSmallScreen;
-@property (strong, nonatomic) IBOutlet UIImageView *pacIcon;
-@property (strong, nonatomic) IBOutlet UIImageView *pacIconSmallScreen;
+//@property (strong, nonatomic) IBOutlet UIImageView *pacIcon;
+//@property (strong, nonatomic) IBOutlet UIImageView *pacIconSmallScreen;
 
 @end
 
@@ -70,7 +71,11 @@
 {
     [super viewDidLoad];
     
-    if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
+    NSString *word = @"$PAC:";
+    self.receiveLabel.attributedText = [self.receiveLabel.text attributedStringForWord: word
+                                                              attributesFullText:@{NSFontAttributeName: [UIFont systemFontOfSize:20 weight:UIFontWeightMedium], NSForegroundColorAttributeName: [UIColor whiteColor]} attributtesWord:@{NSFontAttributeName: [UIFont boldSystemFontOfSize: 20], NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    
+    /*if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
         NSString *device = @"";
         switch ((int)[[UIScreen mainScreen] nativeBounds].size.height) {
                 
@@ -91,7 +96,7 @@
                 printf("unknown");
         }
         self.pacIcon.hidden = YES;
-    }
+    }*/
     
 //    self.TopBlackArea.layer.cornerRadius = 0.05 * self.TopBlackArea.bounds.size.width;
     BRWalletManager *manager = [BRWalletManager sharedInstance];
@@ -114,10 +119,12 @@
     
     if (req.amount > 0) {
         BRWalletManager *manager = [BRWalletManager sharedInstance];
-        NSMutableAttributedString * attributedPacString = [[manager attributedStringForPacAmount:req.amount withTintColor:[UIColor darkTextColor] useSignificantDigits:FALSE] mutableCopy];
+        NSMutableAttributedString * attributedPacString = [[manager attributedStringForPacAmount:req.amount withTintColor:[UIColor whiteColor] useSignificantDigits:FALSE] mutableCopy];
         NSString * titleString = [NSString stringWithFormat:@" (%@)",
                                   [manager localCurrencyStringForPacAmount:req.amount]];
-        [attributedPacString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor darkTextColor]}]];
+        
+        [attributedPacString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
+        
         self.label.attributedText = attributedPacString;
     }
 
@@ -187,10 +194,12 @@
             
             if (req.amount > 0) {
                 BRWalletManager *manager = [BRWalletManager sharedInstance];
-                NSMutableAttributedString * attributedPacString = [[manager attributedStringForPacAmount:req.amount withTintColor:[UIColor darkTextColor] useSignificantDigits:FALSE] mutableCopy];
+                NSMutableAttributedString * attributedPacString = [[manager attributedStringForPacAmount:req.amount withTintColor:[UIColor whiteColor] useSignificantDigits:FALSE] mutableCopy];
                 NSString * titleString = [NSString stringWithFormat:@" (%@)",
                                           [manager localCurrencyStringForPacAmount:req.amount]];
-                [attributedPacString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor darkTextColor]}]];
+   
+                [attributedPacString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
+                
                 self.label.attributedText = attributedPacString;
                 
                 if (! self.balanceObserver) {
@@ -420,6 +429,12 @@
     
     // Present action sheet.
     [self presentViewController:actionSheet animated:YES completion:nil];
+}
+
+//MARK: - Status Bar
+
+-(UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 // MARK: - MFMessageComposeViewControllerDelegate

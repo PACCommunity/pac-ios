@@ -40,6 +40,8 @@
 		39A2C59121EF06CC00DDB1E3 /* BRRoundedBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C58D21EF06CB00DDB1E3 /* BRRoundedBorderedButton.m */; };
 		39A2C59221EF06CC00DDB1E3 /* BRImageViewLogo.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C58E21EF06CB00DDB1E3 /* BRImageViewLogo.m */; };
 		39A2C59521EF0B2300DDB1E3 /* BRPacNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C59421EF0B2300DDB1E3 /* BRPacNavigationController.m */; };
+		39E35F0822051EB8002363C9 /* BRSemiRoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E35F0722051EB8002363C9 /* BRSemiRoundedView.m */; };
+		39E35F0B22052140002363C9 /* BRSemiRoundedBorderedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E35F0A22052140002363C9 /* BRSemiRoundedBorderedView.m */; };
 		39EF817A21F2AF5000F51AEB /* BRBorderedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF817921F2AF5000F51AEB /* BRBorderedView.m */; };
 		42FA916C11654751C6DA3A46 /* libPods-pacwallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8449DC316E2D67D98F173D00 /* libPods-pacwallet.a */; };
 		751B2B5C1B68911700EA87FB /* BRTxHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 751B2B5B1B68911700EA87FB /* BRTxHistoryViewController.m */; };
@@ -277,6 +279,10 @@
 		39A2C58F21EF06CC00DDB1E3 /* BRRoundedBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRRoundedBorderedButton.h; sourceTree = "<group>"; };
 		39A2C59321EF0B2300DDB1E3 /* BRPacNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRPacNavigationController.h; sourceTree = "<group>"; };
 		39A2C59421EF0B2300DDB1E3 /* BRPacNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRPacNavigationController.m; sourceTree = "<group>"; };
+		39E35F0622051EB8002363C9 /* BRSemiRoundedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSemiRoundedView.h; sourceTree = "<group>"; };
+		39E35F0722051EB8002363C9 /* BRSemiRoundedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSemiRoundedView.m; sourceTree = "<group>"; };
+		39E35F0922052140002363C9 /* BRSemiRoundedBorderedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSemiRoundedBorderedView.h; sourceTree = "<group>"; };
+		39E35F0A22052140002363C9 /* BRSemiRoundedBorderedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSemiRoundedBorderedView.m; sourceTree = "<group>"; };
 		39EF817821F2AF5000F51AEB /* BRBorderedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRBorderedView.h; sourceTree = "<group>"; };
 		39EF817921F2AF5000F51AEB /* BRBorderedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRBorderedView.m; sourceTree = "<group>"; };
 		3F38DCFEF402B5758E496206 /* Pods-pacwallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pacwallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pacwallet/Pods-pacwallet.debug.xcconfig"; sourceTree = "<group>"; };
@@ -710,6 +716,10 @@
 				39EF817921F2AF5000F51AEB /* BRBorderedView.m */,
 				399C1A3C22017B0000D121F8 /* BRCustomSwitch.h */,
 				399C1A3D22017B0000D121F8 /* BRCustomSwitch.m */,
+				39E35F0622051EB8002363C9 /* BRSemiRoundedView.h */,
+				39E35F0722051EB8002363C9 /* BRSemiRoundedView.m */,
+				39E35F0922052140002363C9 /* BRSemiRoundedBorderedView.h */,
+				39E35F0A22052140002363C9 /* BRSemiRoundedBorderedView.m */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -1576,6 +1586,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22F04A001C9714EF00F137D8 /* BRUserDefaultsSwitchCell.m in Sources */,
+				39E35F0B22052140002363C9 /* BRSemiRoundedBorderedView.m in Sources */,
 				3939345421F173680016D2A3 /* UIColor+AppColors.m in Sources */,
 				752E28AA19234AE300DB5A3C /* BRAddressEntity.m in Sources */,
 				75AA5F55194143D5003F23BD /* BRBouncyBurgerButton.m in Sources */,
@@ -1627,6 +1638,7 @@
 				759816E719357D6F005060EA /* BRBubbleView.m in Sources */,
 				757BE7E3192C0E9D0061CB20 /* BRRestoreViewController.m in Sources */,
 				757BE7E6192C1FF70061CB20 /* BRWelcomeViewController.m in Sources */,
+				39E35F0822051EB8002363C9 /* BRSemiRoundedView.m in Sources */,
 				757BE7E9192D4E880061CB20 /* BRSeedViewController.m in Sources */,
 				392E077121FE4FDA00F04BAD /* BRHistoryActionCell.m in Sources */,
 				752E28E719234DA200DB5A3C /* NSData+Bitcoin.m in Sources */,

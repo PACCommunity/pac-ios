@@ -75,7 +75,7 @@
 "ooJ-EA-DFl.title" = "frase de recuperación:";
 
 /* Class = "UILabel"; text = "Receive $PAC"; ObjectID = "qel-3J-2VC"; */
-"qel-3J-2VC.text" = "recibir dinero:";
+"qel-3J-2VC.text" = "Recibir $PAC:";
 
 /* Class = "UITableViewController"; title = "transaction details"; ObjectID = "s4T-yd-VfX"; */
 "s4T-yd-VfX.title" = "Detalles de la transacción";

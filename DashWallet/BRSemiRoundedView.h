@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BRSemiRoundedImageView : UIView
+@interface BRSemiRoundedView : UIView
+
+/** The width of the border.
+ */
+@property (nonatomic) IBInspectable CGFloat cornerRadius;
 
 @end
