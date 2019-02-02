@@ -21,10 +21,7 @@
 }
 
 - (void) setBorderColor:(UIColor *)borderColor {
-    
-    if(!borderColor)
-        return;
-    
+    _borderColor = borderColor;
     [self configureProperties];
 }
 

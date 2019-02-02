@@ -474,6 +474,12 @@
                 
                 [transactionCell configureWithTxDates:self.txDates transactions:self.transactions indexPath:indexPath blockHeight: self.blockHeight];
             }
+            else {
+                cell = [tableView dequeueReusableCellWithIdentifier:noTxIdent];
+                
+                BRHistoryNoTxCell *noTxtCell = (BRHistoryNoTxCell *)cell;
+                [noTxtCell configureWithText:NSLocalizedString(@"no transactions", nil)];
+            }
 
             break;
 

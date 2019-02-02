@@ -151,15 +151,15 @@
         fmt.dateFormat = [NSDateFormatter dateFormatFromTemplate:@"Mdjma" options:0 locale:[NSLocale currentLocale]];
     }
 
-   return [NSString stringWithFormat:NSLocalizedString(@"rate: %@ = %@\nupdated: %@\nblock #%d of %d\n"
-                                                       "connected peers: %d\ndl peer: %@", NULL),
-           [manager localCurrencyStringForPacAmount:DUFFS/manager.localCurrencyPacPrice.doubleValue],
-           [manager stringForPacAmount:DUFFS/manager.localCurrencyPacPrice.doubleValue],
-           [fmt stringFromDate:[NSDate dateWithTimeIntervalSinceReferenceDate:manager.secureTime]].lowercaseString,
-           [BRPeerManager sharedInstance].lastBlockHeight,
-           [BRPeerManager sharedInstance].estimatedBlockHeight,
-           [BRPeerManager sharedInstance].peerCount,
-           [BRPeerManager sharedInstance].downloadPeerName];
+    return [NSString stringWithFormat:NSLocalizedString(@"rate: %@ = %@\nupdated: %@\nblock #%d of %d\n"
+                                                        "connected peers: %d\ndl peer: %@", NULL),
+            [manager localCurrencyStringForPacAmount:DUFFS/manager.localCurrencyPacPrice.doubleValue],
+            [manager stringForPacAmount:DUFFS/manager.localCurrencyPacPrice.doubleValue],
+            [fmt stringFromDate:[NSDate dateWithTimeIntervalSinceReferenceDate:manager.secureTime]].lowercaseString,
+            [BRPeerManager sharedInstance].lastBlockHeight,
+            [BRPeerManager sharedInstance].estimatedBlockHeight,
+            [BRPeerManager sharedInstance].peerCount,
+            [BRPeerManager sharedInstance].downloadPeerName];
 }
 
 // MARK: - IBAction
