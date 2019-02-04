@@ -363,7 +363,8 @@ static const char *dns_seeds[] = {
 
 - (NSString *)downloadPeerName
 {
-    return [self.downloadPeer.host stringByAppendingFormat:@":%d", self.downloadPeer.port];
+    NSString *result = [self.downloadPeer.host stringByAppendingFormat:@":%d", self.downloadPeer.port];
+    return (result) ? result : @"";
 }
 
 - (BRBloomFilter *)bloomFilterForPeer:(BRPeer *)peer

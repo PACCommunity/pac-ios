@@ -32,6 +32,7 @@
 #import <UserNotifications/UserNotifications.h>
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import "UIColor+AppColors.h"
 
 #if PAC_TESTNET
 #pragma message "testnet build"
@@ -79,8 +80,8 @@
         
         //page control customization
         //and navBar images
-        UIPageControl.appearance.pageIndicatorTintColor = [UIColor lightGrayColor];
-        UIPageControl.appearance.currentPageIndicatorTintColor = [UIColor blueColor];
+        UIPageControl.appearance.pageIndicatorTintColor = [UIColor whiteColor];
+        UIPageControl.appearance.currentPageIndicatorTintColor = [UIColor yellowPACColor];
         
         UIImage * tabBarImage = [[UIImage imageNamed:@"tab-bar-dash2"]
                                  resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0) resizingMode:UIImageResizingModeStretch];

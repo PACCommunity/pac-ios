@@ -45,6 +45,7 @@
 #import <LocalAuthentication/LocalAuthentication.h>
 #import <sys/stat.h>
 #import <mach-o/dyld.h>
+#import "BRImageViewLogo.h"
 
 #define BALANCE_TIP_START NSLocalizedString(@"This is your $PAC balance.", nil)
 
@@ -58,8 +59,7 @@
 @interface BRRootViewController ()
 
 @property (nonatomic, strong) IBOutlet UIProgressView *progress, *pulse;
-@property (nonatomic, strong) IBOutlet UIView *errorBar, *splash, *logo, *blur, *topBlackAreaSmallScreen;
-@property (strong, nonatomic) IBOutlet UIImageView *pacIcon;
+@property (nonatomic, strong) IBOutlet UIView *errorBar, *splash, *logo, *blur;
 @property (nonatomic, strong) IBOutlet UIGestureRecognizer *navBarTap;
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *lock;
 @property (nonatomic, strong) IBOutlet BRBouncyBurgerButton *burger;
@@ -77,7 +77,6 @@
 @property (nonatomic, strong) id activeObserver, resignActiveObserver, foregroundObserver, backgroundObserver;
 @property (nonatomic, assign) NSTimeInterval timeout, start;
 @property (nonatomic, assign) SystemSoundID pingsound;
-@property (strong, nonatomic) IBOutlet UIImageView *pacIconSmallScreen;
 
 @end
 
@@ -92,90 +91,8 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    self.navigationItem.titleView = [BRImageViewLogo imageViewWithPACLogo];
 
-    // Do any additional setup after loading the view.
-    /*if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
-        
-        switch ((int)[[UIScreen mainScreen] nativeBounds].size.height) {
-                
-            case 960:
-                printf("iPhone 4 or 4S");
-                _topBlackAreaSmallScreen =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 200)];
-                [_topBlackAreaSmallScreen setBackgroundColor:[UIColor blackColor]];
-                [self.view addSubview:_topBlackAreaSmallScreen];
-                self.topBlackAreaSmallScreen.layer.cornerRadius = 0.05 * self.topBlackAreaSmallScreen.bounds.size.width;
-                
-                _pacIconSmallScreen =[[UIImageView alloc] initWithFrame:CGRectMake(self.topBlackAreaSmallScreen.bounds.size.width/3.7,self.topBlackAreaSmallScreen.bounds.size.height/3,150,150)];
-                _pacIconSmallScreen.image=[UIImage imageNamed:@"dash-center-logo.png"];
-                [self.view addSubview:_pacIconSmallScreen];
-                break;
-            case 1136:
-                printf("iPhone 5 or 5S or 5C");
-                _topBlackAreaSmallScreen =[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 200)];
-                [_topBlackAreaSmallScreen setBackgroundColor:[UIColor blackColor]];
-                [self.view addSubview:_topBlackAreaSmallScreen];
-                self.topBlackAreaSmallScreen.layer.cornerRadius = 0.05 * self.topBlackAreaSmallScreen.bounds.size.width;
-                
-                _pacIconSmallScreen =[[UIImageView alloc] initWithFrame:CGRectMake(self.topBlackAreaSmallScreen.bounds.size.width/3.7,self.topBlackAreaSmallScreen.bounds.size.height/3,150,150)];
-                _pacIconSmallScreen.image=[UIImage imageNamed:@"dash-center-logo.png"];
-                [self.view addSubview:_pacIconSmallScreen];
-                break;
-            case 1334:
-                printf("iPhone 6/6S/7/8");
-                _topBlackAreaSmallScreen=[[UIView alloc]initWithFrame:CGRectMake(0, -30, 375, 258)];
-                [_topBlackAreaSmallScreen setBackgroundColor:[UIColor blackColor]];
-                [self.view addSubview:_topBlackAreaSmallScreen];
-                self.topBlackAreaSmallScreen.layer.cornerRadius = 0.05 * self.topBlackAreaSmallScreen.bounds.size.width;
-                
-                _pacIcon =[[UIImageView alloc] initWithFrame:CGRectMake(self.topBlackAreaSmallScreen.bounds.size.width/3.3,self.topBlackAreaSmallScreen.bounds.size.height/3,150,150)];
-                _pacIcon.image=[UIImage imageNamed:@"dash-center-logo.png"];
-                [self.view addSubview:_pacIcon];
-                break;
-            case 2208:
-                printf("iPhone 6+/6S+/7+/8+");
-                _topBlackAreaSmallScreen=[[UIView alloc]initWithFrame:CGRectMake(0, -30, 414, 258)];
-                [_topBlackAreaSmallScreen setBackgroundColor:[UIColor blackColor]];
-                [self.view addSubview:_topBlackAreaSmallScreen];
-                self.topBlackAreaSmallScreen.layer.cornerRadius = 0.05 * self.topBlackAreaSmallScreen.bounds.size.width;
-                
-                _pacIcon =[[UIImageView alloc] initWithFrame:CGRectMake(self.topBlackAreaSmallScreen.bounds.size.width/3.3,self.topBlackAreaSmallScreen.bounds.size.height/3.3,170,170)];
-                _pacIcon.image=[UIImage imageNamed:@"dash-center-logo.png"];
-                [self.view addSubview:_pacIcon];
-                break;
-            case 1920:
-                printf("iPhone 6+/6S+/7+/8+");
-                _topBlackAreaSmallScreen=[[UIView alloc]initWithFrame:CGRectMake(0, -30, 414, 258)];
-                [_topBlackAreaSmallScreen setBackgroundColor:[UIColor blackColor]];
-                [self.view addSubview:_topBlackAreaSmallScreen];
-                self.topBlackAreaSmallScreen.layer.cornerRadius = 0.05 * self.topBlackAreaSmallScreen.bounds.size.width;
-                
-                _pacIcon =[[UIImageView alloc] initWithFrame:CGRectMake(self.topBlackAreaSmallScreen.bounds.size.width/3.3,self.topBlackAreaSmallScreen.bounds.size.height/3.3,170,170)];
-                _pacIcon.image=[UIImage imageNamed:@"dash-center-logo.png"];
-                [self.view addSubview:_pacIcon];
-                break;
-            case 2436:
-                printf("iPhone X");
-                _topBlackAreaSmallScreen=[[UIView alloc]initWithFrame:CGRectMake(0, -30, 378, 258)];
-                [_topBlackAreaSmallScreen setBackgroundColor:[UIColor blackColor]];
-                [self.view addSubview:_topBlackAreaSmallScreen];
-                self.topBlackAreaSmallScreen.layer.cornerRadius = 0.05 * self.topBlackAreaSmallScreen.bounds.size.width;
-                
-                _pacIcon =[[UIImageView alloc] initWithFrame:CGRectMake(self.topBlackAreaSmallScreen.bounds.size.width/3.3,self.topBlackAreaSmallScreen.bounds.size.height/2.8,150,150)];
-                _pacIcon.image=[UIImage imageNamed:@"dash-center-logo.png"];
-                [self.view addSubview:_pacIcon];
-                break;
-            default:
-                printf("unknown 6+");
-                _topBlackAreaSmallScreen=[[UIView alloc]initWithFrame:CGRectMake(0, -30, 414, 258)];
-                [_topBlackAreaSmallScreen setBackgroundColor:[UIColor blackColor]];
-                [self.view addSubview:_topBlackAreaSmallScreen];
-                self.topBlackAreaSmallScreen.layer.cornerRadius = 0.05 * self.topBlackAreaSmallScreen.bounds.size.width;
-                
-                _pacIcon =[[UIImageView alloc] initWithFrame:CGRectMake(self.topBlackAreaSmallScreen.bounds.size.width/3.3,self.topBlackAreaSmallScreen.bounds.size.height/3.3,170,170)];
-                _pacIcon.image=[UIImage imageNamed:@"dash-center-logo.png"];
-                [self.view addSubview:_pacIcon];
-        }
-    }*/
     // detect jailbreak so we can throw up an idiot warning, in viewDidLoad so it can't easily be swizzled out
     struct stat s;
     BOOL jailbroken = (stat("/bin/sh", &s) == 0) ? YES : NO; // if we can see /bin/sh, the app isn't sandboxed
@@ -198,10 +115,17 @@
     self.pageViewController.dataSource = self;
     [self.pageViewController setViewControllers:@[self.sendViewController]
                                       direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-    self.pageViewController.view.frame = self.view.bounds;
+    
     [self addChildViewController:self.pageViewController];
-    //[self.view insertSubview:self.pageViewController.view belowSubview:self.splash];
     [self.view addSubview:self.pageViewController.view];
+
+    //add constraints
+    self.pageViewController.view.translatesAutoresizingMaskIntoConstraints = NO;
+    [[self.pageViewController.view.leftAnchor constraintEqualToAnchor: self.view.leftAnchor] setActive:YES];
+    [[self.pageViewController.view.rightAnchor constraintEqualToAnchor: self.view.rightAnchor] setActive:YES];
+    [[self.pageViewController.view.topAnchor constraintEqualToAnchor: self.topLayoutGuide.bottomAnchor] setActive: YES];
+    [[self.pageViewController.view.bottomAnchor constraintEqualToAnchor: self.bottomLayoutGuide.bottomAnchor constant: -10] setActive:YES];
+    
     [self.pageViewController didMoveToParentViewController:self];
     
     self.shouldShowTips = TRUE;
@@ -360,7 +284,7 @@
                                                                manager.didAuthenticate = NO;
                                                                
                                                                self.navigationItem.titleView = self.logo;
-                                                               self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"burger"];
+                                                               self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menuBtn-navbar"];
                                                                self.navigationItem.rightBarButtonItem = self.lock;
                                                                self.pageViewController.view.alpha = 1.0;
                                                                [UIApplication sharedApplication].applicationIconBadgeNumber = 0; // reset app badge number
@@ -565,7 +489,7 @@
 {
     [super viewWillAppear:animated];
     
-    self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"burger"];
+    self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menuBtn-navbar"];
     self.pageViewController.view.alpha = 1.0;
     if ([BRWalletManager sharedInstance].didAuthenticate) [self unlock:nil];
 }
@@ -1420,11 +1344,11 @@
               initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
                   to.view.center = CGPointMake(to.view.center.x, containerView.frame.size.height/2);
                   self.pageViewController.view.alpha = 0.0;
-                  self.pageViewController.view.center = CGPointMake(self.pageViewController.view.center.x,
-                                                                    containerView.frame.size.height/4.0);
+                  /*self.pageViewController.view.center = CGPointMake(self.pageViewController.view.center.x,
+                                                                    containerView.frame.size.height/4.0);*/
               } completion:^(BOOL finished) {
-                  self.pageViewController.view.center = CGPointMake(self.pageViewController.view.center.x,
-                                                                    containerView.frame.size.height/2.0);
+                  /*self.pageViewController.view.center = CGPointMake(self.pageViewController.view.center.x,
+                                                                    containerView.frame.size.height/2.0);*/
                   
                   if (! manager.didAuthenticate) {
                       item.rightBarButtonItem = rightButton;
@@ -1465,15 +1389,15 @@
         self.burger.center = CGPointMake(26.0, self.topLayoutGuide.length - 24);
         [self.burger setX:NO completion:nil];
         self.pageViewController.view.alpha = 0.0;
-        self.pageViewController.view.center = CGPointMake(self.pageViewController.view.center.x,
-                                                          containerView.frame.size.height/4.0);
+        /*self.pageViewController.view.center = CGPointMake(self.pageViewController.view.center.x,
+                                                          containerView.frame.size.height/4.0);*/
         
         [UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0.0 usingSpringWithDamping:0.8
               initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
                   from.view.center = CGPointMake(from.view.center.x, containerView.frame.size.height*3/2);
                   self.pageViewController.view.alpha = 1.0;
-                  self.pageViewController.view.center = CGPointMake(self.pageViewController.view.center.x,
-                                                                    containerView.frame.size.height/2);
+                  /*self.pageViewController.view.center = CGPointMake(self.pageViewController.view.center.x,
+                                                                    containerView.frame.size.height/2);*/
               } completion:^(BOOL finished) {
                   item.rightBarButtonItem = rightButton;
                   item.titleView = titleView;
@@ -1481,7 +1405,7 @@
                   item.leftBarButtonItem.image = [UIImage imageNamed:@"x"];
                   [from.view removeFromSuperview];
                   self.burger.hidden = YES;
-                  self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"burger"];
+                  self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"menuBtn-navbar"];
                   [transitionContext completeTransition:YES];
                   if (self.reachability.currentReachabilityStatus == NotReachable) [self showErrorBar];
               }];
