@@ -31,6 +31,8 @@
 #import "BREventManager.h"
 #import "NSString+Pac.h"
 #import "BRBubbleView.h"
+#import "UIColor+AppColors.h"
+#import "BRImageViewLogo.h"
 
 @interface BRAmountViewController ()
 
@@ -67,9 +69,9 @@
     
     self.payButton = [[UIBarButtonItem alloc] initWithTitle:self.usingShapeshift?@"Shapeshift!":NSLocalizedString(@"pay", nil)
                                                       style:UIBarButtonItemStylePlain target:self action:@selector(pay:)];
-    self.payButton.tintColor = [UIColor colorWithRed:168.0/255.0 green:230.0/255.0 blue:1.0 alpha:1.0];
-    self.amountLabel.attributedText = [manager attributedStringForPacAmount:0 withTintColor:[UIColor colorWithRed:25.0f/255.0f green:96.0f/255.0f blue:165.0f/255.0f alpha:1.0f] pacSymbolSize:CGSizeMake(15, 16)];
-    self.amountLabel.textColor = [UIColor colorWithRed:25.0f/255.0f green:96.0f/255.0f blue:165.0f/255.0f alpha:1.0f];
+    self.payButton.tintColor = [UIColor yellowPACColor];
+    self.amountLabel.attributedText = [manager attributedStringForPacAmount:0 withTintColor:[UIColor yellowPACColor]];
+    self.amountLabel.textColor = [UIColor yellowPACColor];
     [self.decimalButton setTitle:manager.pacFormat.currencyDecimalSeparator forState:UIControlStateNormal];
     
     self.swapLeftLabel = [UILabel new];
@@ -94,6 +96,8 @@
         self.shapeshiftLocalCurrencyLabel.text = @"";
     }
     self.shapeshiftLocalCurrencyLabel.hidden = !self.usingShapeshift;
+    
+    self.navigationItem.titleView = [BRImageViewLogo imageViewWithPACLogo];
 }
 
 -(BOOL)prefersStatusBarHidden {
@@ -114,10 +118,10 @@
     [super viewWillAppear:animated];
     if (self.usingShapeshift) {
         self.addressLabel.text = (self.to.length > 0) ?
-        [NSString stringWithFormat:NSLocalizedString(@"to: %@ (via Shapeshift)", nil), self.to] : nil;
+        [NSString stringWithFormat:@"%@ (via Shapeshift)", self.to] : nil;
     } else {
         self.addressLabel.text = (self.to.length > 0) ?
-        [NSString stringWithFormat:NSLocalizedString(@"to: %@", nil), self.to] : nil;
+        [NSString stringWithFormat:@"%@", self.to] : nil;
     }
     self.wallpaper.hidden = NO;
     
@@ -128,7 +132,7 @@
     }
     else {
         self.payButton.title = NSLocalizedString(@"request", nil);
-        self.payButton.tintColor = [UIColor colorWithRed:0.0 green:96.0/255.0 blue:1.0 alpha:1.0];
+        self.payButton.tintColor = [UIColor yellowPACColor];
         self.navigationItem.rightBarButtonItem = self.payButton;
         self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
     }
@@ -562,17 +566,17 @@
     
     if (formattedAmount.length == 0 || self.amountLabelIsEmpty) { // ""
         if (self.usingShapeshift) {
-            amountLabel.attributedText = (self.swapped) ? [[NSAttributedString alloc] initWithString:[m bitcoinCurrencyStringForAmount:0]]:[m attributedStringForPacAmount:0 withTintColor:[UIColor colorWithRed:25.0f/255.0f green:96.0f/255.0f blue:165.0f/255.0f alpha:1.0f] pacSymbolSize:CGSizeMake(15, 16)];
+            amountLabel.attributedText = (self.swapped) ? [[NSAttributedString alloc] initWithString:[m bitcoinCurrencyStringForAmount:0]]:[m attributedStringForPacAmount:0 withTintColor:[UIColor yellowPACColor] pacSymbolSize:CGSizeMake(15, 16)];
         } else {
-            amountLabel.attributedText = (self.swapped) ? [[NSAttributedString alloc] initWithString:[m localCurrencyStringForPacAmount:0]]:[m attributedStringForPacAmount:0 withTintColor:[UIColor colorWithRed:25.0f/255.0f green:96.0f/255.0f blue:165.0f/255.0f alpha:1.0f] pacSymbolSize:CGSizeMake(15, 16)];
+            amountLabel.attributedText = (self.swapped) ? [[NSAttributedString alloc] initWithString:[m localCurrencyStringForPacAmount:0]]:[m attributedStringForPacAmount:0 withTintColor:[UIColor yellowPACColor]];
         }
-        amountLabel.textColor = [UIColor colorWithRed:25.0f/255.0f green:96.0f/255.0f blue:165.0f/255.0f alpha:1.0f];
+        amountLabel.textColor = [UIColor yellowPACColor];
     } else {
         if (!self.swapped) {
-            amountLabel.textColor = [UIColor blackColor];
+            amountLabel.textColor = [UIColor whiteColor];
             amountLabel.attributedText = [formattedAmount attributedStringForPacSymbolWithTintColor:self.amountLabel.textColor pacSymbolSize:CGSizeMake(15, 16)];
         } else {
-            amountLabel.textColor = [UIColor blackColor];
+            amountLabel.textColor = [UIColor whiteColor];
             amountLabel.text = formattedAmount;
         }
     }
