@@ -652,3 +652,9 @@
 
 /* No comment provided by engineer. */
 "no transactions" = "không có giao dịch nào";
+
+/* No comment provided by engineer. */
+"amount" = "Số tiền";
+
+/* No comment provided by engineer. */
+"destination address:" = "Địa chỉ đích:";

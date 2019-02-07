@@ -652,3 +652,9 @@
 
 /* No comment provided by engineer. */
 "no transactions" = "没有交易";
+
+/* No comment provided by engineer. */
+"amount" = "量";
+
+/* No comment provided by engineer. */
+"destination address:" = "目的地址：";

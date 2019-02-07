@@ -652,3 +652,9 @@
 
 /* No comment provided by engineer. */
 "no transactions" = "işlem yok";
+
+/* No comment provided by engineer. */
+"amount" = "Miktar";
+
+/* No comment provided by engineer. */
+"destination address:" = "Varış noktası:";

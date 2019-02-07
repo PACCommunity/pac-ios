@@ -652,3 +652,9 @@
 
 /* No comment provided by engineer. */
 "no transactions" = "取引がありません";
+
+/* No comment provided by engineer. */
+"amount" = "金額";
+
+/* No comment provided by engineer. */
+"destination address:" = "宛先アドレス";

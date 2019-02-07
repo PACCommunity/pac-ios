@@ -652,3 +652,9 @@
 
 /* No comment provided by engineer. */
 "no transactions" = "δεν υπάρχουν συναλλαγές";
+
+/* No comment provided by engineer. */
+"amount" = "Ποσό";
+
+/* No comment provided by engineer. */
+"destination address:" = "Διεύθυνση προορισμού:";

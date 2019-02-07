@@ -652,3 +652,9 @@
 
 /* No comment provided by engineer. */
 "no transactions" = "Нет транзакций";
+
+/* No comment provided by engineer. */
+"amount" = "Количество";
+
+/* No comment provided by engineer. */
+"destination address:" = "Адрес назначения:";

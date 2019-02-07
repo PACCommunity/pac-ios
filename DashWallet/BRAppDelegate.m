@@ -33,6 +33,7 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import "UIColor+AppColors.h"
+#import "BRMessageComposeViewController.h"
 
 #if PAC_TESTNET
 #pragma message "testnet build"
@@ -54,21 +55,6 @@
 
 @implementation BRAppDelegate
     
--(void)resetKeychain {
-    [self deleteAllKeysForSecClass:kSecClassGenericPassword];
-    [self deleteAllKeysForSecClass:kSecClassInternetPassword];
-    [self deleteAllKeysForSecClass:kSecClassCertificate];
-    [self deleteAllKeysForSecClass:kSecClassKey];
-    [self deleteAllKeysForSecClass:kSecClassIdentity];
-}
-    
--(void)deleteAllKeysForSecClass:(CFTypeRef)secClass {
-    NSMutableDictionary* dict = [NSMutableDictionary dictionary];
-    [dict setObject:(__bridge id)secClass forKey:(__bridge id)kSecClass];
-    OSStatus result = SecItemDelete((__bridge CFDictionaryRef) dict);
-    NSAssert(result == noErr || result == errSecItemNotFound, @"Error deleting keychain data (%ld)", result);
-}
-    
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     {
         //[self resetKeychain];
@@ -88,8 +74,19 @@
         [[UINavigationBar appearance] setBackgroundImage:tabBarImage forBarMetrics:UIBarMetricsDefault];
         
         [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class]]]
-         setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18]}
+         setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]}
          forState:UIControlStateNormal];
+        
+        [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class]]]
+         setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]}
+         forState:UIControlStateHighlighted];
+        
+        [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class]]]
+         setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]}
+         forState:UIControlStateDisabled];
+
+        [UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class]]].tintColor = [UIColor whiteColor];
+        
         UIFont * titleBarFont = [UIFont systemFontOfSize:19 weight:UIFontWeightSemibold];
         [[UINavigationBar appearance] setTitleTextAttributes:@{
                                                                NSFontAttributeName:titleBarFont,
@@ -341,6 +338,23 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
     {
         NSLog(@"Handle events for background url session; identifier=%@", identifier);
     }
+
+#pragma mark - Methods to clean keychain for testing purposes
+
+-(void)resetKeychain {
+    [self deleteAllKeysForSecClass:kSecClassGenericPassword];
+    [self deleteAllKeysForSecClass:kSecClassInternetPassword];
+    [self deleteAllKeysForSecClass:kSecClassCertificate];
+    [self deleteAllKeysForSecClass:kSecClassKey];
+    [self deleteAllKeysForSecClass:kSecClassIdentity];
+}
+
+-(void)deleteAllKeysForSecClass:(CFTypeRef)secClass {
+    NSMutableDictionary* dict = [NSMutableDictionary dictionary];
+    [dict setObject:(__bridge id)secClass forKey:(__bridge id)kSecClass];
+    OSStatus result = SecItemDelete((__bridge CFDictionaryRef) dict);
+    NSAssert(result == noErr || result == errSecItemNotFound, @"Error deleting keychain data (%ld)", result);
+}
     
 - (void)dealloc
     {
