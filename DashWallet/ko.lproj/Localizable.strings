@@ -652,3 +652,9 @@
 
 /* No comment provided by engineer. */
 "no transactions" = "거래 없음";
+
+/* No comment provided by engineer. */
+"amount" = "금액";
+
+/* No comment provided by engineer. */
+"destination address:" = "대상 주소 :";

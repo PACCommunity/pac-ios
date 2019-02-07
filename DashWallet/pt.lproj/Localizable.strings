@@ -652,3 +652,9 @@
 
 /* No comment provided by engineer. */
 "no transactions" = "nenhuma transação";
+
+/* No comment provided by engineer. */
+"amount" = "Montante";
+
+/* No comment provided by engineer. */
+"destination address:" = "Endereço de destino:";

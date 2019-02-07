@@ -1103,7 +1103,6 @@
                                                 <inset key="imageEdgeInsets" minX="-10" minY="10" maxX="10" maxY="10"/>
                                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                                 <state key="normal" title="Scan QR Code" image="scnIcnblack"/>
-                                                <state key="highlighted" image="cameraguide-small"/>
                                                 <connections>
                                                     <action selector="scanQR:" destination="RsQ-W7-grB" eventType="touchUpInside" id="wbh-n6-WR8"/>
                                                 </connections>
@@ -2808,7 +2807,7 @@ Other devices may be infected.
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0OZ-Q5-FOm">
-                                <rect key="frame" x="40" y="129" width="240" height="40"/>
+                                <rect key="frame" x="32" y="129" width="256" height="48"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -2816,13 +2815,14 @@ Other devices may be infected.
                                     <action selector="clickedBottomBar:" destination="La8-tY-sM4" eventType="touchUpInside" id="ahL-8e-5pv"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="to: 1WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2U5-tK-XSF">
-                                <rect key="frame" x="40" y="129" width="240" height="40"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2U5-tK-XSF" customClass="BRRoundedLabel">
+                                <rect key="frame" x="32" y="129" width="256" height="48"/>
+                                <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="70s-nA-JoA"/>
+                                    <constraint firstAttribute="height" constant="48" id="70s-nA-JoA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                                 <attributedString key="userComments">
@@ -2840,7 +2840,7 @@ Other devices may be infected.
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="k0r-x2-dfh">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="43"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUC-MN-PXO">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUC-MN-PXO" customClass="BRSemiRoundedButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="86" height="43"/>
                                                 <color key="backgroundColor" red="0.23137254901960785" green="0.23137254901960785" blue="0.23137254901960785" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -2852,11 +2852,16 @@ Other devices may be infected.
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <state key="disabled" backgroundImage="button-bg-disabled"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="number:" destination="La8-tY-sM4" eventType="touchUpInside" id="bJl-Ge-5HM"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaD-eI-0iC">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaD-eI-0iC" customClass="BRSemiRoundedButton">
                                                 <rect key="frame" x="101" y="0.0" width="86" height="43"/>
                                                 <color key="backgroundColor" red="0.23137254901960785" green="0.23137254901960785" blue="0.23137254901960785" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
@@ -2865,11 +2870,16 @@ Other devices may be infected.
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <state key="disabled" backgroundImage="button-bg-disabled"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="number:" destination="La8-tY-sM4" eventType="touchUpInside" id="48D-Jn-Udq"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EnY-9p-vg6">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EnY-9p-vg6" customClass="BRSemiRoundedButton">
                                                 <rect key="frame" x="202" y="0.0" width="86" height="43"/>
                                                 <color key="backgroundColor" red="0.23137254901960785" green="0.23137254901960785" blue="0.23137254901960785" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
@@ -2878,6 +2888,11 @@ Other devices may be infected.
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <state key="disabled" backgroundImage="button-bg-disabled"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="number:" destination="La8-tY-sM4" eventType="touchUpInside" id="MnP-A3-YqI"/>
                                                 </connections>
@@ -2887,7 +2902,7 @@ Other devices may be infected.
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="jyv-wy-hXb">
                                         <rect key="frame" x="0.0" y="51" width="288" height="43"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQH-pt-DQg">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VQH-pt-DQg" customClass="BRSemiRoundedButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="86" height="43"/>
                                                 <color key="backgroundColor" red="0.23137254901960785" green="0.23137254901960785" blue="0.23137254901960785" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
@@ -2896,11 +2911,16 @@ Other devices may be infected.
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <state key="disabled" backgroundImage="button-bg-disabled"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="number:" destination="La8-tY-sM4" eventType="touchUpInside" id="tgV-5i-BR0"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Af-Xt-dHE">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Af-Xt-dHE" customClass="BRSemiRoundedButton">
                                                 <rect key="frame" x="101" y="0.0" width="86" height="43"/>
                                                 <color key="backgroundColor" red="0.23137254901960785" green="0.23137254901960785" blue="0.23137254901960785" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
@@ -2909,11 +2929,16 @@ Other devices may be infected.
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <state key="disabled" backgroundImage="button-bg-disabled"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="number:" destination="La8-tY-sM4" eventType="touchUpInside" id="KTf-gB-U5J"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="43w-iO-MOK">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="43w-iO-MOK" customClass="BRSemiRoundedButton">
                                                 <rect key="frame" x="202" y="0.0" width="86" height="43"/>
                                                 <color key="backgroundColor" red="0.23137254901960785" green="0.23137254901960785" blue="0.23137254901960785" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
@@ -2922,6 +2947,11 @@ Other devices may be infected.
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <state key="disabled" backgroundImage="button-bg-disabled"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="number:" destination="La8-tY-sM4" eventType="touchUpInside" id="qqH-5B-gFS"/>
                                                 </connections>
@@ -2931,7 +2961,7 @@ Other devices may be infected.
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="wcO-QI-Vu9">
                                         <rect key="frame" x="0.0" y="102" width="288" height="42.5"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcY-uc-kOc">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcY-uc-kOc" customClass="BRSemiRoundedButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="86" height="42.5"/>
                                                 <color key="backgroundColor" red="0.23137254901960785" green="0.23137254901960785" blue="0.23137254901960785" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
@@ -2940,11 +2970,16 @@ Other devices may be infected.
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <state key="disabled" backgroundImage="button-bg-disabled"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="number:" destination="La8-tY-sM4" eventType="touchUpInside" id="bbz-co-2Rw"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24A-83-L7p">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24A-83-L7p" customClass="BRSemiRoundedButton">
                                                 <rect key="frame" x="101" y="0.0" width="86" height="42.5"/>
                                                 <color key="backgroundColor" red="0.23137254901960785" green="0.23137254901960785" blue="0.23137254901960785" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
@@ -2953,11 +2988,16 @@ Other devices may be infected.
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <state key="disabled" backgroundImage="button-bg-disabled"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="number:" destination="La8-tY-sM4" eventType="touchUpInside" id="Uqc-qH-oP1"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ika-qg-5Cf">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ika-qg-5Cf" customClass="BRSemiRoundedButton">
                                                 <rect key="frame" x="202" y="0.0" width="86" height="42.5"/>
                                                 <color key="backgroundColor" red="0.23137254901960785" green="0.23137254901960785" blue="0.23137254901960785" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
@@ -2966,6 +3006,11 @@ Other devices may be infected.
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <state key="disabled" backgroundImage="button-bg-disabled"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="number:" destination="La8-tY-sM4" eventType="touchUpInside" id="ozD-nB-YZd"/>
                                                 </connections>
@@ -2975,7 +3020,7 @@ Other devices may be infected.
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="yw0-Vw-Mrx">
                                         <rect key="frame" x="0.0" y="152.5" width="288" height="42.5"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cz1-M6-v6N">
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cz1-M6-v6N" customClass="BRSemiRoundedButton">
                                                 <rect key="frame" x="0.0" y="0.0" width="86" height="42.5"/>
                                                 <color key="backgroundColor" red="0.23137254901960785" green="0.23137254901960785" blue="0.23137254901960785" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
@@ -2984,11 +3029,16 @@ Other devices may be infected.
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <state key="disabled" backgroundImage="button-bg-disabled"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="number:" destination="La8-tY-sM4" eventType="touchUpInside" id="okD-6F-HjW"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKR-t9-9Lk">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKR-t9-9Lk" customClass="BRSemiRoundedButton">
                                                 <rect key="frame" x="101" y="0.0" width="86" height="42.5"/>
                                                 <color key="backgroundColor" red="0.23137254901960785" green="0.23137254901960785" blue="0.23137254901960785" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
@@ -2997,11 +3047,16 @@ Other devices may be infected.
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <state key="disabled" backgroundImage="button-bg-disabled"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="number:" destination="La8-tY-sM4" eventType="touchUpInside" id="cdg-bi-4Ez"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X53-jN-wEO">
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X53-jN-wEO" customClass="BRSemiRoundedButton">
                                                 <rect key="frame" x="202" y="0.0" width="86" height="42.5"/>
                                                 <color key="backgroundColor" red="0.23137254901960785" green="0.23137254901960785" blue="0.23137254901960785" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="20"/>
@@ -3012,6 +3067,11 @@ Other devices may be infected.
                                                 </state>
                                                 <state key="disabled" backgroundImage="button-bg-disabled"/>
                                                 <state key="highlighted" image="deletetoleft-pressed"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="del:" destination="La8-tY-sM4" eventType="touchUpInside" id="hF2-HA-h8M"/>
                                                 </connections>
@@ -3040,7 +3100,7 @@ Other devices may be infected.
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Destination Address:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BzG-qD-G7e">
-                                <rect key="frame" x="40" y="94" width="240" height="23"/>
+                                <rect key="frame" x="32" y="94" width="256" height="23"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
                                 <color key="textColor" red="0.95686274510000002" green="0.91764705879999997" blue="0.074509803920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -3052,7 +3112,7 @@ Other devices may be infected.
                             <constraint firstItem="Dgy-LD-D1e" firstAttribute="trailing" secondItem="hRp-qF-eXU" secondAttribute="trailing" constant="8" id="1xY-Yk-C5z"/>
                             <constraint firstItem="0OZ-Q5-FOm" firstAttribute="bottom" secondItem="2U5-tK-XSF" secondAttribute="bottom" id="2SX-6s-JY7"/>
                             <constraint firstItem="Dgy-LD-D1e" firstAttribute="bottom" secondItem="Omt-2i-uO1" secondAttribute="bottom" constant="16" id="5MD-15-Zpz"/>
-                            <constraint firstItem="2U5-tK-XSF" firstAttribute="width" secondItem="ymr-Br-n9y" secondAttribute="width" multiplier="0.75" id="8DP-Yb-1q3"/>
+                            <constraint firstItem="2U5-tK-XSF" firstAttribute="width" secondItem="ymr-Br-n9y" secondAttribute="width" multiplier="0.8" id="8DP-Yb-1q3"/>
                             <constraint firstAttribute="trailing" secondItem="Omt-2i-uO1" secondAttribute="trailing" constant="16" id="EgZ-G3-snf"/>
                             <constraint firstItem="BzG-qD-G7e" firstAttribute="trailing" secondItem="2U5-tK-XSF" secondAttribute="trailing" id="F2s-QN-8DU"/>
                             <constraint firstItem="Dgy-LD-D1e" firstAttribute="trailing" secondItem="NVx-Sw-vEc" secondAttribute="trailing" constant="20" id="HRB-kp-bf5"/>
@@ -3091,7 +3151,7 @@ Other devices may be infected.
                                 <action selector="done:" destination="La8-tY-sM4" id="K1J-SJ-t90"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="lock" id="MQk-nN-fcR">
+                        <barButtonItem key="rightBarButtonItem" image="lockIcn-navbar" id="MQk-nN-fcR">
                             <connections>
                                 <action selector="unlock:" destination="La8-tY-sM4" id="0ji-hP-8hB"/>
                             </connections>
@@ -3101,8 +3161,10 @@ Other devices may be infected.
                     <connections>
                         <outlet property="addressLabel" destination="2U5-tK-XSF" id="Br0-eU-44n"/>
                         <outlet property="amountLabel" destination="o24-a7-ayU" id="l9d-VJ-1e9"/>
+                        <outlet property="amountTitleLabel" destination="hRp-qF-eXU" id="ZOD-V4-Npd"/>
                         <outlet property="bottomButton" destination="0OZ-Q5-FOm" id="Gom-J8-943"/>
                         <outlet property="decimalButton" destination="Cz1-M6-v6N" id="5Zj-Wp-vWV"/>
+                        <outlet property="destinationTitleLabel" destination="BzG-qD-G7e" id="4jC-Nn-ake"/>
                         <outlet property="localCurrencyLabel" destination="TBf-3l-ujT" id="MsH-dM-CaQ"/>
                         <outlet property="lock" destination="MQk-nN-fcR" id="518-mf-Ipm"/>
                         <outlet property="shapeshiftLocalCurrencyLabel" destination="AIC-c4-j2z" id="r86-rs-eNc"/>
@@ -3119,12 +3181,10 @@ Other devices may be infected.
         <image name="background-black" width="500" height="889"/>
         <image name="button-bg-disabled" width="10" height="11"/>
         <image name="cameraguide" width="234" height="234"/>
-        <image name="cameraguide-small" width="20" height="20"/>
         <image name="checkbox-empty" width="22" height="22"/>
         <image name="deletetoleft" width="29" height="23"/>
         <image name="deletetoleft-pressed" width="29" height="23"/>
         <image name="flash" width="33" height="33"/>
-        <image name="lock" width="12" height="16"/>
         <image name="lockIcn-navbar" width="22" height="22"/>
         <image name="menuBtn-navbar" width="22" height="22"/>
         <image name="refresh" width="9" height="11"/>

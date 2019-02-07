@@ -36,6 +36,9 @@
 #import "BRWalletManager.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "NSString+Attributed.h"
+#import "UIColor+AppColors.h"
+#import "BRMessageComposeViewController.h"
+#import "BRMailComposeViewController.h"
 
 #define QR_TIP      NSLocalizedString(@"Let others scan this QR code to get your $PAC address. Anyone can send "\
                     "$PAC to your wallet by transferring them to your address.", nil)
@@ -341,7 +344,8 @@
         [actionSheet addAction:[UIAlertAction actionWithTitle:(req) ? NSLocalizedString(@"send request as email", nil) :
                                 NSLocalizedString(@"send address as email", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                                     if ([MFMailComposeViewController canSendMail]) {
-                                        MFMailComposeViewController *composeController = [MFMailComposeViewController new];
+                                        
+                                        BRMailComposeViewController *composeController = [BRMailComposeViewController new];
                                         
                                         composeController.subject = NSLocalizedString(@"$PAC address", nil);
                                         [composeController setMessageBody:self.paymentRequest.string isHTML:NO];
@@ -349,8 +353,6 @@
                                                                     fileName:@"qr.png"];
                                         composeController.mailComposeDelegate = self;
                                         [self.navigationController presentViewController:composeController animated:YES completion:nil];
-                                        composeController.view.backgroundColor =
-                                        [UIColor colorWithPatternImage:[UIImage imageNamed:@"wallpaper-default"]];
                                         [BREventManager saveEvent:@"receive:send_email"];
                                     }
                                     else {
@@ -376,7 +378,8 @@
         [actionSheet addAction:[UIAlertAction actionWithTitle:(req) ? NSLocalizedString(@"send request as message", nil) :
                                 NSLocalizedString(@"send address as message", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                                     if ([MFMessageComposeViewController canSendText]) {
-                                        MFMessageComposeViewController *composeController = [MFMessageComposeViewController new];
+                                        
+                                        BRMessageComposeViewController *composeController = [BRMessageComposeViewController new];
                                         
                                         if ([MFMessageComposeViewController canSendSubject]) {
                                             composeController.subject = NSLocalizedString(@"$PAC address", nil);
@@ -388,11 +391,9 @@
                                             [composeController addAttachmentData:UIImagePNGRepresentation(self.qrView.image)
                                                                   typeIdentifier:(NSString *)kUTTypePNG filename:@"qr.png"];
                                         }
-                                        
                                         composeController.messageComposeDelegate = self;
                                         [self.navigationController presentViewController:composeController animated:YES completion:nil];
-                                        composeController.view.backgroundColor = [UIColor colorWithPatternImage:
-                                                                                  [UIImage imageNamed:@"wallpaper-default"]];
+                                        
                                         [BREventManager saveEvent:@"receive:send_message"];
                                     }
                                     else {
@@ -460,6 +461,9 @@ error:(NSError *)error
     BRWalletManager *manager = [BRWalletManager sharedInstance];
     
     if (amount < manager.wallet.minOutputAmount) {
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
         UIAlertController * alert = [UIAlertController
                                      alertControllerWithTitle:NSLocalizedString(@"amount too small", nil)
                                      message:[NSString stringWithFormat:NSLocalizedString(@"$PAC payments can't be less than %@", nil),

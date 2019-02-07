@@ -652,3 +652,9 @@
 
 /* No comment provided by engineer. */
 "no transactions" = "žiadne transakcie";
+
+/* No comment provided by engineer. */
+"amount" = "čiastka";
+
+/* No comment provided by engineer. */
+"destination address:" = "Cieľová adresa:";

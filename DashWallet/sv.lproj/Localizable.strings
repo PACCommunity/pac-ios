@@ -652,3 +652,9 @@
 
 /* No comment provided by engineer. */
 "no transactions" = "inga transaktioner";
+
+/* No comment provided by engineer. */
+"amount" = "Belopp";
+
+/* No comment provided by engineer. */
+"destination address:" = "Destinations adress:";

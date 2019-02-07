@@ -43,6 +43,10 @@
 		3969628122000E6C00AAFAFD /* BRHistoryTransactionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969628022000E6C00AAFAFD /* BRHistoryTransactionCell.m */; };
 		396962842200140200AAFAFD /* BRTransaction+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 396962832200140200AAFAFD /* BRTransaction+Date.m */; };
 		397060FD21F81D3800FC07B1 /* NSString+Attributed.m in Sources */ = {isa = PBXBuildFile; fileRef = 397060FC21F81D3800FC07B1 /* NSString+Attributed.m */; };
+		397DF245220BCF79003E541A /* BRMessageComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397DF244220BCF79003E541A /* BRMessageComposeViewController.m */; };
+		397DF248220BD1A4003E541A /* BRMailComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397DF247220BD1A4003E541A /* BRMailComposeViewController.m */; };
+		397DF24B220BD665003E541A /* BRRoundedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 397DF24A220BD665003E541A /* BRRoundedLabel.m */; };
+		397DF24E220BFE7A003E541A /* BRSemiRoundedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 397DF24D220BFE7A003E541A /* BRSemiRoundedButton.m */; };
 		399C1A3E22017B0000D121F8 /* BRCustomSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 399C1A3D22017B0000D121F8 /* BRCustomSwitch.m */; };
 		39A2C59021EF06CC00DDB1E3 /* BRRoundedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C58C21EF06CA00DDB1E3 /* BRRoundedButton.m */; };
 		39A2C59121EF06CC00DDB1E3 /* BRRoundedBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C58D21EF06CB00DDB1E3 /* BRRoundedBorderedButton.m */; };
@@ -286,6 +290,14 @@
 		396962832200140200AAFAFD /* BRTransaction+Date.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BRTransaction+Date.m"; sourceTree = "<group>"; };
 		397060FB21F81D3800FC07B1 /* NSString+Attributed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Attributed.h"; sourceTree = "<group>"; };
 		397060FC21F81D3800FC07B1 /* NSString+Attributed.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Attributed.m"; sourceTree = "<group>"; };
+		397DF243220BCF79003E541A /* BRMessageComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMessageComposeViewController.h; sourceTree = "<group>"; };
+		397DF244220BCF79003E541A /* BRMessageComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMessageComposeViewController.m; sourceTree = "<group>"; };
+		397DF246220BD1A4003E541A /* BRMailComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMailComposeViewController.h; sourceTree = "<group>"; };
+		397DF247220BD1A4003E541A /* BRMailComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMailComposeViewController.m; sourceTree = "<group>"; };
+		397DF249220BD665003E541A /* BRRoundedLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRRoundedLabel.h; sourceTree = "<group>"; };
+		397DF24A220BD665003E541A /* BRRoundedLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRRoundedLabel.m; sourceTree = "<group>"; };
+		397DF24C220BFE7A003E541A /* BRSemiRoundedButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSemiRoundedButton.h; sourceTree = "<group>"; };
+		397DF24D220BFE7A003E541A /* BRSemiRoundedButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSemiRoundedButton.m; sourceTree = "<group>"; };
 		399C1A3C22017B0000D121F8 /* BRCustomSwitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRCustomSwitch.h; sourceTree = "<group>"; };
 		399C1A3D22017B0000D121F8 /* BRCustomSwitch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRCustomSwitch.m; sourceTree = "<group>"; };
 		39A2C58A21EF06C900DDB1E3 /* BRImageViewLogo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRImageViewLogo.h; sourceTree = "<group>"; };
@@ -710,33 +722,37 @@
 		392E076C21FE4E5700F04BAD /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				7525B617192453840041C0F2 /* BRNavigationBar.h */,
-				7525B618192453840041C0F2 /* BRNavigationBar.m */,
-				759816E519357D6F005060EA /* BRBubbleView.h */,
-				759816E619357D6F005060EA /* BRBubbleView.m */,
+				39EF817821F2AF5000F51AEB /* BRBorderedView.h */,
+				39EF817921F2AF5000F51AEB /* BRBorderedView.m */,
 				75AA5F53194143D5003F23BD /* BRBouncyBurgerButton.h */,
 				75AA5F54194143D5003F23BD /* BRBouncyBurgerButton.m */,
+				759816E519357D6F005060EA /* BRBubbleView.h */,
+				759816E619357D6F005060EA /* BRBubbleView.m */,
 				7548CF3519556FD700EF827F /* BRCopyLabel.h */,
 				7548CF3619556FD700EF827F /* BRCopyLabel.m */,
-				755FC9EF1BF1DF1B00164ABB /* BREventConfirmView.xib */,
+				399C1A3C22017B0000D121F8 /* BRCustomSwitch.h */,
+				399C1A3D22017B0000D121F8 /* BRCustomSwitch.m */,
 				220460531BA0BEEE00D07B61 /* BREventConfirmView.h */,
 				220460541BA0BEEE00D07B61 /* BREventConfirmView.m */,
-				22F45A0C1C3326CC00B07A15 /* BRUserDefaultsSwitchCell.h */,
-				22F45A0D1C3326CC00B07A15 /* BRUserDefaultsSwitchCell.m */,
+				755FC9EF1BF1DF1B00164ABB /* BREventConfirmView.xib */,
 				39A2C58A21EF06C900DDB1E3 /* BRImageViewLogo.h */,
 				39A2C58E21EF06CB00DDB1E3 /* BRImageViewLogo.m */,
+				7525B617192453840041C0F2 /* BRNavigationBar.h */,
+				7525B618192453840041C0F2 /* BRNavigationBar.m */,
 				39A2C58F21EF06CC00DDB1E3 /* BRRoundedBorderedButton.h */,
 				39A2C58D21EF06CB00DDB1E3 /* BRRoundedBorderedButton.m */,
 				39A2C58B21EF06CA00DDB1E3 /* BRRoundedButton.h */,
 				39A2C58C21EF06CA00DDB1E3 /* BRRoundedButton.m */,
-				39EF817821F2AF5000F51AEB /* BRBorderedView.h */,
-				39EF817921F2AF5000F51AEB /* BRBorderedView.m */,
-				399C1A3C22017B0000D121F8 /* BRCustomSwitch.h */,
-				399C1A3D22017B0000D121F8 /* BRCustomSwitch.m */,
-				39E35F0622051EB8002363C9 /* BRSemiRoundedView.h */,
-				39E35F0722051EB8002363C9 /* BRSemiRoundedView.m */,
+				397DF249220BD665003E541A /* BRRoundedLabel.h */,
+				397DF24A220BD665003E541A /* BRRoundedLabel.m */,
 				39E35F0922052140002363C9 /* BRSemiRoundedBorderedView.h */,
 				39E35F0A22052140002363C9 /* BRSemiRoundedBorderedView.m */,
+				397DF24C220BFE7A003E541A /* BRSemiRoundedButton.h */,
+				397DF24D220BFE7A003E541A /* BRSemiRoundedButton.m */,
+				39E35F0622051EB8002363C9 /* BRSemiRoundedView.h */,
+				39E35F0722051EB8002363C9 /* BRSemiRoundedView.m */,
+				22F45A0C1C3326CC00B07A15 /* BRUserDefaultsSwitchCell.h */,
+				22F45A0D1C3326CC00B07A15 /* BRUserDefaultsSwitchCell.m */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -1053,6 +1069,10 @@
 				757BE7E8192D4E880061CB20 /* BRSeedViewController.m */,
 				39A2C59321EF0B2300DDB1E3 /* BRPacNavigationController.h */,
 				39A2C59421EF0B2300DDB1E3 /* BRPacNavigationController.m */,
+				397DF243220BCF79003E541A /* BRMessageComposeViewController.h */,
+				397DF244220BCF79003E541A /* BRMessageComposeViewController.m */,
+				397DF246220BD1A4003E541A /* BRMailComposeViewController.h */,
+				397DF247220BD1A4003E541A /* BRMailComposeViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1694,6 +1714,7 @@
 				39E35F0B22052140002363C9 /* BRSemiRoundedBorderedView.m in Sources */,
 				3939345421F173680016D2A3 /* UIColor+AppColors.m in Sources */,
 				752E28AA19234AE300DB5A3C /* BRAddressEntity.m in Sources */,
+				397DF248220BD1A4003E541A /* BRMailComposeViewController.m in Sources */,
 				75AA5F55194143D5003F23BD /* BRBouncyBurgerButton.m in Sources */,
 				752E28AB19234AE300DB5A3C /* BRMerkleBlockEntity.m in Sources */,
 				BA7B53501BDA9A2800355E8D /* BRAppleWatchData.m in Sources */,
@@ -1702,6 +1723,7 @@
 				FBF268041E414B93001A1C8B /* NSData+Pac.m in Sources */,
 				752E28AD19234AE300DB5A3C /* BRTransactionEntity.m in Sources */,
 				752E28AE19234AE300DB5A3C /* BRTxInputEntity.m in Sources */,
+				397DF245220BCF79003E541A /* BRMessageComposeViewController.m in Sources */,
 				39A2C59521EF0B2300DDB1E3 /* BRPacNavigationController.m in Sources */,
 				752E28AF19234AE300DB5A3C /* BRTxOutputEntity.m in Sources */,
 				397060FD21F81D3800FC07B1 /* NSString+Attributed.m in Sources */,
@@ -1725,6 +1747,7 @@
 				752E28D919234C3600DB5A3C /* BRTransaction.m in Sources */,
 				39A2C59021EF06CC00DDB1E3 /* BRRoundedButton.m in Sources */,
 				752E28CE19234C3600DB5A3C /* BRBIP32Sequence.m in Sources */,
+				397DF24E220BFE7A003E541A /* BRSemiRoundedButton.m in Sources */,
 				BAC7B6BE1BD9C29900165B84 /* BRPhoneWCSessionManager.m in Sources */,
 				752E28CF19234C3600DB5A3C /* BRBIP39Mnemonic.m in Sources */,
 				752E28DA19234C3600DB5A3C /* BRWallet.m in Sources */,
@@ -1749,6 +1772,7 @@
 				752E28E719234DA200DB5A3C /* NSData+Bitcoin.m in Sources */,
 				396962842200140200AAFAFD /* BRTransaction+Date.m in Sources */,
 				2AC92C841FEB0A6D008CAEE0 /* BRQRScanViewController.m in Sources */,
+				397DF24B220BD665003E541A /* BRRoundedLabel.m in Sources */,
 				FB9CC2711F8E27B80079309F /* DWGenerateViewController.m in Sources */,
 				3939345121F170460016D2A3 /* UIColor+Hexadecimal.m in Sources */,
 				220128D31C753C670001CAC1 /* BRSocketHelpers.c in Sources */,

@@ -1,14 +1,14 @@
 //
-//  BRRoundedButton.m
+//  BRRoundedLabel.m
 //  pacwallet
 //
-//  Created by Alan Valencia on 1/15/19.
+//  Created by Alan Valencia on 2/6/19.
 //  Copyright © 2019 Aaron Voisine. All rights reserved.
 //
 
-#import "BRRoundedButton.h"
+#import "BRRoundedLabel.h"
 
-@implementation BRRoundedButton
+@implementation BRRoundedLabel
 
 - (void) awakeFromNib {
     [super awakeFromNib];
@@ -27,13 +27,6 @@
     CGFloat min = fmin(self.frame.size.width, self.frame.size.height);
     self.layer.cornerRadius = min/2;
     self.clipsToBounds = YES;
-    
-    if (self.contentHorizontalAlignment == UIControlContentHorizontalAlignmentLeft || self.contentHorizontalAlignment == UIControlContentHorizontalAlignmentRight) {
-        //prevent text overlap
-        self.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 10);
-    }
-    
-    self.titleLabel.adjustsFontSizeToFitWidth = YES;
 }
 
 @end

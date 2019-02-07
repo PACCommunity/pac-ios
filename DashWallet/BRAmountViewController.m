@@ -40,7 +40,8 @@
 @property (nonatomic, strong) IBOutlet UIBarButtonItem *payButton, *lock;
 @property (nonatomic, strong) IBOutlet UIButton *delButton, *decimalButton,*bottomButton;
 @property (nonatomic, strong) IBOutlet UIImageView *wallpaper;
-@property (nonatomic, strong) IBOutlet UIView *logo;
+@property (nonatomic, strong) IBOutlet UILabel *destinationTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *amountTitleLabel;
 
 
 @property (nonatomic, strong) BRBubbleView * tipView;
@@ -67,9 +68,12 @@
     [charset addCharactersInString:manager.pacFormat.currencyDecimalSeparator];
     self.charset = charset;
     
-    self.payButton = [[UIBarButtonItem alloc] initWithTitle:self.usingShapeshift?@"Shapeshift!":NSLocalizedString(@"pay", nil)
-                                                      style:UIBarButtonItemStylePlain target:self action:@selector(pay:)];
+    self.payButton = [[UIBarButtonItem alloc] initWithTitle:self.usingShapeshift?@"Shapeshift!":[NSLocalizedString(@"pay", nil) uppercaseString]
+                                                      style:UIBarButtonItemStyleDone target:self action:@selector(pay:)];
     self.payButton.tintColor = [UIColor yellowPACColor];
+    [self.payButton setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16 weight:UIFontWeightSemibold]} forState: UIControlStateNormal];
+    [self.payButton setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16 weight:UIFontWeightSemibold]} forState: UIControlStateHighlighted];
+    
     self.amountLabel.attributedText = [manager attributedStringForPacAmount:0 withTintColor:[UIColor yellowPACColor]];
     self.amountLabel.textColor = [UIColor yellowPACColor];
     [self.decimalButton setTitle:manager.pacFormat.currencyDecimalSeparator forState:UIControlStateNormal];
@@ -97,6 +101,9 @@
     }
     self.shapeshiftLocalCurrencyLabel.hidden = !self.usingShapeshift;
     
+    self.amountTitleLabel.text = NSLocalizedString(@"amount", nil);
+    self.destinationTitleLabel.text = NSLocalizedString(@"destination address:", nil);
+    
     self.navigationItem.titleView = [BRImageViewLogo imageViewWithPACLogo];
 }
 
@@ -105,12 +112,7 @@
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle {
-    if (self.navigationController.viewControllers.firstObject != self) {
-        return UIStatusBarStyleLightContent;
-    }
-    else {
-        return UIStatusBarStyleDefault;
-    }
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -118,10 +120,10 @@
     [super viewWillAppear:animated];
     if (self.usingShapeshift) {
         self.addressLabel.text = (self.to.length > 0) ?
-        [NSString stringWithFormat:@"%@ (via Shapeshift)", self.to] : nil;
+        [NSString stringWithFormat:@"%@ (via Shapeshift)%@", self.to, @"    "] : nil;
     } else {
         self.addressLabel.text = (self.to.length > 0) ?
-        [NSString stringWithFormat:@"%@", self.to] : nil;
+        [NSString stringWithFormat:@"%@%@", self.to, @"    "] : nil;
     }
     self.wallpaper.hidden = NO;
     
@@ -131,6 +133,8 @@
         self.navigationController.navigationBar.barStyle = UIStatusBarStyleLightContent;
     }
     else {
+        self.addressLabel.hidden = YES;
+        self.destinationTitleLabel.hidden = YES;
         self.payButton.title = NSLocalizedString(@"request", nil);
         self.payButton.tintColor = [UIColor yellowPACColor];
         self.navigationItem.rightBarButtonItem = self.payButton;
@@ -149,7 +153,7 @@
     self.backgroundObserver =
     [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationDidEnterBackgroundNotification object:nil
                                                        queue:nil usingBlock:^(NSNotification *note) {
-                                                           self.navigationItem.titleView = self.logo;
+                                                           self.navigationItem.titleView = [BRImageViewLogo imageViewWithPACLogo];
                                                            [self.navigationItem setRightBarButtonItem:self.lock animated:NO];
                                                        }];
 }

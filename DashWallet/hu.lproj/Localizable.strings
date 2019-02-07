@@ -652,3 +652,9 @@
 
 /* No comment provided by engineer. */
 "no transactions" = "no transactions";
+
+/* No comment provided by engineer. */
+"amount" = "Összeg";
+
+/* No comment provided by engineer. */
+"destination address:" = "Célcím:";
