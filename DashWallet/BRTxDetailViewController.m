@@ -180,9 +180,6 @@
 
 - (void)setBackgroundForCell:(UITableViewCell *)cell indexPath:(NSIndexPath *)path
 {    
-    //[cell viewWithTag:100].hidden = (path.row > 0);
-    //[cell viewWithTag:101].hidden = (path.row + 1 < [self tableView:self.tableView numberOfRowsInSection:path.section]);
-    
     UIView *bgColorView = [[UIView alloc] init];
     bgColorView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
     [cell setSelectedBackgroundView:bgColorView];

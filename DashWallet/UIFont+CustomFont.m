@@ -19,7 +19,7 @@ NSString *const PACLightFontName = @"ontserrat-Light";
 
 @implementation UIFont (CustomFont)
 
-#pragma clang diagnostic push
+/*#pragma clang diagnostic push
 
 #pragma clang diagnostic ignored "-Wobjc-protocol-method-implementation"
 + (void)replaceClassSelector:(SEL)originalSelector withSelector:(SEL)modifiedSelector {
@@ -100,7 +100,7 @@ NSString *const PACLightFontName = @"ontserrat-Light";
     return self;
 }
 
-/*+ (void)load
++ (void)load
 {
     
     [self replaceClassSelector:@selector(systemFontOfSize:weight:)
@@ -110,7 +110,7 @@ NSString *const PACLightFontName = @"ontserrat-Light";
     [self replaceClassSelector:@selector(italicSystemFontOfSize:) withSelector:@selector(pacItalicFontOfSize:)];
     
     [self replaceInstanceSelector:@selector(initWithCoder:) withSelector:@selector(initCustomWithCoder:)];
-}*/
-#pragma clang diagnostic pop
+}
+#pragma clang diagnostic pop*/
 
 @end

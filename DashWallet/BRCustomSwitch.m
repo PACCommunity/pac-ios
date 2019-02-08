@@ -13,7 +13,6 @@
 @dynamic offTint;
 -(void) setOffTint:(UIColor *)offTint {
     self.tintColor = offTint;
-    
     self.backgroundColor = offTint;
 }
 

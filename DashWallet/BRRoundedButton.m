@@ -34,6 +34,7 @@
     }
     
     self.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.titleLabel.minimumScaleFactor = 0.5f;
 }
 
 @end

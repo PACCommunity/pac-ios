@@ -91,7 +91,6 @@ static NSString *sanitizeString(NSString *s)
 @property (strong, nonatomic) IBOutlet UIImageView *pacIcon;
 @property (strong, nonatomic) IBOutlet UIImageView *pacIconNewDevices;
 @property (strong, nonatomic) IBOutlet UILabel *pacLabel;
-@property (strong, nonatomic) IBOutlet UILabel *pacLabelSmallScreen;
 @property (strong, nonatomic) IBOutlet UIView *containerView;
 
 @end
@@ -107,48 +106,6 @@ static NSString *sanitizeString(NSString *s)
     NSString *word = @"$PAC:";
     self.sendLabel.attributedText = [self.sendLabel.text attributedStringForWord: word
                                       attributesFullText:@{NSFontAttributeName: [UIFont systemFontOfSize:17 weight:UIFontWeightLight], NSForegroundColorAttributeName: [UIColor whiteColor]} attributtesWord:@{NSFontAttributeName: [UIFont boldSystemFontOfSize: 17], NSForegroundColorAttributeName: [UIColor whiteColor]}];
-    
-    /*if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
-        NSString *device = @"";
-        switch ((int)[[UIScreen mainScreen] nativeBounds].size.height) {
-                
-            case 1136:
-                printf("iPhone 5 or 5S or 5C");
-                device = @"iPhone 5";
-//                self.topBlackArea.hidden = YES;
-                self.pacIconNewDevices.hidden = YES;
-                self.sendLabel.hidden = YES;
-                self.pacLabel.hidden = YES;
-                
-                _sendLabelSmallScreen =[[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/3.5,240,200,40)];
-                _sendLabelSmallScreen.font = [UIFont systemFontOfSize:30];
-                [_sendLabelSmallScreen setTextColor:[UIColor blackColor]];
-                _sendLabelSmallScreen.text = @"Send $PAC";
-                [self.view addSubview:_sendLabelSmallScreen];
-                
-                _pacLabelSmallScreen =[[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/6,200,400,20)];
-                _pacLabelSmallScreen.font = [UIFont systemFontOfSize:15];
-                [_pacLabelSmallScreen setTextColor:[UIColor blackColor]];
-                _pacLabelSmallScreen.text = @"The People's Alternative Choice";
-                [self.view addSubview:_pacLabelSmallScreen];
-                
-                break;
-            default:
-                printf("unknown");
-        }
-    }*/
-    
-    // TODO: XXX redesign page with round buttons like the iOS power down screen... apple watch also has round buttons
-    /*self.scanButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    self.clipboardButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    self.clipboardButton.layer.cornerRadius = 0.15 * self.clipboardButton.bounds.size.height;
-    self.clipboardButton.layer.borderWidth = 1.0;
-    self.scanButton.layer.cornerRadius = 0.15 * self.scanButton.bounds.size.height;
-    self.scanButton.layer.borderWidth = 1.0;*/
-    
-//    self.topBlackArea.layer.cornerRadius = 0.05 * self.topBlackArea.bounds.size.width;
-//    self.instantSwitch.layer.borderWidth = 1.2;
-//    self.instantSwitch.layer.cornerRadius = 0.28 * self.instantSwitch.bounds.size.width;
     
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"

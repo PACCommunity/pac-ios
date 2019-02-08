@@ -59,7 +59,6 @@
     [super viewDidLoad];
     self.touchId = [BRWalletManager sharedInstance].touchIdEnabled;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    //self.tableView.separatorColor = [UIColor blackPACColor];
 }
 
 
