@@ -63,8 +63,6 @@
 @property (strong, nonatomic) IBOutlet UIView *topBlackAreaSmallScreen;
 @property (strong, nonatomic) IBOutlet UILabel *receiveLabel;
 @property (strong, nonatomic) IBOutlet UILabel *receiveLabelSmallScreen;
-//@property (strong, nonatomic) IBOutlet UIImageView *pacIcon;
-//@property (strong, nonatomic) IBOutlet UIImageView *pacIconSmallScreen;
 
 @end
 
@@ -78,30 +76,6 @@
     self.receiveLabel.attributedText = [self.receiveLabel.text attributedStringForWord: word
                                                               attributesFullText:@{NSFontAttributeName: [UIFont systemFontOfSize:20 weight:UIFontWeightMedium], NSForegroundColorAttributeName: [UIColor whiteColor]} attributtesWord:@{NSFontAttributeName: [UIFont boldSystemFontOfSize: 20], NSForegroundColorAttributeName: [UIColor whiteColor]}];
     
-    /*if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
-        NSString *device = @"";
-        switch ((int)[[UIScreen mainScreen] nativeBounds].size.height) {
-                
-            case 1136:
-                printf("iPhone 5 or 5S or 5C");
-                device = @"iPhone 5";
-                self.pacIcon.hidden = YES;
-                self.receiveLabel.hidden = YES;
-                
-                _receiveLabelSmallScreen =[[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/4.8,210,200,40)];
-                _receiveLabelSmallScreen.font = [UIFont systemFontOfSize:30];
-                [_receiveLabelSmallScreen setTextColor:[UIColor blackColor]];
-                _receiveLabelSmallScreen.text = @"Receive $PAC";
-                [self.view addSubview:_receiveLabelSmallScreen];
-
-                break;
-            default:
-                printf("unknown");
-        }
-        self.pacIcon.hidden = YES;
-    }*/
-    
-//    self.TopBlackArea.layer.cornerRadius = 0.05 * self.TopBlackArea.bounds.size.width;
     BRWalletManager *manager = [BRWalletManager sharedInstance];
     BRPaymentRequest *req;
 

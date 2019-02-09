@@ -2214,7 +2214,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.paccoin.pacmobilewallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2c3dff03-43e9-4b5e-9362-8929f6100609";
+				PROVISIONING_PROFILE = "59789f97-1bf6-4a03-98f3-9835669211d2";
 				PROVISIONING_PROFILE_SPECIFIER = "PacMobileWallet Development Provisioning Profile";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2722,7 +2722,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.paccoin.pacmobilewallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2c3dff03-43e9-4b5e-9362-8929f6100609";
+				PROVISIONING_PROFILE = "59789f97-1bf6-4a03-98f3-9835669211d2";
 				PROVISIONING_PROFILE_SPECIFIER = "PacMobileWallet Development Provisioning Profile";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = 1;
