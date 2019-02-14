@@ -333,8 +333,7 @@
     if (tableView == self.selectorController.tableView) return self.selectorOptions.count;
     
     switch (section) {
-        case 0: return (self.touchId) ? 5 : 4;//return 2;
-        //case 1: return (self.touchId) ? 3 : 2;
+        case 0: return (self.touchId) ? 5 : 4;
         case 1: return 3;
     }
     
