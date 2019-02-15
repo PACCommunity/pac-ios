@@ -43,6 +43,8 @@
 		3969628122000E6C00AAFAFD /* BRHistoryTransactionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969628022000E6C00AAFAFD /* BRHistoryTransactionCell.m */; };
 		396962842200140200AAFAFD /* BRTransaction+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 396962832200140200AAFAFD /* BRTransaction+Date.m */; };
 		397060FD21F81D3800FC07B1 /* NSString+Attributed.m in Sources */ = {isa = PBXBuildFile; fileRef = 397060FC21F81D3800FC07B1 /* NSString+Attributed.m */; };
+		3972E1432216716F0081B8BE /* UIColor+AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 3939345321F173680016D2A3 /* UIColor+AppColors.m */; };
+		3972E144221671BA0081B8BE /* UIColor+Hexadecimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 3939345021F170460016D2A3 /* UIColor+Hexadecimal.m */; };
 		397DF245220BCF79003E541A /* BRMessageComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397DF244220BCF79003E541A /* BRMessageComposeViewController.m */; };
 		397DF248220BD1A4003E541A /* BRMailComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397DF247220BD1A4003E541A /* BRMailComposeViewController.m */; };
 		397DF24B220BD665003E541A /* BRRoundedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 397DF24A220BD665003E541A /* BRRoundedLabel.m */; };
@@ -1834,7 +1836,9 @@
 				22DE8CF21D02407F007F07F3 /* BRWalletConstants.m in Sources */,
 				2204604F1B9F61E600D07B61 /* BREventManager.m in Sources */,
 				BAE12C061B2DEEF700895CC5 /* BRTodayViewController.m in Sources */,
+				3972E1432216716F0081B8BE /* UIColor+AppColors.m in Sources */,
 				FB3FA3D61F2364140071FCC5 /* UIImage+Utils.m in Sources */,
+				3972E144221671BA0081B8BE /* UIColor+Hexadecimal.m in Sources */,
 				FBF267FE1E414AA2001A1C8B /* DSShapeshiftManager.m in Sources */,
 				75E2503F1B7691C900A2BB2B /* BRBubbleView.m in Sources */,
 			);

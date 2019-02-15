@@ -161,34 +161,33 @@ shouldAllowExtensionPointIdentifier:(NSString *)extensionPointIdentifier
     {
         return NO; // disable extensions such as custom keyboards for security purposes
     }
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
     
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation
-    {
-        if (! [url.scheme isEqual:@"paccoin"] && ! [url.scheme isEqual:@"pacwallet"]) {
-            UIAlertController * alert = [UIAlertController
-                                         alertControllerWithTitle:@"Not a $PAC URL"
-                                         message:url.absoluteString
-                                         preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction* okButton = [UIAlertAction
-                                       actionWithTitle:NSLocalizedString(@"ok", nil)
-                                       style:UIAlertActionStyleCancel
-                                       handler:^(UIAlertAction * action) {
-                                       }];
-            
-            [alert addAction:okButton];
-            [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:alert animated:YES completion:nil];
-            
-            return NO;
-        }
+    if (! [url.scheme isEqual:@"paccoin"] && ! [url.scheme isEqual:@"pacwallet"]) {
+        UIAlertController * alert = [UIAlertController
+                                     alertControllerWithTitle:@"Not a $PAC URL"
+                                     message:url.absoluteString
+                                     preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* okButton = [UIAlertAction
+                                   actionWithTitle:NSLocalizedString(@"ok", nil)
+                                   style:UIAlertActionStyleCancel
+                                   handler:^(UIAlertAction * action) {
+                                   }];
         
+        [alert addAction:okButton];
+        [[[[UIApplication sharedApplication] keyWindow] rootViewController] presentViewController:alert animated:YES completion:nil];
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC/10), dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:BRURLNotification object:nil userInfo:@{@"url":url}];
-        });
-        
-        return YES;
+        return NO;
     }
+    
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC/10), dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:BRURLNotification object:nil userInfo:@{@"url":url}];
+    });
+    
+    return YES;
+}
     
 - (void)application:(UIApplication *)application
 performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
