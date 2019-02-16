@@ -51,10 +51,10 @@
 "cyp-mV-Bhd.text" = "Я записал её:";
 
 /* Class = "UIButton"; normalTitle = "new wallet"; ObjectID = "dOa-zm-TDG"; */
-"dOa-zm-TDG.normalTitle" = "hовый кошелёк";
+"dOa-zm-TDG.normalTitle" = "Новый кошелёк";
 
 /* Class = "UILabel"; text = "Welcome"; ObjectID = "k5O-R3-BjX"; */
-"k5O-R3-BjX.text" = "добро пожаловать";
+"k5O-R3-BjX.text" = "Добро пожаловать";
 
 /* Class = "UILabel"; text = "if you ever lose your phone, you will need this phrase to recover your wallet"; ObjectID = "dX6-jg-5IA"; */
 "dX6-jg-5IA.text" = "Вам понадобится эта фраза, чтобы восстановить Ваш кошелёк, если Вы потеряете свой телефон.";
@@ -81,7 +81,7 @@
 "s4T-yd-VfX.title" = "Детали транзакции";
 
 /* Class = "UILabel"; text = "pacwallet v%ver%%net%\nPeople’s Alternative Choice © 2018\n\nForked from breadwallet.\nThis app is open source:"; ObjectID = "uvz-hk-Nr4"; */
-"uvz-hk-Nr4.text" = "PAC Wallet v%ver%%net%\nНародный альтернативный выбор © 2018\n\nОсновано на breadwallet\n\nЭто приложение с открытым исходным кодом";
+"uvz-hk-Nr4.text" = "PAC Wallet v%ver%%net%\nPeople's Alternative Choice © 2018\n\nОсновано на breadwallet\n\nЭто приложение с открытым исходным кодом";
 
 /* Class = "UILabel"; text = "start a new wallet by generating a wallet recovery phrase"; ObjectID = "wDZ-DN-szv"; */
 "wDZ-DN-szv.text" = "Начните создание нового кошелька с генерации фразы восстановления";

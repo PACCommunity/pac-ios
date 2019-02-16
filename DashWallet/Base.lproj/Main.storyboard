@@ -1431,8 +1431,8 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" misplaced="YES" image="background-black" translatesAutoresizingMaskIntoConstraints="NO" id="N12-14-Jsp">
                                 <rect key="frame" x="0.0" y="-39" width="320" height="649"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Enter this wallet's recovery phrase to wipe it and start/recover another. Your current balance remains on this phrase." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="289" translatesAutoresizingMaskIntoConstraints="NO" id="YC6-rN-4P5">
-                                <rect key="frame" x="32" y="64" width="256" height="82.5"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Enter this wallet's recovery phrase to wipe it and start/recover another. Your current balance remains on this phrase." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="289" translatesAutoresizingMaskIntoConstraints="NO" id="YC6-rN-4P5">
+                                <rect key="frame" x="22" y="64" width="276" height="82.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
@@ -1455,14 +1455,14 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="N12-14-Jsp" secondAttribute="bottom" constant="-42" id="3Sp-6Y-lFN"/>
                             <constraint firstItem="Q4J-7m-uCP" firstAttribute="bottom" secondItem="3D6-D7-2JP" secondAttribute="bottom" constant="230" id="6gr-Qb-fmy"/>
+                            <constraint firstItem="YC6-rN-4P5" firstAttribute="leading" secondItem="3D6-D7-2JP" secondAttribute="leading" constant="10" id="9bc-43-QKP"/>
                             <constraint firstItem="N12-14-Jsp" firstAttribute="top" secondItem="Q4J-7m-uCP" secondAttribute="top" constant="-103" id="GVl-14-Aoi"/>
                             <constraint firstItem="3D6-D7-2JP" firstAttribute="leading" secondItem="Q4J-7m-uCP" secondAttribute="leading" constant="12" id="H1q-RD-UrJ"/>
                             <constraint firstItem="3D6-D7-2JP" firstAttribute="top" secondItem="YC6-rN-4P5" secondAttribute="bottom" constant="12" id="Hzn-9K-qd0"/>
                             <constraint firstItem="Q4J-7m-uCP" firstAttribute="trailing" secondItem="3D6-D7-2JP" secondAttribute="trailing" constant="12" id="NtE-Jt-OpD"/>
                             <constraint firstItem="YC6-rN-4P5" firstAttribute="top" secondItem="Q4J-7m-uCP" secondAttribute="top" id="bmC-9u-liL"/>
                             <constraint firstItem="N12-14-Jsp" firstAttribute="leading" secondItem="Q4J-7m-uCP" secondAttribute="leading" id="ey4-Ef-sWX"/>
-                            <constraint firstItem="Q4J-7m-uCP" firstAttribute="centerX" secondItem="YC6-rN-4P5" secondAttribute="centerX" id="nLu-eA-b0A"/>
-                            <constraint firstItem="YC6-rN-4P5" firstAttribute="leading" secondItem="u2L-lU-MXZ" secondAttribute="leadingMargin" constant="16" id="tW6-qm-xVY"/>
+                            <constraint firstItem="YC6-rN-4P5" firstAttribute="trailing" secondItem="3D6-D7-2JP" secondAttribute="trailing" constant="-10" id="mPu-mF-n9x"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Q4J-7m-uCP"/>
                     </view>
@@ -2427,7 +2427,7 @@ bitpay.com/rates, poloniex, and masternodes.work</string>
                                 </connections>
                             </button>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="rLQ-Ub-gHT">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="2" y="0.0" width="316" height="568"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.86039169520547942" colorSpace="custom" customColorSpace="sRGB"/>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -2475,10 +2475,10 @@ Other devices may be infected.
                         <constraints>
                             <constraint firstItem="ki4-Ed-u9O" firstAttribute="bottom" secondItem="rLQ-Ub-gHT" secondAttribute="bottom" id="1BR-bH-KZS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ki4-Ed-u9O" secondAttribute="trailing" constant="-96" id="2JC-ty-157"/>
-                            <constraint firstItem="rLQ-Ub-gHT" firstAttribute="leading" secondItem="94b-08-Nyp" secondAttribute="leading" id="A7k-ZI-qHb"/>
+                            <constraint firstItem="rLQ-Ub-gHT" firstAttribute="leading" secondItem="94b-08-Nyp" secondAttribute="leading" constant="2" id="A7k-ZI-qHb"/>
                             <constraint firstItem="A4M-yq-26d" firstAttribute="width" secondItem="ttV-Ha-QVS" secondAttribute="width" multiplier="0.85" id="Bsd-4Q-ayX"/>
                             <constraint firstItem="94b-08-Nyp" firstAttribute="centerX" secondItem="wDZ-DN-szv" secondAttribute="centerX" id="Ci7-vy-9rd"/>
-                            <constraint firstItem="94b-08-Nyp" firstAttribute="trailing" secondItem="rLQ-Ub-gHT" secondAttribute="trailing" id="EKo-Wt-pcd"/>
+                            <constraint firstItem="94b-08-Nyp" firstAttribute="trailing" secondItem="rLQ-Ub-gHT" secondAttribute="trailing" constant="2" id="EKo-Wt-pcd"/>
                             <constraint firstItem="ki4-Ed-u9O" firstAttribute="leading" secondItem="ttV-Ha-QVS" secondAttribute="leadingMargin" constant="-77" id="Ick-3L-GnY"/>
                             <constraint firstItem="efL-Cj-Aho" firstAttribute="height" secondItem="A4M-yq-26d" secondAttribute="height" id="Rpv-Fu-Z9H"/>
                             <constraint firstItem="94b-08-Nyp" firstAttribute="centerX" secondItem="dX6-jg-5IA" secondAttribute="centerX" id="Tc0-qW-cgy"/>
@@ -2508,7 +2508,7 @@ Other devices may be infected.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lwV-64-ncq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1987.5" y="2141.1971830985917"/>
+            <point key="canvasLocation" x="1988" y="2157"/>
         </scene>
         <!--Restore View Controller-->
         <scene sceneID="MGQ-cg-FBt">

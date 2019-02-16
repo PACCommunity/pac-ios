@@ -279,7 +279,6 @@
         [defs removeObjectForKey:WALLET_NEEDS_BACKUP_KEY];
     }
     else {
-        //[self.toolbar setItems:@[self.toolbar.items[0], self.remindButton] animated:YES];
         [self.remindButton setTitle:NSLocalizedString(@"remind me later", nil) forState:UIControlStateNormal];
         [self.writeButton setImage:[UIImage imageNamed:@"checkbox-empty"] forState:UIControlStateNormal];
         [defs setBool:YES forKey:WALLET_NEEDS_BACKUP_KEY];
