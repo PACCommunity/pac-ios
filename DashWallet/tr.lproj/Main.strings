@@ -2,8 +2,8 @@
 /* Class = "UIButton"; normalTitle = "recover wallet"; ObjectID = "4w7-k8-9wY"; */
 "4w7-k8-9wY.normalTitle" = "cüzdanı kurtarın";
 
-/* Class = "UILabel"; text = "https://github.com/chasemgray/pacwallet"; ObjectID = "5OA-tB-Exg"; */
-"5OA-tB-Exg.text" = "https://github.com/chasemgray/pacwallet";
+/* Class = "UILabel"; text = "https://github.com/PACCommunity/pac-ios"; ObjectID = "5OA-tB-Exg"; */
+"5OA-tB-Exg.text" = "https://github.com/PACCommunity/pac-ios";
 
 /* Class = "UILabel"; text = "local currency"; ObjectID = "8e2-ar-Ehc"; */
 "8e2-ar-Ehc.text" = "yerel para birimi";

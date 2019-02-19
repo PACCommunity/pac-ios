@@ -658,3 +658,9 @@
 
 /* No comment provided by engineer. */
 "destination address:" = "Địa chỉ đích:";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "Giao dịch không thể được thực hiện vì vượt quá giới hạn gửi tức thì";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "Giao dịch không được cho phép";

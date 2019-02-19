@@ -658,3 +658,9 @@
 
 /* No comment provided by engineer. */
 "destination address:" = "宛先アドレス";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "即時送信の制限を超えているため、トランザクションを作成できません";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "取引は許可されていません";

@@ -658,3 +658,9 @@
 
 /* No comment provided by engineer. */
 "destination address:" = "Célcím:";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "A tranzakció nem végezhető el, mert meghaladja az azonnali küldés határát";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "A tranzakció nem engedélyezett";

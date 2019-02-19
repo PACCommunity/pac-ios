@@ -658,3 +658,9 @@
 
 /* No comment provided by engineer. */
 "destination address:" = "Адрес назначения:";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "Транзакция не может быть выполнена, поскольку она превышает лимит мгновенной отправки";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "Транзакция не разрешена";

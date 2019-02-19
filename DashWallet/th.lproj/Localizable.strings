@@ -658,3 +658,9 @@
 
 /* No comment provided by engineer. */
 "destination address:" = "ที่อยู่ปลายทาง:";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "ไม่สามารถทำธุรกรรมได้เนื่องจากเกินขีด จำกัด ของการส่งทันที";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "ไม่อนุญาตให้ทำธุรกรรม";

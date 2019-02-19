@@ -658,3 +658,9 @@
 
 /* No comment provided by engineer. */
 "destination address:" = "Διεύθυνση προορισμού:";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "Η συναλλαγή δεν μπορεί να γίνει επειδή υπερβαίνει το όριο της στιγμιαίας αποστολής";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "Η συναλλαγή δεν επιτρέπεται";

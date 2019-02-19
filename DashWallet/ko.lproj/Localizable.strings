@@ -658,3 +658,9 @@
 
 /* No comment provided by engineer. */
 "destination address:" = "대상 주소 :";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "즉시 전송 한도를 초과하여 거래를 할 수 없습니다.";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "거래를 허용하지 않음";

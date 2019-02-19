@@ -658,3 +658,9 @@
 
 /* No comment provided by engineer. */
 "destination address:" = "目的地址：";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "无法进行交易，因为它超出了即时发送的限制";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "交易不被允许";
