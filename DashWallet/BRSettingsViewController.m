@@ -520,7 +520,7 @@
     //bitpay.com/rates y poloneix.com
     
     UILabel *rateDataLabel = (id)[c.view viewWithTag:414];
-    rateDataLabel.attributedText = [rateDataLabel.text attributedStringForWords:@[@"bitpay.com/rates", @"poloneix.com"]
+    rateDataLabel.attributedText = [rateDataLabel.text attributedStringForWords:@[@"bitpay.com/rates"]
                                                              attributesFullText:@{NSFontAttributeName: [UIFont systemFontOfSize: 17], NSForegroundColorAttributeName: [UIColor whiteColor]} attributtesWords:@{NSFontAttributeName: [UIFont systemFontOfSize: 17], NSForegroundColorAttributeName: [UIColor yellowPACColor]}];
     
     UILabel *l = (id)[c.view viewWithTag:411];
