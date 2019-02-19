@@ -658,3 +658,9 @@
 
 /* No comment provided by engineer. */
 "destination address:" = "Cieľová adresa:";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "Transakciu nemožno vykonať, pretože prekračuje limit okamžitého odoslania";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "Transakcia nie je povolená";

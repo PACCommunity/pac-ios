@@ -658,3 +658,9 @@
 
 /* No comment provided by engineer. */
 "destination address:" = "Destinations adress:";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "Transaktionen kan inte göras eftersom den överskrider gränsen för direktsändning";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "Transaktion ej tillåten";

@@ -47,6 +47,7 @@
 #import "BRQRScanViewController.h"
 #import "BRQRScanViewModel.h"
 #import "NSString+Attributed.h"
+#import "NSNumber+PrimitiveComparison.h"
 
 #define SCAN_TIP      NSLocalizedString(@"Scan someone else's QR code to get their $PAC address. "\
 "You can send a payment to anyone with an address.", nil)
@@ -58,6 +59,7 @@
 #define NBSP @"\xC2\xA0"         // no-break space (utf-8)
 
 #define SEND_INSTANTLY_KEY @"SEND_INSTANTLY_KEY"
+#define INSTANT_SEND_LIMIT 100000
 
 static NSString *sanitizeString(NSString *s)
 {
@@ -799,6 +801,30 @@ static NSString *sanitizeString(NSString *s)
         }
         
         if (tx) {
+ 
+            //get the equivalent pac amount
+            NSNumber *amountNumber = [(id)[NSDecimalNumber numberWithLongLong:amount] decimalNumberByMultiplyingByPowerOf10:-manager.pacFormat.maximumFractionDigits];
+            
+            //we check if 'instant send' is active and if the limit was exceeded
+            //so we show the 'not permited' alert
+            if(self.sendInstantly && [amountNumber isGreaterThanInt:INSTANT_SEND_LIMIT]) {
+                //alerta de error
+                
+                UIAlertController * alert = [UIAlertController
+                                             alertControllerWithTitle:NSLocalizedString(@"Transaction not allowed", nil)
+                                             message: NSLocalizedString(@"The transaction cannot be made because it exceeds the limit of instant send", nil)
+                                             preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction* okButton = [UIAlertAction
+                                               actionWithTitle:NSLocalizedString(@"ok", nil)
+                                               style:UIAlertActionStyleDefault
+                                               handler: nil];
+                
+                [alert addAction:okButton];
+                [self presentViewController:alert animated:YES completion:nil];
+  
+                return;
+            }
+
             amount = [manager.wallet amountSentByTransaction:tx] - [manager.wallet amountReceivedFromTransaction:tx];
             fee = [manager.wallet feeForTransaction:tx];
         }

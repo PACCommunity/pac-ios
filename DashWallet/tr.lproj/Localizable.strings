@@ -658,3 +658,9 @@
 
 /* No comment provided by engineer. */
 "destination address:" = "Varış noktası:";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "Anlık gönderme sınırını aştığından işlem yapılamıyor";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "İşleme izin verilmiyor";

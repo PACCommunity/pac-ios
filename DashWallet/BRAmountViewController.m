@@ -294,7 +294,9 @@
         [self.tipView popOut];
         self.tipView = nil;
     }
+    
     BRWalletManager *manager = [BRWalletManager sharedInstance];
+    
     if (self.usingShapeshift) {
         
         self.amount = (self.swapped) ? [manager amountForBitcoinString:self.amountLabel.text]:

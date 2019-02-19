@@ -56,6 +56,7 @@
 		39A2C59521EF0B2300DDB1E3 /* BRPacNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C59421EF0B2300DDB1E3 /* BRPacNavigationController.m */; };
 		39E35F0822051EB8002363C9 /* BRSemiRoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E35F0722051EB8002363C9 /* BRSemiRoundedView.m */; };
 		39E35F0B22052140002363C9 /* BRSemiRoundedBorderedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E35F0A22052140002363C9 /* BRSemiRoundedBorderedView.m */; };
+		39EA5346221BCF4C00E5E3D7 /* NSNumber+PrimitiveComparison.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EA5345221BCF4C00E5E3D7 /* NSNumber+PrimitiveComparison.m */; };
 		39EF817A21F2AF5000F51AEB /* BRBorderedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF817921F2AF5000F51AEB /* BRBorderedView.m */; };
 		42FA916C11654751C6DA3A46 /* libPods-pacwallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8449DC316E2D67D98F173D00 /* libPods-pacwallet.a */; };
 		751B2B5C1B68911700EA87FB /* BRTxHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 751B2B5B1B68911700EA87FB /* BRTxHistoryViewController.m */; };
@@ -314,6 +315,8 @@
 		39E35F0722051EB8002363C9 /* BRSemiRoundedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSemiRoundedView.m; sourceTree = "<group>"; };
 		39E35F0922052140002363C9 /* BRSemiRoundedBorderedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSemiRoundedBorderedView.h; sourceTree = "<group>"; };
 		39E35F0A22052140002363C9 /* BRSemiRoundedBorderedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSemiRoundedBorderedView.m; sourceTree = "<group>"; };
+		39EA5344221BCF4C00E5E3D7 /* NSNumber+PrimitiveComparison.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumber+PrimitiveComparison.h"; sourceTree = "<group>"; };
+		39EA5345221BCF4C00E5E3D7 /* NSNumber+PrimitiveComparison.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+PrimitiveComparison.m"; sourceTree = "<group>"; };
 		39EF817821F2AF5000F51AEB /* BRBorderedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRBorderedView.h; sourceTree = "<group>"; };
 		39EF817921F2AF5000F51AEB /* BRBorderedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRBorderedView.m; sourceTree = "<group>"; };
 		3F38DCFEF402B5758E496206 /* Pods-pacwallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pacwallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pacwallet/Pods-pacwallet.debug.xcconfig"; sourceTree = "<group>"; };
@@ -969,6 +972,8 @@
 				396962832200140200AAFAFD /* BRTransaction+Date.m */,
 				3939FD6F2207FD680093A1FF /* UIFont+CustomFont.h */,
 				3939FD702207FD680093A1FF /* UIFont+CustomFont.m */,
+				39EA5344221BCF4C00E5E3D7 /* NSNumber+PrimitiveComparison.h */,
+				39EA5345221BCF4C00E5E3D7 /* NSNumber+PrimitiveComparison.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1760,6 +1765,7 @@
 				752E28D619234C3600DB5A3C /* BRPeer.m in Sources */,
 				752E28D819234C3600DB5A3C /* BRPeerManager.m in Sources */,
 				752E28D419234C3600DB5A3C /* BRPaymentProtocol.m in Sources */,
+				39EA5346221BCF4C00E5E3D7 /* NSNumber+PrimitiveComparison.m in Sources */,
 				752E28D519234C3600DB5A3C /* BRPaymentRequest.m in Sources */,
 				7525B619192453840041C0F2 /* BRNavigationBar.m in Sources */,
 				75F2E0D61BEAA6A400EAE861 /* BRTxMetadataEntity.m in Sources */,

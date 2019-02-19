@@ -658,3 +658,9 @@
 
 /* No comment provided by engineer. */
 "destination address:" = "Adresa e destinacionit:";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "Transaksioni nuk mund të bëhet sepse tejkalon limitin e dërgimit të menjëhershëm";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "Transaksioni nuk lejohet";
