@@ -15,7 +15,7 @@
 "D1b-HB-lKH.text" = "старт/възстановяване на друг портфейл";
 
 /* Class = "UILabel"; text = "exchange rate data provided by\n\nbitpay.com/rates, poloniex, and masternodes.work"; ObjectID = "D4H-hd-LsX"; */
-"D4H-hd-LsX.text" = "данните за обменните курсове, са предоставени от\n\nbitpay.com/rates и poloniex.com";
+"D4H-hd-LsX.text" = "данните за обменните курсове, са предоставени от\n\nbitpay.com/rates";
 
 /* Class = "UILabel"; text = "if you ever lose your phone, you will need this phrase to recover your wallet"; ObjectID = "EQG-Km-ZKY"; */
 "EQG-Km-ZKY.text" = "ако някога загубите вашият телефон, ще ви бъде нужна тази фраза за възстановяване на портфейла Ви";
