@@ -643,3 +643,24 @@
 
 /* No comment provided by engineer. */
 "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain." = "Si duket kuleta juaj nuk është e sinkronizuar.\nKjo shpesh mund të rregullohet duke riskanuar blockchain.";
+
+/* No comment provided by engineer. */
+"remind me later" = "ma kujto më vonë";
+
+/* No comment provided by engineer. */
+"About PAC Wallet" = "Rreth PAC Wallet";
+
+/* No comment provided by engineer. */
+"no transactions" = "nuk ka transaksione";
+
+/* No comment provided by engineer. */
+"amount" = "sasi";
+
+/* No comment provided by engineer. */
+"destination address:" = "Adresa e destinacionit:";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "Transaksioni nuk mund të bëhet sepse tejkalon limitin e dërgimit të menjëhershëm";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "Transaksioni nuk lejohet";

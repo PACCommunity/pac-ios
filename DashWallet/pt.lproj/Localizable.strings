@@ -643,3 +643,24 @@
 
 /* No comment provided by engineer. */
 "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain." = "Sua carteira pode estar fora de sincronia.\nMuitas vezes isso pode ser corrigido reescaneando a blockchain.";
+
+/* No comment provided by engineer. */
+"remind me later" = "lembre-me mais tarde";
+
+/* No comment provided by engineer. */
+"About PAC Wallet" = "Sobre a PAC Wallet";
+
+/* No comment provided by engineer. */
+"no transactions" = "nenhuma transação";
+
+/* No comment provided by engineer. */
+"amount" = "Montante";
+
+/* No comment provided by engineer. */
+"destination address:" = "Endereço de destino:";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "A transação não pode ser feita porque excede o limite de envio instantâneo";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "Transação não permitida";

@@ -54,7 +54,7 @@
 "\nallow camera access in\nSettings->Privacy->Camera->%@" = "\nРазрешите доступ к камере:\nНастройки -> Конфиденциальность -> Камера -> %@";
 
 /* No comment provided by engineer. */
-"\nDO NOT let anyone see your recovery\nphrase or they can spend your $PAC.\n" = "\nНЕ ПОЗВОЛЯЕТЕ никому видеть Вашу фразу восстановления,\nиначе они смогут потратить Ваши $PAC.\n";
+"\nDO NOT let anyone see your recovery\nphrase or they can spend your $PAC.\n" = "\nНЕ ПОЗВОЛЯЙТЕ никому видеть Вашу фразу восстановления,\nиначе они смогут потратить Ваши $PAC.\n";
 
 /* No comment provided by engineer. */
 "\nDO NOT take a screenshot.\nScreenshots are visible to other apps\nand devices.\n" = "\nНЕ ДЕЛАЙТЕ скриншот.\nСкриншоты видны другим приложениям\nи устройствам.\n";
@@ -643,3 +643,24 @@
 
 /* No comment provided by engineer. */
 "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain." = "Возможно, Ваш кошелек рассинхронизирован.\nОбычно, это может быть исправлено путём повторного сканирования цепочки блоков.";
+
+/* No comment provided by engineer. */
+"remind me later" = "Напомнить позже";
+
+/* No comment provided by engineer. */
+"About PAC Wallet" = "О PAC Кошельке";
+
+/* No comment provided by engineer. */
+"no transactions" = "Нет транзакций";
+
+/* No comment provided by engineer. */
+"amount" = "Количество";
+
+/* No comment provided by engineer. */
+"destination address:" = "Адрес назначения:";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "Транзакция не может быть выполнена, поскольку она превышает лимит мгновенной отправки";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "Транзакция не разрешена";

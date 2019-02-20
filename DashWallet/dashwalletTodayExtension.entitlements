@@ -4,9 +4,13 @@
 <dict>
 	<key>aps-environment</key>
 	<string>development</string>
+	<key>com.apple.developer.nfc.readersession.formats</key>
+	<array>
+		<string>NDEF</string>
+	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.org.paccoin.mobilewallet</string>
+		<string>group.net.paccoin.pacmobilewallet</string>
 	</array>
 </dict>
 </plist>

@@ -643,3 +643,24 @@
 
 /* No comment provided by engineer. */
 "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain." = "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain.";
+
+/* No comment provided by engineer. */
+"remind me later" = "Remind me later";
+
+/* No comment provided by engineer. */
+"About PAC Wallet" = "O peňaženke PAC";
+
+/* No comment provided by engineer. */
+"no transactions" = "žiadne transakcie";
+
+/* No comment provided by engineer. */
+"amount" = "čiastka";
+
+/* No comment provided by engineer. */
+"destination address:" = "Cieľová adresa:";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "Transakciu nemožno vykonať, pretože prekračuje limit okamžitého odoslania";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "Transakcia nie je povolená";

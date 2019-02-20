@@ -643,3 +643,24 @@
 
 /* No comment provided by engineer. */
 "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain." = "Твоят портфейл вероятно не е синхронизиран.\nТова обикновено се фиксира след сканиране на блок веригата.";
+
+/* No comment provided by engineer. */
+"remind me later" = "напомни ми по-късно";
+
+/* No comment provided by engineer. */
+"About PAC Wallet" = "За PAC Wallet";
+
+/* No comment provided by engineer. */
+"no transactions" = "няма транзакции";
+
+/* No comment provided by engineer. */
+"amount" = "Количество";
+
+/* No comment provided by engineer. */
+"destination address:" = "Адрес на дестинацията:";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "Транзакцията не може да бъде извършена, защото превишава лимита за моментално изпращане";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "Транзакцията не е разрешена";

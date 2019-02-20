@@ -643,3 +643,24 @@
 
 /* No comment provided by engineer. */
 "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain." = "Din lommebok er usynkronisert.\nDette kan ofte fikses ved å skanne blokkjeden om igjen.";
+
+/* No comment provided by engineer. */
+"remind me later" = "påminn meg senere";
+
+/* No comment provided by engineer. */
+"About PAC Wallet" = "Om PAC Wallet";
+
+/* No comment provided by engineer. */
+"no transactions" = "ingen transaksjoner";
+
+/* No comment provided by engineer. */
+"amount" = "beløp";
+
+/* No comment provided by engineer. */
+"destination address:" = "Ankomstadresse:";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "Transaksjonen kan ikke gjøres fordi den overskrider grensen for øyeblikkelig sending";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "Transaksjon ikke tillatt";

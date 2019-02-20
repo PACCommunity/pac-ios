@@ -643,3 +643,24 @@
 
 /* No comment provided by engineer. */
 "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain." = "지갑이 동기화 돼있지 않은 것 같습니다.\n보통 블록체인을 재스캔하면 고쳐집니다.";
+
+/* No comment provided by engineer. */
+"remind me later" = "나중에";
+
+/* No comment provided by engineer. */
+"About PAC Wallet" = "PAC 지갑 정보";
+
+/* No comment provided by engineer. */
+"no transactions" = "거래 없음";
+
+/* No comment provided by engineer. */
+"amount" = "금액";
+
+/* No comment provided by engineer. */
+"destination address:" = "대상 주소 :";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "즉시 전송 한도를 초과하여 거래를 할 수 없습니다.";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "거래를 허용하지 않음";

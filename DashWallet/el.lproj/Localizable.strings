@@ -643,3 +643,24 @@
 
 /* No comment provided by engineer. */
 "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain." = "Το πορτοφόλι σας μπορεί να είναι εκτός συγχρονισμού. Αυτό μπορεί συχνά να διορθωθεί με την επανεξέταση των μπλόκ συναλλαγών.";
+
+/* No comment provided by engineer. */
+"remind me later" = "υπενθύμιση αργότερα";
+
+/* No comment provided by engineer. */
+"About PAC Wallet" = "Σχετικά με το πορτοφόλι PAC";
+
+/* No comment provided by engineer. */
+"no transactions" = "δεν υπάρχουν συναλλαγές";
+
+/* No comment provided by engineer. */
+"amount" = "Ποσό";
+
+/* No comment provided by engineer. */
+"destination address:" = "Διεύθυνση προορισμού:";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "Η συναλλαγή δεν μπορεί να γίνει επειδή υπερβαίνει το όριο της στιγμιαίας αποστολής";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "Η συναλλαγή δεν επιτρέπεται";

@@ -49,13 +49,13 @@
 #define UNSPENT_FAILOVER_URL @"http://explorer.foxrtb.com/insight/addrs/utxo"
 #define FEE_PER_KB_URL       0 //not supported @"https://api.breadwallet.com/fee-per-kb"
 #define BITCOIN_TICKER_URL  @"https://bitpay.com/rates"
-#define PAC_PRICE_URL        @"https://api.masternodes.work/pac/price"
+#define PAC_PRICE_URL        @"http://explorer.pachub.io/api/currency/USD"
 #define POLONIEX_TICKER_URL  @"https://poloniex.com/public?command=returnOrderBook&currencyPair=BTC_$PAC&depth=1"
 #define DASHCENTRAL_TICKER_URL  @"https://www.dashcentral.org/api/v1/public"
 #define TICKER_REFRESH_TIME 60.0
 
 #define SEED_ENTROPY_LENGTH   (128/8)
-#define SEC_ATTR_SERVICE      @"org.paccoin.mobilewallet"
+#define SEC_ATTR_SERVICE      @"net.paccoin.pacmobilewallet"
 #define DEFAULT_CURRENCY_CODE @"USD"
 #define DEFAULT_SPENT_LIMIT   DUFFS
 
@@ -1299,13 +1299,14 @@ typedef BOOL (^PinVerificationBlock)(NSString * _Nonnull currentPin,BRWalletMana
                                              if (now > self.secureTime) [defs setDouble:now forKey:SECURE_TIME_KEY];
                                          }
                                          NSError *error = nil;
-                                         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                                         NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-                                         NSLocale *usa = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
-                                         numberFormatter.locale = usa;
-                                         numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
                                          
-                                         NSString* priceString = [json objectForKey:@"btc"];
+                                         //main object response
+                                         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+                                         
+                                         //get data object from json
+                                         NSDictionary *dataDict = json[@"data"];
+                                         
+                                         NSString* priceString = [dataDict objectForKey:@"btc_pac"];
                                          if (priceString) {
                                              NSNumber *lastTradePriceNumber = @([priceString floatValue]);
                                              NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];

@@ -107,10 +107,10 @@ class BRAWBalanceInterfaceController: WKInterfaceController {
         self.transactionHeaderContainer.setHidden(newTransactionCount == 0)
         // insert or delete rows to match number of transactions
         if (numberRowsToInsertOrDelete > 0) {
-            let ixs = IndexSet(integersIn: NSMakeRange(currentTableRowCount, numberRowsToInsertOrDelete).toRange() ?? 0..<0)
+            let ixs = IndexSet(integersIn: currentTableRowCount..<(numberRowsToInsertOrDelete))
             table.insertRows(at: ixs, withRowType: "BRAWTransactionRowControl")
         } else {
-            let ixs = IndexSet(integersIn: NSMakeRange(newTransactionCount, abs(numberRowsToInsertOrDelete)).toRange() ?? 0..<0)
+            let ixs = IndexSet(integersIn: newTransactionCount..<(abs(numberRowsToInsertOrDelete)))
             table.removeRows(at: ixs)
         }
         // update row content
@@ -123,7 +123,7 @@ class BRAWBalanceInterfaceController: WKInterfaceController {
     
     func updateRow(_ rowControl: BRAWTransactionRowControl, transaction: BRAppleWatchTransactionData) {
         let localCurrencyAmount
-            = (transaction.amountTextInLocalCurrency.characters.count > 2) ? transaction.amountTextInLocalCurrency : " "
+            = (transaction.amountTextInLocalCurrency.count > 2) ? transaction.amountTextInLocalCurrency : " "
         rowControl.amountLabel.setText(transaction.amountText)
         rowControl.localCurrencyAmount.setText(localCurrencyAmount)
         rowControl.dateLabel.setText(transaction.dateText)

@@ -28,7 +28,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>org.paccoin.mobilewallet</string>
+	<string>net.paccoin.pacmobilewallet</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>

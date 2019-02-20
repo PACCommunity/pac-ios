@@ -644,3 +644,23 @@
 /* No comment provided by engineer. */
 "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain." = "あなたのウォレットが同期されていない可能性があります。\nブロックチェーンの再スキャンを行うと直ることが大半です。";
 
+/* No comment provided by engineer. */
+"remind me later" = "後で通知して下さい";
+
+/* No comment provided by engineer. */
+"About PAC Wallet" = "PACウォレットについて";
+
+/* No comment provided by engineer. */
+"no transactions" = "取引がありません";
+
+/* No comment provided by engineer. */
+"amount" = "金額";
+
+/* No comment provided by engineer. */
+"destination address:" = "宛先アドレス";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "即時送信の制限を超えているため、トランザクションを作成できません";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "取引は許可されていません";

@@ -28,7 +28,9 @@
 #import "BRPeerManager.h"
 #import "NSMutableData+Bitcoin.h"
 #import "BREventManager.h"
-
+#import "BRImageViewLogo.h"
+#import "UIColor+AppColors.h"
+#import "BRBorderedView.h"
 
 #define LABEL_MARGIN       20.0
 #define WRITE_TOGGLE_DELAY 15.0
@@ -41,11 +43,13 @@
 //TODO: create a secure version of UILabel and use it for seedLabel, but make sure there's an accessibility work around
 @property (nonatomic, strong) IBOutlet UILabel *seedLabel, *writeLabel;
 @property (nonatomic, strong) IBOutlet UIButton *writeButton;
-@property (nonatomic, strong) IBOutlet UIToolbar *toolbar;
-@property (nonatomic, strong) IBOutlet UIBarButtonItem *remindButton, *doneButton;
+@property (nonatomic, strong) IBOutlet UIButton *remindButton;
 @property (nonatomic, strong) IBOutlet UIImageView *wallpaper;
-
 @property (nonatomic, strong) id resignActiveObserver, screenshotObserver;
+@property (weak, nonatomic) IBOutlet BRBorderedView *borderedView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
+
 
 @end
 
@@ -91,16 +95,24 @@
     
     if (self.navigationController.viewControllers.firstObject != self) {
         self.wallpaper.hidden = YES;
-        self.view.backgroundColor = [UIColor redColor];
+        self.borderedView.borderColor = UIColor.blackColor;
+        self.seedLabel.textColor = UIColor.blackColor;
+        self.titleLabel.shadowColor = UIColor.clearColor;
+        self.titleLabel.textColor = UIColor.blackColor;
+        self.subTitleLabel.textColor = UIColor.blackColor;
+        self.writeLabel.textColor = UIColor.blackColor;
+        self.writeButton.tintColor = UIColor.blackColor;
+        self.view.backgroundColor = [UIColor yellowPACColor];
     }
     
-    self.doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"done", nil)
-                       style:UIBarButtonItemStylePlain target:self action:@selector(done:)];
+    [self.remindButton setTitle:NSLocalizedString(@"remind me later", nil) forState:UIControlStateNormal];
+    self.navigationItem.titleView = [BRImageViewLogo imageViewWithPACLogo];
     
     
 #if DEBUG
     self.seedLabel.userInteractionEnabled = YES; // allow clipboard copy only for debug builds
 #endif
+    
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle {
@@ -115,7 +127,7 @@
  
     // remove done button if we're not the root of the nav stack
     if (self.navigationController.viewControllers.firstObject != self) {
-        self.toolbar.hidden = YES;
+        self.remindButton.hidden = YES;
     }
     else delay *= 2; // extra delay before showing toggle when starting a new wallet
     
@@ -262,12 +274,12 @@
     NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
 
     if ([defs boolForKey:WALLET_NEEDS_BACKUP_KEY]) {
-        [self.toolbar setItems:@[self.toolbar.items[0], self.doneButton] animated:YES];
+        [self.remindButton setTitle:NSLocalizedString(@"done", nil) forState:UIControlStateNormal];
         [self.writeButton setImage:[UIImage imageNamed:@"checkbox-checked"] forState:UIControlStateNormal];
         [defs removeObjectForKey:WALLET_NEEDS_BACKUP_KEY];
     }
     else {
-        [self.toolbar setItems:@[self.toolbar.items[0], self.remindButton] animated:YES];
+        [self.remindButton setTitle:NSLocalizedString(@"remind me later", nil) forState:UIControlStateNormal];
         [self.writeButton setImage:[UIImage imageNamed:@"checkbox-empty"] forState:UIControlStateNormal];
         [defs setBool:YES forKey:WALLET_NEEDS_BACKUP_KEY];
     }

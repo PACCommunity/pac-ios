@@ -72,7 +72,7 @@
 "\ntry again in %d %@" = "\ntry again in %1$d %2$@";
 
 /* No comment provided by engineer. */
-"about" = "about";
+"about" = "About";
 
 /* No comment provided by engineer. */
 "always require passcode" = "always require passcode";
@@ -126,7 +126,7 @@
 "change" = "change";
 
 /* No comment provided by engineer. */
-"change passcode" = "change passcode";
+"change passcode" = "Change passcode";
 
 /* No comment provided by engineer. */
 "change payment amount?" = "change payment amount?";
@@ -228,7 +228,7 @@
 "enable" = "enable";
 
 /* No comment provided by engineer. */
-"enable receive notifications" = "enable receive notifications";
+"enable receive notifications" = "Enable receive notifications";
 
 /* No comment provided by engineer. */
 "enter" = "enter";
@@ -249,7 +249,7 @@
 "failed wallet update" = "failed wallet update";
 
 /* No comment provided by engineer. */
-"from:" = "from:";
+"from:" = "From:";
 
 /* No comment provided by engineer. */
 "hour" = "hour";
@@ -258,7 +258,7 @@
 "hours" = "hours";
 
 /* No comment provided by engineer. */
-"id:" = "id:";
+"id:" = "ID:";
 
 /* No comment provided by engineer. */
 "If you still would like to wipe it please input : \"I accept that I will lose my coins if I no longer possess the recovery phrase\"" = "If you still would like to wipe it please input : \"I accept that I will lose my coins if I no longer possess the recovery phrase\"";
@@ -267,7 +267,7 @@
 "ignore" = "ignore";
 
 /* No comment provided by engineer. */
-"import private key" = "import private key";
+"import private key" = "Import private key";
 
 /* No comment provided by engineer. */
 "IMPORTANT" = "IMPORTANT";
@@ -369,7 +369,7 @@
 "please enter pin to upgrade wallet" = "please enter pin to upgrade wallet";
 
 /* No comment provided by engineer. */
-"rate: %@ = %@\nupdated: %@\nblock #%d of %d\nconnected peers: %d\ndl peer: %@" = "rate: %@ = %@\nupdated: %@\nblock #%d of %d\nconnected peers: %d\ndl peer: %@";
+"rate: %@ = %@\nupdated: %@\nblock #%d of %d\nconnected peers: %d\ndl peer: %@" = "Rate: %@ = %@\nUpdated: %@\nBlock #%d of %d\nConnected Peers: %d\nDL Peer: %@";
 
 /* No comment provided by engineer. */
 "Receive $PAC at this address: %@" = "Receive $PAC at this address: %@";
@@ -381,7 +381,7 @@
 "received %@ (%@)" = "received %1$@ (%2$@)";
 
 /* recovery phrase */
-"recovery phrase" = "recovery phrase";
+"recovery phrase" = "Recovery phrase";
 
 /* No comment provided by engineer. */
 "recovery phrase doesn't match" = "recovery phrase doesn't match";
@@ -411,7 +411,7 @@
 "rescan" = "rescan";
 
 /* No comment provided by engineer. */
-"rescan blockchain" = "rescan blockchain";
+"rescan blockchain" = "Rescan blockchain";
 
 /* No comment provided by engineer. */
 "rescan blockchain if you think you may have missing transactions, or are having trouble sending (rescanning can take several minutes)" = "rescan blockchain if you think you may have missing transactions, or are having trouble sending (rescanning can take several minutes)";
@@ -468,7 +468,7 @@
 "set a trusted node" = "set a trusted node";
 
 /* No comment provided by engineer. */
-"settings" = "settings";
+"Settings" = "settings";
 
 /* No comment provided by engineer. */
 "shapeshift bitcoin id:" = "shapeshift bitcoin id:";
@@ -546,7 +546,7 @@
 "This wallet is not empty or sync has not finished, you may not wipe it without the recovery phrase" = "This wallet is not empty or sync has not finished, you may not wipe it without the recovery phrase";
 
 /* No comment provided by engineer. */
-"to:" = "to:";
+"to:" = "To:";
 
 /* No comment provided by engineer. */
 "to: %@" = "to: %@";
@@ -555,7 +555,7 @@
 "to: %@ (via Shapeshift)" = "to: %@ (via Shapeshift)";
 
 /* No comment provided by engineer. */
-"touch id limit" = "touch id limit";
+"touch id limit" = "Touch id limit";
 
 /* No comment provided by engineer. */
 "touch id spending limit" = "touch id spending limit";
@@ -643,3 +643,24 @@
 
 /* No comment provided by engineer. */
 "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain." = "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain.";
+
+/* No comment provided by engineer. */
+"remind me later" = "Remind me later";
+
+/* No comment provided by engineer. */
+"About PAC Wallet" = "About PAC Wallet";
+
+/* No comment provided by engineer. */
+"no transactions" = "No transactions";
+
+/* No comment provided by engineer. */
+"amount" = "Amount";
+
+/* No comment provided by engineer. */
+"destination address:" = "Destination address:";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "The transaction cannot be made because it exceeds the limit of instant send";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "Transaction not allowed";

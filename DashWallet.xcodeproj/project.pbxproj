@@ -28,6 +28,36 @@
 		2AC92C8A1FEB0B8B008CAEE0 /* BRQRScanViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AC92C891FEB0B8B008CAEE0 /* BRQRScanViewModel.m */; };
 		31D68B531C23B6C10030FAAA /* DashWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D68B521C23B6C10030FAAA /* DashWalletUITests.swift */; };
 		31D68B5B1C23B6FD0030FAAA /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D68B5A1C23B6FD0030FAAA /* SnapshotHelper.swift */; };
+		392E077121FE4FDA00F04BAD /* BRHistoryActionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 392E077021FE4FDA00F04BAD /* BRHistoryActionCell.m */; };
+		392E077421FE66E500F04BAD /* BRHistoryNoTxCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 392E077321FE66E500F04BAD /* BRHistoryNoTxCell.m */; };
+		3939345121F170460016D2A3 /* UIColor+Hexadecimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 3939345021F170460016D2A3 /* UIColor+Hexadecimal.m */; };
+		3939345421F173680016D2A3 /* UIColor+AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 3939345321F173680016D2A3 /* UIColor+AppColors.m */; };
+		3939FD712207FD690093A1FF /* UIFont+CustomFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 3939FD702207FD680093A1FF /* UIFont+CustomFont.m */; };
+		3939FD7A2207FDD80093A1FF /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3939FD732207FDD50093A1FF /* Montserrat-SemiBold.ttf */; };
+		3939FD7B2207FDD80093A1FF /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3939FD742207FDD60093A1FF /* Montserrat-Medium.ttf */; };
+		3939FD7C2207FDD80093A1FF /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3939FD752207FDD60093A1FF /* Montserrat-Italic.ttf */; };
+		3939FD7D2207FDD80093A1FF /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3939FD762207FDD70093A1FF /* Montserrat-Bold.ttf */; };
+		3939FD7E2207FDD80093A1FF /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3939FD772207FDD70093A1FF /* Montserrat-Regular.ttf */; };
+		3939FD7F2207FDD80093A1FF /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3939FD782207FDD80093A1FF /* Montserrat-Light.ttf */; };
+		3939FD802207FDD80093A1FF /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3939FD792207FDD80093A1FF /* Montserrat-Black.ttf */; };
+		3969628122000E6C00AAFAFD /* BRHistoryTransactionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3969628022000E6C00AAFAFD /* BRHistoryTransactionCell.m */; };
+		396962842200140200AAFAFD /* BRTransaction+Date.m in Sources */ = {isa = PBXBuildFile; fileRef = 396962832200140200AAFAFD /* BRTransaction+Date.m */; };
+		397060FD21F81D3800FC07B1 /* NSString+Attributed.m in Sources */ = {isa = PBXBuildFile; fileRef = 397060FC21F81D3800FC07B1 /* NSString+Attributed.m */; };
+		3972E1432216716F0081B8BE /* UIColor+AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 3939345321F173680016D2A3 /* UIColor+AppColors.m */; };
+		3972E144221671BA0081B8BE /* UIColor+Hexadecimal.m in Sources */ = {isa = PBXBuildFile; fileRef = 3939345021F170460016D2A3 /* UIColor+Hexadecimal.m */; };
+		397DF245220BCF79003E541A /* BRMessageComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397DF244220BCF79003E541A /* BRMessageComposeViewController.m */; };
+		397DF248220BD1A4003E541A /* BRMailComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 397DF247220BD1A4003E541A /* BRMailComposeViewController.m */; };
+		397DF24B220BD665003E541A /* BRRoundedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 397DF24A220BD665003E541A /* BRRoundedLabel.m */; };
+		397DF24E220BFE7A003E541A /* BRSemiRoundedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 397DF24D220BFE7A003E541A /* BRSemiRoundedButton.m */; };
+		399C1A3E22017B0000D121F8 /* BRCustomSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 399C1A3D22017B0000D121F8 /* BRCustomSwitch.m */; };
+		39A2C59021EF06CC00DDB1E3 /* BRRoundedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C58C21EF06CA00DDB1E3 /* BRRoundedButton.m */; };
+		39A2C59121EF06CC00DDB1E3 /* BRRoundedBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C58D21EF06CB00DDB1E3 /* BRRoundedBorderedButton.m */; };
+		39A2C59221EF06CC00DDB1E3 /* BRImageViewLogo.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C58E21EF06CB00DDB1E3 /* BRImageViewLogo.m */; };
+		39A2C59521EF0B2300DDB1E3 /* BRPacNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C59421EF0B2300DDB1E3 /* BRPacNavigationController.m */; };
+		39E35F0822051EB8002363C9 /* BRSemiRoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E35F0722051EB8002363C9 /* BRSemiRoundedView.m */; };
+		39E35F0B22052140002363C9 /* BRSemiRoundedBorderedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E35F0A22052140002363C9 /* BRSemiRoundedBorderedView.m */; };
+		39EA5346221BCF4C00E5E3D7 /* NSNumber+PrimitiveComparison.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EA5345221BCF4C00E5E3D7 /* NSNumber+PrimitiveComparison.m */; };
+		39EF817A21F2AF5000F51AEB /* BRBorderedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EF817921F2AF5000F51AEB /* BRBorderedView.m */; };
 		42FA916C11654751C6DA3A46 /* libPods-pacwallet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8449DC316E2D67D98F173D00 /* libPods-pacwallet.a */; };
 		751B2B5C1B68911700EA87FB /* BRTxHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 751B2B5B1B68911700EA87FB /* BRTxHistoryViewController.m */; };
 		7525B619192453840041C0F2 /* BRNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7525B618192453840041C0F2 /* BRNavigationBar.m */; };
@@ -240,6 +270,55 @@
 		31D68B521C23B6C10030FAAA /* DashWalletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashWalletUITests.swift; sourceTree = "<group>"; };
 		31D68B541C23B6C10030FAAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		31D68B5A1C23B6FD0030FAAA /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		392E076F21FE4FDA00F04BAD /* BRHistoryActionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRHistoryActionCell.h; sourceTree = "<group>"; };
+		392E077021FE4FDA00F04BAD /* BRHistoryActionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRHistoryActionCell.m; sourceTree = "<group>"; };
+		392E077221FE66E500F04BAD /* BRHistoryNoTxCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRHistoryNoTxCell.h; sourceTree = "<group>"; };
+		392E077321FE66E500F04BAD /* BRHistoryNoTxCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRHistoryNoTxCell.m; sourceTree = "<group>"; };
+		3939344F21F170460016D2A3 /* UIColor+Hexadecimal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hexadecimal.h"; sourceTree = "<group>"; };
+		3939345021F170460016D2A3 /* UIColor+Hexadecimal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hexadecimal.m"; sourceTree = "<group>"; };
+		3939345221F173680016D2A3 /* UIColor+AppColors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppColors.h"; sourceTree = "<group>"; };
+		3939345321F173680016D2A3 /* UIColor+AppColors.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppColors.m"; sourceTree = "<group>"; };
+		3939FD6F2207FD680093A1FF /* UIFont+CustomFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+CustomFont.h"; sourceTree = "<group>"; };
+		3939FD702207FD680093A1FF /* UIFont+CustomFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+CustomFont.m"; sourceTree = "<group>"; };
+		3939FD732207FDD50093A1FF /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		3939FD742207FDD60093A1FF /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		3939FD752207FDD60093A1FF /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
+		3939FD762207FDD70093A1FF /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		3939FD772207FDD70093A1FF /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		3939FD782207FDD80093A1FF /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
+		3939FD792207FDD80093A1FF /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
+		3969627F22000E6C00AAFAFD /* BRHistoryTransactionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRHistoryTransactionCell.h; sourceTree = "<group>"; };
+		3969628022000E6C00AAFAFD /* BRHistoryTransactionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRHistoryTransactionCell.m; sourceTree = "<group>"; };
+		396962822200140200AAFAFD /* BRTransaction+Date.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BRTransaction+Date.h"; sourceTree = "<group>"; };
+		396962832200140200AAFAFD /* BRTransaction+Date.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BRTransaction+Date.m"; sourceTree = "<group>"; };
+		397060FB21F81D3800FC07B1 /* NSString+Attributed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Attributed.h"; sourceTree = "<group>"; };
+		397060FC21F81D3800FC07B1 /* NSString+Attributed.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Attributed.m"; sourceTree = "<group>"; };
+		397DF243220BCF79003E541A /* BRMessageComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMessageComposeViewController.h; sourceTree = "<group>"; };
+		397DF244220BCF79003E541A /* BRMessageComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMessageComposeViewController.m; sourceTree = "<group>"; };
+		397DF246220BD1A4003E541A /* BRMailComposeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRMailComposeViewController.h; sourceTree = "<group>"; };
+		397DF247220BD1A4003E541A /* BRMailComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRMailComposeViewController.m; sourceTree = "<group>"; };
+		397DF249220BD665003E541A /* BRRoundedLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRRoundedLabel.h; sourceTree = "<group>"; };
+		397DF24A220BD665003E541A /* BRRoundedLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRRoundedLabel.m; sourceTree = "<group>"; };
+		397DF24C220BFE7A003E541A /* BRSemiRoundedButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSemiRoundedButton.h; sourceTree = "<group>"; };
+		397DF24D220BFE7A003E541A /* BRSemiRoundedButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSemiRoundedButton.m; sourceTree = "<group>"; };
+		399C1A3C22017B0000D121F8 /* BRCustomSwitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRCustomSwitch.h; sourceTree = "<group>"; };
+		399C1A3D22017B0000D121F8 /* BRCustomSwitch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRCustomSwitch.m; sourceTree = "<group>"; };
+		39A2C58A21EF06C900DDB1E3 /* BRImageViewLogo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRImageViewLogo.h; sourceTree = "<group>"; };
+		39A2C58B21EF06CA00DDB1E3 /* BRRoundedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRRoundedButton.h; sourceTree = "<group>"; };
+		39A2C58C21EF06CA00DDB1E3 /* BRRoundedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRRoundedButton.m; sourceTree = "<group>"; };
+		39A2C58D21EF06CB00DDB1E3 /* BRRoundedBorderedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRRoundedBorderedButton.m; sourceTree = "<group>"; };
+		39A2C58E21EF06CB00DDB1E3 /* BRImageViewLogo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRImageViewLogo.m; sourceTree = "<group>"; };
+		39A2C58F21EF06CC00DDB1E3 /* BRRoundedBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRRoundedBorderedButton.h; sourceTree = "<group>"; };
+		39A2C59321EF0B2300DDB1E3 /* BRPacNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRPacNavigationController.h; sourceTree = "<group>"; };
+		39A2C59421EF0B2300DDB1E3 /* BRPacNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRPacNavigationController.m; sourceTree = "<group>"; };
+		39E35F0622051EB8002363C9 /* BRSemiRoundedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSemiRoundedView.h; sourceTree = "<group>"; };
+		39E35F0722051EB8002363C9 /* BRSemiRoundedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSemiRoundedView.m; sourceTree = "<group>"; };
+		39E35F0922052140002363C9 /* BRSemiRoundedBorderedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSemiRoundedBorderedView.h; sourceTree = "<group>"; };
+		39E35F0A22052140002363C9 /* BRSemiRoundedBorderedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSemiRoundedBorderedView.m; sourceTree = "<group>"; };
+		39EA5344221BCF4C00E5E3D7 /* NSNumber+PrimitiveComparison.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumber+PrimitiveComparison.h"; sourceTree = "<group>"; };
+		39EA5345221BCF4C00E5E3D7 /* NSNumber+PrimitiveComparison.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+PrimitiveComparison.m"; sourceTree = "<group>"; };
+		39EF817821F2AF5000F51AEB /* BRBorderedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRBorderedView.h; sourceTree = "<group>"; };
+		39EF817921F2AF5000F51AEB /* BRBorderedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRBorderedView.m; sourceTree = "<group>"; };
 		3F38DCFEF402B5758E496206 /* Pods-pacwallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pacwallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pacwallet/Pods-pacwallet.debug.xcconfig"; sourceTree = "<group>"; };
 		4C7F2168B337F34AC59E771A /* Pods-pacwallet.testflight.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pacwallet.testflight.xcconfig"; path = "Pods/Target Support Files/Pods-pacwallet/Pods-pacwallet.testflight.xcconfig"; sourceTree = "<group>"; };
 		7509C10C1AF3076000D03FD5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -645,22 +724,153 @@
 			path = DashWalletUITests;
 			sourceTree = "<group>";
 		};
+		392E076C21FE4E5700F04BAD /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				39EF817821F2AF5000F51AEB /* BRBorderedView.h */,
+				39EF817921F2AF5000F51AEB /* BRBorderedView.m */,
+				75AA5F53194143D5003F23BD /* BRBouncyBurgerButton.h */,
+				75AA5F54194143D5003F23BD /* BRBouncyBurgerButton.m */,
+				759816E519357D6F005060EA /* BRBubbleView.h */,
+				759816E619357D6F005060EA /* BRBubbleView.m */,
+				7548CF3519556FD700EF827F /* BRCopyLabel.h */,
+				7548CF3619556FD700EF827F /* BRCopyLabel.m */,
+				399C1A3C22017B0000D121F8 /* BRCustomSwitch.h */,
+				399C1A3D22017B0000D121F8 /* BRCustomSwitch.m */,
+				220460531BA0BEEE00D07B61 /* BREventConfirmView.h */,
+				220460541BA0BEEE00D07B61 /* BREventConfirmView.m */,
+				755FC9EF1BF1DF1B00164ABB /* BREventConfirmView.xib */,
+				39A2C58A21EF06C900DDB1E3 /* BRImageViewLogo.h */,
+				39A2C58E21EF06CB00DDB1E3 /* BRImageViewLogo.m */,
+				7525B617192453840041C0F2 /* BRNavigationBar.h */,
+				7525B618192453840041C0F2 /* BRNavigationBar.m */,
+				39A2C58F21EF06CC00DDB1E3 /* BRRoundedBorderedButton.h */,
+				39A2C58D21EF06CB00DDB1E3 /* BRRoundedBorderedButton.m */,
+				39A2C58B21EF06CA00DDB1E3 /* BRRoundedButton.h */,
+				39A2C58C21EF06CA00DDB1E3 /* BRRoundedButton.m */,
+				397DF249220BD665003E541A /* BRRoundedLabel.h */,
+				397DF24A220BD665003E541A /* BRRoundedLabel.m */,
+				39E35F0922052140002363C9 /* BRSemiRoundedBorderedView.h */,
+				39E35F0A22052140002363C9 /* BRSemiRoundedBorderedView.m */,
+				397DF24C220BFE7A003E541A /* BRSemiRoundedButton.h */,
+				397DF24D220BFE7A003E541A /* BRSemiRoundedButton.m */,
+				39E35F0622051EB8002363C9 /* BRSemiRoundedView.h */,
+				39E35F0722051EB8002363C9 /* BRSemiRoundedView.m */,
+				22F45A0C1C3326CC00B07A15 /* BRUserDefaultsSwitchCell.h */,
+				22F45A0D1C3326CC00B07A15 /* BRUserDefaultsSwitchCell.m */,
+			);
+			name = "Custom Views";
+			sourceTree = "<group>";
+		};
+		392E076D21FE4E7000F04BAD /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				392E076E21FE4E8A00F04BAD /* Principal Menu */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		392E076E21FE4E8A00F04BAD /* Principal Menu */ = {
+			isa = PBXGroup;
+			children = (
+				392E076F21FE4FDA00F04BAD /* BRHistoryActionCell.h */,
+				392E077021FE4FDA00F04BAD /* BRHistoryActionCell.m */,
+				392E077221FE66E500F04BAD /* BRHistoryNoTxCell.h */,
+				392E077321FE66E500F04BAD /* BRHistoryNoTxCell.m */,
+				3969627F22000E6C00AAFAFD /* BRHistoryTransactionCell.h */,
+				3969628022000E6C00AAFAFD /* BRHistoryTransactionCell.m */,
+			);
+			name = "Principal Menu";
+			sourceTree = "<group>";
+		};
+		3939FD722207FDB50093A1FF /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3939FD792207FDD80093A1FF /* Montserrat-Black.ttf */,
+				3939FD762207FDD70093A1FF /* Montserrat-Bold.ttf */,
+				3939FD752207FDD60093A1FF /* Montserrat-Italic.ttf */,
+				3939FD782207FDD80093A1FF /* Montserrat-Light.ttf */,
+				3939FD742207FDD60093A1FF /* Montserrat-Medium.ttf */,
+				3939FD772207FDD70093A1FF /* Montserrat-Regular.ttf */,
+				3939FD732207FDD50093A1FF /* Montserrat-SemiBold.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		3939FD812207FDF40093A1FF /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				75D5F3DF191EC270004AB296 /* Images.xcassets */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		3939FD822207FE050093A1FF /* Plists */ = {
+			isa = PBXGroup;
+			children = (
+				75C0E3C11B1BA294007BC531 /* BIP39Words.plist */,
+				752E28F519235B3000DB5A3C /* FixedPeers.plist */,
+				75D5F3C9191EC270004AB296 /* Info.plist */,
+			);
+			name = Plists;
+			sourceTree = "<group>";
+		};
+		3939FD832207FE160093A1FF /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				757E09971ADB8EEB006FD352 /* Localizable.strings */,
+			);
+			name = Localization;
+			sourceTree = "<group>";
+		};
+		3939FD842207FE270093A1FF /* Core Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				752E2898192349CE00DB5A3C /* DashWallet.xcdatamodeld */,
+			);
+			name = "Core Data Models";
+			sourceTree = "<group>";
+		};
+		3939FD852207FE430093A1FF /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				75D5F3DC191EC270004AB296 /* Main.storyboard */,
+				75F2E0D21BE9803900EAE861 /* Launch Screen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		3939FD862207FE620093A1FF /* Entitlements */ = {
+			isa = PBXGroup;
+			children = (
+				FB6DD3811F7FA48500BC1E4D /* dashwallet.entitlements */,
+			);
+			name = Entitlements;
+			sourceTree = "<group>";
+		};
+		3939FD872207FE8F0093A1FF /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				75D5F3D0191EC270004AB296 /* BRAppDelegate.h */,
+				75D5F3D1191EC270004AB296 /* BRAppDelegate.m */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		3939FD882207FE9C0093A1FF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BA4EECDF1B351AE200D443A3 /* BRAppGroupConstants.h */,
+				22F45A0F1C3329EB00B07A15 /* BRUserDefaultsConstants.h */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		752E289B19234A3F00DB5A3C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7525B617192453840041C0F2 /* BRNavigationBar.h */,
-				7525B618192453840041C0F2 /* BRNavigationBar.m */,
-				759816E519357D6F005060EA /* BRBubbleView.h */,
-				759816E619357D6F005060EA /* BRBubbleView.m */,
-				75AA5F53194143D5003F23BD /* BRBouncyBurgerButton.h */,
-				75AA5F54194143D5003F23BD /* BRBouncyBurgerButton.m */,
-				7548CF3519556FD700EF827F /* BRCopyLabel.h */,
-				7548CF3619556FD700EF827F /* BRCopyLabel.m */,
-				755FC9EF1BF1DF1B00164ABB /* BREventConfirmView.xib */,
-				220460531BA0BEEE00D07B61 /* BREventConfirmView.h */,
-				220460541BA0BEEE00D07B61 /* BREventConfirmView.m */,
-				22F45A0C1C3326CC00B07A15 /* BRUserDefaultsSwitchCell.h */,
-				22F45A0D1C3326CC00B07A15 /* BRUserDefaultsSwitchCell.m */,
+				392E076D21FE4E7000F04BAD /* Cells */,
+				392E076C21FE4E5700F04BAD /* Custom Views */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -752,6 +962,18 @@
 				BA7B535B1BDBC36700355E8D /* BRTransaction+Utils.m */,
 				FB021E4D1E42EB5F00D17638 /* NSAttributedString+Attachments.h */,
 				FB021E4E1E42EB5F00D17638 /* NSAttributedString+Attachments.m */,
+				3939344F21F170460016D2A3 /* UIColor+Hexadecimal.h */,
+				3939345021F170460016D2A3 /* UIColor+Hexadecimal.m */,
+				3939345221F173680016D2A3 /* UIColor+AppColors.h */,
+				3939345321F173680016D2A3 /* UIColor+AppColors.m */,
+				397060FB21F81D3800FC07B1 /* NSString+Attributed.h */,
+				397060FC21F81D3800FC07B1 /* NSString+Attributed.m */,
+				396962822200140200AAFAFD /* BRTransaction+Date.h */,
+				396962832200140200AAFAFD /* BRTransaction+Date.m */,
+				3939FD6F2207FD680093A1FF /* UIFont+CustomFont.h */,
+				3939FD702207FD680093A1FF /* UIFont+CustomFont.m */,
+				39EA5344221BCF4C00E5E3D7 /* NSNumber+PrimitiveComparison.h */,
+				39EA5345221BCF4C00E5E3D7 /* NSNumber+PrimitiveComparison.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -852,6 +1074,12 @@
 				757BE7E2192C0E9D0061CB20 /* BRRestoreViewController.m */,
 				757BE7E7192D4E880061CB20 /* BRSeedViewController.h */,
 				757BE7E8192D4E880061CB20 /* BRSeedViewController.m */,
+				39A2C59321EF0B2300DDB1E3 /* BRPacNavigationController.h */,
+				39A2C59421EF0B2300DDB1E3 /* BRPacNavigationController.m */,
+				397DF243220BCF79003E541A /* BRMessageComposeViewController.h */,
+				397DF244220BCF79003E541A /* BRMessageComposeViewController.m */,
+				397DF246220BD1A4003E541A /* BRMailComposeViewController.h */,
+				397DF247220BD1A4003E541A /* BRMailComposeViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -912,24 +1140,15 @@
 		75D5F3C7191EC270004AB296 /* DashWallet */ = {
 			isa = PBXGroup;
 			children = (
+				3939FD872207FE8F0093A1FF /* AppDelegate */,
 				FBF267A61E414A58001A1C8B /* x11 */,
 				BAC7B6BF1BD9C2B500165B84 /* AppleWatch */,
 				752E289C19234A4700DB5A3C /* Models */,
 				752E289B19234A3F00DB5A3C /* Views */,
 				75BA5D02192296010040304C /* Controllers */,
 				752E28B019234B0500DB5A3C /* Categories */,
-				75D5F3D0191EC270004AB296 /* BRAppDelegate.h */,
-				75D5F3D1191EC270004AB296 /* BRAppDelegate.m */,
-				BA4EECDF1B351AE200D443A3 /* BRAppGroupConstants.h */,
-				22F45A0F1C3329EB00B07A15 /* BRUserDefaultsConstants.h */,
-				75D5F3DF191EC270004AB296 /* Images.xcassets */,
-				75D5F3DC191EC270004AB296 /* Main.storyboard */,
-				75F2E0D21BE9803900EAE861 /* Launch Screen.storyboard */,
-				752E2898192349CE00DB5A3C /* DashWallet.xcdatamodeld */,
-				75C0E3C11B1BA294007BC531 /* BIP39Words.plist */,
-				752E28F519235B3000DB5A3C /* FixedPeers.plist */,
-				75E83CF51B5F997A0038FB70 /* coinflip.aiff */,
-				FB6DD3811F7FA48500BC1E4D /* dashwallet.entitlements */,
+				3939FD852207FE430093A1FF /* Storyboards */,
+				3939FD882207FE9C0093A1FF /* Helpers */,
 				7579F7FE19231D4600CA56F4 /* ThirdParty */,
 				75D5F3C8191EC270004AB296 /* Supporting Files */,
 			);
@@ -939,10 +1158,15 @@
 		75D5F3C8191EC270004AB296 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				75D5F3C9191EC270004AB296 /* Info.plist */,
-				757E09971ADB8EEB006FD352 /* Localizable.strings */,
-				75D5F3CD191EC270004AB296 /* main.m */,
+				3939FD812207FDF40093A1FF /* Assets */,
+				3939FD842207FE270093A1FF /* Core Data Models */,
+				3939FD862207FE620093A1FF /* Entitlements */,
+				3939FD722207FDB50093A1FF /* Fonts */,
+				3939FD832207FE160093A1FF /* Localization */,
+				3939FD822207FE050093A1FF /* Plists */,
+				75E83CF51B5F997A0038FB70 /* coinflip.aiff */,
 				75D5F3CF191EC270004AB296 /* DashWallet-Prefix.pch */,
+				75D5F3CD191EC270004AB296 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1284,17 +1508,17 @@
 					BA913BDD1BD57E4D005A7C0E = {
 						CreatedOnToolsVersion = 7.0.1;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					BA913BE91BD57E4D005A7C0E = {
 						CreatedOnToolsVersion = 7.0.1;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					BAE12BE41B2DEE7F00895CC5 = {
 						CreatedOnToolsVersion = 6.3.2;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1361,12 +1585,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3939FD7F2207FDD80093A1FF /* Montserrat-Light.ttf in Resources */,
 				75D5F3E0191EC270004AB296 /* Images.xcassets in Resources */,
 				757E09991ADB8EEB006FD352 /* Localizable.strings in Resources */,
+				3939FD7C2207FDD80093A1FF /* Montserrat-Italic.ttf in Resources */,
 				75F2E0D31BE9803900EAE861 /* Launch Screen.storyboard in Resources */,
 				75C0E3BF1B1BA294007BC531 /* BIP39Words.plist in Resources */,
 				75E83CF61B5F997A0038FB70 /* coinflip.aiff in Resources */,
+				3939FD7E2207FDD80093A1FF /* Montserrat-Regular.ttf in Resources */,
 				755FC9ED1BF1DF1B00164ABB /* BREventConfirmView.xib in Resources */,
+				3939FD7B2207FDD80093A1FF /* Montserrat-Medium.ttf in Resources */,
+				3939FD7D2207FDD80093A1FF /* Montserrat-Bold.ttf in Resources */,
+				3939FD802207FDD80093A1FF /* Montserrat-Black.ttf in Resources */,
+				3939FD7A2207FDD80093A1FF /* Montserrat-SemiBold.ttf in Resources */,
 				752E28F719235B3000DB5A3C /* FixedPeers.plist in Resources */,
 				75D5F3DE191EC270004AB296 /* Main.storyboard in Resources */,
 			);
@@ -1487,7 +1718,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				22F04A001C9714EF00F137D8 /* BRUserDefaultsSwitchCell.m in Sources */,
+				39E35F0B22052140002363C9 /* BRSemiRoundedBorderedView.m in Sources */,
+				3939345421F173680016D2A3 /* UIColor+AppColors.m in Sources */,
 				752E28AA19234AE300DB5A3C /* BRAddressEntity.m in Sources */,
+				397DF248220BD1A4003E541A /* BRMailComposeViewController.m in Sources */,
 				75AA5F55194143D5003F23BD /* BRBouncyBurgerButton.m in Sources */,
 				752E28AB19234AE300DB5A3C /* BRMerkleBlockEntity.m in Sources */,
 				BA7B53501BDA9A2800355E8D /* BRAppleWatchData.m in Sources */,
@@ -1496,13 +1730,17 @@
 				FBF268041E414B93001A1C8B /* NSData+Pac.m in Sources */,
 				752E28AD19234AE300DB5A3C /* BRTransactionEntity.m in Sources */,
 				752E28AE19234AE300DB5A3C /* BRTxInputEntity.m in Sources */,
+				397DF245220BCF79003E541A /* BRMessageComposeViewController.m in Sources */,
+				39A2C59521EF0B2300DDB1E3 /* BRPacNavigationController.m in Sources */,
 				752E28AF19234AE300DB5A3C /* BRTxOutputEntity.m in Sources */,
+				397060FD21F81D3800FC07B1 /* NSString+Attributed.m in Sources */,
 				22DE8CF11D02407F007F07F3 /* BRWalletConstants.m in Sources */,
 				FBF2680F1E419318001A1C8B /* DSShapeshiftEntity+CoreDataProperties.m in Sources */,
 				BAA4843C1B3EFFAF0075C749 /* UIImage+Utils.m in Sources */,
 				BA7B535C1BDBC36700355E8D /* BRTransaction+Utils.m in Sources */,
 				758DBD0E1980634900389E2A /* BRTxDetailViewController.m in Sources */,
 				FB021E4F1E42EB5F00D17638 /* NSAttributedString+Attachments.m in Sources */,
+				39EF817A21F2AF5000F51AEB /* BRBorderedView.m in Sources */,
 				7548CF3719556FD700EF827F /* BRCopyLabel.m in Sources */,
 				2AC92C8A1FEB0B8B008CAEE0 /* BRQRScanViewModel.m in Sources */,
 				752E28D119234C3600DB5A3C /* BRKey.m in Sources */,
@@ -1510,9 +1748,13 @@
 				2204604E1B9F61E600D07B61 /* BREventManager.m in Sources */,
 				FBF267FD1E414AA2001A1C8B /* DSShapeshiftManager.m in Sources */,
 				752E28D219234C3600DB5A3C /* BRKey+BIP38.m in Sources */,
+				399C1A3E22017B0000D121F8 /* BRCustomSwitch.m in Sources */,
+				39A2C59121EF06CC00DDB1E3 /* BRRoundedBorderedButton.m in Sources */,
 				220460551BA0BEEE00D07B61 /* BREventConfirmView.m in Sources */,
 				752E28D919234C3600DB5A3C /* BRTransaction.m in Sources */,
+				39A2C59021EF06CC00DDB1E3 /* BRRoundedButton.m in Sources */,
 				752E28CE19234C3600DB5A3C /* BRBIP32Sequence.m in Sources */,
+				397DF24E220BFE7A003E541A /* BRSemiRoundedButton.m in Sources */,
 				BAC7B6BE1BD9C29900165B84 /* BRPhoneWCSessionManager.m in Sources */,
 				752E28CF19234C3600DB5A3C /* BRBIP39Mnemonic.m in Sources */,
 				752E28DA19234C3600DB5A3C /* BRWallet.m in Sources */,
@@ -1523,6 +1765,7 @@
 				752E28D619234C3600DB5A3C /* BRPeer.m in Sources */,
 				752E28D819234C3600DB5A3C /* BRPeerManager.m in Sources */,
 				752E28D419234C3600DB5A3C /* BRPaymentProtocol.m in Sources */,
+				39EA5346221BCF4C00E5E3D7 /* NSNumber+PrimitiveComparison.m in Sources */,
 				752E28D519234C3600DB5A3C /* BRPaymentRequest.m in Sources */,
 				7525B619192453840041C0F2 /* BRNavigationBar.m in Sources */,
 				75F2E0D61BEAA6A400EAE861 /* BRTxMetadataEntity.m in Sources */,
@@ -1531,26 +1774,35 @@
 				759816E719357D6F005060EA /* BRBubbleView.m in Sources */,
 				757BE7E3192C0E9D0061CB20 /* BRRestoreViewController.m in Sources */,
 				757BE7E6192C1FF70061CB20 /* BRWelcomeViewController.m in Sources */,
+				39E35F0822051EB8002363C9 /* BRSemiRoundedView.m in Sources */,
 				757BE7E9192D4E880061CB20 /* BRSeedViewController.m in Sources */,
+				392E077121FE4FDA00F04BAD /* BRHistoryActionCell.m in Sources */,
 				752E28E719234DA200DB5A3C /* NSData+Bitcoin.m in Sources */,
+				396962842200140200AAFAFD /* BRTransaction+Date.m in Sources */,
 				2AC92C841FEB0A6D008CAEE0 /* BRQRScanViewController.m in Sources */,
+				397DF24B220BD665003E541A /* BRRoundedLabel.m in Sources */,
 				FB9CC2711F8E27B80079309F /* DWGenerateViewController.m in Sources */,
+				3939345121F170460016D2A3 /* UIColor+Hexadecimal.m in Sources */,
 				220128D31C753C670001CAC1 /* BRSocketHelpers.c in Sources */,
 				752E28E919234DA200DB5A3C /* NSManagedObject+Sugar.m in Sources */,
 				BA7B53541BDAA0A800355E8D /* BRAppleWatchTransactionData.m in Sources */,
 				FB021E571E47E17200D17638 /* FBShimmeringView.m in Sources */,
+				392E077421FE66E500F04BAD /* BRHistoryNoTxCell.m in Sources */,
 				FBF267A11E414877001A1C8B /* NSString+Pac.m in Sources */,
 				FB021E5B1E4DEFE800D17638 /* MBProgressHUD.m in Sources */,
+				39A2C59221EF06CC00DDB1E3 /* BRImageViewLogo.m in Sources */,
 				751B2B5C1B68911700EA87FB /* BRTxHistoryViewController.m in Sources */,
 				2AC92C871FEB0AE8008CAEE0 /* BRQRScanView.m in Sources */,
 				752E28EA19234DA200DB5A3C /* NSMutableData+Bitcoin.m in Sources */,
 				752E28EB19234DA200DB5A3C /* NSString+Bitcoin.m in Sources */,
+				3969628122000E6C00AAFAFD /* BRHistoryTransactionCell.m in Sources */,
 				757C89521A2FCE420076B373 /* BRSettingsViewController.m in Sources */,
 				75D5F3D2191EC270004AB296 /* BRAppDelegate.m in Sources */,
 				759FBB36193290F600AB4465 /* BRRootViewController.m in Sources */,
 				752E289A192349CE00DB5A3C /* DashWallet.xcdatamodeld in Sources */,
 				759FBB37193290F600AB4465 /* BRSendViewController.m in Sources */,
 				752E28F119234E8100DB5A3C /* Reachability.m in Sources */,
+				3939FD712207FD690093A1FF /* UIFont+CustomFont.m in Sources */,
 				75D5F3CE191EC270004AB296 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1590,7 +1842,9 @@
 				22DE8CF21D02407F007F07F3 /* BRWalletConstants.m in Sources */,
 				2204604F1B9F61E600D07B61 /* BREventManager.m in Sources */,
 				BAE12C061B2DEEF700895CC5 /* BRTodayViewController.m in Sources */,
+				3972E1432216716F0081B8BE /* UIColor+AppColors.m in Sources */,
 				FB3FA3D61F2364140071FCC5 /* UIImage+Utils.m in Sources */,
+				3972E144221671BA0081B8BE /* UIColor+Hexadecimal.m in Sources */,
 				FBF267FE1E414AA2001A1C8B /* DSShapeshiftManager.m in Sources */,
 				75E2503F1B7691C900A2BB2B /* BRBubbleView.m in Sources */,
 			);
@@ -1952,8 +2206,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = dashwallet/dashwallet.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_ENTITLEMENTS = DashWallet/dashwallet.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
@@ -1968,7 +2222,7 @@
 				);
 				INFOPLIST_FILE = DashWallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet;
+				PRODUCT_BUNDLE_IDENTIFIER = net.paccoin.pacmobilewallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1986,12 +2240,12 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = dashwallet/dashwallet.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_ENTITLEMENTS = DashWallet/dashwallet.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = 3Z46VJKC57;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DashWallet/DashWallet-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -2002,10 +2256,10 @@
 				);
 				INFOPLIST_FILE = DashWallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet;
+				PRODUCT_BUNDLE_IDENTIFIER = net.paccoin.pacmobilewallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e1cd75e6-8b80-4048-9956-8ef7bea0289d";
-				PROVISIONING_PROFILE_SPECIFIER = "Pac Wallet";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -2056,12 +2310,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "";
 				IBSC_MODULE = WatchApp_Extension;
 				INFOPLIST_FILE = WatchApp/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = net.paccoin.pacmobilewallet.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2077,17 +2331,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = 3Z46VJKC57;
+				DEVELOPMENT_TEAM = 66F4S3PJ79;
 				IBSC_MODULE = WatchApp_Extension;
 				INFOPLIST_FILE = WatchApp/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = net.paccoin.pacmobilewallet.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1ee568b8-070d-417e-8038-d34808b5f300";
-				PROVISIONING_PROFILE_SPECIFIER = "Pac Any";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -2100,18 +2353,19 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 66F4S3PJ79;
 				INFOPLIST_FILE = "WatchApp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = net.paccoin.pacmobilewallet.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "WatchApp Extension/WatchApp Extension-Bridging-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -2120,20 +2374,20 @@
 		BA913BFE1BD57E4E005A7C0E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = 3Z46VJKC57;
+				DEVELOPMENT_TEAM = 66F4S3PJ79;
 				INFOPLIST_FILE = "WatchApp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = net.paccoin.pacmobilewallet.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "1ee568b8-070d-417e-8038-d34808b5f300";
-				PROVISIONING_PROFILE_SPECIFIER = "Pac Any";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "WatchApp Extension/WatchApp Extension-Bridging-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -2142,10 +2396,10 @@
 		BAE12BF31B2DEE7F00895CC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = dashwallet/dashwalletTodayExtension.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = DashWallet/dashwalletTodayExtension.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
@@ -2154,7 +2408,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = net.paccoin.pacmobilewallet.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2167,23 +2421,22 @@
 		BAE12BF51B2DEE7F00895CC5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = dashwallet/dashwalletTodayExtension.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_ENTITLEMENTS = DashWallet/dashwalletTodayExtension.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 3Z46VJKC57;
+				DEVELOPMENT_TEAM = 66F4S3PJ79;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = net.paccoin.pacmobilewallet.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9f33f61d-6b14-4bf9-8cd7-26ac5f887965";
-				PROVISIONING_PROFILE_SPECIFIER = "Today Ext";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2254,12 +2507,11 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = dashwallet/dashwallet.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_ENTITLEMENTS = DashWallet/dashwallet.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 66F4S3PJ79;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DashWallet/DashWallet-Prefix.pch";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -2270,7 +2522,7 @@
 				);
 				INFOPLIST_FILE = DashWallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet;
+				PRODUCT_BUNDLE_IDENTIFIER = net.paccoin.pacmobilewallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2284,20 +2536,19 @@
 		CEE253D41E26A9BC00A25B15 /* Testflight */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = dashwallet/dashwalletTodayExtension.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_ENTITLEMENTS = DashWallet/dashwalletTodayExtension.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 66F4S3PJ79;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = net.paccoin.pacmobilewallet.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2354,14 +2605,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 66F4S3PJ79;
 				IBSC_MODULE = WatchApp_Extension;
 				INFOPLIST_FILE = WatchApp/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = net.paccoin.pacmobilewallet.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2375,20 +2625,20 @@
 		CEE253D91E26A9BC00A25B15 /* Testflight */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "WatchApp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = net.paccoin.pacmobilewallet.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "WatchApp Extension/WatchApp Extension-Bridging-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -2464,7 +2714,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_ENTITLEMENTS = dashwallet/dashwallet.entitlements;
+				CODE_SIGN_ENTITLEMENTS = DashWallet/dashwallet.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -2480,7 +2730,7 @@
 				);
 				INFOPLIST_FILE = DashWallet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet;
+				PRODUCT_BUNDLE_IDENTIFIER = net.paccoin.pacmobilewallet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2497,7 +2747,7 @@
 				CODE_SIGN_ENTITLEMENTS = dashwallet/dashwalletTodayExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
@@ -2506,7 +2756,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				INFOPLIST_FILE = TodayExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.TodayExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = net.paccoin.pacmobilewallet.TodayExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2565,12 +2815,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "";
 				IBSC_MODULE = WatchApp_Extension;
 				INFOPLIST_FILE = WatchApp/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = net.paccoin.pacmobilewallet.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2586,18 +2836,19 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "WatchApp Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.paccoin.mobilewallet.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = net.paccoin.pacmobilewallet.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "WatchApp Extension/WatchApp Extension-Bridging-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

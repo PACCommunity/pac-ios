@@ -27,7 +27,7 @@
 #import "BRRootViewController.h"
 #import "BRWalletManager.h"
 #import "BREventManager.h"
-
+#import "BRImageViewLogo.h"
 
 @interface BRWelcomeViewController ()
 
@@ -35,7 +35,6 @@
 @property (nonatomic, strong) id foregroundObserver, backgroundObserver;
 
 @property (nonatomic, strong) IBOutlet UIView *wallpaper, *wallpaperContainer;
-@property (nonatomic, strong) IBOutlet UIButton *newwalletButton, *recoverButton;
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint *logoXCenter, *walletXCenter, *restoreXCenter,
                                                            *wallpaperXLeft;
 
@@ -50,19 +49,8 @@
     // Do any additional setup after loading the view.
         
     self.navigationController.delegate = self;
-
-    self.newwalletButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    self.recoverButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-    self.newwalletButton.titleLabel.adjustsLetterSpacingToFitWidth = YES;
-    self.recoverButton.titleLabel.adjustsLetterSpacingToFitWidth = YES;
-    self.newwalletButton.layer.cornerRadius = 0.15 * self.newwalletButton.bounds.size.height;
-    self.newwalletButton.layer.borderWidth = 1.0;
-    self.recoverButton.layer.cornerRadius = 0.15 * self.recoverButton.bounds.size.height;
-    self.recoverButton.layer.borderWidth = 1.0;
-#pragma clang diagnostic pop
+    self.navigationItem.titleView = [BRImageViewLogo imageViewWithPACLogo];
 
     self.foregroundObserver =
         [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationWillEnterForegroundNotification object:nil
@@ -144,7 +132,7 @@
             self.navigationItem.titleView.hidden = NO;
             self.navigationItem.titleView.alpha = 0.0;
 
-            [UIView animateWithDuration:0.35 delay:1.0 usingSpringWithDamping:0.8 initialSpringVelocity:0.0
+            [UIView animateWithDuration:0.35 delay:0.1 usingSpringWithDamping:0.8 initialSpringVelocity:0.0
             options:UIViewAnimationOptionCurveEaseOut animations:^{
                 self.navigationItem.titleView.alpha = 1.0;
                 [self.navigationController.view layoutIfNeeded];

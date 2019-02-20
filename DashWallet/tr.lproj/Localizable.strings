@@ -643,3 +643,24 @@
 
 /* No comment provided by engineer. */
 "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain." = "Cüzdanınız eşitlenmemiş olabilir.\nBlok zincirini yeniden taratmak bunu sık sık düzeltebilir.";
+
+/* No comment provided by engineer. */
+"remind me later" = "daha sonra hatırlat";
+
+/* No comment provided by engineer. */
+"About PAC Wallet" = "PAC Cüzdanı Hakkında";
+
+/* No comment provided by engineer. */
+"no transactions" = "işlem yok";
+
+/* No comment provided by engineer. */
+"amount" = "Miktar";
+
+/* No comment provided by engineer. */
+"destination address:" = "Varış noktası:";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "Anlık gönderme sınırını aştığından işlem yapılamıyor";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "İşleme izin verilmiyor";

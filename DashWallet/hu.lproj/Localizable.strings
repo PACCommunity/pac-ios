@@ -643,3 +643,24 @@
 
 /* No comment provided by engineer. */
 "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain." = "A tárcád nincs szinkronban.\nÁltalában segít az, ha újraszkenneled a blockchaint.";
+
+/* No comment provided by engineer. */
+"remind me later" = "Remind me later";
+
+/* No comment provided by engineer. */
+"About PAC Wallet" = "A PAC pénztárcáról";
+
+/* No comment provided by engineer. */
+"no transactions" = "no transactions";
+
+/* No comment provided by engineer. */
+"amount" = "Összeg";
+
+/* No comment provided by engineer. */
+"destination address:" = "Célcím:";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "A tranzakció nem végezhető el, mert meghaladja az azonnali küldés határát";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "A tranzakció nem engedélyezett";

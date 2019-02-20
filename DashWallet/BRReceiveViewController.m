@@ -35,6 +35,10 @@
 #import "BREventManager.h"
 #import "BRWalletManager.h"
 #import <MobileCoreServices/UTCoreTypes.h>
+#import "NSString+Attributed.h"
+#import "UIColor+AppColors.h"
+#import "BRMessageComposeViewController.h"
+#import "BRMailComposeViewController.h"
 
 #define QR_TIP      NSLocalizedString(@"Let others scan this QR code to get your $PAC address. Anyone can send "\
                     "$PAC to your wallet by transferring them to your address.", nil)
@@ -59,8 +63,6 @@
 @property (strong, nonatomic) IBOutlet UIView *topBlackAreaSmallScreen;
 @property (strong, nonatomic) IBOutlet UILabel *receiveLabel;
 @property (strong, nonatomic) IBOutlet UILabel *receiveLabelSmallScreen;
-@property (strong, nonatomic) IBOutlet UIImageView *pacIcon;
-@property (strong, nonatomic) IBOutlet UIImageView *pacIconSmallScreen;
 
 @end
 
@@ -70,30 +72,10 @@
 {
     [super viewDidLoad];
     
-    if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
-        NSString *device = @"";
-        switch ((int)[[UIScreen mainScreen] nativeBounds].size.height) {
-                
-            case 1136:
-                printf("iPhone 5 or 5S or 5C");
-                device = @"iPhone 5";
-                self.pacIcon.hidden = YES;
-                self.receiveLabel.hidden = YES;
-                
-                _receiveLabelSmallScreen =[[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/4.8,210,200,40)];
-                _receiveLabelSmallScreen.font = [UIFont systemFontOfSize:30];
-                [_receiveLabelSmallScreen setTextColor:[UIColor blackColor]];
-                _receiveLabelSmallScreen.text = @"Receive $PAC";
-                [self.view addSubview:_receiveLabelSmallScreen];
-
-                break;
-            default:
-                printf("unknown");
-        }
-        self.pacIcon.hidden = YES;
-    }
+    NSString *word = @"$PAC:";
+    self.receiveLabel.attributedText = [self.receiveLabel.text attributedStringForWord: word
+                                                              attributesFullText:@{NSFontAttributeName: [UIFont systemFontOfSize:20 weight:UIFontWeightMedium], NSForegroundColorAttributeName: [UIColor whiteColor]} attributtesWord:@{NSFontAttributeName: [UIFont boldSystemFontOfSize: 20], NSForegroundColorAttributeName: [UIColor whiteColor]}];
     
-//    self.TopBlackArea.layer.cornerRadius = 0.05 * self.TopBlackArea.bounds.size.width;
     BRWalletManager *manager = [BRWalletManager sharedInstance];
     BRPaymentRequest *req;
 
@@ -114,10 +96,12 @@
     
     if (req.amount > 0) {
         BRWalletManager *manager = [BRWalletManager sharedInstance];
-        NSMutableAttributedString * attributedPacString = [[manager attributedStringForPacAmount:req.amount withTintColor:[UIColor darkTextColor] useSignificantDigits:FALSE] mutableCopy];
+        NSMutableAttributedString * attributedPacString = [[manager attributedStringForPacAmount:req.amount withTintColor:[UIColor whiteColor] useSignificantDigits:FALSE] mutableCopy];
         NSString * titleString = [NSString stringWithFormat:@" (%@)",
                                   [manager localCurrencyStringForPacAmount:req.amount]];
-        [attributedPacString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor darkTextColor]}]];
+        
+        [attributedPacString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
+        
         self.label.attributedText = attributedPacString;
     }
 
@@ -187,10 +171,12 @@
             
             if (req.amount > 0) {
                 BRWalletManager *manager = [BRWalletManager sharedInstance];
-                NSMutableAttributedString * attributedPacString = [[manager attributedStringForPacAmount:req.amount withTintColor:[UIColor darkTextColor] useSignificantDigits:FALSE] mutableCopy];
+                NSMutableAttributedString * attributedPacString = [[manager attributedStringForPacAmount:req.amount withTintColor:[UIColor whiteColor] useSignificantDigits:FALSE] mutableCopy];
                 NSString * titleString = [NSString stringWithFormat:@" (%@)",
                                           [manager localCurrencyStringForPacAmount:req.amount]];
-                [attributedPacString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor darkTextColor]}]];
+   
+                [attributedPacString appendAttributedString:[[NSAttributedString alloc] initWithString:titleString attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}]];
+                
                 self.label.attributedText = attributedPacString;
                 
                 if (! self.balanceObserver) {
@@ -332,7 +318,8 @@
         [actionSheet addAction:[UIAlertAction actionWithTitle:(req) ? NSLocalizedString(@"send request as email", nil) :
                                 NSLocalizedString(@"send address as email", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                                     if ([MFMailComposeViewController canSendMail]) {
-                                        MFMailComposeViewController *composeController = [MFMailComposeViewController new];
+                                        
+                                        BRMailComposeViewController *composeController = [BRMailComposeViewController new];
                                         
                                         composeController.subject = NSLocalizedString(@"$PAC address", nil);
                                         [composeController setMessageBody:self.paymentRequest.string isHTML:NO];
@@ -340,8 +327,6 @@
                                                                     fileName:@"qr.png"];
                                         composeController.mailComposeDelegate = self;
                                         [self.navigationController presentViewController:composeController animated:YES completion:nil];
-                                        composeController.view.backgroundColor =
-                                        [UIColor colorWithPatternImage:[UIImage imageNamed:@"wallpaper-default"]];
                                         [BREventManager saveEvent:@"receive:send_email"];
                                     }
                                     else {
@@ -367,7 +352,8 @@
         [actionSheet addAction:[UIAlertAction actionWithTitle:(req) ? NSLocalizedString(@"send request as message", nil) :
                                 NSLocalizedString(@"send address as message", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                                     if ([MFMessageComposeViewController canSendText]) {
-                                        MFMessageComposeViewController *composeController = [MFMessageComposeViewController new];
+                                        
+                                        BRMessageComposeViewController *composeController = [BRMessageComposeViewController new];
                                         
                                         if ([MFMessageComposeViewController canSendSubject]) {
                                             composeController.subject = NSLocalizedString(@"$PAC address", nil);
@@ -379,11 +365,9 @@
                                             [composeController addAttachmentData:UIImagePNGRepresentation(self.qrView.image)
                                                                   typeIdentifier:(NSString *)kUTTypePNG filename:@"qr.png"];
                                         }
-                                        
                                         composeController.messageComposeDelegate = self;
                                         [self.navigationController presentViewController:composeController animated:YES completion:nil];
-                                        composeController.view.backgroundColor = [UIColor colorWithPatternImage:
-                                                                                  [UIImage imageNamed:@"wallpaper-default"]];
+                                        
                                         [BREventManager saveEvent:@"receive:send_message"];
                                     }
                                     else {
@@ -422,6 +406,12 @@
     [self presentViewController:actionSheet animated:YES completion:nil];
 }
 
+//MARK: - Status Bar
+
+-(UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 // MARK: - MFMessageComposeViewControllerDelegate
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller
@@ -445,6 +435,9 @@ error:(NSError *)error
     BRWalletManager *manager = [BRWalletManager sharedInstance];
     
     if (amount < manager.wallet.minOutputAmount) {
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
         UIAlertController * alert = [UIAlertController
                                      alertControllerWithTitle:NSLocalizedString(@"amount too small", nil)
                                      message:[NSString stringWithFormat:NSLocalizedString(@"$PAC payments can't be less than %@", nil),

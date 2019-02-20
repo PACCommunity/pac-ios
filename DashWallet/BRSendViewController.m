@@ -46,6 +46,8 @@
 #import "BRBIP32Sequence.h"
 #import "BRQRScanViewController.h"
 #import "BRQRScanViewModel.h"
+#import "NSString+Attributed.h"
+#import "NSNumber+PrimitiveComparison.h"
 
 #define SCAN_TIP      NSLocalizedString(@"Scan someone else's QR code to get their $PAC address. "\
 "You can send a payment to anyone with an address.", nil)
@@ -57,6 +59,7 @@
 #define NBSP @"\xC2\xA0"         // no-break space (utf-8)
 
 #define SEND_INSTANTLY_KEY @"SEND_INSTANTLY_KEY"
+#define INSTANT_SEND_LIMIT 100000
 
 static NSString *sanitizeString(NSString *s)
 {
@@ -85,12 +88,12 @@ static NSString *sanitizeString(NSString *s)
 @property (nonatomic, strong) IBOutlet UIView * shapeshiftView;
 @property (nonatomic, strong) IBOutlet UILabel * shapeshiftLabel;
 @property (nonatomic, strong) IBOutlet NSLayoutConstraint * NFCWidthConstraint;
-@property (nonatomic, strong) IBOutlet NSLayoutConstraint * leftOfNFCButtonWhitespaceConstraint;
+@property (nonatomic, strong) IBOutlet NSLayoutConstraint * NFCHeightButtonConstraint;
 @property (strong, nonatomic) IBOutlet UIView *topBlackAreaSmallScreen;
 @property (strong, nonatomic) IBOutlet UIImageView *pacIcon;
 @property (strong, nonatomic) IBOutlet UIImageView *pacIconNewDevices;
 @property (strong, nonatomic) IBOutlet UILabel *pacLabel;
-@property (strong, nonatomic) IBOutlet UILabel *pacLabelSmallScreen;
+@property (strong, nonatomic) IBOutlet UIView *containerView;
 
 @end
 
@@ -99,52 +102,12 @@ static NSString *sanitizeString(NSString *s)
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    self.instantSwitch.tintColor = [UIColor blackColor];
-    self.instantSwitch.tintColor = [UIColor blackColor];
-    self.instantSwitch.layer.borderWidth = 1;
-    self.instantSwitch.layer.borderColor = UIColor.blackColor.CGColor;
-    self.instantSwitch.layer.cornerRadius = 16.0;
-    if([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone) {
-        NSString *device = @"";
-        switch ((int)[[UIScreen mainScreen] nativeBounds].size.height) {
-                
-            case 1136:
-                printf("iPhone 5 or 5S or 5C");
-                device = @"iPhone 5";
-//                self.topBlackArea.hidden = YES;
-                self.pacIconNewDevices.hidden = YES;
-                self.sendLabel.hidden = YES;
-                self.pacLabel.hidden = YES;
-                
-                _sendLabelSmallScreen =[[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/3.5,240,200,40)];
-                _sendLabelSmallScreen.font = [UIFont systemFontOfSize:30];
-                [_sendLabelSmallScreen setTextColor:[UIColor blackColor]];
-                _sendLabelSmallScreen.text = @"Send $PAC";
-                [self.view addSubview:_sendLabelSmallScreen];
-                
-                _pacLabelSmallScreen =[[UILabel alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/6,200,400,20)];
-                _pacLabelSmallScreen.font = [UIFont systemFontOfSize:15];
-                [_pacLabelSmallScreen setTextColor:[UIColor blackColor]];
-                _pacLabelSmallScreen.text = @"The People's Alternative Choice";
-                [self.view addSubview:_pacLabelSmallScreen];
-                
-                break;
-            default:
-                printf("unknown");
-        }
-    }
+
+    self.scanButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     
-    // TODO: XXX redesign page with round buttons like the iOS power down screen... apple watch also has round buttons
-    self.scanButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    self.clipboardButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    self.clipboardButton.layer.cornerRadius = 0.15 * self.clipboardButton.bounds.size.height;
-    self.clipboardButton.layer.borderWidth = 1.0;
-    self.scanButton.layer.cornerRadius = 0.15 * self.scanButton.bounds.size.height;
-    self.scanButton.layer.borderWidth = 1.0;
-//    self.topBlackArea.layer.cornerRadius = 0.05 * self.topBlackArea.bounds.size.width;
-//    self.instantSwitch.layer.borderWidth = 1.2;
-//    self.instantSwitch.layer.cornerRadius = 0.28 * self.instantSwitch.bounds.size.width;
+    NSString *word = @"$PAC:";
+    self.sendLabel.attributedText = [self.sendLabel.text attributedStringForWord: word
+                                      attributesFullText:@{NSFontAttributeName: [UIFont systemFontOfSize:17 weight:UIFontWeightLight], NSForegroundColorAttributeName: [UIColor whiteColor]} attributtesWord:@{NSFontAttributeName: [UIFont boldSystemFontOfSize: 17], NSForegroundColorAttributeName: [UIColor whiteColor]}];
     
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
@@ -198,7 +161,7 @@ static NSString *sanitizeString(NSString *s)
     
     if (!hasNFC) {
         [self.NFCWidthConstraint setConstant:0];
-        [self.leftOfNFCButtonWhitespaceConstraint setConstant:0];
+        [self.NFCHeightButtonConstraint setConstant:0];
     }
 }
 
@@ -838,6 +801,30 @@ static NSString *sanitizeString(NSString *s)
         }
         
         if (tx) {
+ 
+            //get the equivalent pac amount
+            NSNumber *amountNumber = [(id)[NSDecimalNumber numberWithLongLong:amount] decimalNumberByMultiplyingByPowerOf10:-manager.pacFormat.maximumFractionDigits];
+            
+            //we check if 'instant send' is active and if the limit was exceeded
+            //so we show the 'not permited' alert
+            if(self.sendInstantly && [amountNumber isGreaterThanInt:INSTANT_SEND_LIMIT]) {
+                //alerta de error
+                
+                UIAlertController * alert = [UIAlertController
+                                             alertControllerWithTitle:NSLocalizedString(@"Transaction not allowed", nil)
+                                             message: NSLocalizedString(@"The transaction cannot be made because it exceeds the limit of instant send", nil)
+                                             preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction* okButton = [UIAlertAction
+                                               actionWithTitle:NSLocalizedString(@"ok", nil)
+                                               style:UIAlertActionStyleDefault
+                                               handler: nil];
+                
+                [alert addAction:okButton];
+                [self presentViewController:alert animated:YES completion:nil];
+  
+                return;
+            }
+
             amount = [manager.wallet amountSentByTransaction:tx] - [manager.wallet amountReceivedFromTransaction:tx];
             fee = [manager.wallet feeForTransaction:tx];
         }
@@ -1417,7 +1404,7 @@ static NSString *sanitizeString(NSString *s)
         self.tipView.backgroundColor = tipView.backgroundColor;
         self.tipView.font = tipView.font;
         self.tipView.userInteractionEnabled = NO;
-        [self.view addSubview:[self.tipView popIn]];
+        [self.containerView addSubview:[self.tipView popIn]];
     }
     else if (self.showTips && [tipView.text hasPrefix:CLIPBOARD_TIP]) {
         self.showTips = NO;
@@ -1595,7 +1582,7 @@ static NSString *sanitizeString(NSString *s)
                                      tipPoint:CGPointMake(self.scanButton.center.x, self.scanButton.center.y - 10.0)
                                  tipDirection:BRBubbleTipDirectionDown];
     self.tipView.font = [UIFont systemFontOfSize:15.0];
-    [self.view addSubview:[self.tipView popIn]];
+    [self.containerView addSubview:[self.tipView popIn]];
 }
 
 - (IBAction)enableInstantX:(id)sender {

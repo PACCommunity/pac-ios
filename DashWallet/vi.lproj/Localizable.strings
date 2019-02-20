@@ -643,3 +643,24 @@
 
 /* No comment provided by engineer. */
 "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain." = "Ví của bạn có thể bị mất đồng bộ.\nĐiều này có thể được xử lý bằng cách quét lại blockchain.";
+
+/* No comment provided by engineer. */
+"remind me later" = "nhắc tôi sau";
+
+/* No comment provided by engineer. */
+"About PAC Wallet" = "Giới thiệu về ví PAC";
+
+/* No comment provided by engineer. */
+"no transactions" = "không có giao dịch nào";
+
+/* No comment provided by engineer. */
+"amount" = "Số tiền";
+
+/* No comment provided by engineer. */
+"destination address:" = "Địa chỉ đích:";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "Giao dịch không thể được thực hiện vì vượt quá giới hạn gửi tức thì";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "Giao dịch không được cho phép";

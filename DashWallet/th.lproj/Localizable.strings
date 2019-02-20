@@ -72,7 +72,7 @@
 "\ntry again in %d %@" = "\ntry again in %1$d %2$@";
 
 /* No comment provided by engineer. */
-"about" = "about";
+"about" = "About";
 
 /* No comment provided by engineer. */
 "always require passcode" = "always require passcode";
@@ -381,7 +381,7 @@
 "received %@ (%@)" = "received %1$@ (%2$@)";
 
 /* recovery phrase */
-"recovery phrase" = "recovery phrase";
+"recovery phrase" = "Recovery phrase";
 
 /* No comment provided by engineer. */
 "recovery phrase doesn't match" = "recovery phrase doesn't match";
@@ -643,3 +643,24 @@
 
 /* No comment provided by engineer. */
 "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain." = "Your wallet may be out of sync.\nThis can often be fixed by rescanning the blockchain.";
+
+/* No comment provided by engineer. */
+"remind me later" = "Remind me later";
+
+/* No comment provided by engineer. */
+"About PAC Wallet" = "About PAC Wallet";
+
+/* No comment provided by engineer. */
+"no transactions" = "no transactions";
+
+/* No comment provided by engineer. */
+"amount" = "จำนวน";
+
+/* No comment provided by engineer. */
+"destination address:" = "ที่อยู่ปลายทาง:";
+
+/* No comment provided by engineer. */
+"The transaction cannot be made because it exceeds the limit of instant send" = "ไม่สามารถทำธุรกรรมได้เนื่องจากเกินขีด จำกัด ของการส่งทันที";
+
+/* No comment provided by engineer. */
+"Transaction not allowed" = "ไม่อนุญาตให้ทำธุรกรรม";
