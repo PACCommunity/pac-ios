@@ -383,7 +383,7 @@
                             </connections>
                         </barButtonItem>
                         <view key="titleView" contentMode="scaleToFill" id="zEA-kZ-fl3">
-                            <rect key="frame" x="113" y="16.5" width="94" height="15"/>
+                            <rect key="frame" x="113" y="14.5" width="94" height="15"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="PacLogo-small" translatesAutoresizingMaskIntoConstraints="NO" id="Nbk-cZ-ENN">
@@ -420,7 +420,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="HCk-Gb-uZI" customClass="BRPacNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AnC-Sa-145" customClass="BRNavigationBar">
-                        <rect key="frame" x="0.0" y="20" width="320" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -441,7 +441,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="zyy-VL-f65" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="36d-sF-8oT">
-                        <rect key="frame" x="0.0" y="20" width="320" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <textAttributes key="titleTextAttributes">
@@ -463,7 +463,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="BeO-Yt-c4D" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" id="BYa-tz-DlK">
-                        <rect key="frame" x="0.0" y="20" width="320" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <gestureRecognizers/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -706,7 +706,7 @@
             <objects>
                 <navigationController storyboardIdentifier="AmountNav" id="3ah-ch-e9l" customClass="BRPacNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rOn-tg-k8L" customClass="BRNavigationBar">
-                        <rect key="frame" x="0.0" y="20" width="320" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -845,7 +845,7 @@
                             </connections>
                         </barButtonItem>
                         <view key="titleView" contentMode="scaleToFill" id="YZJ-Ar-CCc">
-                            <rect key="frame" x="113" y="16.5" width="94" height="15"/>
+                            <rect key="frame" x="113" y="14.5" width="94" height="15"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="PacLogo-small" translatesAutoresizingMaskIntoConstraints="NO" id="Upd-gS-ln6">
@@ -879,11 +879,11 @@
             <objects>
                 <viewController storyboardIdentifier="ReceiveViewController" id="XLw-gP-lYw" customClass="BRReceiveViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bFo-w9-Ygt">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RVl-QY-kFM">
-                                <rect key="frame" x="24" y="74" width="272" height="352"/>
+                                <rect key="frame" x="24" y="76" width="272" height="352"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o3k-BT-Yvx" customClass="BRSemiRoundedBorderedView">
                                         <rect key="frame" x="26.5" y="45" width="218" height="218"/>
@@ -1306,7 +1306,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NewWalletNav" definesPresentationContext="YES" modalTransitionStyle="flipHorizontal" id="I38-Lg-4a0" customClass="BRPacNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9fq-wb-Ja5" customClass="BRNavigationBar">
-                        <rect key="frame" x="0.0" y="20" width="320" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -2572,7 +2572,7 @@ Other devices may be infected.
             <objects>
                 <navigationController storyboardIdentifier="SeedNav" definesPresentationContext="YES" modalTransitionStyle="flipHorizontal" id="go5-eQ-1NR" customClass="BRPacNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="naK-xP-h9B" customClass="BRNavigationBar">
-                        <rect key="frame" x="0.0" y="20" width="320" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

@@ -54,6 +54,7 @@
 		39A2C59121EF06CC00DDB1E3 /* BRRoundedBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C58D21EF06CB00DDB1E3 /* BRRoundedBorderedButton.m */; };
 		39A2C59221EF06CC00DDB1E3 /* BRImageViewLogo.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C58E21EF06CB00DDB1E3 /* BRImageViewLogo.m */; };
 		39A2C59521EF0B2300DDB1E3 /* BRPacNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A2C59421EF0B2300DDB1E3 /* BRPacNavigationController.m */; };
+		39AC478F221E52A80068B0EC /* BRDataDefaultsHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AC478E221E52A80068B0EC /* BRDataDefaultsHandler.m */; };
 		39E35F0822051EB8002363C9 /* BRSemiRoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E35F0722051EB8002363C9 /* BRSemiRoundedView.m */; };
 		39E35F0B22052140002363C9 /* BRSemiRoundedBorderedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E35F0A22052140002363C9 /* BRSemiRoundedBorderedView.m */; };
 		39EA5346221BCF4C00E5E3D7 /* NSNumber+PrimitiveComparison.m in Sources */ = {isa = PBXBuildFile; fileRef = 39EA5345221BCF4C00E5E3D7 /* NSNumber+PrimitiveComparison.m */; };
@@ -311,6 +312,8 @@
 		39A2C58F21EF06CC00DDB1E3 /* BRRoundedBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRRoundedBorderedButton.h; sourceTree = "<group>"; };
 		39A2C59321EF0B2300DDB1E3 /* BRPacNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRPacNavigationController.h; sourceTree = "<group>"; };
 		39A2C59421EF0B2300DDB1E3 /* BRPacNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRPacNavigationController.m; sourceTree = "<group>"; };
+		39AC478D221E52A80068B0EC /* BRDataDefaultsHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRDataDefaultsHandler.h; sourceTree = "<group>"; };
+		39AC478E221E52A80068B0EC /* BRDataDefaultsHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRDataDefaultsHandler.m; sourceTree = "<group>"; };
 		39E35F0622051EB8002363C9 /* BRSemiRoundedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSemiRoundedView.h; sourceTree = "<group>"; };
 		39E35F0722051EB8002363C9 /* BRSemiRoundedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRSemiRoundedView.m; sourceTree = "<group>"; };
 		39E35F0922052140002363C9 /* BRSemiRoundedBorderedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRSemiRoundedBorderedView.h; sourceTree = "<group>"; };
@@ -862,6 +865,8 @@
 			children = (
 				BA4EECDF1B351AE200D443A3 /* BRAppGroupConstants.h */,
 				22F45A0F1C3329EB00B07A15 /* BRUserDefaultsConstants.h */,
+				39AC478D221E52A80068B0EC /* BRDataDefaultsHandler.h */,
+				39AC478E221E52A80068B0EC /* BRDataDefaultsHandler.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1787,6 +1792,7 @@
 				752E28E919234DA200DB5A3C /* NSManagedObject+Sugar.m in Sources */,
 				BA7B53541BDAA0A800355E8D /* BRAppleWatchTransactionData.m in Sources */,
 				FB021E571E47E17200D17638 /* FBShimmeringView.m in Sources */,
+				39AC478F221E52A80068B0EC /* BRDataDefaultsHandler.m in Sources */,
 				392E077421FE66E500F04BAD /* BRHistoryNoTxCell.m in Sources */,
 				FBF267A11E414877001A1C8B /* NSString+Pac.m in Sources */,
 				FB021E5B1E4DEFE800D17638 /* MBProgressHUD.m in Sources */,

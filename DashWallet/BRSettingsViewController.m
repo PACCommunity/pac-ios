@@ -37,7 +37,6 @@
 #import <arpa/inet.h>
 #import "UIColor+AppColors.h"
 #import "NSString+Attributed.h"
-#import "NSString+Attributed.h"
 
 @interface BRSettingsViewController ()
 
@@ -198,46 +197,13 @@
                                      actionWithTitle:NSLocalizedString(@"trust", nil)
                                      style:UIAlertActionStyleDefault
                                      handler:^(UIAlertAction * action) {
+                                         
                                          NSArray * textfields = alert.textFields;
                                          UITextField * ipField = textfields[0];
                                          NSString *fixedPeer = ipField.text;
-                                         NSArray *pair = [fixedPeer componentsSeparatedByString:@":"];
-                                         NSString *host = pair.firstObject;
-                                         NSString *service = (pair.count > 1) ? pair[1] : @(PAC_STANDARD_PORT).stringValue;
-                                         struct addrinfo hints = { 0, AF_UNSPEC, SOCK_STREAM, 0, 0, 0, NULL, NULL }, *servinfo, *p;
-                                         UInt128 addr = { .u32 = { 0, 0, CFSwapInt32HostToBig(0xffff), 0 } };
                                          
-                                         NSLog(@"DNS lookup %@", host);
+                                         [[BRPeerManager sharedInstance] updateTrustedPeer:fixedPeer includingReconnection:YES];
                                          
-                                         if (getaddrinfo(host.UTF8String, service.UTF8String, &hints, &servinfo) == 0) {
-                                             for (p = servinfo; p != NULL; p = p->ai_next) {
-                                                 if (p->ai_family == AF_INET) {
-                                                     addr.u64[0] = 0;
-                                                     addr.u32[2] = CFSwapInt32HostToBig(0xffff);
-                                                     addr.u32[3] = ((struct sockaddr_in *)p->ai_addr)->sin_addr.s_addr;
-                                                 }
-                                                 //                else if (p->ai_family == AF_INET6) {
-                                                 //                    addr = *(UInt128 *)&((struct sockaddr_in6 *)p->ai_addr)->sin6_addr;
-                                                 //                }
-                                                 else continue;
-                                                 
-                                                 uint16_t port = CFSwapInt16BigToHost(((struct sockaddr_in *)p->ai_addr)->sin_port);
-                                                 char s[INET6_ADDRSTRLEN];
-                                                 
-                                                 if (addr.u64[0] == 0 && addr.u32[2] == CFSwapInt32HostToBig(0xffff)) {
-                                                     host = @(inet_ntop(AF_INET, &addr.u32[3], s, sizeof(s)));
-                                                 }
-                                                 else host = @(inet_ntop(AF_INET6, &addr, s, sizeof(s)));
-                                                 
-                                                 [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@:%d", host, port]
-                                                                                           forKey:SETTINGS_FIXED_PEER_KEY];
-                                                 [[BRPeerManager sharedInstance] disconnect];
-                                                 [[BRPeerManager sharedInstance] connect];
-                                                 break;
-                                             }
-                                             
-                                             freeaddrinfo(servinfo);
-                                         }
                                      }];
         [alert addAction:trustButton];
         [alert addAction:cancelButton];
