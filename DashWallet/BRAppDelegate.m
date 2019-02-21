@@ -34,6 +34,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import "UIColor+AppColors.h"
 #import "BRMessageComposeViewController.h"
+#import "BRDataDefaultsHandler.h"
 
 #if PAC_TESTNET
 #pragma message "testnet build"
@@ -127,6 +128,8 @@
         // observe balance and create notifications
         [self setupBalanceNotification:application];
         [self setupPreferenceDefaults];
+        [BRDataDefaultsHandler updateTrustedPeerFirstLaunch];
+        
         return YES;
     }
     
